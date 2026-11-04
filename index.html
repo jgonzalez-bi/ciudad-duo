@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v7.2</title>
+<title>Ciudad Dúo — Ocho Hordas · v7.3</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -46,7 +46,7 @@
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 07.2</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 07.3</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja de suministros. Cada tres aperturas cambia de lugar. Tras la cuarta horda descienden paracaidistas SWAT. Desde la quinta llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -72,15 +72,15 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=7.2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=7.3,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=480,CAR_ACCELERATION=780,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:CITY_W/2,y:H/2};
 const HEAVY_AIM_DELAY=.22,PUNCH_SECONDS=4,PUNCH_RANGE=112,AMMO_DROP_CHANCE=.22,AMMO_DROP_SECONDS=45;
 const COAST_ROAD_END=32,COAST_RAIL_HEIGHT=29;
 const upgradeTiers=[
  {name:'SIN MODIFICACIÓN',mark:'',cost:0,damage:1,color:null,pitch:1},
- {name:'MODIFICACIÓN I',mark:'I',cost:6,damage:2,color:'#59f4dc',pitch:1.18},
- {name:'MODIFICACIÓN II',mark:'II',cost:10,damage:3.5,color:'#db85ff',pitch:1.36}
+ {name:'MODIFICACIÓN I',mark:'I',cost:6,damage:2,color:'#59f4dc',pitch:1},
+ {name:'MODIFICACIÓN II',mark:'II',cost:10,damage:3.5,color:'#db85ff',pitch:1.42}
 ];
 const weaponUpgrade=p=>cap(Number(p?.upgrade)||0,0,2);
 const freshPunch=()=>({phase:'idle',owner:-1,weapon:null,level:0,until:0,beatAt:0,serial:0});
@@ -372,6 +372,25 @@ const Sound=(()=>{
   }
  }
 
+ function buildLaserWeapons(){
+  // A falling tonal sweep gives the upgraded weapons their rounded "pi-um" attack.
+  // Five short buffers are shared by both tiers; tier II plays them at a higher pitch.
+  const savedSeed=noiseSeed;
+  const profiles={
+   pistol:{duration:.28,high:1780,low:260,fall:17,decay:9,gain:.60,harmonic:.13,sub:0},
+   smg:{duration:.15,high:1980,low:420,fall:24,decay:17,gain:.52,harmonic:.09,sub:0},
+   shotgun:{duration:.36,high:1460,low:150,fall:13,decay:7,gain:.74,harmonic:.16,sub:.13},
+   lmg:{duration:.22,high:1610,low:245,fall:21,decay:13,gain:.65,harmonic:.18,sub:.06},
+   bazooka:{duration:.52,high:1280,low:85,fall:9,decay:5.5,gain:.80,harmonic:.12,sub:.19}
+  };
+  for(const [kind,p] of Object.entries(profiles))build(kind+'-laser',p.duration,(t,n,lo,d)=>{
+   const phase=TAU*(p.low*t+(p.high-p.low)*(1-Math.exp(-p.fall*t))/p.fall);
+   const envelope=Math.min(1,t/.004)*Math.exp(-t*p.decay)*Math.pow(Math.max(0,1-t/d),.45);
+   const tone=Math.sin(phase)+p.harmonic*Math.sin(phase*2)+p.sub*Math.sin(phase*.5);
+   return tone*p.gain*envelope;
+  });
+  noiseSeed=savedSeed;
+ }
  function buildEffects(){
   const gun=(name,duration,body,decay,crack,ring)=>build(name,duration,(t,n,lo)=>
    n*crack*Math.exp(-t*105)+lo*.9*Math.exp(-t*decay)+Math.sin(TAU*(body*t+4*(1-Math.exp(-t*35))))*.65*Math.exp(-t*decay)+Math.sin(TAU*ring*t)*.13*Math.exp(-t*43));
@@ -409,6 +428,7 @@ const Sound=(()=>{
   build('engine',1,(t,n,lo)=>{
    const p=t*42,cycle=p-Math.floor(p);return Math.sin(TAU*p)*.27+Math.sin(TAU*84*t)*.13+Math.sin(TAU*126*t)*.07+Math.exp(-cycle*11)*.22+lo*.2;
   });
+  buildLaserWeapons();
  }
  function stopEngines(){for(const voice of engines.values()){try{voice.source.stop();}catch(err){}voice.source.disconnect();voice.gain.disconnect();if(voice.pan)voice.pan.disconnect();voice.filter.disconnect();}engines.clear();}
  function stopEffects(){for(const source of active){try{source.stop();}catch(err){}}active.clear();}
@@ -436,7 +456,7 @@ const Sound=(()=>{
  function play(kind,x=null,y=null){
   if(!ready||muted||document.hidden||ac.state!=='running'||voices>=32)return;
   const modified=/^(pistol|smg|shotgun|lmg|bazooka)-mod([12])$/.exec(kind),baseKind=modified?modified[1]:kind,tier=modified?upgradeTiers[Number(modified[2])]:upgradeTiers[0];
-  const buffer=buffers.get(baseKind);if(!buffer)return;const place=spatial(x,y);if(place.gain<.025)return;
+  const buffer=buffers.get(modified?baseKind+'-laser':baseKind);if(!buffer)return;const place=spatial(x,y);if(place.gain<.025)return;
   const source=ac.createBufferSource(),gain=ac.createGain(),pan=typeof ac.createStereoPanner==='function'?ac.createStereoPanner():null,filter=kind.startsWith('night-')?ac.createBiquadFilter():null;
   if(filter){filter.type='lowpass';filter.frequency.value=1250;filter.Q.value=.5;}
   source.buffer=buffer;gain.gain.value=place.gain*(kind.startsWith('step-')?.24:kind.startsWith('death-heavy-')?.76:kind.startsWith('death-')?.68:volume[baseKind]??.8);source.playbackRate.value=(kind==='engine'?1:.965+(noise()+1)*.035)*tier.pitch;
@@ -896,13 +916,13 @@ function bindConnection(c){
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v72-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v73-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v72-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v73-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
 async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v'+VERSION.toFixed(1)+' · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
