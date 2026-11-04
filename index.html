@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,user-scalable=no">
+<meta name="theme-color" content="#101a25"><title>Ciudad Dúo · Cooperativo</title>
+<style>
+:root{font-family:Inter,system-ui,-apple-system,Segoe UI,Arial,sans-serif;color:#f8fbff;background:#0c1722}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;touch-action:none}canvas{display:block;width:100vw;height:100dvh;background:#273a3e}button,input{font:inherit}button{cursor:pointer}.lobby{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 60% 5%,#2b5c5a,#0a1824 65%);padding:18px;z-index:10;overflow:auto}.panel{width:min(480px,100%);padding:27px;border:1px solid #4c6b70;border-radius:22px;background:#102431ee;box-shadow:0 25px 70px #0007}.brand{font-weight:1000;letter-spacing:-.045em;font-size:clamp(32px,7vw,48px);margin:0;line-height:1}.brand b{color:#56e3bb}.subtitle{color:#aac3ca;line-height:1.5;margin:16px 0 22px;font-size:14px}.pill{display:inline-block;background:#183d43;color:#79f0ca;border:1px solid #317763;padding:5px 9px;border-radius:99px;font-size:11px;letter-spacing:.03em;font-weight:800;margin:0 0 12px}.btn{border:0;padding:14px 18px;border-radius:12px;background:#55dfb1;color:#072b26;font-weight:900;min-height:48px;width:100%}.btn.alt{background:#294250;color:#f1fbff;border:1px solid #446472}.btn:disabled{opacity:.55}.or{display:flex;gap:12px;align-items:center;margin:16px 0;color:#91a9b2;font-size:12px}.or:before,.or:after{content:"";height:1px;background:#3b515d;flex:1}input{background:#0b1d2b;border:1px solid #56727c;outline:0;color:white;border-radius:12px;padding:14px;width:100%;text-transform:uppercase;font-size:20px;letter-spacing:.2em;text-align:center;font-weight:800;margin-bottom:10px}.notice{font-size:12px;color:#b3c9cf;line-height:1.45;margin-top:18px}.error{color:#ffad9a;min-height:19px;font-size:13px;margin-top:8px}.hide{display:none!important}#hud{position:absolute;inset:0;pointer-events:none;z-index:3}.topbar{display:flex;justify-content:space-between;gap:10px;align-items:start;padding:calc(12px + env(safe-area-inset-top)) 12px 0}.chip{padding:9px 12px;border-radius:13px;background:#09212bdb;border:1px solid #ffffff25;backdrop-filter:blur(8px);font-size:12px;max-width:54vw;box-shadow:0 3px 15px #0003}.chip strong{color:#67ffce;font-size:14px}.chip small{display:block;color:#accdd0;margin-top:3px}.chip.right{text-align:right}.tip{position:absolute;left:50%;top:80px;transform:translateX(-50%);background:#122d3bdf;border-radius:11px;border:1px solid #ffffff29;padding:8px 11px;font-size:12px;white-space:nowrap;max-width:95vw;overflow:hidden;text-overflow:ellipsis}.controls{position:absolute;inset:auto 0 0;display:flex;justify-content:space-between;align-items:end;padding:0 22px calc(22px + env(safe-area-inset-bottom));pointer-events:none}.stick{pointer-events:auto;width:132px;height:132px;border-radius:50%;border:2px solid #ffffff47;background:#11212c99;display:grid;place-items:center;touch-action:none;user-select:none}.stickcore{width:58px;height:58px;background:#67edc3ad;border:2px solid #d7fff5aa;box-shadow:0 0 18px #6cffee33;border-radius:50%;transform:translate(0px,0px)}.actions{display:flex;align-items:end;gap:12px;pointer-events:auto}.action{border:1px solid #ffffff77;box-shadow:0 4px 18px #0008;background:#ff755bdb;color:white;border-radius:50%;width:84px;height:84px;display:grid;place-items:center;font-weight:1000;font-size:13px;touch-action:none;user-select:none}.action.enter{width:67px;height:67px;background:#2abaaaeb;font-size:12px}.roomwidget{position:absolute;right:12px;top:79px;z-index:5;pointer-events:auto}.roomwidget button{border:1px solid #ffffff44;border-radius:9px;background:#0b273ce8;color:white;font-weight:700;padding:7px 10px;font-size:12px}#toast{position:absolute;left:50%;top:124px;transform:translateX(-50%);background:#173943ed;padding:10px 14px;border-radius:10px;border:1px solid #d2fff62b;text-align:center;font-size:12px;opacity:0;transition:opacity .2s;max-width:90%;pointer-events:none}#toast.show{opacity:1}@media(max-width:540px){.panel{padding:22px}.stick{height:116px;width:116px}.stickcore{height:53px;width:53px}.action{width:73px;height:73px}.action.enter{width:59px;height:59px}.controls{padding-left:16px;padding-right:16px}.chip{font-size:11px}.tip{top:75px}}
+@media(max-height:460px){.controls{padding-bottom:8px}.stick{width:96px;height:96px}.stickcore{width:45px;height:45px}.action{width:66px;height:66px}.action.enter{width:52px;height:52px}.tip{display:none}}
+</style>
+</head>
+<body>
+<canvas id="game"></canvas>
+<div class="lobby" id="lobby"><section class="panel">
+<div class="pill">PROTOTIPO ORIGINAL · 2 JUGADORES</div>
+<h1 class="brand">CIUDAD <b>DÚO</b></h1>
+<p class="subtitle">Un mini mundo abierto inspirado en los GTA clásicos. Exploren la ciudad, suban a los autos y reúnan 8 maletines entre los dos. Jueguen desde casas distintas.</p>
+<button class="btn" id="host">CREAR SALA</button>
+<div class="or">O ENTRA CON TU HERMANO</div>
+<input id="code" maxlength="6" placeholder="CÓDIGO DE SALA" autocomplete="off" spellcheck="false" aria-label="Código de sala">
+<button class="btn alt" id="join">UNIRME A LA SALA</button>
+<div class="error" id="error"></div><div class="notice">No hace falta descargar GTA. Usa gráficos originales y una conexión directa entre los teléfonos. Para jugar por Internet, ambos deben abrir esta página publicada en HTTPS. El modo en línea es experimental y puede fallar en ciertas redes móviles.</div>
+</section></div>
+<div id="hud" class="hide">
+  <div class="topbar"><div class="chip"><strong>CIUDAD DÚO</strong><small id="status">Esperando al segundo jugador…</small></div><div class="chip right"><span>MALETINES</span> <strong id="score">0 / 8</strong><small id="contrib">Tú: 0 · Amigo: 0</small></div></div>
+  <div class="roomwidget"><button id="copy">Sala: <span id="room">------</span> · Copiar</button></div>
+  <div class="tip" id="tip">Joystick: mover · DISPARAR · AUTO: entrar/salir</div>
+  <div class="controls"><div id="stick" class="stick"><div id="stickcore" class="stickcore"></div></div><div class="actions"><button id="enter" class="action enter">AUTO</button><button id="fire" class="action">DISPARAR</button></div></div>
+  <div id="toast"></div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
+<script>
+(()=>{'use strict';
+const $=id=>document.getElementById(id),canvas=$('game'),ctx=canvas.getContext('2d',{alpha:false});
+const W=1840,H=1340,goal=8,roadsX=[300,850,1400],roadsY=[255,715,1160],road=124;
+let me=0,host=false,room='',peer=null,conn=null,connected=false,lastFrame=performance.now(),lastInput=0,lastSync=0,currentToastTimer=0;
+const state={players:[{x:300,y:250,face:0,car:null,role:null,count:0},{x:360,y:250,face:0,car:null,role:null,count:0}],cars:[],bags:[],bullets:[],score:0,done:false};
+let fireTouch=false;const input={x:0,y:0,shoot:false,enter:false};const remote={x:0,y:0,shoot:false,enter:false};
+const blocks=[];const carsSeed=[[320,330,0,'#edb84c'],[770,715,1,'#e66e80'],[1400,850,0,'#77b5f4'],[850,1150,0,'#97cc8f'],[1450,220,1,'#d7b5ed'],[280,790,1,'#f9c06a']];
+const cashPoints=[[330,580],[570,255],[1140,255],[1700,255],[300,1010],[860,550],[1100,715],[1540,715],[1390,1050],[530,1160],[1750,1150],[870,1240]];
+function makeWorld(){
+  // Buildings stay between road corridors.
+  const xBands=[[25,225],[380,775],[925,1325],[1475,1810]], yBands=[[25,165],[345,620],[805,1060],[1245,1320]];
+  xBands.forEach((xb,xi)=>yBands.forEach((yb,yi)=>{let w=xb[1]-xb[0],h=yb[1]-yb[0];if(w<100||h<62)return;blocks.push({x:xb[0]+15,y:yb[0]+12,w:w-30,h:h-24,shade:(xi*3+yi)%4});}));
+  state.cars=carsSeed.map((a,i)=>({id:i,x:a[0],y:a[1],angle:a[2]*Math.PI/2,color:a[3],driver:null,passenger:null}));
+  state.bags=cashPoints.map((p,i)=>({id:i,x:p[0],y:p[1],picked:false}));
+}
+makeWorld();
+function clamp(n,a,b){return Math.max(a,Math.min(b,n));}function dist(a,b){return Math.hypot(a.x-b.x,a.y-b.y);}
+function circleRect(x,y,r,b){return Math.hypot(x-clamp(x,b.x,b.x+b.w),y-clamp(y,b.y,b.y+b.h))<r;}
+function canMove(x,y,r){return x>=r&&y>=r&&x<=W-r&&y<=H-r&&!blocks.some(b=>circleRect(x,y,r,b));}
+function movePos(o,dx,dy,r){if(canMove(o.x+dx,o.y,r))o.x+=dx;if(canMove(o.x,o.y+dy,r))o.y+=dy;}
+function toast(msg){$('toast').textContent=msg;$('toast').classList.add('show');clearTimeout(currentToastTimer);currentToastTimer=setTimeout(()=>$('toast').classList.remove('show'),3500);}
+function error(s){$('error').textContent=s;}
+function nick(n){return n===0?'Verde':'Azul';}
+function enterCar(i){let p=state.players[i];if(p.car!=null){const car=state.cars[p.car];const q={x:car.x+Math.cos(car.angle+Math.PI/2)*43,y:car.y+Math.sin(car.angle+Math.PI/2)*43};if(canMove(q.x,q.y,15)){p.x=q.x;p.y=q.y;}else{p.x=car.x;p.y=car.y;}if(p.role==='driver'){car.driver=null;if(car.passenger!=null){car.driver=car.passenger;state.players[car.driver].role='driver';car.passenger=null;}}else car.passenger=null;p.car=null;p.role=null;return;}
+ const candidates=state.cars.filter(c=>dist(p,c)<58&&c.passenger==null);candidates.sort((a,b)=>dist(p,a)-dist(p,b));let car=candidates[0];if(!car){if(i===me)toast('Acércate a un auto.');return;}p.car=car.id;if(car.driver==null){car.driver=i;p.role='driver';}else{car.passenger=i;p.role='passenger';}}
+function simulate(dt){if(!host)return;
+ for(let i=0;i<2;i++){if(i===1&&!connected)continue;let p=state.players[i], inp=i===0?input:remote;
+  if(inp.enter){enterCar(i);inp.enter=false;}
+  let x=clamp(inp.x,-1,1),y=clamp(inp.y,-1,1),len=Math.hypot(x,y);if(len>1){x/=len;y/=len;}
+  if(p.car!=null){let c=state.cars[p.car];if(p.role==='driver'&&len>.12){let desired=Math.atan2(y,x),turn=Math.atan2(Math.sin(desired-c.angle),Math.cos(desired-c.angle));c.angle+=clamp(turn,-dt*4,dt*4);movePos(c,Math.cos(c.angle)*dt*360,Math.sin(c.angle)*dt*360,20);}p.x=c.x;p.y=c.y;p.face=c.angle;}
+  else if(len>.1){p.face=Math.atan2(y,x);movePos(p,x*dt*195,y*dt*195,13);}
+  if(inp.shoot&&p.car==null&&Math.random()<dt*8){const face=p.face;state.bullets.push({x:p.x+Math.cos(face)*22,y:p.y+Math.sin(face)*22,vx:Math.cos(face)*650,vy:Math.sin(face)*650,ttl:.7,owner:i});}
+  for(const bag of state.bags){if(state.score<goal&&!bag.picked&&dist(p,bag)<26){bag.picked=true;p.count++;state.score++;if(state.score===goal){state.done=true;toast('¡MISIÓN COMPLETADA!');} if(state.score<goal)toast('¡Maletín recogido! '+state.score+'/'+goal);}}
+ }
+ for(let j=state.bullets.length-1;j>=0;j--){let b=state.bullets[j];b.x+=b.vx*dt;b.y+=b.vy*dt;b.ttl-=dt;if(b.ttl<=0||!canMove(b.x,b.y,3))state.bullets.splice(j,1);}
+}
+function sendInputs(){if(conn&&conn.open&&!host)conn.send({t:'i',x:input.x,y:input.y,shoot:input.shoot,enter:input.enter});input.enter=false;}
+function snapshot(){return {t:'s',p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),bags:state.bags.map(b=>b.picked),score:state.score,done:state.done};}
+function applySnapshot(s){if(!Array.isArray(s.p)||!Array.isArray(s.c)||!Array.isArray(s.bags))return;state.players=s.p;state.cars=s.c;state.bags.forEach((b,i)=>b.picked=!!s.bags[i]);state.score=s.score;state.done=s.done;}
+function initPeer(id){if(typeof Peer==='undefined'){error('No se pudo cargar la conexión online. Revisa tu Internet.');return null;}let p=new Peer(id,{debug:0,config:{iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]}});p.on('error',e=>{let msg=e.type==='unavailable-id'?'Ese código ya existe. Intenta crear otra sala.':e.type==='peer-unavailable'?'Sala no encontrada: verifica el código.':'Error de conexión: '+(e.type||'desconocido');error(msg);toast(msg);});p.on('disconnected',()=>toast('Se perdió la conexión con el servidor de salas.'));return p;}
+function start(){ $('lobby').classList.add('hide');$('hud').classList.remove('hide');$('room').textContent=room;resize();}
+function bindConn(c){conn=c;c.on('open',()=>{connected=true;start();toast('¡Conectados! Ya pueden jugar.');if(host)c.send(snapshot());});c.on('data',data=>{if(!data||typeof data!=='object')return;if(host&&data.t==='i'){remote.x=Number(data.x)||0;remote.y=Number(data.y)||0;remote.shoot=!!data.shoot;remote.enter=remote.enter||!!data.enter;}else if(!host&&data.t==='s')applySnapshot(data);});c.on('close',()=>{connected=false;remote.x=0;remote.y=0;remote.shoot=false;toast(host?'Tu amigo se desconectó.':'El anfitrión se desconectó.');if(!host)setTimeout(()=>location.reload(),2500);});c.on('error',()=>toast('No se pudo establecer la conexión con el otro jugador.'));}
+$('host').addEventListener('click',()=>{if(peer)return;host=true;me=0;room=Math.random().toString(36).slice(2,8).toUpperCase();error('');$('host').disabled=true;peer=initPeer('ciudadd-2026-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}peer.on('open',()=>{start();toast('Sala '+room+' creada. Comparte el código con tu hermano.');});peer.on('connection',c=>{if(connected){c.on('open',()=>c.close());return;}bindConn(c);});});
+$('join').addEventListener('click',()=>{if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){error('Introduce un código de 6 caracteres.');return;}host=false;me=1;error('Conectando…');$('join').disabled=true;peer=initPeer();if(!peer){$('join').disabled=false;return;}peer.on('open',()=>{const c=peer.connect('ciudadd-2026-'+room.toLowerCase(),{reliable:true});bindConn(c);setTimeout(()=>{if(!connected)error('No se logró conectar. Comprueba el código y la red.');},11000);});});
+$('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
+$('copy').addEventListener('click',async()=>{const txt='¡Vamos a jugar Ciudad Dúo! Entra a '+location.href.split('?')[0]+' y usa el código '+room;try{await navigator.clipboard.writeText(txt);toast('Invitación copiada. Envíala por WhatsApp.');}catch(e){toast('Código de sala: '+room);}});
+let keys={};window.addEventListener('keydown',e=>{if(/^(Arrow|KeyW|KeyA|KeyS|KeyD|Space|KeyE)/.test(e.code)){if(!$('lobby').classList.contains('hide'))return;e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;}});window.addEventListener('keyup',e=>{keys[e.code]=false;});window.addEventListener('blur',()=>{keys={};input.x=input.y=0;input.shoot=false;});
+const stick=$('stick'),core=$('stickcore');let stickPointer=null,joystick={x:0,y:0};
+function stickUpdate(e){const b=stick.getBoundingClientRect();let dx=(e.clientX-(b.left+b.width/2))/(b.width*.39),dy=(e.clientY-(b.top+b.height/2))/(b.height*.39),m=Math.hypot(dx,dy);if(m>1){dx/=m;dy/=m;}joystick.x=dx;joystick.y=dy;core.style.transform=`translate(${dx*b.width*.29}px,${dy*b.height*.29}px)`;}
+stick.addEventListener('pointerdown',e=>{stickPointer=e.pointerId;stick.setPointerCapture(e.pointerId);stickUpdate(e);e.preventDefault();});stick.addEventListener('pointermove',e=>{if(stickPointer===e.pointerId)stickUpdate(e);});function stickStop(e){if(stickPointer!==e.pointerId)return;stickPointer=null;joystick={x:0,y:0};core.style.transform='translate(0,0)';}stick.addEventListener('pointerup',stickStop);stick.addEventListener('pointercancel',stickStop);
+$('fire').addEventListener('pointerdown',e=>{fireTouch=true;e.currentTarget.setPointerCapture(e.pointerId);e.preventDefault();});['pointerup','pointercancel','lostpointercapture'].forEach(ev=>$('fire').addEventListener(ev,()=>fireTouch=false));$('enter').addEventListener('pointerdown',e=>{input.enter=true;e.preventDefault();});
+function resize(){const dpr=Math.min(devicePixelRatio||1,2),cw=innerWidth,ch=innerHeight;canvas.width=Math.round(cw*dpr);canvas.height=Math.round(ch*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
+window.addEventListener('resize',resize);resize();
+function rect(x,y,w,h,color){ctx.fillStyle=color;ctx.fillRect(x,y,w,h);}function circle(x,y,r,color){ctx.beginPath();ctx.arc(x,y,r,0,Math.PI*2);ctx.fillStyle=color;ctx.fill();}
+function drawRoads(){rect(0,0,W,H,'#41695b'); // grass
+  for(let y of roadsY){rect(0,y-road/2,W,road,'#35434a');rect(0,y-road/2,W,4,'#66777d');rect(0,y+road/2-4,W,4,'#66777d');for(let x=0;x<W;x+=80)rect(x,y-2,39,4,'#d2b97399');}
+  for(let x of roadsX){rect(x-road/2,0,road,H,'#35434a');rect(x-road/2,0,4,H,'#66777d');rect(x+road/2-4,0,4,H,'#66777d');for(let y=0;y<H;y+=80)rect(x-2,y,4,39,'#d2b97399');}
+  for(let b of blocks){rect(b.x-9,b.y-9,b.w+18,b.h+18,'#9aa39c');rect(b.x,b.y+8,b.w,b.h,'#101b2355');rect(b.x,b.y,b.w,b.h,['#59788a','#b68778','#7c8d80','#b1a281'][b.shade]);rect(b.x+12,b.y+11,Math.max(10,b.w-24),8,'#ffffff18');for(let i=0;i<Math.floor(b.w/60);i++)rect(b.x+17+i*56,b.y+24,23,14,'#e1ebbd59');}
+  // parks and street decorations
+  for(let x=65;x<W;x+=95)for(let y=65;y<H;y+=105){if((x*3+y)%7<3&&canMove(x,y,15)&&!roadsX.some(v=>Math.abs(x-v)<100)&&!roadsY.some(v=>Math.abs(y-v)<100)){circle(x+5,y+5,14,'#1b483d55');circle(x,y,12,'#235644');circle(x-4,y-4,5,'#71a06b');}}
+}
+function drawBag(b,t){if(b.picked)return;let off=Math.sin(t*3+b.id)*3;circle(b.x,b.y+10,15,'#0004');rect(b.x-12,b.y-11+off,24,20,'#eccd45');rect(b.x-9,b.y-14+off,18,5,'#f7e48e');rect(b.x-2,b.y-7+off,5,11,'#98731d');}
+function drawCar(c){ctx.save();ctx.translate(c.x,c.y);ctx.rotate(c.angle);circle(3,4,29,'#15212950');rect(-25,-13,50,26,'#111b20');rect(-21,-13,42,26,c.color);rect(-12,-10,15,20,'#21455f');rect(8,-10,10,20,'#9de7ecbb');rect(18,-9,5,6,'#f8e9bb');rect(18,3,5,6,'#f8e9bb');rect(-25,-10,4,6,'#ec4a58');rect(-25,4,4,6,'#ec4a58');ctx.restore();}
+function drawPlayer(p,i){if(p.car!=null)return;circle(p.x+3,p.y+5,14,'#0005');circle(p.x,p.y,13,i===0?'#61f0be':'#76b6ff');circle(p.x+Math.cos(p.face)*8,p.y+Math.sin(p.face)*8,4,'#152937');ctx.font='bold 12px system-ui';ctx.textAlign='center';ctx.fillStyle='white';ctx.fillText(i===0?'J1':'J2',p.x,p.y-23);}
+function render(t){const cw=innerWidth,ch=innerHeight;if(!$('hud').classList.contains('hide')){
+ const p=state.players[me],zoom=clamp(Math.min(cw/660,ch/490),.68,1.24),vw=cw/zoom,vh=ch/zoom;let cx=clamp(p.x-vw/2,0,Math.max(0,W-vw)),cy=clamp(p.y-vh/2,0,Math.max(0,H-vh));
+ ctx.save();ctx.scale(zoom,zoom);ctx.translate(-cx,-cy);drawRoads();state.bags.forEach(b=>drawBag(b,t));state.cars.forEach(drawCar);state.bullets.forEach(b=>circle(b.x,b.y,3,'#fff3a5'));state.players.forEach((q,i)=>drawPlayer(q,i));ctx.restore();
+ $('score').textContent=state.score+' / '+goal;$('contrib').textContent='Tú: '+state.players[me].count+' · Amigo: '+state.players[1-me].count;
+ $('status').textContent=state.done?'¡MISIÓN COMPLETADA!':host?(connected?'Tu hermano está conectado':'Esperando a tu hermano…'):(connected?'Conectado al anfitrión':'Conectando…');
+ $('tip').textContent=state.done?'¡GANARON! Recolectaron los ocho maletines.':p.car!=null?'AUTO: salir del vehículo · Joystick: conducir':'Joystick: mover · AUTO: subir · DISPARAR';
+ }else{ctx.fillStyle='#17323b';ctx.fillRect(0,0,cw,ch);}
+}
+function frame(now){let dt=Math.min((now-lastFrame)/1000,.05);lastFrame=now;let kx=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0),ky=(keys.KeyS||keys.ArrowDown?1:0)-(keys.KeyW||keys.ArrowUp?1:0);input.x=joystick.x||kx;input.y=joystick.y||ky;input.shoot=fireTouch||!!keys.Space;
+ if(host){simulate(dt);if(connected&&now-lastSync>80){if(conn&&conn.open)conn.send(snapshot());lastSync=now;}}
+ else if(connected&&now-lastInput>55){sendInputs();lastInput=now;}
+ render(now/1000);requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+})();
+</script>
+</body></html>
