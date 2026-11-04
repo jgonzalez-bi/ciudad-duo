@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v5.9</title>
+<title>Ciudad Dúo — Ocho Hordas · v6.0</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -39,7 +39,7 @@
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 05.9</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 06.0</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja de suministros. Cada tres aperturas cambia de lugar. Tras la cuarta horda descienden paracaidistas SWAT. Desde la quinta llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -65,7 +65,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=5.9,W=2740,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=6,W=2740,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=680,CAR_ACCELERATION=1250,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:W/2,y:H/2};
 const waveCounts=[4,7,10,14,18,18,18,18],eliteCounts=[0,0,0,0,5,9,13,18];
@@ -112,7 +112,7 @@ function initialize(){
  soundEvents=[];soundCooldowns.clear();
 }initialize();
 let me=0,isHost=false,room='',peer=null,conn=null,connected=false,lastTime=performance.now(),lastSend=0,lastInput=0,toastTimer=0,fireHeld=false,movingStickId=null;
-let keys={},onlineReady=false,lastGuestAt=0,viewBlend=null;
+let keys={},onlineReady=false,lastGuestAt=0,viewBlend=null,carBlend=null;
 const input={x:0,y:0,shoot:false,enter:false,box:false,monkey:false,boom:false},guestInput={x:0,y:0,shoot:false,enter:false,box:false,monkey:false,boom:false},joystick={x:0,y:0};
 // Procedural effects are built once: no audio downloads, large media files or speech services.
 const Sound=(()=>{
@@ -493,17 +493,37 @@ function snapshot(){
 function receive(s){
  if(s.v!==VERSION||!Array.isArray(s.p)||s.p.length!==2||!Array.isArray(s.c)||!Array.isArray(s.e)||!Array.isArray(s.b)||!Array.isArray(s.g))return;
  const now=performance.now(),previous=viewBlend?visualPlayer(me,now):state.players[me];
+ const previousCars=state.cars.map(car=>visualCar(car,now));
  const reset=s.wave<state.wave||s.time<state.time;
  state.players=s.p;state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
  state.boomDrop=s.boomDrop;state.raid=s.raid;state.monkeys=s.monkeys;state.vests=s.vests;state.boss=s.boss;state.bags=state.bags.slice(0,bagSeeds.length).concat(s.drops);state.bags.forEach((b,i)=>b.taken=!!s.b[i]);state.guns.forEach((g,i)=>g.taken=!!s.g[i]);state.score=s.score;state.collected=s.collected;state.done=s.done;state.time=s.time;state.wave=s.wave;state.nextWaveAt=s.nextWaveAt;state.box=s.box;Object.assign(boxSpot,s.boxLocation);
  if(!reset&&distance(previous,state.players[me])<150)viewBlend={x:previous.x,y:previous.y,at:now};else viewBlend=null;
+ carBlend=reset?null:{from:previousCars,at:now};
  if(reset){Sound.stopEffects();Sound.stopEngines();}
  if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
+}
+function visualCar(car,now){
+ if(isHost||!carBlend)return car;
+ const previous=carBlend.from.find(from=>from.id===car.id);
+ // New cars and large corrections snap immediately instead of sliding across the map.
+ if(!previous||distance(previous,car)>180)return car;
+ const progress=cap((now-carBlend.at)/75,0,1);
+ const turn=Math.atan2(Math.sin(car.angle-previous.angle),Math.cos(car.angle-previous.angle));
+ return {...car,
+  x:previous.x+(car.x-previous.x)*progress,
+  y:previous.y+(car.y-previous.y)*progress,
+  angle:previous.angle+turn*progress
+ };
 }
 function visualPlayer(index,now){
  const player=state.players[index];
  // Local aim responds immediately while positions retain their network interpolation.
  const p=index===me&&Number.isFinite(input.aim)?{...player,aimFace:input.aim}:player;
+ if(p.car!==null&&state.cars[p.car]){
+  // Vehicle, occupants, status bars and camera share one rendered position.
+  const car=visualCar(state.cars[p.car],now);
+  return {...p,x:car.x,y:car.y,face:car.angle};
+ }
  if(isHost||index!==me||!viewBlend)return p;
  const t=cap((now-viewBlend.at)/75,0,1);
  return {...p,x:viewBlend.x+(p.x-viewBlend.x)*t,y:viewBlend.y+(p.y-viewBlend.y)*t};
@@ -513,7 +533,7 @@ function bindConnection(c){
  c.on('data',s=>{
   if(!s||typeof s!=='object')return;
   if(s.t==='hello'){
-   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 5.9.');c.close();return;}
+   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 6.0.');c.close();return;}
    connected=true;lastGuestAt=performance.now();start();setWaiting(false);if(isHost&&state.wave===0)startWave(1);showToast('CO-OP CONECTADO · ¡A SOBREVIVIR!');if(isHost)send(snapshot());return;
   }
   if(!connected)return;
@@ -526,16 +546,16 @@ function bindConnection(c){
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v59-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v60-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v59-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v60-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
-async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v5.9 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
+async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v6.0 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
 $('roomBtn').addEventListener('click',copyRoom);$('waitCopy').addEventListener('click',copyRoom);
 $('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,monkey:false,boom:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
 function resetControls(){releaseAim();keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.boom=input.monkey=input.shoot=input.enter=input.box=false;$('knob').style.transform='translate(0,0)';}
@@ -893,7 +913,11 @@ function render(timestamp,now){
  for(const g of state.guns)if(!g.taken&&visible(g))gunDraw(g,timestamp);
  if(visible(boxSpot))boxDraw(timestamp);
  // Stable depth order for the small set of moving actors.
- const actors=[];for(const c of state.cars)if(visible(c))actors.push({y:c.y,car:c});
+ const actors=[];
+ for(const car of state.cars){
+  const viewedCar=visualCar(car,now);
+  if(visible(viewedCar))actors.push({y:viewedCar.y,car:viewedCar});
+ }
  for(const e of state.enemies)if(!e.down&&visible(e))actors.push({y:e.y,enemy:e});
  for(let i=0;i<2;i++){const actor=visualPlayer(i,now);if((i===0||connected)&&visible(actor))actors.push({y:actor.y,player:actor,id:i});}
  actors.sort((a,b)=>a.y-b.y);for(const a of actors){if(a.car)carDraw(a.car);else if(a.enemy)drawActor(a.enemy,1);else humanDraw(a.player,0,a.id);}
