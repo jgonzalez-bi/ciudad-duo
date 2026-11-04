@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v5.0</title>
+<title>Ciudad Dúo — Ocho Hordas · v5.1</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -31,12 +31,14 @@
 .topline{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px}.hudcolumn{display:flex;flex-direction:column;align-items:flex-start;gap:6px;min-width:0;max-width:320px;width:max-content}.hudcolumn.rightcolumn{align-items:flex-end;justify-self:end}.hudbox{max-width:100%;width:100%}.hudbox strong{line-height:1.25}.hudbox small{line-height:1.35}#roomBtn,#quality{position:relative;left:auto;right:auto;top:auto;margin:0}#roomBtn{font-size:10px;padding:7px 9px}#tip{top:16px;max-width:28vw}#toast{top:calc(145px + env(safe-area-inset-top))}
 @media(max-width:650px){.hudcolumn{width:100%}.hudbox{padding:7px 8px}.hudbox strong{font-size:10px}.hudbox small{font-size:9px}.hudbox.right strong{font-size:17px}#tip{display:none}#weaponHud{bottom:calc(155px + env(safe-area-inset-bottom));max-width:65vw}#boxPrompt{bottom:calc(211px + env(safe-area-inset-bottom));max-width:70vw}#roomBtn{font-size:9px;max-width:100%}}
 @media(max-height:480px){#toast{top:123px;font-size:11px}.hudbox.right small{font-size:9px}.hudcolumn{gap:4px}}
+.settingsrow{display:flex;gap:5px;flex-wrap:wrap;pointer-events:auto}#soundToggle{padding:6px 8px;border-radius:4px;border:1px solid #87977c88;background:#09151cda;color:#dfc78d;font-size:9px;pointer-events:auto}#soundToggle[aria-pressed="false"]{color:#9aa7ae;border-color:#56697580}.walletline{display:flex;align-items:center;justify-content:center;gap:7px;color:#f4cf7c;font-size:12px;font-weight:900;letter-spacing:.02em;white-space:nowrap;margin-bottom:6px;padding-bottom:6px;border-bottom:1px solid #d7b56c55}.caseicon{position:relative;display:inline-block;width:17px;height:11px;border:1px solid #f1d593;border-radius:2px;background:#a17a38;flex:0 0 auto}.caseicon:before{content:"";position:absolute;left:4px;top:-5px;width:7px;height:4px;border:1px solid #f1d593;border-bottom:0;border-radius:2px 2px 0 0}.hudbox.right #score{font-size:23px;color:#f5d188}#weaponHud{min-width:154px}@media(max-width:650px){#boxPrompt{bottom:calc(233px + env(safe-area-inset-bottom))}.settingsrow{gap:4px}#quality,#soundToggle{font-size:8px;padding:6px}.walletline{font-size:11px}}
+@media(orientation:landscape) and (max-height:480px){#weaponHud{bottom:6px;max-width:38vw}#boxPrompt{bottom:96px;max-width:40vw}}
 </style>
 </head>
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 05.0</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 05.1</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja del centro: armas potentes… o nada. Desde la quinta horda llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -45,24 +47,25 @@
   <input id="code" aria-label="Código de la sala" placeholder="CÓDIGO DE 6 LETRAS" maxlength="6" autocomplete="off" spellcheck="false">
   <button class="mainbtn secondary" id="join">UNIRME A LA SALA</button>
   <div id="error" class="error"></div>
-  <div class="footnote">Comienza al conectar a ambos jugadores. Cada apertura cuesta 4 maletines del equipo; los recogidos vuelven en la siguiente horda. Solo hay pistolas en el suelo. Táctil: joystick, DISPARAR, AUTO y CAJA al acercarte. PC: WASD / flechas, espacio, E y F. Ambos deben usar esta versión.</div>
+  <div class="footnote">Comienza al conectar a ambos jugadores. Cada apertura cuesta 4 maletines del equipo; los recogidos vuelven en la siguiente horda. Solo hay pistolas en el suelo. Táctil: joystick, DISPARAR, AUTO y CAJA al acercarte. PC: WASD / flechas, espacio, E y F. El sonido se activa al tocar; puedes silenciarlo. Ambos deben usar esta versión.</div>
 </section></div>
 <div id="ui" class="hidden">
-  <div class="topline"><div class="hudcolumn"><div class="hudbox"><strong>CIUDAD DÚO / HORDAS</strong><small id="connection">Esperando al segundo jugador…</small><small id="health">VIDA: 100%</small></div><button id="quality" type="button" title="Cambiar calidad gráfica">GRÁFICOS: AUTO</button></div><div class="hudcolumn rightcolumn"><div class="hudbox right"><small>MALETINES DEL EQUIPO</small><strong id="score">00</strong><small id="mission">CAJA CENTRAL · CUESTA 4</small><small id="waveHud">ESPERANDO PARTIDA</small></div><button id="roomBtn">SALA <span id="room">------</span> · COPIAR</button></div></div>
+  <div class="topline"><div class="hudcolumn"><div class="hudbox"><strong>CIUDAD DÚO / HORDAS</strong><small id="connection">Esperando al segundo jugador…</small><small id="health">VIDA: 100%</small></div><div class="settingsrow"><button id="quality" type="button" title="Cambiar calidad gráfica">GRÁFICOS: AUTO</button><button id="soundToggle" type="button" aria-pressed="true" title="Activar o silenciar los efectos de sonido">SONIDO: ON</button></div></div><div class="hudcolumn rightcolumn"><div class="hudbox right"><small>MALETINES DEL EQUIPO</small><strong id="score">00</strong><small id="mission">CAJA CENTRAL · CUESTA 4</small><small id="waveHud">ESPERANDO PARTIDA</small></div><button id="roomBtn">SALA <span id="room">------</span> · COPIAR</button></div></div>
   <div id="tip">8 hordas · caja en el centro del mapa</div>
   <div id="toast"></div>
   <div id="waitMask" class="waitmask hidden"><div class="waitpanel"><div class="waittag">SALA COOPERATIVA</div><h2>ESPERANDO AL<br>SEGUNDO JUGADOR</h2><p>El mundo está pausado. La primera oleada comienza cuando tu hermano se conecte.</p><strong id="waitCode">------</strong><button id="waitCopy" type="button">COPIAR INVITACIÓN</button></div></div>
   <div id="boxPrompt" class="hidden"></div>
   <div id="victory" class="waitmask hidden"><div class="waitpanel"><div class="waittag">DISTRITO ASEGURADO</div><h2>8 HORDAS.<br>UN SOLO EQUIPO.</h2><p id="victoryStats"></p><button id="restart" type="button">JUGAR OTRA VEZ</button></div></div>
   <div class="controls"><div class="stick" id="stick"><div id="knob" class="knob"></div></div><div class="rightcontrols"><div class="utilitycolumn"><button class="act small hidden" id="openBox" type="button" aria-label="Abrir caja por 4 maletines" title="Caja · 4 maletines · F"><span>CAJA<small>4 MAL.</small></span></button><button class="act small" id="enter">AUTO</button></div><button class="act" id="fire">DISPARAR</button></div></div>
-  <div id="weaponHud"><strong id="weaponName">PISTOLA</strong><small id="ammo">MUNICIÓN: 55</small></div>
+  <div id="weaponHud"><div class="walletline"><span class="caseicon" aria-hidden="true"></span><span id="walletCount">MALETINES: 00</span></div><strong id="weaponName">PISTOLA</strong><small id="ammo">MUNICIÓN: 55</small></div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=5,W=1920,H=1440,road=130,roadsX=[305,840,1370],roadsY=[275,730,1190];
+const VERSION=5.1,W=1920,H=1440,road=130,roadsX=[305,840,1370],roadsY=[275,730,1190];
+const CAR_MAX_SPEED=900,CAR_ACCELERATION=1650,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:W/2,y:720};
 const waveCounts=[4,7,10,14,18,18,18,18],eliteCounts=[0,0,0,0,5,9,13,18];
 const weapons={
@@ -92,19 +95,136 @@ function makeBuildings(){
 }makeBuildings();
 const cap=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),rads=(x,y)=>Math.atan2(y,x);
 const hash=(a,b)=>((Math.sin(a*127.1+b*311.7)*43758.5453)%1+1)%1;
-const makePlayer=(x,y,i)=>({x,y,face:0,walk:0,car:null,role:null,health:100,weapon:'pistol',ammo:55,count:0,kills:0,shotAt:-10,hitAt:-10,downUntil:0,idx:i});
+const makePlayer=(x,y,i)=>({x,y,face:0,walk:0,car:null,role:null,health:100,weapon:'pistol',ammo:55,count:0,kills:0,shotAt:-10,hitAt:-10,stepAt:-10,downUntil:0,idx:i});
+let soundSequence=0,soundEvents=[],lastRemoteSound=0;const soundCooldowns=new Map();
 const state={players:[],cars:[],bags:[],guns:[],bullets:[],enemies:[],fx:[],score:0,collected:0,done:false,time:0,wave:0,nextWaveAt:0,box:{phase:'idle',until:0,owner:-1,result:null,serial:0}};
 function initialize(){
  state.players=spawnPoints.map((p,i)=>makePlayer(p[0],p[1],i));
- state.cars=carSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],angle:a[2],color:a[3],speed:0,driver:null,passenger:null}));
+ state.cars=carSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],angle:a[2],color:a[3],speed:0,driver:null,passenger:null,crashAt:-10,skidAt:-10}));
  state.bags=bagSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],taken:false}));
  state.guns=gunSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],kind:a[2],taken:false}));
  state.enemies=[];state.bullets=[];state.fx=[];state.score=0;state.collected=0;state.done=false;state.time=0;state.wave=0;state.nextWaveAt=0;
  state.box={phase:'idle',until:0,owner:-1,result:null,serial:0};
+ soundEvents=[];soundCooldowns.clear();
 }initialize();
 let me=0,isHost=false,room='',peer=null,conn=null,connected=false,lastTime=performance.now(),lastSend=0,lastInput=0,toastTimer=0,fireHeld=false,movingStickId=null;
 let keys={},onlineReady=false,lastGuestAt=0,viewBlend=null;
 const input={x:0,y:0,shoot:false,enter:false,box:false},guestInput={x:0,y:0,shoot:false,enter:false,box:false},joystick={x:0,y:0};
+// Procedural effects are built once: no audio downloads, large media files or speech services.
+const Sound=(()=>{
+ let ac=null,master=null,compressor=null,ready=false,muted=false,voices=0,lastEngineUpdate=0;
+ const buffers=new Map(),engines=new Map(),active=new Set();let noiseSeed=197701;
+ try{muted=localStorage.getItem('ciudad-duo-muted')==='1';}catch(err){}
+ const TAU=Math.PI*2,SR=22050;
+ function noise(){noiseSeed^=noiseSeed<<13;noiseSeed^=noiseSeed>>>17;noiseSeed^=noiseSeed<<5;return(noiseSeed>>>0)/2147483648-1;}
+ function build(name,seconds,sample){
+  const buffer=ac.createBuffer(1,Math.ceil(seconds*SR),SR),out=buffer.getChannelData(0);let low=0;
+  for(let i=0;i<out.length;i++){const t=i/SR,n=noise();low+=.14*(n-low);const edge=Math.min(1,t*1200,(seconds-t)*200);out[i]=Math.tanh(sample(t,n,low,seconds))*Math.max(0,edge);}
+  buffers.set(name,buffer);
+ }
+ function buildEffects(){
+  const gun=(name,duration,body,decay,crack,ring)=>build(name,duration,(t,n,lo)=>
+   n*crack*Math.exp(-t*105)+lo*.9*Math.exp(-t*decay)+Math.sin(TAU*(body*t+4*(1-Math.exp(-t*35))))*.65*Math.exp(-t*decay)+Math.sin(TAU*ring*t)*.13*Math.exp(-t*43));
+  gun('pistol',.25,115,22,2.3,1800);
+  gun('smg',.15,190,38,1.7,2600);
+  gun('shotgun',.53,62,10,3.2,1100);
+  gun('lmg',.32,88,18,2.2,1450);
+  gun('enemy-shot',.24,145,24,1.5,1750);
+  gun('enemy-heavy',.30,93,17,1.8,1250);
+  build('bazooka',.65,(t,n,lo)=>lo*2.6*Math.exp(-t*5)+n*.7*Math.exp(-t*10)+Math.sin(TAU*(78*t-28*t*t))*.5*Math.exp(-t*8));
+  build('explosion',1.05,(t,n,lo)=>lo*3.1*Math.exp(-t*3.8)+n*.7*Math.exp(-t*19)+Math.sin(TAU*(58*t-18*t*t))*1.25*Math.exp(-t*6));
+  build('impact',.13,(t,n)=>n*.6*Math.exp(-t*80)+Math.sin(TAU*910*t)*.1*Math.exp(-t*37));
+  build('step',.12,(t,n,lo)=>lo*1.2*Math.exp(-t*40)+n*.18*Math.exp(-t*60));
+  build('door',.34,(t,n,lo)=>lo*1.4*Math.exp(-t*20)+Math.sin(TAU*74*t)*.65*Math.exp(-t*21)+n*.5*Math.exp(-Math.abs(t-.08)*100));
+  build('crash',.49,(t,n,lo)=>lo*2*Math.exp(-t*11)+n*.7*Math.exp(-t*19)+Math.sin(TAU*135*t)*.4*Math.exp(-t*15));
+  build('skid',.27,(t,n)=>((Math.sin(TAU*1660*t)+Math.sin(TAU*2310*t))*.15+n*.09)*Math.sin(Math.PI*t/.27));
+  // A voiced, breathy grunt: a falling fundamental and several vocal formants.
+  function grunt(name,seconds,pitch){build(name,seconds,(t,n,lo,d)=>{
+   const env=Math.pow(Math.sin(Math.PI*t/d),.65)*Math.exp(-t*1.4),base=pitch*t-pitch*.16*t*t/d;
+   const voice=Math.sin(TAU*base)+.38*Math.sin(TAU*base*2)+.18*Math.sin(TAU*base*3);
+   const mouth=.20*Math.sin(TAU*(470*t-55*t*t))+.12*Math.sin(TAU*1070*t);
+   return (voice*.31+mouth+lo*.6+n*.055)*env;
+  });}
+  grunt('death',.65,112);grunt('death-heavy',.85,78);grunt('hurt',.24,135);grunt('down',.74,97);
+  build('bag',.29,(t,n)=>Math.sin(TAU*1050*t)*.3*Math.exp(-t*18)+Math.sin(TAU*1580*t)*.21*Math.exp(-Math.max(0,t-.055)*25)*(t>.055?1:0)+n*.12*Math.exp(-t*35));
+  build('ammo',.25,(t,n)=>n*.5*Math.exp(-t*50)+Math.sin(TAU*1600*t)*.18*Math.exp(-Math.abs(t-.07)*45));
+  build('box-open',1.8,(t,n,lo)=>{
+   const tick=(t*(10+t*7))%1;return lo*.15+Math.sin(TAU*(310*t+115*t*t))*.11+Math.exp(-tick*34)*n*.8;
+  });
+  build('box-win',.68,(t,n)=>{const note=Math.floor(t/.16),freq=[520,660,790,1040][Math.min(3,note)],local=t% .16;return Math.sin(TAU*freq*t)*.25*Math.exp(-local*13)+n*.02;});
+  build('box-empty',.49,(t,n,lo)=>Math.sin(TAU*(340*t-230*t*t))*.24*Math.exp(-t*5)+lo*.3*Math.exp(-t*10));
+  build('wave',.75,(t)=>{const pulse=t%.35;return(Math.sin(TAU*270*t)+Math.sin(TAU*405*t))*.14*Math.exp(-pulse*13);});
+  build('clear',.52,(t)=>Math.sin(TAU*(t<.22?520:780)*t)*.25*Math.exp(-(t%.22)*13));
+  build('respawn',.46,t=>Math.sin(TAU*(400*t+400*t*t))*.2*Math.sin(Math.PI*t/.46));
+  build('victory',1.28,t=>{const notes=[392,494,587,784],f=notes[Math.min(3,Math.floor(t/.28))];return(Math.sin(TAU*f*t)+.3*Math.sin(TAU*f*2*t))*.19*Math.exp(-(t%.28)*6);});
+  build('engine',1,(t,n,lo)=>{
+   const p=t*42,cycle=p-Math.floor(p);return Math.sin(TAU*p)*.27+Math.sin(TAU*84*t)*.13+Math.sin(TAU*126*t)*.07+Math.exp(-cycle*11)*.22+lo*.2;
+  });
+ }
+ function refreshButton(){const b=$('soundToggle');b.textContent=muted?'SONIDO: OFF':'SONIDO: ON';b.setAttribute('aria-pressed',String(!muted));}
+ function stopEngines(){for(const voice of engines.values()){try{voice.source.stop();}catch(err){}voice.source.disconnect();voice.gain.disconnect();if(voice.pan)voice.pan.disconnect();voice.filter.disconnect();}engines.clear();}
+ function stopEffects(){for(const source of active){try{source.stop();}catch(err){}}active.clear();}
+ function applyVolume(){if(master&&ac){master.gain.cancelScheduledValues(ac.currentTime);master.gain.setTargetAtTime(muted||document.hidden?0:.62,ac.currentTime,.025);}}
+ function unlock(){
+  if(muted)return;
+  const AudioClass=window.AudioContext||window.webkitAudioContext;if(!AudioClass)return;
+  try{
+   if(!ac){
+    ac=new AudioClass({latencyHint:'interactive'});master=ac.createGain();master.gain.value=document.hidden?0:.62;
+    compressor=ac.createDynamicsCompressor();compressor.threshold.value=-17;compressor.knee.value=17;compressor.ratio.value=5;compressor.attack.value=.004;compressor.release.value=.18;
+    master.connect(compressor);compressor.connect(ac.destination);buildEffects();ready=true;
+    // A one-frame source unlocks mobile audio output inside this user gesture.
+    const source=ac.createBufferSource();source.buffer=ac.createBuffer(1,1,ac.sampleRate);source.connect(master);source.start();
+   }
+   if(ac.state==='suspended'||ac.state==='interrupted')ac.resume().catch(()=>{});
+  }catch(err){console.warn('Audio no disponible:',err.message);}
+ }
+ function spatial(x,y){
+  if(x==null||y==null)return {gain:1,pan:0};const p=state.players[me],d=Math.hypot(x-p.x,y-p.y);
+  return {gain:Math.max(0,1-d/1000)**1.5,pan:cap((x-p.x)/520,-.8,.8)};
+ }
+ const volume={step:.23,impact:.27,'enemy-shot':.56,'enemy-heavy':.65,death:.68,'death-heavy':.76,hurt:.43,down:.70,bag:.65,ammo:.48,skid:.26,'box-open':.58,'box-win':.70,'box-empty':.6,wave:.55,clear:.6,respawn:.45,victory:.7};
+ function play(kind,x=null,y=null){
+  if(!ready||muted||document.hidden||ac.state!=='running'||voices>=32)return;
+  const buffer=buffers.get(kind);if(!buffer)return;const place=spatial(x,y);if(place.gain<.025)return;
+  const source=ac.createBufferSource(),gain=ac.createGain(),pan=typeof ac.createStereoPanner==='function'?ac.createStereoPanner():null;
+  source.buffer=buffer;gain.gain.value=place.gain*(volume[kind]??.8);source.playbackRate.value=kind==='engine'?1:.965+(noise()+1)*.035;
+  source.connect(gain);if(pan){pan.pan.value=place.pan;gain.connect(pan);pan.connect(master);}else gain.connect(master);
+  voices++;active.add(source);source.onended=()=>{voices=Math.max(0,voices-1);active.delete(source);source.disconnect();gain.disconnect();if(pan)pan.disconnect();};source.start();
+ }
+ function update(now){
+  if(!connected||state.done||muted||document.hidden){if(engines.size)stopEngines();return;}
+  if(!ready||ac.state!=='running'||now-lastEngineUpdate<60)return;lastEngineUpdate=now;
+  for(const c of state.cars){
+   const place=spatial(c.x,c.y),wanted=c.driver!==null&&place.gain>.025;
+   let voice=engines.get(c.id);
+   if(wanted&&!voice){
+    const source=ac.createBufferSource(),gain=ac.createGain(),filter=ac.createBiquadFilter(),pan=typeof ac.createStereoPanner==='function'?ac.createStereoPanner():null;
+    source.buffer=buffers.get('engine');source.loop=true;gain.gain.value=0;filter.type='lowpass';filter.frequency.value=850;
+    source.connect(filter);filter.connect(gain);if(pan){gain.connect(pan);pan.connect(master);}else gain.connect(master);source.start();
+    voice={source,gain,filter,pan};engines.set(c.id,voice);
+   }
+   if(voice){
+    if(!wanted){try{voice.source.stop();}catch(err){}voice.source.disconnect();voice.filter.disconnect();voice.gain.disconnect();if(voice.pan)voice.pan.disconnect();engines.delete(c.id);continue;}
+    const throttle=cap(c.speed/CAR_MAX_SPEED,0,1),t=ac.currentTime;
+    voice.source.playbackRate.setTargetAtTime(.8+throttle*2.15,t,.085);voice.gain.gain.setTargetAtTime(place.gain*(.20+throttle*.17),t,.07);voice.filter.frequency.setTargetAtTime(650+throttle*1600,t,.08);if(voice.pan)voice.pan.pan.setTargetAtTime(place.pan,t,.06);
+   }
+  }
+ }
+ function toggle(){muted=!muted;try{localStorage.setItem('ciudad-duo-muted',muted?'1':'0');}catch(err){}refreshButton();if(muted){stopEngines();stopEffects();}else unlock();applyVolume();}
+ function visibility(){if(document.hidden){stopEngines();stopEffects();}else if(ac)unlock();applyVolume();}
+ refreshButton();$('soundToggle').addEventListener('click',toggle);
+ document.addEventListener('pointerdown',unlock,{capture:true,passive:true});document.addEventListener('keydown',unlock,{capture:true,passive:true});document.addEventListener('visibilitychange',visibility);
+ return {play,update,unlock,stopEngines,stopEffects,status:()=>({ready,muted,state:ac?ac.state:'locked',voices,engines:engines.size})};
+})();
+function worldSound(kind,x=null,y=null){
+ // Pool impacts and footsteps; all firing/death events remain distinct.
+ const gap=kind==='impact'?.055:kind==='hurt'?.12:0,last=soundCooldowns.get(kind)??-10;
+ if(gap&&state.time-last<gap)return;soundCooldowns.set(kind,state.time);
+ const event={id:++soundSequence,kind,x:x===null?null:Math.round(x),y:y===null?null:Math.round(y),at:state.time};
+ soundEvents.push(event);if(soundEvents.length>48)soundEvents.shift();Sound.play(kind,x,y);
+}
+
 // Broad phase collision: only check buildings in the actor's current grid cell.
 const collisionSize=96,collisionCols=Math.ceil(W/collisionSize),collisionRows=Math.ceil(H/collisionSize),collisionCells=Array.from({length:collisionCols*collisionRows},()=>[]);
 for(const b of buildings)for(let y=cap(Math.floor((b.y-30)/collisionSize),0,collisionRows-1);y<=cap(Math.floor((b.y+b.h+30)/collisionSize),0,collisionRows-1);y++)for(let x=cap(Math.floor((b.x-30)/collisionSize),0,collisionCols-1);x<=cap(Math.floor((b.x+b.w+30)/collisionSize),0,collisionCols-1);x++)collisionCells[y*collisionCols+x].push(b);
@@ -124,11 +244,11 @@ function attachCar(index){
   let exit=null;for(const sign of [1,-1]){const q={x:c.x+side[0]*47*sign,y:c.y+side[1]*47*sign};if(canWalk(q.x,q.y,13)){exit=q;break;}}
   if(!exit){notify('No hay espacio para bajar aquí.',index);return;}
   p.x=exit.x;p.y=exit.y;if(p.role==='driver'){c.driver=null;if(c.passenger!==null){c.driver=c.passenger;state.players[c.driver].role='driver';c.passenger=null;}}else c.passenger=null;
-  p.car=null;p.role=null;return;
+  if(c.driver===null)c.speed=0;worldSound('door',c.x,c.y);p.car=null;p.role=null;return;
  }
  let near=null,best=65;for(const c of state.cars){const d=distance(c,p);if(c.passenger===null&&d<best){near=c;best=d;}}
  if(!near){notify('Acércate a un vehículo.',index);return;}
- p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;
+ p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;worldSound('door',near.x,near.y);
 }
 function emitBullet(x,y,angle,speed,life,damage,owner,enemy=false,splash=0){state.bullets.push({x,y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life,damage,owner,enemy,splash});}
 function segmentBox(ax,ay,bx,by,b,pad=0){
@@ -143,19 +263,20 @@ function sightClear(a,b,pad=13){for(const building of buildings)if(segmentBox(a.
 function findTarget(p){let found=null,best=420;for(const e of state.enemies){if(e.down)continue;const d=distance(p,e);if(d<best&&sightClear(p,e)){best=d;found=e;}}return found;}
 function shoot(p,index){
  if(p.car!==null||p.downUntil>state.time||!p.weapon||p.ammo<=0)return;
- const cfg=weapons[p.weapon];if(state.time-p.shotAt<cfg.rate)return;p.shotAt=state.time;p.ammo--;
+ const cfg=weapons[p.weapon];if(state.time-p.shotAt<cfg.rate)return;p.shotAt=state.time;p.ammo--;worldSound(p.weapon,p.x,p.y);
  const target=findTarget(p);let angle=p.face;if(target){const a=rads(target.x-p.x,target.y-p.y);if(Math.abs(Math.atan2(Math.sin(a-p.face),Math.cos(a-p.face)))<1.6||distance(target,p)<100)angle=a;}
  p.face=angle;for(let j=0;j<cfg.shots;j++){const delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045;emitBullet(p.x+Math.cos(angle)*21,p.y+Math.sin(angle)*21,angle+delta,cfg.speed,cfg.life,cfg.damage,index,false,cfg.splash||0);}
 }
 function closestPlayer(e){let p=null,dist=Infinity;for(const actor of state.players){if(actor.downUntil>state.time)continue;const d=distance(actor,e);if(d<dist){dist=d;p=actor;}}return {p,dist};}
 function hitPlayer(p,dmg){
- if(p.downUntil>state.time)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;
+ if(p.downUntil>state.time)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;worldSound(p.health>0?'hurt':'down',p.x,p.y);
  if(p.health>0)return;
  if(p.car!==null){const c=state.cars[p.car];if(p.role==='driver'){c.driver=c.passenger;c.passenger=null;if(c.driver!==null)state.players[c.driver].role='driver';}else c.passenger=null;c.speed=0;}
  p.downUntil=state.time+3.8;p.car=null;p.role=null;notify('P'+(p.idx+1)+' cayó. Reaparece en 4 segundos.');
 }
-function damageEnemy(e,damage,owner){if(e.down)return;e.health=Math.max(0,e.health-damage);e.hitAt=state.time;if(e.health<=0){e.down=true;state.players[owner].kills++;}}
+function damageEnemy(e,damage,owner){if(e.down)return;e.health=Math.max(0,e.health-damage);e.hitAt=state.time;if(e.health<=0){e.down=true;state.players[owner].kills++;worldSound(e.level===2?'death-heavy':'death',e.x,e.y);}}
 function explode(b){
+ worldSound('explosion',b.x,b.y);
  state.fx.push({x:b.x,y:b.y,life:.42,maxLife:.42,radius:b.splash});
  for(const e of state.enemies){const d=distance(b,e);if(!e.down&&d<b.splash&&sightClear(b,e,0))damageEnemy(e,b.damage*Math.max(.4,1-d/b.splash),b.owner);}
 }
@@ -198,7 +319,7 @@ function startWave(number){
   const pos=spawnOnStreet(i),level=i<elites?2:1,hp=level===2?9:3;
   state.enemies.push({id:++enemySequence,...pos,face:Math.random()*Math.PI*2,walk:Math.random()*9,level,health:hp,maxHealth:hp,shotAt:state.time-Math.random()*.8,hitAt:-10,down:false,speed:level===2?85:60+Math.min(number,5)*2,thinkAt:0,bearing:0,clear:false,target:-1});
  }
- navOrigins=[-1,-1];navLast=-5;notify('HORDA '+number+'/8 · '+count+' ENEMIGOS'+(elites?' · '+elites+' DE NIVEL 2':''));
+ navOrigins=[-1,-1];navLast=-5;worldSound('wave');notify('HORDA '+number+'/8 · '+count+' ENEMIGOS'+(elites?' · '+elites+' DE NIVEL 2':''));
 }
 function rollWeapon(){let n=Math.random()*100;for(const [kind,weight] of boxLoot){n-=weight;if(n<0)return kind;}return null;}
 function openMysteryBox(index){
@@ -206,14 +327,14 @@ function openMysteryBox(index){
  if(state.box.phase!=='idle'){notify('La caja está ocupada. Espera un momento.',index);return;}
  if(state.score<BOX_COST){notify('Necesitan '+BOX_COST+' maletines. Saldo del equipo: '+state.score+'.',index);return;}
  state.score-=BOX_COST;state.box={phase:'rolling',until:state.time+1.8,owner:index,result:null,serial:state.box.serial+1};
- notify('P'+(index+1)+' abre la caja · −4 maletines');
+ worldSound('box-open',boxSpot.x,boxSpot.y);notify('P'+(index+1)+' abre la caja · −4 maletines');
 }
 function updateBox(){
  const box=state.box;if(box.phase==='idle'||state.time<box.until)return;
  if(box.phase==='rolling'){
   box.result=rollWeapon();box.phase='result';box.until=state.time+2.6;
-  if(box.result){const p=state.players[box.owner];p.weapon=box.result;p.ammo=weapons[box.result].ammo;notify('P'+(box.owner+1)+' consiguió '+weapons[box.result].name+' · '+p.ammo+' de munición');}
-  else notify('CAJA VACÍA · Se gastaron 4 maletines. Tu arma se conserva.');
+  if(box.result){const p=state.players[box.owner];p.weapon=box.result;p.ammo=weapons[box.result].ammo;worldSound('box-win',boxSpot.x,boxSpot.y);notify('P'+(box.owner+1)+' consiguió '+weapons[box.result].name+' · '+p.ammo+' de munición');}
+  else{worldSound('box-empty',boxSpot.x,boxSpot.y);notify('CAJA VACÍA · Se gastaron 4 maletines. Tu arma se conserva.');}
  }else{box.phase='idle';box.owner=-1;box.result=null;}
 }
 function tick(dt){
@@ -221,21 +342,23 @@ function tick(dt){
  state.time+=dt;updateBox();
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===0?input:guestInput;
-  if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=100;p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon='pistol';p.ammo=55;}
+  if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=100;p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon='pistol';p.ammo=55;worldSound('respawn',p.x,p.y);}
   if(p.downUntil>state.time){inp.enter=inp.box=false;continue;}
   // One input edge, one transaction. Both clients spend the same authoritative balance.
   if(inp.box){inp.box=false;openMysteryBox(i);}if(inp.enter){inp.enter=false;attachCar(i);}
   let mx=cap(inp.x,-1,1),my=cap(inp.y,-1,1),mag=Math.hypot(mx,my);if(mag>1){mx/=mag;my/=mag;mag=1;}
   if(p.car!==null){const c=state.cars[p.car];if(p.role==='driver'){
-   if(mag>.12){const desired=rads(mx,my),turn=Math.atan2(Math.sin(desired-c.angle),Math.cos(desired-c.angle));c.angle+=cap(turn,-dt*5.6,dt*5.6);c.speed=Math.min(575,c.speed+950*dt);}else c.speed=Math.max(0,c.speed-345*dt);
-   if(moveObject(c,Math.cos(c.angle)*c.speed*dt,Math.sin(c.angle)*c.speed*dt,23)<1&&c.speed>25)c.speed=0;
+   if(mag>.12){const desired=rads(mx,my),turn=Math.atan2(Math.sin(desired-c.angle),Math.cos(desired-c.angle));c.angle+=cap(turn,-dt*6.8,dt*6.8);c.speed=Math.min(CAR_MAX_SPEED,c.speed+CAR_ACCELERATION*dt);if(Math.abs(turn)>.6&&c.speed>500&&state.time-c.skidAt>.6){worldSound('skid',c.x,c.y);c.skidAt=state.time;}}else c.speed=Math.max(0,c.speed-CAR_BRAKING*dt);
+   const wanted=c.speed*dt,steps=Math.max(1,Math.ceil(wanted/12));let moved=0;
+   for(let step=0;step<steps;step++)moved+=moveObject(c,Math.cos(c.angle)*wanted/steps,Math.sin(c.angle)*wanted/steps,23);
+   if(moved<wanted*.48&&c.speed>180){if(state.time-c.crashAt>.5){worldSound('crash',c.x,c.y);c.crashAt=state.time;}c.speed*=.2;}if(moved<.1&&c.speed>25)c.speed=0;
   }p.x=c.x;p.y=c.y;p.face=c.angle;
   }else{
-   if(mag>.12){p.face=rads(mx,my);if(moveObject(p,mx*195*dt,my*195*dt,13)>0)p.walk+=dt*11;}
+   if(mag>.12){p.face=rads(mx,my);if(moveObject(p,mx*195*dt,my*195*dt,13)>0){p.walk+=dt*11;if(state.time-p.stepAt>.32){worldSound('step',p.x,p.y);p.stepAt=state.time;}}}
    if(inp.shoot)shoot(p,i);
-   for(const g of state.guns)if(!g.taken&&distance(p,g)<29&&p.weapon==='pistol'&&p.ammo<weapons.pistol.ammo){g.taken=true;p.ammo=Math.min(110,p.ammo+weapons.pistol.ammo);notify('MUNICIÓN DE PISTOLA +55',i);}
+   for(const g of state.guns)if(!g.taken&&distance(p,g)<29&&p.weapon==='pistol'&&p.ammo<weapons.pistol.ammo){g.taken=true;p.ammo=Math.min(110,p.ammo+weapons.pistol.ammo);worldSound('ammo',p.x,p.y);notify('MUNICIÓN DE PISTOLA +55',i);}
   }
-  for(const b of state.bags)if(!b.taken&&distance(p,b)<27){b.taken=true;p.count++;state.collected++;state.score++;notify('+1 MALETÍN · EQUIPO: '+state.score,i);}
+  for(const b of state.bags)if(!b.taken&&distance(p,b)<27){b.taken=true;p.count++;state.collected++;state.score++;worldSound('bag',b.x,b.y);notify('+1 MALETÍN · EQUIPO: '+state.score,i);}
  }
  // Passenger position follows the driver even if the passenger is processed first.
  for(const p of state.players)if(p.car!==null){const c=state.cars[p.car];p.x=c.x;p.y=c.y;}
@@ -246,7 +369,7 @@ function tick(dt){
    if(state.time>=e.thinkAt||e.target!==p.idx){e.clear=sightClear(e,p);e.bearing=enemyBearing(e,p,e.clear);e.target=p.idx;e.thinkAt=state.time+.16;}
    const a=e.bearing;e.face=a;if(dist>85||!e.clear){dx=Math.cos(a);dy=Math.sin(a);}
    const delay=e.level===2?1.05:1.8;
-   if(dist<310&&e.clear&&state.time-e.shotAt>delay){e.shotAt=state.time;const angle=rads(p.x-e.x,p.y-e.y);emitBullet(e.x+Math.cos(angle)*20,e.y+Math.sin(angle)*20,angle+(Math.random()-.5)*(e.level===2?.08:.17),e.level===2?535:470,1,e.level===2?13:8,e.id,true);}
+   if(dist<310&&e.clear&&state.time-e.shotAt>delay){e.shotAt=state.time;const angle=rads(p.x-e.x,p.y-e.y);worldSound(e.level===2?'enemy-heavy':'enemy-shot',e.x,e.y);emitBullet(e.x+Math.cos(angle)*20,e.y+Math.sin(angle)*20,angle+(Math.random()-.5)*(e.level===2?.08:.17),e.level===2?535:470,1,e.level===2?13:8,e.id,true);}
   }
   if(moveObject(e,dx*e.speed*dt,dy*e.speed*dt,13)>0)e.walk+=dt*7;
  }
@@ -261,12 +384,12 @@ function tick(dt){
    else for(const e of state.enemies)if(!e.down&&distance(b,e)<(e.level===2?22:17)){if(!b.splash)damageEnemy(e,b.damage,b.owner);remove=true;break;}
    if(remove)break;
   }
-  if(remove||b.life<=0){if(b.splash)explode(b);else if(state.fx.length<50)state.fx.push({x:b.x,y:b.y,life:.16,maxLife:.16,radius:10});state.bullets.splice(i,1);}
+  if(remove||b.life<=0){if(b.splash)explode(b);else{if(remove)worldSound('impact',b.x,b.y);if(state.fx.length<50)state.fx.push({x:b.x,y:b.y,life:.16,maxLife:.16,radius:10});}state.bullets.splice(i,1);}
  }
  for(let i=state.fx.length-1;i>=0;i--){state.fx[i].life-=dt;if(state.fx[i].life<=0)state.fx.splice(i,1);}
  if(state.enemies.length&&state.enemies.every(e=>e.down)){
-  if(state.wave===TOTAL_WAVES){if(state.box.phase==='rolling')state.box.until=state.time;updateBox();state.done=true;state.bullets=[];state.nextWaveAt=0;notify('¡VICTORIA! SOBREVIVIERON A LAS 8 HORDAS.');}
-  else if(state.nextWaveAt===0){state.nextWaveAt=state.time+9;notify('HORDA '+state.wave+' SUPERADA · 9 s para recoger y abrir la caja');}
+  if(state.wave===TOTAL_WAVES){if(state.box.phase==='rolling')state.box.until=state.time;updateBox();state.done=true;state.bullets=[];state.nextWaveAt=0;worldSound('victory');notify('¡VICTORIA! SOBREVIVIERON A LAS 8 HORDAS.');}
+  else if(state.nextWaveAt===0){state.nextWaveAt=state.time+9;worldSound('clear');notify('HORDA '+state.wave+' SUPERADA · 9 s para recoger y abrir la caja');}
   else if(state.time>=state.nextWaveAt)startWave(state.wave+1);
  }
 }
@@ -279,7 +402,7 @@ function peerSetup(id){
 function setWaiting(wait){$('ui').classList.toggle('waiting',wait);$('waitMask').classList.toggle('hidden',!wait);}
 function start(){$('lobby').classList.add('hidden');$('ui').classList.remove('hidden');$('room').textContent=room;$('waitCode').textContent=room;setWaiting(!connected);resize();}
 function snapshot(){
- return {t:'s',v:VERSION,p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,box:{...state.box}};
+ return {t:'s',v:VERSION,p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,box:{...state.box},sfx:soundEvents.filter(e=>state.time-e.at<.45)};
 }
 function receive(s){
  if(s.v!==VERSION||!Array.isArray(s.p)||s.p.length!==2||!Array.isArray(s.c)||!Array.isArray(s.e)||!Array.isArray(s.b)||!Array.isArray(s.g))return;
@@ -288,14 +411,16 @@ function receive(s){
  state.players=s.p;state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
  state.bags.forEach((b,i)=>b.taken=!!s.b[i]);state.guns.forEach((g,i)=>g.taken=!!s.g[i]);state.score=s.score;state.collected=s.collected;state.done=s.done;state.time=s.time;state.wave=s.wave;state.nextWaveAt=s.nextWaveAt;state.box=s.box;
  if(!reset&&distance(previous,state.players[me])<150)viewBlend={x:previous.x,y:previous.y,at:now};else viewBlend=null;
+ if(reset){Sound.stopEffects();Sound.stopEngines();}
+ if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
 }
 function visualPlayer(index,now){const p=state.players[index];if(isHost||index!==me||!viewBlend)return p;const t=cap((now-viewBlend.at)/75,0,1);return {...p,x:viewBlend.x+(p.x-viewBlend.x)*t,y:viewBlend.y+(p.y-viewBlend.y)*t};}
 function bindConnection(c){
- conn=c;c.on('open',()=>{onlineReady=true;send({t:'hello',v:VERSION});});
+ conn=c;onlineReady=true;c.on('open',()=>{send({t:'hello',v:VERSION});});
  c.on('data',s=>{
   if(!s||typeof s!=='object')return;
   if(s.t==='hello'){
-   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 5.0.');c.close();return;}
+   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 5.1.');c.close();return;}
    connected=true;lastGuestAt=performance.now();start();setWaiting(false);if(isHost&&state.wave===0)startWave(1);showToast('CO-OP CONECTADO · ¡A SOBREVIVIR!');if(isHost)send(snapshot());return;
   }
   if(!connected)return;
@@ -307,18 +432,18 @@ function bindConnection(c){
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v50-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v51-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v50-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v51-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
-async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v5.0 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
+async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v5.1 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
 $('roomBtn').addEventListener('click',copyRoom);$('waitCopy').addEventListener('click',copyRoom);
-$('restart').addEventListener('click',()=>{if(!isHost||!connected)return;resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
+$('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
 function resetControls(){keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.shoot=input.enter=input.box=false;$('knob').style.transform='translate(0,0)';}
 window.addEventListener('keydown',e=>{if(/^(Arrow(?:Up|Down|Left|Right)|Key[WASDEF]|Space)$/.test(e.code)&&$('lobby').classList.contains('hidden')){e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;if(e.code==='KeyF'&&!e.repeat)input.box=true;}});
 window.addEventListener('keyup',e=>{keys[e.code]=false;});window.addEventListener('blur',resetControls);document.addEventListener('visibilitychange',()=>{if(document.hidden)resetControls();lastTime=performance.now();});
@@ -333,7 +458,7 @@ $('enter').addEventListener('pointerdown',e=>{input.enter=true;e.preventDefault(
 // The same DPR drives allocation AND rendering, including Android landscape.
 const mobile=matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent);
 let graphics='auto',renderDpr=1,autoScale=1,slowFrames=0,performanceWindow=0,viewWidth=innerWidth,viewHeight=innerHeight,lastHudTime=-1;
-const hud={};for(const id of ['score','connection','health','mission','waveHud','weaponName','ammo','tip','boxPrompt','openBox','victory','victoryStats','restart'])hud[id]=$(id);
+const hud={};for(const id of ['score','walletCount','connection','health','mission','waveHud','weaponName','ammo','tip','boxPrompt','openBox','victory','victoryStats','restart'])hud[id]=$(id);
 function setText(id,value){if(hud[id].textContent!==value)hud[id].textContent=value;}
 function resize(){
  viewWidth=innerWidth;viewHeight=innerHeight;const limit=graphics==='low'?.8:graphics==='high'?(mobile?1.35:1.7):mobile?autoScale:Math.min(1.5,autoScale*1.5);
@@ -499,6 +624,7 @@ function drawBoxDirection(p,cw,ch,zoom,sy,cx,cy){
 function updateHud(p,timestamp){
  if(timestamp-lastHudTime<.10)return;lastHudTime=timestamp;
  setText('score',String(state.score).padStart(2,'0'));
+ setText('walletCount','MALETINES: '+String(state.score).padStart(2,'0'));
  setText('connection',connected?'COOPERATIVO · P'+(me+1):'ESPERANDO AL COMPAÑERO · PAUSADO');
  setText('health','VIDA: '+(p.downUntil>state.time?'REAPARECIENDO…':Math.ceil(p.health)+'%')+' · BAJAS: '+p.kills);
  setText('mission','CAJA CENTRAL · CUESTA 4');
@@ -552,6 +678,7 @@ function animate(now){
   else input.enter=input.box=false;
   if(connected&&now-lastSend>70){send(snapshot());lastSend=now;}
  }else if(connected&&now-lastInput>45){send({t:'i',x:input.x,y:input.y,shoot:input.shoot,enter:input.enter,box:input.box});input.enter=input.box=false;lastInput=now;}
+ Sound.update(now);
  const shouldDraw=!document.hidden&&(connected||now-lastDraw>250);
  if(shouldDraw){drawDelta=(now-lastDraw)/1000;render(now/1000,now);lastDraw=now;}
  if(connected&&graphics==='auto'&&elapsed>0&&elapsed<.15){performanceWindow+=elapsed;if(elapsed>.026)slowFrames+=elapsed;
