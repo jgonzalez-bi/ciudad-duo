@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v5.8</title>
+<title>Ciudad Dúo — Ocho Hordas · v5.9</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -39,7 +39,7 @@
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 05.8</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 05.9</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja de suministros. Cada tres aperturas cambia de lugar. Tras la cuarta horda descienden paracaidistas SWAT. Desde la quinta llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -65,7 +65,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=5.8,W=2740,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=5.9,W=2740,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=680,CAR_ACCELERATION=1250,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:W/2,y:H/2};
 const waveCounts=[4,7,10,14,18,18,18,18],eliteCounts=[0,0,0,0,5,9,13,18];
@@ -99,7 +99,7 @@ function makeBuildings(){
 }makeBuildings();
 const cap=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),rads=(x,y)=>Math.atan2(y,x);
 const hash=(a,b)=>((Math.sin(a*127.1+b*311.7)*43758.5453)%1+1)%1;
-const makePlayer=(x,y,i)=>({x,y,face:0,walk:0,car:null,role:null,health:100,armor:0,kboom:false,monkeys:0,weapon:'pistol',ammo:55,count:0,kills:0,shotAt:-10,hitAt:-10,stepAt:-10,downUntil:0,idx:i});
+const makePlayer=(x,y,i)=>({x,y,face:0,aimFace:null,walk:0,car:null,role:null,health:100,armor:0,kboom:false,monkeys:0,weapon:'pistol',ammo:55,count:0,kills:0,shotAt:-10,hitAt:-10,stepAt:-10,downUntil:0,idx:i});
 let soundSequence=0,soundEvents=[],lastRemoteSound=0;const soundCooldowns=new Map();
 const state={players:[],cars:[],bags:[],guns:[],bullets:[],enemies:[],fx:[],score:0,collected:0,done:false,time:0,wave:0,nextWaveAt:0,box:{phase:'idle',until:0,owner:-1,result:null,serial:0}};
 function initialize(){
@@ -271,7 +271,9 @@ function shoot(p,index){
  if(p.car!==null||p.downUntil>state.time||!p.weapon||p.ammo<=0)return;
  const cfg=weapons[p.weapon];if(state.time-p.shotAt<cfg.rate)return;p.shotAt=state.time;p.ammo--;worldSound(p.weapon,p.x,p.y);
  const aim=(index===0?input:guestInput).aim;const target=Number.isFinite(aim)?null:findTarget(p);let angle=Number.isFinite(aim)?aim:p.face;if(target){const a=rads(target.x-p.x,target.y-p.y);if(Math.abs(Math.atan2(Math.sin(a-p.face),Math.cos(a-p.face)))<1.6||distance(target,p)<100)angle=a;}
- p.face=angle;for(let j=0;j<cfg.shots;j++){const delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045;emitBullet(p.x+Math.cos(angle)*21,p.y+Math.sin(angle)*21,angle+delta,cfg.speed,cfg.life,cfg.damage,index,false,cfg.splash||0);}
+ p.face=angle;
+ const muzzle=weaponMuzzle(p,angle);
+ for(let j=0;j<cfg.shots;j++){const delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045;emitBullet(muzzle.x,muzzle.y,angle+delta,cfg.speed,cfg.life,cfg.damage,index,false,cfg.splash||0);}
 }
 function closestPlayer(e){let p=null,dist=Infinity;for(const actor of state.players){if(actor.downUntil>state.time)continue;const d=distance(actor,e);if(d<dist){dist=d;p=actor;}}return {p,dist};}
 function hitPlayer(p,dmg){
@@ -346,7 +348,7 @@ const boxSites=[[W/2,H/2],[1660,960],[2200,505],[1690,1450],[840,1660]];
 function finishBox(){
  const b=state.box;
  if(b.serial%3===0){const site=boxSites[(b.serial/3)%boxSites.length];Object.assign(boxSpot,{x:site[0],y:site[1]});notify('LA CAJA SE MOVIÓ · Sigue la flecha');}
- b.phase='idle';b.owner=-1;b.result=null;
+ b.phase='idle';b.until=0;b.owner=-1;b.result=null;
 }
 function chooseWeapon(index,serial,accept){
  const b=state.box;
@@ -361,11 +363,13 @@ function selectOffer(accept){
 $('accept').addEventListener('click',()=>selectOffer(true));
 $('decline').addEventListener('click',()=>selectOffer(false));
 function updateBox(){
- const box=state.box;if(box.phase==='idle'||state.time<box.until)return;
+ const box=state.box;
+ // Offers wait for the owner's decision, with finite values in every network snapshot.
+ if(box.phase==='idle'||box.phase==='offer'||state.time<box.until)return;
  if(box.phase==='rolling'){
   box.result=rollWeapon();box.phase='result';box.until=state.time+2.6;
   if(box.result==='monkey'){state.players[box.owner].monkeys++;worldSound('monkey',boxSpot.x,boxSpot.y);notify('MONITO CONSEGUIDO · Usa MONITO o G para colocarlo');}
-  else{box.phase='offer';box.until=Infinity;worldSound('box-win',boxSpot.x,boxSpot.y);}
+  else{box.phase='offer';box.until=0;worldSound('box-win',boxSpot.x,boxSpot.y);}
 
  }else finishBox();
 }
@@ -411,6 +415,7 @@ function tick(dt){
  state.time+=dt;updateBox();updateMonkeys();deployDrones();
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===0?input:guestInput;
+  p.aimFace=Number.isFinite(inp.aim)?inp.aim:null;
   if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=100;p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon='pistol';p.ammo=55;worldSound('respawn',p.x,p.y);}
   if(p.downUntil>state.time){inp.boom=inp.monkey=inp.enter=inp.box=false;continue;}
   // One input edge, one transaction. Both clients spend the same authoritative balance.
@@ -495,13 +500,20 @@ function receive(s){
  if(reset){Sound.stopEffects();Sound.stopEngines();}
  if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
 }
-function visualPlayer(index,now){const p=state.players[index];if(isHost||index!==me||!viewBlend)return p;const t=cap((now-viewBlend.at)/75,0,1);return {...p,x:viewBlend.x+(p.x-viewBlend.x)*t,y:viewBlend.y+(p.y-viewBlend.y)*t};}
+function visualPlayer(index,now){
+ const player=state.players[index];
+ // Local aim responds immediately while positions retain their network interpolation.
+ const p=index===me&&Number.isFinite(input.aim)?{...player,aimFace:input.aim}:player;
+ if(isHost||index!==me||!viewBlend)return p;
+ const t=cap((now-viewBlend.at)/75,0,1);
+ return {...p,x:viewBlend.x+(p.x-viewBlend.x)*t,y:viewBlend.y+(p.y-viewBlend.y)*t};
+}
 function bindConnection(c){
  conn=c;onlineReady=true;c.on('open',()=>{send({t:'hello',v:VERSION});});
  c.on('data',s=>{
   if(!s||typeof s!=='object')return;
   if(s.t==='hello'){
-   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 5.8.');c.close();return;}
+   if(s.v!==VERSION){showToast('Ambos jugadores deben usar la versión 5.9.');c.close();return;}
    connected=true;lastGuestAt=performance.now();start();setWaiting(false);if(isHost&&state.wave===0)startWave(1);showToast('CO-OP CONECTADO · ¡A SOBREVIVIR!');if(isHost)send(snapshot());return;
   }
   if(!connected)return;
@@ -514,16 +526,16 @@ function bindConnection(c){
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v58-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v59-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v58-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v59-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
-async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v5.8 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
+async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v5.9 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
 $('roomBtn').addEventListener('click',copyRoom);$('waitCopy').addEventListener('click',copyRoom);
 $('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,monkey:false,boom:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
 function resetControls(){releaseAim();keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.boom=input.monkey=input.shoot=input.enter=input.box=false;$('knob').style.transform='translate(0,0)';}
@@ -702,6 +714,37 @@ function playerBars(p){
  rect(x-1,y-1,36,7,'#111c22');rect(x,y,34,5,'#422c31');rect(x,y,34*cap(p.health/100,0,1),5,'#70dc85');
  if(p.armor>0){rect(x-1,y+7,36,6,'#111c22');rect(x,y+8,34,4,'#243e54');rect(x,y+8,34*cap(p.armor/75,0,1),4,'#63bafa');}
 }
+function weaponReach(p){
+ if(p.weapon==='pistol')return 23;
+ return p.weapon==='bazooka'?34:30;
+}
+function weaponMuzzle(p,angle){
+ const reach=weaponReach(p);
+ return {x:p.x+Math.cos(angle)*reach,y:p.y-3+Math.sin(angle)*reach};
+}
+function drawHeldWeapon(p,angle,jacket,skin){
+ ctx.save();
+ ctx.translate(0,-3);
+ ctx.rotate(angle);
+ // Rotate both forearms, their grips and the weapon around the upper body together.
+ line(-3,-9,8,-4,jacket,6);
+ line(8,-4,12,-1,skin,4);
+ line(-3,9,6,5,jacket,6);
+ line(6,5,14,1,skin,4);
+ const reach=weaponReach(p);
+ if(p.weapon==='bazooka'){
+  rect(5,-5,reach-5,10,'#576445');
+  rect(reach-3,-6,4,12,'#1b252a');
+  rect(11,-6,5,12,'#9a9d7b');
+ }else{
+  rect(7,-3,reach-10,6,'#17242b');
+  rect(reach-6,-2,6,4,'#a8b4b7');
+  rect(10,1,4,6,'#35454d');
+  if(p.weapon==='shotgun')rect(15,-3,8,6,'#96704a');
+  if(p.weapon==='lmg')rect(12,2,8,6,'#707b57');
+ }
+ ctx.restore();
+}
 function humanDraw(p,type=0,id=0){
  if(p.boss){
   ctx.save();ctx.textAlign='center';ctx.font='bold 13px system-ui';ctx.fillStyle='#152027';ctx.fillRect(p.x-45,p.y+38,90,18);ctx.fillStyle='#ffd69e';ctx.fillText('DESTRUCTOR',p.x,p.y+52);ctx.restore();
@@ -718,33 +761,36 @@ function humanDraw(p,type=0,id=0){
  }
  if(type===0 && p.car!==null)return; // Only player characters can occupy vehicles. Enemies have no car field.
  if(p.down||p.downUntil>state.time){ellipse(p.x,p.y,15,8,'#34191c92');return;}
- const enemy=type===1,phase=Math.sin((p.walk||0)*2.2),face=p.face||0;
+ const enemy=type===1,phase=Math.sin((p.walk||0)*2.2),face=Number.isFinite(p.aimFace)?p.aimFace:p.face||0;
+ const armed=!enemy&&p.weapon,weaponBehind=armed&&Math.sin(face)<-.2;
  const skin=enemy?['#946948','#d7af89','#a77554','#ba9177'][p.id%4]:'#d8b495',jacket=enemy?(p.level===2?'#8f4735':['#65744b','#72404b','#426780','#95683c'][p.id%4]):(id===0?'#314f43':'#374b62'),trousers=enemy?'#292c2c':'#252d31';
  ctx.save();ctx.translate(p.x,p.y);if(enemy&&p.level===2)ctx.scale(1.27,1.27);
  // Standing, slightly elevated view: upright body, boots below the waist and prominent head above.
  // Only gaze / weapon direction turns; the body never rotates sideways like someone lying down.
  ellipse(3,16,12,6,'#00000087');
+ if(weaponBehind)drawHeldWeapon(p,face,jacket,skin);
  const legSwing=Math.abs(phase)>.1?phase*3.2:0;
  rect(-9+legSwing,10,7,11,trousers);rect(2-legSwing,10,7,11,trousers);
  rect(-10+legSwing,18,8,5,'#111719');rect(2-legSwing,18,8,5,'#111719');
  poly([[-11,-7],[11,-7],[10,12],[-10,12]],jacket);
  poly([[-7,-6],[0,-11],[7,-6],[5,9],[-5,9]],enemy?'#796054':'#5a6e6a');
  rect(-2,1,4,11,'#1a28325c');if(enemy&&p.level===2){rect(-9,-5,18,15,'#3f4141');rect(-7,-3,14,3,'#b48c56');rect(-7,4,14,3,'#b48c56');}
- line(-11,-5,-13-legSwing*.3,8,enemy?'#523c36':'#2d3e42',7);
- line(11,-5,13+legSwing*.3,8,enemy?'#523c36':'#2d3e42',7);
- disc(-13-legSwing*.3,9,3.4,skin);disc(13+legSwing*.3,9,3.4,skin);
+ if(!armed){
+  line(-11,-5,-13-legSwing*.3,8,enemy?'#523c36':'#2d3e42',7);
+  line(11,-5,13+legSwing*.3,8,enemy?'#523c36':'#2d3e42',7);
+  disc(-13-legSwing*.3,9,3.4,skin);disc(13+legSwing*.3,9,3.4,skin);
+ }
  const hx=Math.cos(face)*2.4,hy=-11+Math.sin(face)*1.2;
  disc(hx,hy,9,'#1c2428');disc(hx,hy-1,7.5,skin);
  poly([[hx-7,hy-3],[hx-6,hy-9],[hx,hy-11],[hx+6,hy-8],[hx+7,hy-3],[hx+2,hy-5],[hx-4,hy-4]],enemy?'#292422':'#1d262a');
  // Subtle gaze mark identifies orientation without rotating the entire vertical standing sprite.
  disc(hx+Math.cos(face)*4,hy+Math.sin(face)*3,1.9,'#56453b');
  if(enemy){const style=p.id%4;if(style===0){rect(hx-9,hy-9,18,5,'#484e3c');rect(hx-10,hy-5,20,3,'#737b59');}else if(style===1){rect(hx-7,hy,14,4,'#633135');}else if(style===2){rect(-11,-7,22,4,'#a1bac2');line(-7,-5,6,10,'#463d31',3);}else{rect(hx-7,hy-8,14,3,'#c99e68');}}
- if(!enemy&&p.weapon){
-  const gx=12,gy=4,dirX=Math.cos(face),dirY=Math.sin(face);
-  line(gx,gy,gx+dirX*15,gy+dirY*15,'#111a1e',5);
-  line(gx+dirX*9,gy+dirY*9,gx+dirX*17,gy+dirY*17,'#a2adb2',3);
+ if(armed&&!weaponBehind)drawHeldWeapon(p,face,jacket,skin);
+ if(armed&&(p.shotAt||0)>0&&state.time-p.shotAt<.08){
+  const muzzle=weaponMuzzle(p,face);
+  disc(muzzle.x-p.x,muzzle.y-p.y,6,'#ffc879a1');
  }
- if(!enemy&&(p.shotAt||0)>0&&state.time-p.shotAt<.08){disc(14+Math.cos(face)*17,4+Math.sin(face)*17,6,'#ffc879a1');}
  ctx.restore();
  if(enemy&&(p.level===2||state.time-p.hitAt<1.3)){const w=p.level===2?34:24;rect(p.x-w/2,p.y-37,w,4,'#091218');rect(p.x-w/2,p.y-37,w*p.health/p.maxHealth,4,p.level===2?'#e5a161':'#ca6050');if(p.level===2){ctx.save();ctx.textAlign='center';ctx.font='800 8px system-ui';ctx.fillStyle='#efbb80';ctx.fillText('NIVEL 2',p.x,p.y-42);ctx.restore();}}
  if(!enemy){ctx.save();ctx.font='800 10px system-ui';ctx.fillStyle='#f6f0df';ctx.textAlign='center';if(!mobile){ctx.shadowColor='#000';ctx.shadowBlur=3;}ctx.fillText(id===0?'P1':'P2',p.x,p.y-27);ctx.restore();}
