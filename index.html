@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v6.6</title>
+<title>Ciudad Dúo — Ocho Hordas · v6.7</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -43,7 +43,7 @@
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 06.6</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 06.7</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja de suministros. Cada tres aperturas cambia de lugar. Tras la cuarta horda descienden paracaidistas SWAT. Desde la quinta llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -70,7 +70,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=6.6,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=6.7,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=520,CAR_ACCELERATION=850,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:CITY_W/2,y:H/2};
 const waveCounts=[4,7,10,14,18,18,18,18],eliteCounts=[0,0,0,0,5,9,13,18];
@@ -526,16 +526,19 @@ function startWave(number,raid=false){
 }
 function rollWeapon(){let n=Math.random()*100;for(const [kind,weight] of boxLoot){n-=weight;if(n<0)return kind;}return 'monkey';}
 function openMysteryBox(index){
- const p=state.players[index];if(p.downUntil>state.time||p.car!==null||distance(p,boxSpot)>88){notify('Acércate a la caja del centro, a pie.',index);return;}
+ const p=state.players[index];if(p.downUntil>state.time||p.car!==null||distance(p,boxSpot)>88){notify('Acércate a la caja, a pie.',index);return;}
  if(state.box.phase!=='idle'){notify('La caja está ocupada. Espera un momento.',index);return;}
  if(state.score<BOX_COST){notify('Necesitan '+BOX_COST+' maletines. Saldo del equipo: '+state.score+'.',index);return;}
  state.score-=BOX_COST;state.box={phase:'rolling',until:state.time+1.8,owner:index,result:null,serial:state.box.serial+1};
  worldSound('box-open',boxSpot.x,boxSpot.y);notify('P'+(index+1)+' abre la caja · −4 maletines');
 }
-const boxSites=[[CITY_W/2,H/2],[1660,960],[2200,505],[1690,1450],[840,1660]];
+const boxSites=[[CITY_W/2,H/2],[1660,960],[2200,505],[1690,1450],[840,1660],[3440,245],[3255,1195]];
 function finishBox(){
  const b=state.box;
- if(b.serial%3===0){const site=boxSites[(b.serial/3)%boxSites.length];Object.assign(boxSpot,{x:site[0],y:site[1]});notify('LA CAJA SE MOVIÓ · Sigue la flecha');}
+ if(b.serial%3===0){
+  const candidates=boxSites.filter(([x,y])=>(x!==boxSpot.x||y!==boxSpot.y)&&canWalk(x,y,24));
+  if(candidates.length){const site=candidates[Math.floor(Math.random()*candidates.length)];Object.assign(boxSpot,{x:site[0],y:site[1]});notify('LA CAJA SE MOVIÓ · Sigue la flecha');}
+ }
  b.phase='idle';b.until=0;b.owner=-1;b.result=null;
 }
 function chooseWeapon(index,serial,accept){
@@ -741,13 +744,13 @@ function bindConnection(c){
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v66-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v67-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v66-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v67-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
 async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v6.4 · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
@@ -824,25 +827,30 @@ function drawLandmarks(){
 function ground(){
  rect(0,0,W,H,'#1e2b2e');
  for(let ix=0;ix<50;ix++)for(let iy=0;iy<40;iy++){const x=ix*40,y=iy*40;if(hash(ix,iy)>.56)rect(x+hash(ix+11,iy)*17,y+hash(ix,iy+29)*13,2,2,'#8a8f8524');}
- // Sidewalks, service lots and curb lines.
- for(const x of roadsX){rect(x-road/2-22,0,road+44,H,'#53605e');rect(x-road/2-17,0,road+34,H,'#78817b');rect(x-road/2,0,road,H,'#293139');}
- for(const y of roadsY){rect(0,y-road/2-22,CITY_W,road+44,'#53605e');rect(0,y-road/2-17,CITY_W,road+34,'#78817b');rect(0,y-road/2,CITY_W,road,'#293139');}
+ drawResidentialGround();
+ // One shared pass for all sidewalks, then all asphalt, across both districts.
+ drawStreetSurfaces();
  // Road layouts differ by district: double solid, dashed white, bus and cycle corridors.
- for(let i=0;i<roadsX.length;i++){const x=roadsX[i];rect(x-road/2,0,3,H,'#92978f');rect(x+road/2-3,0,3,H,'#92978f');
-  if(i===1){rect(x-5,0,3,H,'#c7a85599');rect(x+4,0,3,H,'#c7a85599');}
-  else for(let y=18;y<H;y+=75)rect(x-2,y,4,32,i===2?'#d2d6d389':'#c6a8618e');
-  for(let y=120;y<H;y+=390)roadArrow(x-30,y,0);
-  if(i===2){for(let y=90;y<H;y+=330){rect(x-54,y,4,85,'#769b8b88');ctx.save();ctx.translate(x-40,y+10);ctx.rotate(-Math.PI/2);ctx.fillStyle='#a9c1b7aa';ctx.font='bold 14px system-ui';ctx.fillText('BUS',0,0);ctx.restore();}}
+ for(let i=0;i<roadsX.length;i++){const x=roadsX[i],street=cityStreets[i];
+  for(const side of [-1,1])streetMark(x+side*(road/2-1.5),0,x+side*(road/2-1.5),H,street,'#92978f',3);
+  if(i===1){streetMark(x-3.5,0,x-3.5,H,street,'#c7a85599',3);streetMark(x+5.5,0,x+5.5,H,street,'#c7a85599',3);}
+  else for(let y=18;y<H;y+=75)streetMark(x,y,x,y+32,street,i===2?'#d2d6d389':'#c6a8618e',4);
+  for(let y=120;y<H;y+=390)if(!insideOtherStreet(x-30,y,street))roadArrow(x-30,y,0);
+  if(i===2){for(let y=90;y<H;y+=330){
+   streetMark(x-52,y,x-52,y+85,street,'#769b8b88',4);
+   if(!insideOtherStreet(x-40,y+10,street)){ctx.save();ctx.translate(x-40,y+10);ctx.rotate(-Math.PI/2);ctx.fillStyle='#a9c1b7aa';ctx.font='bold 14px system-ui';ctx.fillText('BUS',0,0);ctx.restore();}
+  }}
  }
- for(let i=0;i<roadsY.length;i++){const y=roadsY[i];rect(0,y-road/2,CITY_W,3,'#93968e');rect(0,y+road/2-3,CITY_W,3,'#93968e');
-  if(i===2){rect(0,y-5,CITY_W,3,'#d5b66a88');rect(0,y+4,CITY_W,3,'#d5b66a88');}
-  else for(let x=16;x<CITY_W;x+=75)rect(x,y-2,34,4,'#cbd0c187');
-  for(let x=150;x<CITY_W;x+=370)roadArrow(x,y+30,Math.PI/2);
-  if(i===0)for(let x=145;x<CITY_W;x+=370){rect(x,y-48,95,3,'#7b9f9999');}
+ for(let i=0;i<roadsY.length;i++){const y=roadsY[i],street=cityStreets[roadsX.length+i];
+  for(const side of [-1,1])streetMark(0,y+side*(road/2-1.5),CITY_W,y+side*(road/2-1.5),street,'#93968e',3);
+  if(i===2){streetMark(0,y-3.5,CITY_W,y-3.5,street,'#d5b66a88',3);streetMark(0,y+5.5,CITY_W,y+5.5,street,'#d5b66a88',3);}
+  else for(let x=16;x<CITY_W;x+=75)streetMark(x,y,Math.min(x+34,CITY_W),y,street,'#cbd0c187',4);
+  for(let x=150;x<CITY_W;x+=370)if(!insideOtherStreet(x,y+30,street))roadArrow(x,y+30,Math.PI/2);
+  if(i===0)for(let x=145;x<CITY_W;x+=370)streetMark(x,y-46.5,x+95,y-46.5,street,'#7b9f9999',3);
  }
  // Each intersection has its own markings: stop lines, occasional crossings or turns.
  for(let i=0;i<roadsX.length;i++)for(let j=0;j<roadsY.length;j++){
-  const x=roadsX[i],y=roadsY[j];rect(x-road/2,y-road/2,road,road,'#303942');
+  const x=roadsX[i],y=roadsY[j];
   if((i+j)%3===0){
     for(let k=0;k<5;k++){rect(x-48+k*24,y-85,12,23,'#cbd0cb99');rect(x-48+k*24,y+62,12,23,'#cbd0cb99');}
     rect(x-road/2,y-92,road,4,'#e2e2db88');rect(x-road/2,y+88,road,4,'#e2e2db88');
@@ -856,7 +864,7 @@ function ground(){
  for(let i=0;i<155;i++){let x=hash(i,4)*CITY_W,y=hash(i,7)*H;
   if(roadsX.some(v=>Math.abs(x-v)<60)||roadsY.some(v=>Math.abs(y-v)<60))line(x,y,x+6+hash(i,12)*9,y+2,'#161e263b',1);
  }
- drawResidentialGround();
+ drawResidentialRoads();
 }
 // Fixed aerial camera. Physics and navigation continue to use the street grid.
 const CAMERA_ANGLE=-Math.PI/4,CAMERA_TILT=.72;
@@ -1027,6 +1035,10 @@ function paintResidentialHouse(b){
  modelBox(p,w*.76,h*.24,12,14,wall+14,26,'#d3c8ad','#8a8779','#b7af98');
  modelBox(p,w*.76-1,h*.24-1,14,16,wall+40,3,'#e0d6bd','#a0a091','#c6bdac');
 }
+const cityStreets=[
+ ...roadsX.map(x=>({ax:x,ay:0,bx:x,by:H,width:road,city:true,flatEnds:true})),
+ ...roadsY.map(y=>({ax:0,ay:y,bx:CITY_W,by:y,width:road,city:true,flatEnds:true}))
+];
 const residentialStreets=[
  ...[730,1190,1660].map(y=>({ax:CITY_W-110,ay:y,bx:residential.west,by:y,width:130,connector:true,double:y===1190})),
  {ax:residential.west,ay:residential.north,bx:residential.east,by:residential.north,width:104},
@@ -1034,14 +1046,26 @@ const residentialStreets=[
  {ax:residential.west,ay:residential.north,bx:residential.west,by:residential.south,width:104},
  {ax:residential.east,ay:residential.north,bx:residential.east,by:residential.south,width:104}
 ];
+const streetNetwork=[...cityStreets,...residentialStreets];
 function streetRect(street,pad=0){
- const half=street.width/2+pad;
- return {x:Math.min(street.ax,street.bx)-half,y:Math.min(street.ay,street.by)-half,
-  w:Math.abs(street.bx-street.ax)+half*2,h:Math.abs(street.by-street.ay)+half*2};
+ const half=street.width/2+pad,vertical=street.ax===street.bx,end=street.flatEnds?0:half;
+ return {x:Math.min(street.ax,street.bx)-(vertical?half:end),y:Math.min(street.ay,street.by)-(vertical?end:half),
+  w:Math.abs(street.bx-street.ax)+(vertical?half:end)*2,h:Math.abs(street.by-street.ay)+(vertical?end:half)*2};
+}
+function drawStreetSurfaces(){
+ for(const street of streetNetwork){
+  if(street.city){
+   const outer=streetRect(street,22),inner=streetRect(street,17);
+   rect(outer.x,outer.y,outer.w,outer.h,'#53605e');rect(inner.x,inner.y,inner.w,inner.h,'#78817b');
+  }else{const b=streetRect(street,16);rect(b.x,b.y,b.w,b.h,'#929c8a');}
+ }
+ for(const street of streetNetwork){const b=streetRect(street);rect(b.x,b.y,b.w,b.h,'#293139');}
 }
 function insideOtherStreet(x,y,street){
- return residentialStreets.some(other=>{
-  if(other===street)return false;const b=streetRect(other,2);
+ const vertical=street.ax===street.bx;
+ return streetNetwork.some(other=>{
+  if(other===street||vertical===(other.ax===other.bx)&&other.width<=street.width)return false;
+  const b=streetRect(other,2);
   return x>b.x&&x<b.x+b.w&&y>b.y&&y<b.y+b.h;
  });
 }
@@ -1056,9 +1080,7 @@ function streetMark(ax,ay,bx,by,street,color,width){
  ctx.stroke();
 }
 function drawResidentialRoads(){
- // Paint the complete road surface before adding kerbs; intersecting roads share open junctions.
- for(const street of residentialStreets){const b=streetRect(street,16);rect(b.x,b.y,b.w,b.h,'#929c8a');}
- for(const street of residentialStreets){const b=streetRect(street);rect(b.x,b.y,b.w,b.h,'#293139');}
+ // Markings share the city junction mask, including the overlapping connector ends.
  for(const street of residentialStreets){
   const vertical=street.ax===street.bx,half=street.width/2-3;
   for(const side of [-1,1]){
@@ -1075,6 +1097,7 @@ function drawResidentialRoads(){
   }
  }
  for(const y of [730,1190,1660])for(let n=0;n<6;n++)rect(residential.west-122,y-54+n*20,23,10,'#dfdecb');
+ for(const x of [residential.west,residential.east])for(let n=0;n<5;n++)rect(x-39+n*17,residential.cy-43,9,21,'#e9e2c6');
 }
 function drawNorthGarden(){
  ctx.save();
@@ -1101,7 +1124,6 @@ function drawResidentialGround(){
   else rect(r.east+52,cy-22,b.x-r.east-52,44,'#bdbaa2');
  }
  for(const box of coverSeeds)if(box.houseId!=null){rect(box.x-15,box.y-15,30,30,'#b9baa4');rect(box.x-11,box.y-11,22,22,'#d0ccaf');}
- drawResidentialRoads();
  const gx=r.west+73,gy=r.north+73,gw=r.east-r.west-146,gh=r.south-r.north-146;
  rect(gx-4,gy-4,gw+8,gh+8,'#bfc2a1');rect(gx,gy,gw,gh,'#6f8a60');
  rect(r.cx-23,gy,46,gh,'#c9bfa3');rect(gx,r.cy-23,gw,46,'#c9bfa3');
@@ -1112,7 +1134,6 @@ function drawResidentialGround(){
   const x=r.cx+side*175;rect(x-52,y-30,104,60,'#4d704b');
   for(let n=0;n<18;n++)disc(x-43+(n%6)*17,y-20+Math.floor(n/6)*19,3,n%3===0?'#cfb7a1':n%3===1?'#c5ca9a':'#e0c86e');
  }
- for(const x of [r.west,r.east])for(let n=0;n<5;n++)rect(x-39+n*17,r.cy-43,9,21,'#e9e2c6');
  ctx.save();ctx.textAlign='center';ctx.font='bold 20px system-ui';ctx.fillStyle='#253d36';ctx.fillText('RESIDENCIAL LOS JARDINES',r.cx,476);
  ctx.font='bold 13px system-ui';ctx.fillText('PLAZA DE LA FUENTE',r.cx,r.cy-148);ctx.restore();
 }
