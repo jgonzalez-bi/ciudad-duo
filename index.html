@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
 <meta name="theme-color" content="#080e14">
-<title>Ciudad Dúo — Ocho Hordas · v7.3</title>
+<title>Ciudad Dúo — Ocho Hordas · v7.4</title>
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
 *{box-sizing:border-box}html,body{margin:0;height:100%;width:100%;overflow:hidden;touch-action:none;overscroll-behavior:none}button,input{font:inherit}button{cursor:pointer}canvas{display:block;width:100vw;height:100dvh;background:#111a20}
@@ -36,17 +36,18 @@
 #fire .knob{background:#b95549}#offer{position:absolute;z-index:20;pointer-events:auto;top:35%;left:50%;transform:translateX(-50%);background:#10212af5;border:1px solid #d7af69;padding:12px;text-align:center;width:max-content;max-width:94vw}#offer strong{display:block;font-size:13px;margin-bottom:8px}#offer button{padding:8px;background:#324b57;color:white;border:1px solid #ad9465;margin:2px}
 .perkbar{position:absolute;right:18px;bottom:calc(166px + env(safe-area-inset-bottom));display:grid;grid-template-columns:76px 76px;gap:10px;pointer-events:none;z-index:12}.perkbar .act.small{position:relative;width:76px;height:44px;border-radius:8px;pointer-events:auto;font-size:10px;flex:none}.perkbar #monkeyBtn{grid-column:1;grid-row:1;background:#766238ed;border-color:#e5c77e}.perkbar #boomBtn{grid-column:2;grid-row:1;background:#963f35ed;border-color:#f3a080}.perkbar .act:disabled{opacity:.5}
 @media(orientation:portrait) and (max-width:650px){.perkbar{right:15px;bottom:calc(154px + env(safe-area-inset-bottom))}#ui.hasperks #weaponHud{bottom:calc(214px + env(safe-area-inset-bottom))}#ui.hasperks #boxPrompt{bottom:calc(304px + env(safe-area-inset-bottom))}}
-@media(max-height:480px){.perkbar{bottom:calc(118px + env(safe-area-inset-bottom))}}
+@media(max-height:480px){.perkbar{bottom:calc(126px + env(safe-area-inset-bottom))}}
 @media(max-width:360px){.controls{padding-left:12px;padding-right:12px;gap:8px}.stick{width:94px;height:94px}.knob{width:42px;height:42px}.rightcontrols{gap:8px}.utilitycolumn .act.small{width:48px;height:48px}}
 #openPunch{background:#356c75ed;color:#c7fff0;border-color:#6be7d7;font-size:9px}#openPunch small{display:block;font-size:9px;font-weight:650;margin-top:3px}#openPunch:disabled{opacity:.6}#weaponHud strong{display:block;line-height:1.3}#weaponHud[data-upgrade="1"] strong{color:#74f5dc}#weaponHud[data-upgrade="2"] strong{color:#e1a6ff}#boxPrompt[data-station="punch"]{color:#a9ffec;border-color:#70e2cf88}
-.topline{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:calc(11px + env(safe-area-inset-top)) 11px 0}.roundpanel,.walletpanel{background:#09151cc9;border:1px solid #879c9c4d;border-radius:4px;padding:8px 10px;box-shadow:none;backdrop-filter:none}.roundpanel{max-width:62vw;border-left:2px solid #c9aa67;line-height:1.3}#waveHud{font-size:11px;letter-spacing:.015em;color:#edcf94}.walletpanel{display:flex;align-items:baseline;gap:6px;white-space:nowrap}.walletpanel strong{font-size:18px;line-height:1;color:#f3d18a;letter-spacing:.02em}.walletpanel span{font-size:9px;font-weight:800;letter-spacing:.045em;color:#ded6be}#weaponHud{min-width:136px;background:#08151cc9;border-color:#607b8059;box-shadow:none;padding:7px 10px}#weaponHud strong{font-size:10px;letter-spacing:.025em}#weaponHud small{font-size:10px;color:#d0b890}#toast{top:calc(65px + env(safe-area-inset-top));font-size:11px;max-width:82vw}#ui.waiting .topline,#ui.waiting .perkbar{visibility:hidden}
+.topline{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:calc(11px + env(safe-area-inset-top)) 11px 0}.roundpanel,.walletpanel{background:#09151cc9;border:1px solid #879c9c4d;border-radius:4px;padding:8px 10px;box-shadow:none;backdrop-filter:none}.roundpanel{max-width:62vw;border-left:2px solid #c9aa67;line-height:1.3}#waveHud{font-size:11px;letter-spacing:.015em;color:#edcf94}.walletpanel{display:flex;align-items:baseline;gap:6px;white-space:nowrap}.walletpanel strong{font-size:18px;line-height:1;color:#f3d18a;letter-spacing:.02em}.walletpanel span{font-size:9px;font-weight:800;letter-spacing:.045em;color:#ded6be}#weaponHud{min-width:136px;background:#08151cc9;border-color:#607b8059;box-shadow:none;padding:7px 10px}#weaponHud strong{font-size:10px;letter-spacing:.025em}#weaponHud small{font-size:10px;color:#d0b890}#toast{top:calc(86px + env(safe-area-inset-top));font-size:11px;max-width:82vw}#ui.waiting .topline,#ui.waiting .perkbar{visibility:hidden}
+.roundstack{display:flex;flex-direction:column;align-items:flex-start;gap:7px}.sodaperks{display:flex;gap:6px;padding-left:2px}.sodabadge{display:grid;place-items:center;width:26px;height:26px;border:1px solid #f4dfae;border-radius:50%;color:#fff3cf;box-shadow:0 2px 5px #0008;background:#943f38}.sodabadge svg{width:18px;height:18px;fill:currentColor}.sodabadge.double{background:#886123}.sodabadge.tomb{background:#665080}#sodaButton{font-size:9px;background:#423a54f2;color:#fff3d3;border-color:#d9c6a0}#sodaButton small{display:block;font-size:9px;font-weight:650;margin-top:3px}#sodaButton:disabled{opacity:.55}#boxPrompt[data-station="soda"]{color:#f0d8a7;border-color:#deca9a88}
 @media(max-width:540px){#waveHud{font-size:9px}.roundpanel,.walletpanel{padding:7px 8px}.walletpanel strong{font-size:17px}.walletpanel span{font-size:8px}.topline{gap:8px}#weaponHud{min-width:125px}}
 </style>
 </head>
 <body>
 <canvas id="game" aria-label="Ciudad Dúo, juego cooperativo"></canvas>
 <div id="lobby"><section class="panel">
-  <div class="eyebrow">OCHO HORDAS / VERSIÓN 07.3</div>
+  <div class="eyebrow">OCHO HORDAS / VERSIÓN 07.4</div>
   <h1 class="brand">CIUDAD<br><span>DÚO.</span></h1>
   <p class="intro">Sobrevivan juntos a 8 hordas en la ciudad. Reúnan maletines y prueben suerte en la caja de suministros. Cada tres aperturas cambia de lugar. Tras la cuarta horda descienden paracaidistas SWAT. Desde la quinta llegan enemigos de nivel 2.</p>
   <div class="tagrow"><span class="tag">2 JUGADORES ONLINE</span><span class="tag">8 HORDAS</span><span class="tag">CAJA MISTERIOSA</span><span class="tag">VEHÍCULOS</span></div>
@@ -55,15 +56,15 @@
   <input id="code" aria-label="Código de la sala" placeholder="CÓDIGO DE 6 LETRAS" maxlength="6" autocomplete="off" spellcheck="false">
   <button class="mainbtn secondary" id="join">UNIRME A LA SALA</button>
   <div id="error" class="error"></div>
-  <div class="footnote">Comienza al conectar a ambos jugadores. Cada jugador guarda sus propios maletines. Cada apertura cuesta 4; los recogidos vuelven en la siguiente horda. Solo hay pistolas en el suelo. Táctil: joystick izquierdo para moverte, derecho para apuntar y disparar, AUTO y CAJA al acercarte. Pack-a-Punch junto a la fuente: mejora I por 6 maletines, II por 10. Entrega tu arma y recógela tras 4 segundos. PC: WASD / flechas, espacio, E, F y R. El sonido se activa al tocar. Los gráficos se ajustan automáticamente. Ambos deben usar esta versión.</div>
+  <div class="footnote">Comienza al conectar a ambos jugadores. Cada jugador guarda sus propios maletines. Cada apertura cuesta 4; los recogidos vuelven en la siguiente horda. Solo hay pistolas en el suelo. Táctil: joystick izquierdo para moverte, derecho para apuntar y disparar, AUTO y CAJA al acercarte. Pack-a-Punch junto a la fuente: mejora I por 6 maletines, II por 10. Entrega tu arma y recógela tras 4 segundos. Tres máquinas de soda fijas: vida doble en el parque, doble disparo al sur y lápida en el jardín residencial. Cada perk cuesta 6 maletines; se pierde al morir y puede comprarse de nuevo. La lápida guarda tu equipo y los otros perks. PC: WASD / flechas, espacio, E, F, R y Q (soda / recuperar lápida). El sonido se activa al tocar. Los gráficos se ajustan automáticamente. Ambos deben usar esta versión.</div>
 </section></div>
 <div id="ui" class="hidden">
-  <div class="topline"><div class="roundpanel"><span id="waveHud">HORDA 0 / 8</span></div><div class="walletpanel" aria-label="Tus maletines"><strong id="score">00</strong><span>MALETINES</span></div></div>
+  <div class="topline"><div class="roundstack"><div class="roundpanel"><span id="waveHud">HORDA 0 / 8</span></div><div id="sodaPerks" class="sodaperks hidden" aria-label="Tus perks activos"><span id="perkVitality" class="sodabadge hidden" role="img" aria-label="Vida doble activa" title="Vida doble · 200 de vida"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21S2 15 2 8.5C2 2.5 9 1 12 6c3-5 10-3.5 10 2.5C22 15 12 21 12 21Z"/><path fill="#943f38" d="M10.5 7h3v4h4v3h-4v4h-3v-4h-4v-3h4Z"/></svg></span><span id="perkDouble" class="sodabadge double hidden" role="img" aria-label="Doble disparo activo" title="Doble disparo · 2 proyectiles por munición"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m7 2 3 5v12H4V7Zm10 0 3 5v12h-6V7ZM3 20h8v2H3Zm10 0h8v2h-8Z"/></svg></span><span id="perkTomb" class="sodabadge tomb hidden" role="img" aria-label="Lápida activa" title="Lápida · recupera tu equipo al morir"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 20V9a7 7 0 0 1 14 0v11h3v2H2v-2Zm6-14v3H8v2h3v5h2v-5h3V9h-3V6Z" fill-rule="evenodd"/></svg></span></div></div><div class="walletpanel" aria-label="Tus maletines"><strong id="score">00</strong><span>MALETINES</span></div></div>
   <div id="toast"></div>
   <div id="waitMask" class="waitmask hidden"><div class="waitpanel"><div class="waittag">SALA COOPERATIVA</div><h2>ESPERANDO AL<br>SEGUNDO JUGADOR</h2><p>El mundo está pausado. La primera oleada comienza cuando tu hermano se conecte.</p><strong id="waitCode">------</strong><button id="waitCopy" type="button">COPIAR INVITACIÓN</button></div></div>
   <div id="offer" class="hidden"><strong id="offerText"></strong><button id="accept">Cambiar arma</button><button id="decline">Conservar la mía</button></div><div id="boxPrompt" class="hidden"></div>
   <div id="victory" class="waitmask hidden"><div class="waitpanel"><div class="waittag">DISTRITO ASEGURADO</div><h2>8 HORDAS.<br>UN SOLO EQUIPO.</h2><p id="victoryStats"></p><button id="restart" type="button">JUGAR OTRA VEZ</button></div></div>
-  <div class="controls"><div class="stick" id="stick"><div id="knob" class="knob"></div></div><div class="rightcontrols"><div class="utilitycolumn"><button class="act small hidden" id="openPunch" type="button" aria-label="Mejorar arma en Pack-a-Punch" title="Pack-a-Punch · R"><span><span id="punchAction">MEJORAR I</span><small id="punchCost">6 MAL.</small></span></button><button class="act small hidden" id="openBox" type="button" aria-label="Abrir caja por 4 maletines" title="Caja · 4 maletines · F"><span>CAJA<small>4 MAL.</small></span></button><button class="act small" id="enter">AUTO</button></div><div class="stick" id="fire" aria-label="Joystick de disparo"><div class="knob" id="aimKnob"></div></div></div></div>
+  <div class="controls"><div class="stick" id="stick"><div id="knob" class="knob"></div></div><div class="rightcontrols"><div class="utilitycolumn"><button class="act small hidden" id="sodaButton" type="button" aria-label="Comprar soda por 6 maletines" title="Soda o lápida · Q"><span><span id="sodaAction">SODA</span><small id="sodaCost">6 MAL.</small></span></button><button class="act small hidden" id="openPunch" type="button" aria-label="Mejorar arma en Pack-a-Punch" title="Pack-a-Punch · R"><span><span id="punchAction">MEJORAR I</span><small id="punchCost">6 MAL.</small></span></button><button class="act small hidden" id="openBox" type="button" aria-label="Abrir caja por 4 maletines" title="Caja · 4 maletines · F"><span>CAJA<small>4 MAL.</small></span></button><button class="act small" id="enter">AUTO</button></div><div class="stick" id="fire" aria-label="Joystick de disparo"><div class="knob" id="aimKnob"></div></div></div></div>
   <div class="perkbar"><button class="act small hidden" id="monkeyBtn" aria-label="Colocar monito">MONITO</button><button class="act small hidden" id="boomBtn" aria-label="Activar K-BOOM">K-BOOM</button></div>
   <div id="weaponHud"><strong id="weaponName">PISTOLA</strong><small id="ammo">MUNICIÓN: 55</small></div>
 </div>
@@ -72,7 +73,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=7.3,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=7.4,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=480,CAR_ACCELERATION=780,CAR_BRAKING=800;
 const TOTAL_WAVES=8,BOX_COST=4,boxSpot={x:CITY_W/2,y:H/2};
 const HEAVY_AIM_DELAY=.22,PUNCH_SECONDS=4,PUNCH_RANGE=112,AMMO_DROP_CHANCE=.22,AMMO_DROP_SECONDS=45;
@@ -83,6 +84,15 @@ const upgradeTiers=[
  {name:'MODIFICACIÓN II',mark:'II',cost:10,damage:3.5,color:'#db85ff',pitch:1.42}
 ];
 const weaponUpgrade=p=>cap(Number(p?.upgrade)||0,0,2);
+const SODA_COST=6,SODA_RANGE=94;
+const sodaKinds={
+ vitality:{name:'Vida doble',color:'#d15a4a',short:'VIDA',effect:'VIDA MÁXIMA 200'},
+ double:{name:'Doble disparo',color:'#d59b3c',short:'DOBLE',effect:'2 PROYECTILES POR DISPARO'},
+ tomb:{name:'Lápida',color:'#a486d2',short:'LÁPIDA',effect:'RECUPERA TU EQUIPO AL MORIR'}
+};
+const freshPerks=()=>({vitality:false,double:false,tomb:false});
+const freshSoda=()=>({phase:'idle',owner:-1,life:0,startsAt:0,until:0,serial:0});
+const playerMaxHealth=p=>p.perks?.vitality?200:100;
 const freshPunch=()=>({phase:'idle',owner:-1,weapon:null,level:0,until:0,beatAt:0,serial:0});
 const punchOwns=index=>state.punch.phase!=='idle'&&state.punch.owner===index;
 function weaponLabel(p){return p.weapon?weapons[p.weapon].name+' · '+upgradeTiers[weaponUpgrade(p)].name:'SIN ARMA';}
@@ -121,7 +131,7 @@ function makeBuildings(){
 }makeBuildings();
 const cap=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),rads=(x,y)=>Math.atan2(y,x);
 const hash=(a,b)=>((Math.sin(a*127.1+b*311.7)*43758.5453)%1+1)%1;
-const makePlayer=(x,y,i)=>({x,y,face:0,moveFace:0,aimFace:null,moving:false,walk:0,car:null,role:null,health:100,armor:0,kboom:false,monkeys:0,weapon:'pistol',upgrade:0,ammo:55,wallet:0,count:0,kills:0,shotAt:-10,triggerAt:-1,triggerWeapon:null,hitAt:-10,stepAt:-10,stepIndex:i,downUntil:0,idx:i});
+const makePlayer=(x,y,i)=>({x,y,face:0,moveFace:0,aimFace:null,moving:false,walk:0,car:null,role:null,health:100,armor:0,perks:freshPerks(),life:0,drinkKind:null,drinkUntil:0,kboom:false,monkeys:0,weapon:'pistol',upgrade:0,ammo:55,wallet:0,count:0,kills:0,shotAt:-10,triggerAt:-1,triggerWeapon:null,hitAt:-10,stepAt:-10,stepIndex:i,downUntil:0,idx:i});
 const scenery=[],coverSeeds=[];
 const coverTypes={bench:{w:48,d:16,height:33,hp:7},mailbox:{w:20,d:20,height:37,hp:9},bin:{w:24,d:24,height:31,hp:6}};
 let navigationReady=false;
@@ -248,6 +258,12 @@ function makeResidentialArchitecture(){
  }
  makeNorthGarden();scenery.forEach((p,i)=>p.id=i);
 }makeResidentialArchitecture();
+const sodaPaths=[[1800,847,1800,900,26],[3225,1725,3225,1970,24],[3225,1970,3270,1970,24],[3650,301,3650,390,24]];
+const sodaStations=[
+ {sodaId:0,perk:'vitality',x:1800,y:900},
+ {sodaId:1,perk:'double',x:3270,y:1970},
+ {sodaId:2,perk:'tomb',x:3650,y:390}
+].map(p=>({...p,kind:'soda',variant:p.sodaId,angle:Math.PI/4,height:106,w:40,d:28,bounds:{x:p.x-25,y:p.y-25,w:50,h:50}}));
 const roadClosures=[
  ...roadsX.flatMap(x=>[{x,y:COAST_ROAD_END,angle:0},{x,y:H-COAST_ROAD_END,angle:0}]),
  ...roadsY.map(y=>({x:COAST_ROAD_END,y,angle:Math.PI/2}))
@@ -256,7 +272,7 @@ const coastSegments=[];
 for(const [x,y,length,angle] of [[0,0,W,0],[0,H,W,0],[0,0,H,Math.PI/2],[W,0,H,Math.PI/2]]){
  for(let from=0;from<length;from+=120){const w=Math.min(120,length-from),d=from+w/2;coastSegments.push({x:x+Math.cos(angle)*d,y:y+Math.sin(angle)*d,w,angle,height:COAST_RAIL_HEIGHT});}
 }
-const solidGeometry=[...buildings,...fixedProps,...roadClosures.map(p=>p.bounds)];
+const solidGeometry=[...buildings,...fixedProps,...sodaStations.map(p=>p.bounds),...roadClosures.map(p=>p.bounds)];
 // Chain-link fences stop bodies; sight and bullets pass through their mesh.
 const bodyBarriers=scenery.filter(p=>p.kind==='fence').map(p=>{
  const c=Math.abs(Math.cos(p.angle||0)),s=Math.abs(Math.sin(p.angle||0));
@@ -276,12 +292,12 @@ function initialize(){
  state.guns=gunSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],kind:a[2],taken:false}));
  state.enemies=[];state.bullets=[];state.fx=[];state.ammoDrops=[];state.score=0;state.collected=0;state.done=false;state.time=0;state.wave=0;state.nextWaveAt=0;
  state.box={phase:'idle',until:0,owner:-1,result:null,serial:0};
- state.punch=freshPunch();
+ state.punch=freshPunch();state.sodas=sodaStations.map(()=>freshSoda());state.graves=[];
  soundEvents=[];soundCooldowns.clear();refreshCoverNavigation();
 }initialize();
 let me=0,isHost=false,room='',peer=null,conn=null,connected=false,lastTime=performance.now(),lastSend=0,lastInput=0,toastTimer=0,fireHeld=false,movingStickId=null;
 let keys={},onlineReady=false,lastGuestAt=0,viewBlend=null,carBlend=null;
-const input={x:0,y:0,shoot:false,enter:false,box:false,punch:false,monkey:false,boom:false},guestInput={x:0,y:0,shoot:false,enter:false,box:false,punch:false,monkey:false,boom:false},joystick={x:0,y:0};
+const input={x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false},guestInput={x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false},joystick={x:0,y:0};
 // Procedural effects are built once: no audio downloads, large media files or speech services.
 const Sound=(()=>{
  let ac=null,master=null,compressor=null,ready=false,muted=false,voices=0,lastEngineUpdate=0,ambience=null,nextAmbientAt=8,lastAmbientTime=0,lastAmbientKind='';
@@ -391,6 +407,19 @@ const Sound=(()=>{
   });
   noiseSeed=savedSeed;
  }
+ function buildSodaEffects(){
+  const savedSeed=noiseSeed;
+  build('soda-coin',.27,(t,n)=>{const local=t<.11?t:t-.11;return (Math.sin(TAU*2180*t)+.4*Math.sin(TAU*3460*t))*.21*Math.exp(-local*43)+n*.1*Math.exp(-t*65);});
+  build('soda-vend',.98,(t,n,lo)=>{const env=Math.min(1,t*25)*Math.min(1,(.98-t)*15);return (Math.sin(TAU*(73*t+3*t*t))*.19+Math.sin(TAU*146*t)*.05+lo*.16+n*.03)*env+(t>.68?lo*.6*Math.exp(-(t-.68)*28):0);});
+  build('soda-bottle',.38,(t,n)=>{const ring=Math.sin(TAU*1380*t)*.23*Math.exp(-t*16)+Math.sin(TAU*2615*t)*.13*Math.exp(-t*22);return ring+n*.12*Math.exp(-t*70);});
+  build('soda-drink',.68,(t,n,lo)=>{const fizz=n*.16*Math.exp(-t*8),gulp=t>.17?Math.sin(TAU*(190*t+38*t*t))*.13*Math.exp(-((t-.17)%.18)*21):0;return fizz+gulp+lo*.06;});
+  for(const [kind,notes] of Object.entries({vitality:[392,494,587,784],double:[440,554,659,880],tomb:[330,392,494,659]})){
+   build('soda-perk-'+kind,.85,t=>{const i=Math.min(3,Math.floor(t/.18)),local=t%.18,f=notes[i];return (Math.sin(TAU*f*t)*.17+Math.sin(TAU*f*2*t)*.035)*Math.exp(-local*12)*Math.min(1,(.85-t)*10);});
+  }
+  build('tomb-create',.92,(t,n,lo)=>Math.sin(TAU*(260*t-85*t*t))*.14*Math.exp(-t*3)+lo*.13*Math.exp(-t*4));
+  build('tomb-recover',.9,t=>{const f=[392,523,659,1046][Math.min(3,Math.floor(t/.2))];return (Math.sin(TAU*f*t)*.18+Math.sin(TAU*f*2*t)*.04)*Math.exp(-(t%.2)*11)*Math.min(1,(.9-t)*10);});
+  noiseSeed=savedSeed;
+ }
  function buildEffects(){
   const gun=(name,duration,body,decay,crack,ring)=>build(name,duration,(t,n,lo)=>
    n*crack*Math.exp(-t*105)+lo*.9*Math.exp(-t*decay)+Math.sin(TAU*(body*t+4*(1-Math.exp(-t*35))))*.65*Math.exp(-t*decay)+Math.sin(TAU*ring*t)*.13*Math.exp(-t*43));
@@ -428,7 +457,7 @@ const Sound=(()=>{
   build('engine',1,(t,n,lo)=>{
    const p=t*42,cycle=p-Math.floor(p);return Math.sin(TAU*p)*.27+Math.sin(TAU*84*t)*.13+Math.sin(TAU*126*t)*.07+Math.exp(-cycle*11)*.22+lo*.2;
   });
-  buildLaserWeapons();
+  buildLaserWeapons();buildSodaEffects();
  }
  function stopEngines(){for(const voice of engines.values()){try{voice.source.stop();}catch(err){}voice.source.disconnect();voice.gain.disconnect();if(voice.pan)voice.pan.disconnect();voice.filter.disconnect();}engines.clear();}
  function stopEffects(){for(const source of active){try{source.stop();}catch(err){}}active.clear();}
@@ -452,7 +481,7 @@ const Sound=(()=>{
   const offset=projectPoint({x:x-p.x,y:y-p.y});
   return {gain:Math.max(0,1-d/1000)**1.5,pan:cap(offset.x/520,-.8,.8)};
  }
- const volume={'punch-start':.65,'punch-work':.48,'punch-ready':.8,'punch-take':.65,'night-horn':.32,'night-siren':.30,'night-ambulance':.28,'night-dog':.34,'night-bell':.18,'robot-death':.62,step:.23,impact:.27,'enemy-shot':.56,'enemy-heavy':.65,death:.68,'death-heavy':.76,hurt:.43,down:.70,bag:.65,ammo:.48,skid:.26,'box-open':.58,'box-win':.70,'box-empty':.6,wave:.55,clear:.6,respawn:.45,victory:.7};
+ const volume={'soda-coin':.48,'soda-vend':.45,'soda-bottle':.58,'soda-drink':.5,'soda-perk-vitality':.62,'soda-perk-double':.62,'soda-perk-tomb':.62,'tomb-create':.55,'tomb-recover':.66,'punch-start':.65,'punch-work':.48,'punch-ready':.8,'punch-take':.65,'night-horn':.32,'night-siren':.30,'night-ambulance':.28,'night-dog':.34,'night-bell':.18,'robot-death':.62,step:.23,impact:.27,'enemy-shot':.56,'enemy-heavy':.65,death:.68,'death-heavy':.76,hurt:.43,down:.70,bag:.65,ammo:.48,skid:.26,'box-open':.58,'box-win':.70,'box-empty':.6,wave:.55,clear:.6,respawn:.45,victory:.7};
  function play(kind,x=null,y=null){
   if(!ready||muted||document.hidden||ac.state!=='running'||voices>=32)return;
   const modified=/^(pistol|smg|shotgun|lmg|bazooka)-mod([12])$/.exec(kind),baseKind=modified?modified[1]:kind,tier=modified?upgradeTiers[Number(modified[2])]:upgradeTiers[0];
@@ -578,14 +607,16 @@ function shoot(p,index){
  const aim=(index===0?input:guestInput).aim;const target=Number.isFinite(aim)?null:findTarget(p);let angle=Number.isFinite(aim)?aim:p.face;if(target){const a=rads(target.x-p.x,target.y-p.y);if(Math.abs(Math.atan2(Math.sin(a-p.face),Math.cos(a-p.face)))<1.6||distance(target,p)<100)angle=a;}
  p.face=angle;
  const muzzle=weaponMuzzle(p,angle);
- for(let j=0;j<cfg.shots;j++){const delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045;emitBullet(muzzle.x,muzzle.y,angle+delta,cfg.speed,cfg.life,cfg.damage*tier.damage,index,false,cfg.splash||0,muzzle.z,p);}
+ const pairs=p.perks.double?2:1;
+ for(let pair=0;pair<pairs;pair++)for(let j=0;j<cfg.shots;j++){const side=pairs===2?(pair===0?-1:1):0,delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045+side*.008;emitBullet(muzzle.x-Math.sin(angle)*side*1.5,muzzle.y+Math.cos(angle)*side*1.5,angle+delta,cfg.speed,cfg.life,cfg.damage*tier.damage,index,false,cfg.splash||0,muzzle.z,p);}
 }
 function closestPlayer(e){let p=null,dist=Infinity;for(const actor of state.players){if(actor.downUntil>state.time)continue;const d=distance(actor,e);if(d<dist){dist=d;p=actor;}}return {p,dist};}
 function hitPlayer(p,dmg){
- if(p.downUntil>state.time)return;const absorbed=Math.min(p.armor,dmg);p.armor-=absorbed;dmg-=absorbed;if(!dmg)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;worldSound(p.health>0?'hurt':'down',p.x,p.y);
+ if(p.downUntil>state.time)return;const armorBeforeHit=p.armor,absorbed=Math.min(p.armor,dmg);p.armor-=absorbed;dmg-=absorbed;if(!dmg)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;worldSound(p.health>0?'hurt':'down',p.x,p.y);
  if(p.health>0)return;
+ bankGrave(p,armorBeforeHit);p.perks=freshPerks();p.life++;p.drinkUntil=0;p.drinkKind=null;
  if(p.car!==null){const c=state.cars[p.car];if(p.role==='driver'){c.driver=c.passenger;c.passenger=null;if(c.driver!==null)state.players[c.driver].role='driver';}else c.passenger=null;c.speed=0;}
- p.downUntil=state.time+3.8;p.car=null;p.role=null;notify('P'+(p.idx+1)+' cayó. Reaparece en 4 segundos.');
+ p.downUntil=state.time+3.8;p.car=null;p.role=null;notify('P'+(p.idx+1)+' cayó. Reaparece en 4 segundos.'+(ownGrave(p.idx)?' Su equipo está en su lápida.':''));
 }
 function damageEnemy(e,damage,owner){if(e.down)return;e.health=Math.max(0,e.health-damage);e.hitAt=state.time;if(e.health<=0){e.down=true;state.players[owner].kills++;
  if(state.raid&&e.swat&&state.enemies.every(actor=>actor.down)){state.boomDrop={x:e.x,y:e.y};notify('K-BOOM EN EL SUELO · Recógelo a pie');}
@@ -638,7 +669,7 @@ function startWave(number,raid=false){
  state.vests=[0,3].map(offset=>{const [x,y]=spots[(number-1+offset)%spots.length];return {x,y,taken:false};});
  // Basic supply refreshes by wave too; special weapons never spawn on the ground.
  for(const g of state.guns)g.taken=false;
- for(const p of state.players){p.health=Math.min(100,p.health+25);if(!p.weapon&&!punchOwns(p.idx)){p.weapon='pistol';p.upgrade=0;p.ammo=55;}else if(p.weapon&&number>1)p.ammo=Math.min(weapons[p.weapon].ammo*2,p.ammo+weapons[p.weapon].refill);}
+ for(const p of state.players){p.health=Math.min(playerMaxHealth(p),p.health+25);if(!p.weapon&&!punchOwns(p.idx)){p.weapon='pistol';p.upgrade=0;p.ammo=55;}else if(p.weapon&&number>1)p.ammo=Math.min(weapons[p.weapon].ammo*2,p.ammo+weapons[p.weapon].refill);}
  const count=raid?8:waveCounts[number-1],elites=raid?0:eliteCounts[number-1];
  for(let i=0;i<count;i++){
   let pos=spawnOnStreet(i);if(raid){for(let attempt=0;attempt<18&&Math.min(...state.players.map(p=>distance(p,pos)))>520;attempt++)pos=spawnOnStreet(i+attempt+1);}
@@ -733,6 +764,76 @@ function updatePunch(){
  if(state.time>=job.until){job.phase='ready';job.until=0;job.beatAt=0;worldSound('punch-ready',punchSpot.x,punchSpot.y);notify('PACK-A-PUNCH LISTO · P'+(job.owner+1)+', vuelve a recoger tu '+weapons[job.weapon].name+'.');}
  else if(state.time>=job.beatAt){worldSound('punch-work',punchSpot.x,punchSpot.y);job.beatAt=state.time+.72;}
 }
+function ownGrave(index){return state.graves.find(grave=>grave.owner===index)||null;}
+function sodaPending(index){return state.sodas.some(job=>job.phase!=='idle'&&job.owner===index);}
+function nearestSoda(p){
+ let found=null,best=SODA_RANGE;
+ for(const station of sodaStations){const d=distance(p,station);if(d<=best){best=d;found=station;}}
+ return found;
+}
+function sodaContext(p){
+ if(p.car!==null||p.downUntil>state.time||!connected||state.done)return null;
+ const grave=ownGrave(p.idx);if(grave&&distance(p,grave)<=64)return {grave};
+ const station=nearestSoda(p);if(!station)return null;
+ const d=distance(p,station);if(distance(p,boxSpot)<=88&&distance(p,boxSpot)<d||distance(p,punchSpot)<=PUNCH_RANGE&&distance(p,punchSpot)<d)return null;
+ return {station};
+}
+function buySoda(index,id){
+ if(!isHost||!connected||state.done)return;
+ const p=state.players[index],station=sodaStations[id],job=state.sodas[id];
+ if(!p||!station||p.car!==null||p.downUntil>state.time||distance(p,station)>SODA_RANGE){notify('Acércate a la máquina de soda, a pie.',index);return;}
+ if(p.perks[station.perk]){notify(sodaKinds[station.perk].name+' ya está activo.',index);return;}
+ if(station.perk==='tomb'&&ownGrave(index)){notify('Recupera tu lápida antes de comprar otra soda de Lápida.',index);return;}
+ if(job.phase!=='idle'||sodaPending(index)){notify('La máquina está sirviendo una soda. Espera un momento.',index);return;}
+ if(p.wallet<SODA_COST){notify('Soda · te faltan '+(SODA_COST-p.wallet)+' maletines.',index);return;}
+ p.wallet-=SODA_COST;syncWalletTotal();
+ state.sodas[id]={phase:'vending',owner:index,life:p.life,startsAt:state.time,until:state.time+.95,serial:job.serial+1};
+ worldSound('soda-coin',station.x,station.y);worldSound('soda-vend',station.x,station.y);
+}
+function updateSodas(){
+ for(let id=0;id<state.sodas.length;id++){
+  const job=state.sodas[id],station=sodaStations[id];if(job.phase==='idle'||state.time<job.until)continue;
+  if(job.phase==='vending'){
+   job.phase='serving';job.startsAt=state.time;job.until=state.time+.55;worldSound('soda-bottle',station.x,station.y);continue;
+  }
+  const p=state.players[job.owner];
+  if(p&&p.life===job.life&&p.downUntil<=state.time&&p.health>0){
+   p.perks[station.perk]=true;if(station.perk==='vitality')p.health=playerMaxHealth(p);
+   p.drinkKind=station.perk;p.drinkUntil=state.time+.65;
+   worldSound('soda-drink',p.x,p.y);worldSound('soda-perk-'+station.perk,p.x,p.y);
+   notify('P'+(p.idx+1)+' · '+sodaKinds[station.perk].name.toUpperCase()+' ACTIVO',p.idx);
+  }
+  state.sodas[id]={...freshSoda(),serial:job.serial};
+ }
+}
+function useSodaAction(index){
+ const p=state.players[index],context=sodaContext(p);
+ if(!context){notify('Acércate a una máquina de soda o a tu lápida.',index);return;}
+ if(context.grave)recoverGrave(index);else buySoda(index,context.station.sodaId);
+}
+let graveSequence=0;
+function bankGrave(p,armorBeforeHit){
+ if(!p.perks.tomb)return;
+ const inventory={weapon:weapons[p.weapon]?p.weapon:null,upgrade:weapons[p.weapon]?weaponUpgrade(p):0,ammo:p.weapon?p.ammo:0,armor:armorBeforeHit,wallet:p.wallet,monkeys:p.monkeys,kboom:!!p.kboom,perks:{vitality:!!p.perks.vitality,double:!!p.perks.double}};
+ state.graves=state.graves.filter(grave=>grave.owner!==p.idx);
+ state.graves.push({id:++graveSequence,owner:p.idx,x:p.x,y:p.y,createdAt:state.time,inventory});
+ p.wallet=0;p.weapon=null;p.upgrade=0;p.ammo=0;p.monkeys=0;p.kboom=false;syncWalletTotal();
+ worldSound('tomb-create',p.x,p.y);notify('TU LÁPIDA GUARDA TU EQUIPO · Vuelve a recogerla',p.idx);
+}
+function recoverGrave(index){
+ if(!isHost||!connected||state.done)return;
+ const p=state.players[index],grave=ownGrave(index);
+ if(!grave||p.car!==null||p.downUntil>state.time||distance(p,grave)>64)return;
+ if(sodaPending(index)){notify('Espera a terminar de beber tu soda.',index);return;}
+ const saved=grave.inventory;
+ if(saved.weapon&&punchOwns(index)){notify('Recoge primero el arma del Pack-a-Punch.',index);return;}
+ state.graves=state.graves.filter(actor=>actor.id!==grave.id);
+ p.wallet+=saved.wallet;p.monkeys+=saved.monkeys;p.kboom=p.kboom||saved.kboom;p.armor=Math.max(p.armor,saved.armor);
+ p.perks.vitality=p.perks.vitality||saved.perks.vitality;p.perks.double=p.perks.double||saved.perks.double;
+ if(saved.weapon){p.weapon=saved.weapon;p.upgrade=saved.upgrade;p.ammo=saved.ammo;p.shotAt=-10;p.triggerAt=-1;p.triggerWeapon=null;}
+ p.health=playerMaxHealth(p);syncWalletTotal();worldSound('tomb-recover',grave.x,grave.y);notify('EQUIPO RECUPERADO · La soda de Lápida debe comprarse otra vez.',index);
+}
+
 let monkeySerial=0;
 function placeMonkey(p){
  if(!p.monkeys||p.car!==null||p.downUntil>state.time)return;
@@ -772,18 +873,18 @@ function activateBoom(p){
 }
 function tick(dt){
  if(!isHost||!connected||state.done)return;
- state.time+=dt;updateBox();updatePunch();updateMonkeys();deployDrones();
+ state.time+=dt;updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();
  state.ammoDrops=state.ammoDrops.filter(drop=>drop.expiresAt>state.time);
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===0?input:guestInput;
   p.aimFace=Number.isFinite(inp.aim)?inp.aim:null;p.moving=false;
-  if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=100;p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon=punchOwns(i)?null:'pistol';p.upgrade=0;p.ammo=p.weapon?55:0;p.triggerAt=-1;p.triggerWeapon=null;worldSound('respawn',p.x,p.y);}
-  if(p.downUntil>state.time){triggerReady(p,{shoot:false});inp.boom=inp.monkey=inp.enter=inp.box=inp.punch=false;continue;}
-  // One input edge, one transaction. Both clients spend the same authoritative balance.
+  if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=playerMaxHealth(p);p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon=punchOwns(i)?null:'pistol';p.upgrade=0;p.ammo=p.weapon?55:0;p.triggerAt=-1;p.triggerWeapon=null;worldSound('respawn',p.x,p.y);}
+  if(p.downUntil>state.time){triggerReady(p,{shoot:false});inp.boom=inp.monkey=inp.enter=inp.box=inp.punch=inp.soda=false;continue;}
+  // One input edge, one transaction. The host debits each player’s own balance.
   if(inp.boom){inp.boom=false;activateBoom(p);}
   if(state.boomDrop&&p.car===null&&distance(p,state.boomDrop)<28){state.boomDrop=null;p.kboom=true;worldSound('box-win',p.x,p.y);notify('P'+(i+1)+' recogió K-BOOM');}
   if(inp.monkey){inp.monkey=false;placeMonkey(p);}
-  if(inp.box){inp.box=false;openMysteryBox(i);}if(inp.punch){inp.punch=false;usePunch(i);}if(inp.enter){inp.enter=false;attachCar(i);}
+  if(inp.box){inp.box=false;openMysteryBox(i);}if(inp.punch){inp.punch=false;usePunch(i);}if(inp.soda){inp.soda=false;useSodaAction(i);}if(inp.enter){inp.enter=false;attachCar(i);}
   let mx=cap(inp.x,-1,1),my=cap(inp.y,-1,1),mag=Math.hypot(mx,my);if(mag>1){mx/=mag;my/=mag;mag=1;}
   if(p.car!==null){triggerReady(p,{shoot:false});const c=state.cars[p.car];if(p.role==='driver'){
    if(mag>.12){const desired=rads(mx,my),turn=Math.atan2(Math.sin(desired-c.angle),Math.cos(desired-c.angle));c.angle+=cap(turn,-dt*6.8,dt*6.8);c.speed=Math.min(CAR_MAX_SPEED,c.speed+CAR_ACCELERATION*dt);if(Math.abs(turn)>.6&&c.speed>CAR_MAX_SPEED*.73&&state.time-c.skidAt>.6){worldSound('skid',c.x,c.y);c.skidAt=state.time;}}else c.speed=Math.max(0,c.speed-CAR_BRAKING*dt);
@@ -855,14 +956,14 @@ function peerSetup(id){
 function setWaiting(wait){$('ui').classList.toggle('waiting',wait);$('waitMask').classList.toggle('hidden',!wait);}
 function start(){$('lobby').classList.add('hidden');$('ui').classList.remove('hidden');$('waitCode').textContent=room;setWaiting(!connected);resize();}
 function snapshot(){
- return {t:'s',v:VERSION,cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({x,y,until})=>({x,y,until})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
+ return {t:'s',v:VERSION,cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,sodas:state.sodas.map(job=>({...job})),graves:state.graves.map(grave=>({...grave,inventory:{...grave.inventory,perks:{...grave.inventory.perks}}})),ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({x,y,until})=>({x,y,until})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
 }
 function receive(s){
  if(s.v!==VERSION||!Array.isArray(s.p)||s.p.length!==2||!Array.isArray(s.c)||!Array.isArray(s.e)||!Array.isArray(s.b)||!Array.isArray(s.g))return;
  const now=performance.now(),previous=viewBlend?visualPlayer(me,now):state.players[me];
  const previousCars=state.cars.map(car=>visualCar(car,now));
  const reset=s.wave<state.wave||s.time<state.time;
- state.players=s.p;state.ammoDrops=s.ammoDrops||[];state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
+ state.players=s.p;state.sodas=s.sodas||sodaStations.map(()=>freshSoda());state.graves=s.graves||[];state.ammoDrops=s.ammoDrops||[];state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
  if(Array.isArray(s.cover)&&s.cover.length===state.cover.length)for(let i=0;i<s.cover.length;i++){
   const values=s.cover[i];if(Array.isArray(values)&&Number.isFinite(values[0])&&Number.isFinite(values[1])){state.cover[i].health=cap(values[0],0,state.cover[i].hp);state.cover[i].hitAt=values[1];}
  }
@@ -908,28 +1009,28 @@ function bindConnection(c){
   }
   if(!connected)return;
   if(isHost&&s.t==='choice'){chooseWeapon(1,s.serial,s.accept===true);return;}
-  if(isHost&&s.t==='i'){guestInput.x=cap(Number(s.x)||0,-1,1);guestInput.y=cap(Number(s.y)||0,-1,1);guestInput.shoot=!!s.shoot;guestInput.aim=Number.isFinite(s.aim)?s.aim:null;guestInput.enter=guestInput.enter||!!s.enter;guestInput.boom=guestInput.boom||!!s.boom;guestInput.monkey=guestInput.monkey||!!s.monkey;guestInput.box=guestInput.box||!!s.box;guestInput.punch=guestInput.punch||!!s.punch;lastGuestAt=performance.now();}
+  if(isHost&&s.t==='i'){guestInput.x=cap(Number(s.x)||0,-1,1);guestInput.y=cap(Number(s.y)||0,-1,1);guestInput.shoot=!!s.shoot;guestInput.aim=Number.isFinite(s.aim)?s.aim:null;guestInput.enter=guestInput.enter||!!s.enter;guestInput.boom=guestInput.boom||!!s.boom;guestInput.monkey=guestInput.monkey||!!s.monkey;guestInput.box=guestInput.box||!!s.box;guestInput.punch=guestInput.punch||!!s.punch;guestInput.soda=guestInput.soda||!!s.soda;lastGuestAt=performance.now();}
   else if(!isHost&&s.t==='s')receive(s);else if(!isHost&&s.t==='notice'&&typeof s.msg==='string')showToast(s.msg);
  });
- c.on('close',()=>{if(conn!==c)return;connected=onlineReady=false;resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,punch:false,monkey:false,boom:false});setWaiting(true);showToast('El otro jugador se desconectó. Partida pausada.');if(!isHost){$('waitMask').querySelector('h2').textContent='CONEXIÓN INTERRUMPIDA';$('waitMask').querySelector('p').textContent='Recarga este archivo y vuelve a unirte con el mismo código.';}});
+ c.on('close',()=>{if(conn!==c)return;connected=onlineReady=false;resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false});setWaiting(true);showToast('El otro jugador se desconectó. Partida pausada.');if(!isHost){$('waitMask').querySelector('h2').textContent='CONEXIÓN INTERRUMPIDA';$('waitMask').querySelector('p').textContent='Recarga este archivo y vuelve a unirte con el mismo código.';}});
  c.on('error',()=>showToast('Error en la conexión cooperativa.'));
 }
 $('host').addEventListener('click',()=>{
  if(peer)return;room=Array.from({length:6},()=>Math.floor(Math.random()*36).toString(36)).join('').toUpperCase();isHost=true;me=0;$('host').disabled=true;
- peer=peerSetup('ciudadd-v73-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
+ peer=peerSetup('ciudadd-v74-'+room.toLowerCase());if(!peer){$('host').disabled=false;return;}
  peer.on('open',()=>{start();showToast('Sala '+room+' lista. Comparte la invitación.');});peer.on('connection',c=>{if(connected||onlineReady){c.on('open',()=>c.close());return;}bindConnection(c);});
 });
 $('join').addEventListener('click',()=>{
  if(peer)return;room=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(room.length!==6){showError('El código debe tener seis letras o números.');return;}
  isHost=false;me=1;$('join').disabled=true;showError('Conectando…');peer=peerSetup();if(!peer){$('join').disabled=false;return;}
- peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v73-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
+ peer.on('open',()=>{bindConnection(peer.connect('ciudadd-v74-'+room.toLowerCase(),{reliable:true}));setTimeout(()=>{if(!connected&&peer){showError('No se pudo conectar. Revisa el código y ambas conexiones.');peer.destroy();peer=null;$('join').disabled=false;}},11000);});
 });
 $('code').addEventListener('keydown',e=>{if(e.key==='Enter')$('join').click();});
 async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.href.split('?')[0]+' · ':'';const msg='Ciudad Dúo v'+VERSION.toFixed(1)+' · '+url+'Sala '+room;try{await navigator.clipboard.writeText(msg);showToast('Invitación copiada. Ambos necesitan este HTML.');}catch(err){showToast('Sala: '+room+' · Ambos deben usar este HTML.');}}
 $('waitCopy').addEventListener('click',copyRoom);
-$('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,punch:false,monkey:false,boom:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
-function resetControls(){releaseAim();keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.boom=input.monkey=input.shoot=input.enter=input.box=input.punch=false;$('knob').style.transform='translate(0,0)';}
-window.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)return;if(/^(Arrow(?:Up|Down|Left|Right)|Key[WASDEFGR]|Space)$/.test(e.code)&&$('lobby').classList.contains('hidden')){e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;if(e.code==='KeyG'&&!e.repeat)input.monkey=true;if(e.code==='KeyF'&&!e.repeat)input.box=true;if(e.code==='KeyR'&&!e.repeat)input.punch=true;}});
+$('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false});initialize();navFields=[null,null];viewBlend=null;startWave(1);send(snapshot());});
+function resetControls(){releaseAim();keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.boom=input.monkey=input.shoot=input.enter=input.box=input.punch=input.soda=false;$('knob').style.transform='translate(0,0)';}
+window.addEventListener('keydown',e=>{if(e.ctrlKey||e.metaKey||e.altKey)return;if(/^(Arrow(?:Up|Down|Left|Right)|Key[WASDEFGRQ]|Space)$/.test(e.code)&&$('lobby').classList.contains('hidden')){e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;if(e.code==='KeyG'&&!e.repeat)input.monkey=true;if(e.code==='KeyF'&&!e.repeat)input.box=true;if(e.code==='KeyR'&&!e.repeat)input.punch=true;if(e.code==='KeyQ'&&!e.repeat)input.soda=true;}});
 window.addEventListener('keyup',e=>{keys[e.code]=false;});window.addEventListener('blur',resetControls);document.addEventListener('visibilitychange',()=>{if(document.hidden)resetControls();lastTime=performance.now();});
 const stick=$('stick'),knob=$('knob');let stickBounds=null;
 function stickUpdate(e){const b=stickBounds||stick.getBoundingClientRect();let dx=(e.clientX-b.left-b.width/2)/(b.width*.36),dy=(e.clientY-b.top-b.height/2)/(b.height*.36),length=Math.hypot(dx,dy);if(length<.12){dx=dy=0;}else{if(length>1){dx/=length;dy/=length;}}joystick.x=dx;joystick.y=dy;knob.style.transform=`translate(${dx*b.width*.29}px,${dy*b.height*.29}px)`;}
@@ -951,6 +1052,7 @@ aimPad.addEventListener('pointerdown',e=>{if(aimPointer!==null)return;aimPointer
 aimPad.addEventListener('pointermove',e=>{if(e.pointerId===aimPointer)steerAim(e);});
 for(const ev of ['pointerup','pointercancel','lostpointercapture'])aimPad.addEventListener(ev,e=>{if(e.pointerId===aimPointer)releaseAim();});
 
+$('sodaButton').addEventListener('pointerdown',e=>{if(!$('sodaButton').disabled)input.soda=true;e.preventDefault();});
 $('openPunch').addEventListener('pointerdown',e=>{if(!$('openPunch').disabled)input.punch=true;e.preventDefault();});
 $('boomBtn').addEventListener('click',()=>{input.boom=true;});
 $('monkeyBtn').addEventListener('pointerdown',e=>{input.monkey=true;e.preventDefault();});
@@ -958,7 +1060,7 @@ $('enter').addEventListener('pointerdown',e=>{input.enter=true;e.preventDefault(
 // The same DPR drives allocation AND rendering, including Android landscape.
 const mobile=matchMedia('(pointer:coarse)').matches||/Android|iPhone|iPad/i.test(navigator.userAgent);
 let graphics='auto',renderDpr=1,autoScale=1,slowFrames=0,performanceWindow=0,viewWidth=innerWidth,viewHeight=innerHeight,lastHudTime=-1;
-const hud={};for(const id of ['score','waveHud','weaponName','ammo','boxPrompt','openBox','openPunch','enter','punchAction','punchCost','victory','victoryStats','restart'])hud[id]=$(id);
+const hud={};for(const id of ['score','waveHud','weaponName','ammo','boxPrompt','openBox','openPunch','enter','punchAction','punchCost','sodaButton','sodaAction','sodaCost','victory','victoryStats','restart'])hud[id]=$(id);
 function setText(id,value){if(hud[id].textContent!==value)hud[id].textContent=value;}
 function resize(){
  viewWidth=innerWidth;viewHeight=innerHeight;const limit=graphics==='low'?.8:graphics==='high'?(mobile?1.35:1.7):mobile?autoScale:Math.min(1.5,autoScale*1.5);
@@ -1137,7 +1239,7 @@ function ground(){
 const CAMERA_ANGLE=-Math.PI/4,CAMERA_TILT=.72;
 const CAMERA_COS=Math.cos(CAMERA_ANGLE),CAMERA_SIN=Math.sin(CAMERA_ANGLE);
 const PLAYER_LIFT=18;
-const SCENE_LAYERS={building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
+const SCENE_LAYERS={building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,soda:1,grave:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
 function projectPoint(point,z=0){
  return {x:CAMERA_COS*point.x-CAMERA_SIN*point.y,
   y:(CAMERA_SIN*point.x+CAMERA_COS*point.y)*CAMERA_TILT-z};
@@ -1428,6 +1530,98 @@ function machineProfile(p,profile,back,front,face,side,top){
  }
  modelFace(p,profile.map(([x,z])=>[x,front,z]),face);
 }
+function sodaEmblem(kind,x,y,size,color='#fff0cd'){
+ ctx.save();ctx.translate(x,y);ctx.scale(size/12,size/12);
+ if(kind==='vitality'){
+  ctx.fillStyle=color;ctx.beginPath();ctx.moveTo(0,10);ctx.bezierCurveTo(-17,-1,-10,-14,0,-5);ctx.bezierCurveTo(10,-14,17,-1,0,10);ctx.fill();
+  rect(-1.4,-4,2.8,10,'#994239');rect(-5,-.4,10,2.8,'#994239');
+ }else if(kind==='double'){
+  for(const x of [-5,4]){rect(x-2,-5,4,12,color);poly([[x-2,-5],[x,-10],[x+2,-5]],color);rect(x-3,8,6,2,color);}
+ }else{
+  roundedPanel(-8,-10,16,19,6,color);rect(-8,0,16,10,color);rect(-11,10,22,2,color);rect(-1.2,-7,2.4,13,'#5e4879');rect(-5,-3,10,2.4,'#5e4879');
+ }
+ ctx.restore();
+}
+function paintSodaMachine(p){
+ const kind=p.perk,color=sodaKinds[kind].color;
+ modelEllipse(p,5,7,0,31,23,'#07151b77');
+ modelBox(p,-23,-17,46,34,0,4,'#aaa897','#414f51','#6f7a72');
+ for(const x of [-17,13])modelBox(p,x,-11,4,25,4,5,'#b8bdb1','#3b4b50','#7e8d88');
+ if(kind==='vitality'){
+  const outline=[[-20,9],[-21,86],[-18,96],[-12,100],[12,100],[18,96],[21,86],[20,9]];
+  machineProfile(p,outline,-13,14,'#b44d40','#5d302e','#e5caa1');
+  modelFace(p,[[-18,14.2,71],[18,14.2,71],[18,14.2,87],[-18,14.2,87]],'#ead5a9');
+  modelLine(p,[-18,14.4,70],[18,14.4,70],'#8c352c',1.2);
+  modelFace(p,[[-15,14.5,36],[7,14.5,36],[7,14.5,66],[-15,14.5,66]],'#173d40');
+  for(let row=0;row<2;row++)for(let col=0;col<3;col++){
+   const x=-11+col*6,z=39+row*13;modelBox(p,x-1.7,14.6,3.4,1.2,z,8,'#b8dac0','#294d43','#70a58a');modelLine(p,[x,15,z+8],[x,15,z+11],'#b8dac0',1.7);modelLine(p,[x-1,15.8,z+3],[x+1,15.8,z+3],color,2.2);
+  }
+  modelLine(p,[-15,15.5,50],[7,15.5,50],'#acb7a1',1);
+  const badge=modelPoint(p,0,14.8,80);sodaEmblem(kind,badge.x,badge.y,5.5,'#a33d34');
+  modelLine(p,[11,15,57],[16,15,57],'#d4c8a7',1.5);modelLine(p,[13,15.1,59],[13,15.1,63],'#14252b',1.6);
+  const handle=modelPoint(p,13,15.4,45);disc(handle.x,handle.y,2.2,'#b9c1ad');disc(handle.x-.4,handle.y-.5,.8,'#f8ecd2');
+ }else if(kind==='double'){
+  modelCylinder(p,21,9,71,'#9d8351','#806136','#594d30');
+  for(let x=-17;x<=17;x+=5)modelLine(p,[x,Math.sqrt(441-x*x)+.1,13],[x,Math.sqrt(441-x*x)+.1,75],'#b0955a',.65);
+  for(const z of [15,69]){modelCylinder(p,21.5,z,4,'#8f9785','#5a675f','#424f49');modelLine(p,[-16,15,z+1],[16,15,z+1],'#c4c5a3',.7);}
+  modelBox(p,-23,-13,46,28,79,5,'#d4b875','#694b2b','#a6813e');
+  modelBox(p,-3,-5,6,8,84,7,'#a6a48a','#575d4d','#8f9278');
+  const sign=modelPoint(p,0,0,97);roundedPanel(sign.x-24,sign.y-13,48,26,8,'#5b4327');roundedPanel(sign.x-22,sign.y-11,44,22,7,'#e0bc68');
+  sodaEmblem(kind,sign.x,sign.y,7.5,'#553b21');
+  const logo=modelPoint(p,0,21.3,58);ctx.save();ctx.textAlign='center';ctx.font='900 6px Georgia,serif';ctx.fillStyle='#efdb9b';ctx.fillText('DOBLE',logo.x,logo.y);ctx.font='bold 3.8px system-ui';ctx.fillText('ROOT SODA',logo.x,logo.y+6);ctx.restore();
+ }else{
+  const coffin=[[-13,9],[-22,72],[-16,90],[0,99],[16,90],[22,72],[13,9]];
+  machineProfile(p,coffin,-13,14,'#5b4a70','#2b2b3c','#8d7c9b');
+  modelFace(p,[[-10,14.3,15],[-18,14.3,71],[-12,14.3,86],[0,14.3,93],[12,14.3,86],[18,14.3,71],[10,14.3,15]],'#75608c');
+  for(const x of [-13,13])modelLine(p,[x,14.6,40],[x*.83,14.6,78],'#c5b08c',.8);
+  const emblem=modelPoint(p,0,14.8,74);disc(emblem.x,emblem.y,11,'#292f43');disc(emblem.x,emblem.y,9.5,'#ae94c4');sodaEmblem(kind,emblem.x,emblem.y,7,'#f3e3bd');
+  const sign=modelPoint(p,0,14.9,54);ctx.save();ctx.textAlign='center';ctx.fillStyle='#f2dfb9';ctx.font='900 6px Georgia,serif';ctx.fillText('LÁPIDA',sign.x,sign.y);ctx.font='italic 4px Georgia,serif';ctx.fillText('Vuelve por lo tuyo',sign.x,sign.y+6);ctx.restore();
+  for(const x of [-16,16]){const stud=modelPoint(p,x,14.8,70);disc(stud.x,stud.y,1.4,'#c4b78f');}
+ }
+ const front=kind==='double'?21.7:15;
+ modelBox(p,-12,front-.2,24,2,21,11,'#aab1a0','#34484e','#23383f');
+ modelFace(p,[[-10,front+2.1,23],[10,front+2.1,23],[10,front+2.1,30],[-10,front+2.1,30]],'#0b202a');
+ modelLine(p,[-10,front+2.3,22],[10,front+2.3,22],'#c8d2b6',1.3);
+ for(let n=0;n<4;n++)modelLine(p,[-9,front+.2,11+n*1.6],[9,front+.2,11+n*1.6],'#26393d',.6);
+ const price=modelPoint(p,14,front+.5,35);disc(price.x,price.y,3.3,'#e5cd91');ctx.save();ctx.textAlign='center';ctx.font='900 4.4px system-ui';ctx.fillStyle='#37372c';ctx.fillText('6',price.x,price.y+1.5);ctx.restore();
+ if(kind==='vitality'){
+  const sign=modelPoint(p,0,0,105);roundedPanel(sign.x-21,sign.y-7,42,14,4,'#e4d1a5');ctx.save();ctx.font='900 6px Georgia,serif';ctx.textAlign='center';ctx.fillStyle='#9d3b32';ctx.fillText('VIDA DOBLE',sign.x,sign.y+2.5);ctx.restore();
+ }
+ for(const z of [30,65]){const shine=modelPoint(p,-19,kind==='double'?8:14.5,z);line(shine.x,shine.y,shine.x+.4,shine.y-8,'#fff4cd38',.8);}
+}
+function drawSodaGround(){
+ // Fixed paving joins existing paths; it is included in the ground cache.
+ for(const [ax,ay,bx,by,width] of sodaPaths)line(ax,ay,bx,by,'#bcb599',width);
+ for(const station of sodaStations){
+  rect(station.x-35,station.y-34,70,68,'#64766c');rect(station.x-31,station.y-30,62,60,'#b1b09a');
+  for(const dx of [-16,0,16])line(station.x+dx,station.y-30,station.x+dx,station.y+30,'#7d8f7e77',.7);
+ }
+}
+function sodaBottle(x,y,kind,angle=0){
+ ctx.save();ctx.translate(x,y);ctx.rotate(angle);roundedPanel(-2.4,-9,4.8,12,1.5,'#84b29d');rect(-1.3,-14,2.6,6,'#a5c9ad');rect(-1.7,-14.5,3.4,1.7,'#ddd5ae');rect(-2.5,-6,5,4,sodaKinds[kind].color);line(-1.2,-10,-1.2,-2,'#e9f3cd88',.65);ctx.restore();
+}
+function drawSodaStation(station){
+ const origin=projectPoint(station),job=state.sodas[station.sodaId],running=job.phase!=='idle',color=sodaKinds[station.perk].color;
+ const shake=running?Math.sin(state.time*57)*.75:0,asset=detailImage(station);
+ ctx.save();ctx.globalAlpha=.4+Math.sin(state.time*2+station.sodaId)*.08;ctx.drawImage(stationGlow(color),origin.x-54,origin.y-119,108,108);ctx.restore();
+ ctx.drawImage(asset.image,origin.x+asset.bounds.x+shake,origin.y+asset.bounds.y);
+ const light=modelPoint(station,15,17,35);disc(light.x+shake,light.y,1,running?'#f7e6b0':'#b8d5a6');
+ if(job.phase==='serving'){
+  const p=state.players[job.owner],t=cap((state.time-job.startsAt)/.55,0,1);
+  if(p&&p.life===job.life&&p.downUntil<=state.time){const a=modelPoint(station,0,20,28),b=projectPoint(p,PLAYER_LIFT+18);sodaBottle(a.x+(b.x-a.x)*t,a.y+(b.y-a.y)*t-Math.sin(Math.PI*t)*25,station.perk,t*.65);}
+ }
+}
+function paintGrave(p){
+ modelEllipse(p,3,5,0,23,15,'#101b2366');modelBox(p,-20,-10,40,20,0,5,'#a9aaa0','#505d62','#7c8b89');
+ machineProfile(p,[[-14,5],[-14,30],[-11,39],[-6,43],[6,43],[11,39],[14,30],[14,5]],-5,6,'#9aa2a0','#535e6a','#b6b7ab');
+ const icon=modelPoint(p,0,6.3,30);sodaEmblem('tomb',icon.x,icon.y,8,'#4b4963');
+ const label=modelPoint(p,0,6.4,12);ctx.save();ctx.textAlign='center';ctx.font='bold 6px Georgia,serif';ctx.fillStyle='#454958';ctx.fillText('R. I. P.',label.x,label.y);ctx.restore();
+}
+function drawGrave(grave){
+ const origin=projectPoint(grave),asset=detailImage({...grave,kind:'grave',variant:0,height:43,angle:Math.PI/4});
+ ctx.save();ctx.globalAlpha=.32;ctx.drawImage(stationGlow('#b18bda'),origin.x-38,origin.y-52,76,76);ctx.restore();ctx.drawImage(asset.image,origin.x+asset.bounds.x,origin.y+asset.bounds.y);
+ ctx.save();ctx.textAlign='center';ctx.font='800 8px system-ui';ctx.fillStyle=grave.owner===me?'#e6cafa':'#a7abc0';ctx.fillText('LÁPIDA · P'+(grave.owner+1),origin.x,origin.y-51);ctx.restore();
+}
 function paintPunchMachine(p){
  modelEllipse(p,7,8,0,62,37,'#10232b66');
  for(const x of [-38,32])for(const y of [-17,18]){
@@ -1543,7 +1737,7 @@ function drawGroundView(cx,cy,width,height){
  ctx.save();ctx.transform(CAMERA_COS,CAMERA_SIN*CAMERA_TILT,-CAMERA_SIN,CAMERA_COS*CAMERA_TILT,0,0);
  const cached=getWorldLayer();
  if(cached){if(w>0&&h>0)ctx.drawImage(cached,x,y,w,h,x,y,w,h);}
- else{ground();drawLandmarks();for(const building of buildings)drawBuildingGround(building);lights(0);drawNightGroundClutter();}
+ else{ground();drawLandmarks();for(const building of buildings)drawBuildingGround(building);lights(0);drawNightGroundClutter();drawSodaGround();}
  ctx.restore();
 }
 function sceneDepth(actor,visibleBuildings){
@@ -1606,6 +1800,7 @@ function detailImage(model,broken=false,lightLevel=1){
  const result={image,bounds};detailImages.set(key,result);return result;
 }
 function paintDetail(p,broken,damaged){
+ if(p.kind==='soda'){paintSodaMachine(p);return;}if(p.kind==='grave'){paintGrave(p);return;}
  if(['marketStall','fountain','punch','picket','districtSign'].includes(p.kind)){paintResidentialDetail(p);return;}
  const wood='#94734e',darkWood='#574534',metal='#4a5c66';
  if(broken){
@@ -1804,6 +1999,8 @@ function pointSegmentDistance(x,y,a,b){const dx=b.x-a.x,dy=b.y-a.y,u=cap(((x-a.x
 function footstepSurface(x,y){
  for(const street of streetNetwork){const b=streetRect(street);if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h)return 'asphalt';}
  for(const street of streetNetwork){const b=streetRect(street,street.city?22:16);if(x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h)return 'pavement';}
+ for(const station of sodaStations)if(Math.abs(x-station.x)<35&&Math.abs(y-station.y)<34)return 'pavement';
+ for(const [ax,ay,bx,by,width] of sodaPaths)if(pointSegmentDistance(x,y,{x:ax,y:ay},{x:bx,y:by})<width/2)return 'pavement';
  if(x>CITY_W){
   const r=residential;
   if(Math.hypot(x-r.cx,y-r.cy)<132||x>r.west+69&&x<r.east-69&&Math.abs(y-r.cy)<24||y>r.north+69&&y<r.south-69&&Math.abs(x-r.cx)<24)return 'pavement';
@@ -1893,6 +2090,8 @@ function drawSceneItem(item,timestamp){
   case 'car':carDraw(actor);break;
   case 'scenery':drawScenery(actor,timestamp);break;
   case 'cover':drawCover(actor);break;
+  case 'soda':drawSodaStation(actor);break;
+  case 'grave':drawGrave(actor);break;
   case 'coast':drawCoastRail(actor);break;
   case 'roadEnd':drawRoadClosure(actor);break;
   case 'rat':drawNightRat(actor);break;
@@ -1945,6 +2144,8 @@ function render(timestamp,now){
   add('scenery',prop);
  }
  for(const prop of state.cover)add('cover',prop);
+ for(const station of sodaStations)add('soda',station);
+ for(const grave of state.graves)add('grave',grave);
  for(const segment of coastSegments)add('coast',segment);
  for(const closure of roadClosures)add('roadEnd',closure);
  for(const route of nightRatRoutes){const rat=ratAt(route,state.time);if(rat)add('rat',rat);}
@@ -1967,7 +2168,7 @@ function render(timestamp,now){
  for(const item of scene)drawSceneItem(item,timestamp);
  for(const p of activePlayers)playerBars(actorSprite(p));
  ctx.restore();if(!mobile&&graphics!=='low')vignette(cw,ch);
- drawBoxDirection(player,cw,ch,zoom,cx,cy);drawPartnerDirection(player,players[1-me],cw,ch,zoom,cx,cy);updateHud(player,timestamp);
+ drawBoxDirection(player,cw,ch,zoom,cx,cy);drawPartnerDirection(player,players[1-me],cw,ch,zoom,cx,cy);drawGraveDirection(player,cw,ch,zoom,cx,cy);updateHud(player,timestamp);
 }
 
 function drawActor(p,type,id){
@@ -1990,7 +2191,7 @@ function drawActor(p,type,id){
 
 function playerBars(p){
  const x=p.x-17,y=p.y+(p.car===null?28:40);
- rect(x-1,y-1,36,7,'#111c22');rect(x,y,34,5,'#422c31');rect(x,y,34*cap(p.health/100,0,1),5,'#70dc85');
+ rect(x-1,y-1,36,7,'#111c22');rect(x,y,34,5,'#422c31');rect(x,y,34*cap(p.health/playerMaxHealth(p),0,1),5,'#70dc85');
  if(p.armor>0){rect(x-1,y+7,36,6,'#111c22');rect(x,y+8,34,4,'#243e54');rect(x,y+8,34*cap(p.armor/75,0,1),4,'#63bafa');}
 }
 const weaponShapes={
@@ -2389,6 +2590,7 @@ function humanDraw(p,type=0,id=0){
  paintCharacterImage(legs);if(behind)drawHeldWeapon(p,face,sleeve,hands);if(!armed)drawUnarmedArms(p,sleeve,hands);
  paintCharacterImage(body,0,p.moving?Math.abs(Math.sin((p.walk||0)*2))*.6:0);
  if(armed&&!behind)drawHeldWeapon(p,face,sleeve,hands);ctx.restore();
+ if(!enemy&&p.drinkUntil>state.time&&sodaKinds[p.drinkKind]){const t=cap((p.drinkUntil-state.time)/.65,0,1);sodaBottle(p.x+8,p.y-19+Math.sin(t*Math.PI)*3,p.drinkKind,-.5);}
  if(enemy&&(p.level===2||state.time-p.hitAt<1.3)){
   const w=p.level===2?34:24,y=p.y-(p.level===2?53:42);rect(p.x-w/2,y,w,4,'#091923');rect(p.x-w/2,y,w*cap(p.health/p.maxHealth,0,1),4,p.level===2?'#e4a764':'#cf7561');
   if(p.level===2){ctx.save();ctx.textAlign='center';ctx.font='800 7px system-ui';ctx.fillStyle='#ebbd8a';ctx.fillText('NIVEL 2',p.x,y-5);ctx.restore();}
@@ -2411,7 +2613,7 @@ function getWorldLayer(){
   const layer=document.createElement('canvas');layer.width=W;layer.height=H;
   const layerCtx=layer.getContext('2d',{alpha:false});if(!layerCtx)return null;
   ctx=layerCtx;
-  try{ground();drawLandmarks();for(const b of buildings)drawBuildingGround(b);lights(0);drawNightGroundClutter();}
+  try{ground();drawLandmarks();for(const b of buildings)drawBuildingGround(b);lights(0);drawNightGroundClutter();drawSodaGround();}
   finally{ctx=displayCtx;}
   worldLayer=layer;return layer;
  }catch(err){ctx=displayCtx;console.warn('Cache de mapa no disponible:',err);return null;}
@@ -2578,6 +2780,23 @@ function drawPartnerDirection(p,other,cw,ch,zoom,cx,cy){
  ctx.save();ctx.textAlign='center';ctx.font='900 10px system-ui';ctx.fillStyle=marker.down?'#f0bd92':'#b6ecf4';ctx.shadowColor='#07131b';ctx.shadowBlur=3;ctx.fillText(marker.label+(marker.down?' · REAPARECE':''),marker.x,marker.y+28);ctx.restore();
 }
 
+function graveMarker(p,cw,ch,zoom,cx,cy){
+ const grave=ownGrave(me);if(!grave||!connected)return null;
+ const target=projectPoint(grave),self=projectPoint(p),sx=(target.x-cx)*zoom,sy=(target.y-cy)*zoom;
+ if(sx>24&&sx<cw-24&&sy>86&&sy<ch-115)return null;
+ const angle=Math.atan2(target.y-self.y,target.x-self.x),radius=Math.min(cw*.21,ch*.19);
+ let x=cap(cw/2+Math.cos(angle)*radius,35,cw-35),y=cap(ch/2+Math.sin(angle)*radius,108,Math.max(120,ch*.59));
+ const partner=partnerMarker(p,state.players[1-me],cw,ch,zoom,cx,cy),box=projectPoint(boxSpot),boxAngle=Math.atan2(box.y-self.y,box.x-self.x),boxRadius=Math.min(cw*.29,ch*.26);
+ const markers=[{x:cw/2+Math.cos(boxAngle)*boxRadius,y:ch/2+Math.sin(boxAngle)*boxRadius}];if(partner)markers.push(partner);
+ const clear=x=>markers.every(marker=>Math.hypot(x-marker.x,y-marker.y)>62);
+ if(!clear(x)){const candidates=[cap(x+70,35,cw-35),cap(x-70,35,cw-35),35,cw-35];x=candidates.find(clear)??x;}
+ return {x,y,angle};
+}
+function drawGraveDirection(p,cw,ch,zoom,cx,cy){
+ const marker=graveMarker(p,cw,ch,zoom,cx,cy);if(!marker)return;
+ ctx.save();ctx.translate(marker.x,marker.y);disc(0,0,14,'#292c43ed');ctx.rotate(marker.angle);poly([[10,0],[-6,-6],[-2,0],[-6,6]],'#c9a7ed');ctx.restore();
+ ctx.save();ctx.textAlign='center';ctx.font='800 8px system-ui';ctx.fillStyle='#e4c5fa';ctx.fillText('TU LÁPIDA',marker.x,marker.y+24);ctx.restore();
+}
 function updateHud(p,timestamp){
  if(timestamp-lastHudTime<.10)return;lastHudTime=timestamp;
  setText('score',String(p.wallet).padStart(2,'0'));
@@ -2588,11 +2807,15 @@ function updateHud(p,timestamp){
  $('weaponHud').setAttribute('data-upgrade',String(pending?job.level:level));
  setText('ammo',pending?(job.phase==='ready'?'MOD. '+upgradeTiers[job.level].mark+' LISTA · VUELVE A RECOGERLA':'MEJORANDO · '+Math.max(0,Math.ceil(job.until-state.time))+' s'):p.car!==null?'EN VEHÍCULO':p.ammo>0?'MUNICIÓN: '+p.ammo:'SIN MUNICIÓN · BUSCA RECARGAS');
  const offering=state.box.phase==='offer'&&state.box.owner===me&&!state.done;$('offer').classList.toggle('hidden',!offering);if(offering)$('offerText').textContent='¿Cambiar '+(weapons[p.weapon]?.name||'SIN ARMA')+' por '+weapons[state.box.result].name+'?';
- const near=distance(p,boxSpot)<=88&&p.car===null&&p.downUntil<=state.time&&connected&&!state.done;
- const nearPunch=distance(p,punchSpot)<=PUNCH_RANGE&&p.car===null&&p.downUntil<=state.time&&connected&&!state.done;
+ const soda=sodaContext(p);
+ const near=!soda&&distance(p,boxSpot)<=88&&p.car===null&&p.downUntil<=state.time&&connected&&!state.done;
+ const nearPunch=!soda&&distance(p,punchSpot)<=PUNCH_RANGE&&p.car===null&&p.downUntil<=state.time&&connected&&!state.done;
  const canEnter=connected&&!state.done&&p.downUntil<=state.time&&(p.car!==null||!!nearbyCar(p));
  $('enter').classList.toggle('hidden',!canEnter);$('enter').disabled=!canEnter;setText('enter',p.car!==null?'BAJAR':'AUTO');
  $('ui').classList.toggle('hasperks',!!(p.monkeys||p.kboom));
+ $('sodaPerks').classList.toggle('hidden',!Object.values(p.perks).some(Boolean));
+ for(const [kind,id] of [['vitality','perkVitality'],['double','perkDouble'],['tomb','perkTomb']])$(id).classList.toggle('hidden',!p.perks[kind]);
+ hud.sodaButton.classList.toggle('hidden',!soda);
  const boomButton=$('boomBtn');boomButton.classList.toggle('hidden',!p.kboom);boomButton.disabled=state.boss||p.downUntil>state.time||!state.enemies.some(e=>!e.down&&!e.boss);
  const monkeyButton=$('monkeyBtn');monkeyButton.classList.toggle('hidden',!p.monkeys);monkeyButton.disabled=p.car!==null||p.downUntil>state.time;monkeyButton.textContent='MONITO ×'+p.monkeys;
  hud.openBox.classList.toggle('hidden',!near||nearPunch);hud.openBox.disabled=pending||p.wallet<BOX_COST||state.box.phase!=='idle';
@@ -2605,6 +2828,20 @@ function updateHud(p,timestamp){
  hud.boxPrompt.classList.toggle('hidden',!showBoxPrompt&&!nearPunch);hud.boxPrompt.setAttribute('data-station',nearPunch?'punch':'box');
  if(near&&!nearPunch)setText('boxPrompt',pending?'Recoge primero tu arma del Pack-a-Punch':state.box.phase==='rolling'?'CAJA SORTEANDO…':state.box.phase==='result'?'Espera a que cierre la caja':state.box.phase==='offer'?'Elige si cambiar el arma':p.wallet<BOX_COST?'CAJA · TE FALTAN '+(BOX_COST-p.wallet)+' MALETINES':'CAJA');
  if(nearPunch)setText('boxPrompt',job.phase!=='idle'?(job.owner!==me?'PACK-A-PUNCH · RESERVADO PARA P'+(job.owner+1):job.phase==='ready'?weapons[job.weapon].name+' · MOD. '+upgradeTiers[job.level].mark+' LISTA · RETIRAR / R':'MEJORANDO TU ARMA · '+Math.max(0,Math.ceil(job.until-state.time))+' s'):boxBusy?'Termina de usar la caja':!p.weapon?'PACK-A-PUNCH · NECESITAS UN ARMA':level===2?'MODIFICACIÓN II · POTENCIA MÁXIMA':p.wallet<next.cost?'MEJORA '+next.mark+' · TE FALTAN '+(next.cost-p.wallet)+' MALETINES':'MEJORA '+next.mark+' · DAÑO ×'+next.damage);
+ if(soda){
+  hud.boxPrompt.classList.remove('hidden');hud.boxPrompt.setAttribute('data-station','soda');
+  if(soda.grave){
+   const blocked=sodaPending(me)||!!(soda.grave.inventory.weapon&&pending);
+   setText('sodaAction','LÁPIDA');setText('sodaCost','RECUPERAR');hud.sodaButton.disabled=blocked;hud.sodaButton.style.backgroundColor='#685184';
+   hud.sodaButton.setAttribute('aria-label','Recuperar tu equipo de la lápida');
+   setText('boxPrompt',blocked?(pending?'Recoge primero tu arma del Pack-a-Punch':'Termina de beber tu soda'):'TU LÁPIDA · RECUPERAR EQUIPO + '+soda.grave.inventory.wallet+' MALETINES · Q');
+  }else{
+   const station=soda.station,info=sodaKinds[station.perk],pour=state.sodas[station.sodaId],owned=p.perks[station.perk],waiting=station.perk==='tomb'&&!!ownGrave(me),busy=pour.phase!=='idle'||sodaPending(me);
+   setText('sodaAction',info.short);setText('sodaCost',owned?'ACTIVO':busy?'SIRVIENDO':waiting?'TU LÁPIDA':SODA_COST+' MAL.');hud.sodaButton.disabled=owned||busy||waiting||p.wallet<SODA_COST;hud.sodaButton.style.backgroundColor=info.color;
+   hud.sodaButton.setAttribute('aria-label',info.name+' · 6 maletines');
+   setText('boxPrompt',owned?info.name.toUpperCase()+' · YA ACTIVO':waiting?'Recupera tu lápida antes de comprar otra soda':busy?'SIRVIENDO SODA…':p.wallet<SODA_COST?info.name.toUpperCase()+' · TE FALTAN '+(SODA_COST-p.wallet)+' MALETINES':info.effect+' · 6 MALETINES · Q');
+  }
+ }
  hud.victory.classList.toggle('hidden',!state.done);
  if(state.done){setText('victoryStats','P1: '+state.players[0].kills+' bajas · P2: '+state.players[1].kills+' bajas\n'+state.collected+' maletines recogidos\nSaldos: P1 '+state.players[0].wallet+' · P2 '+state.players[1].wallet);setText('restart',isHost?'JUGAR OTRA VEZ':'EL ANFITRIÓN PUEDE REINICIAR');hud.restart.disabled=!isHost||!connected;}
 }
@@ -2616,9 +2853,9 @@ function animate(now){
  input.x=direction.x;input.y=direction.y;input.shoot=fireHeld||!!keys.Space;
  if(isHost){
   if(connected){if(now-lastGuestAt>500){guestInput.x=guestInput.y=0;guestInput.shoot=false;}tick(dt);}
-  else input.enter=input.box=input.punch=false;
+  else input.enter=input.box=input.punch=input.soda=false;
   if(connected&&now-lastSend>70){send(snapshot());lastSend=now;}
- }else if(connected&&now-lastInput>45){send({t:'i',x:input.x,y:input.y,shoot:input.shoot,aim:input.aim,enter:input.enter,box:input.box,punch:input.punch,monkey:input.monkey,boom:input.boom});input.boom=input.monkey=input.enter=input.box=input.punch=false;lastInput=now;}
+ }else if(connected&&now-lastInput>45){send({t:'i',x:input.x,y:input.y,shoot:input.shoot,aim:input.aim,enter:input.enter,box:input.box,punch:input.punch,soda:input.soda,monkey:input.monkey,boom:input.boom});input.boom=input.monkey=input.enter=input.box=input.punch=input.soda=false;lastInput=now;}
  Sound.update(now);
  const shouldDraw=!document.hidden&&(connected||now-lastDraw>250);
  if(shouldDraw){drawDelta=(now-lastDraw)/1000;render(now/1000,now);lastDraw=now;}
