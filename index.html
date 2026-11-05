@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
 <meta name="theme-color" content="#080e14">
 <meta name="description" content="Deadlock: Afterfall. Supervivencia cooperativa en 2.5D: dos jugadores, dieciséis hordas y dos distritos bajo asedio. Crea una sala privada y responde a la llamada.">
-<title>DEADLOCK: AFTERFALL — Co-op Survival · v8.6</title>
+<title>DEADLOCK: AFTERFALL — Co-op Survival · v8.7</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%23101918'/%3E%3Cpath d='M20 4 33 12v16l-13 8-13-8V12Z M20 11v9l8 4m-8-4-8 4m8-4v10' fill='none' stroke='%23c3b971' stroke-width='2'/%3E%3C/svg%3E">
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
@@ -73,6 +73,12 @@
 @media(max-height:540px) and (min-width:541px){.pool-header{height:48px;padding:4px 12px}.pool-header strong{font-size:21px}.pool-header small{display:none}.pool-scores{left:auto;right:12px;top:58px;width:190px;height:96px;grid-template-columns:1fr;gap:6px}.pool-player{padding:6px 8px}.pool-player>div:first-child{margin-bottom:4px}.pool-player span{font-size:8px}.pool-ballrow{height:12px}.pool-ballrow i{width:12px;height:12px;font-size:6px}#poolStage{top:58px;bottom:12px;left:10px;right:214px}.pool-footer{left:auto;right:12px;top:166px;bottom:12px;width:190px;height:auto;grid-template-columns:1fr;grid-template-rows:auto 41px 42px;gap:5px;padding:9px 11px}.pool-turn{grid-column:auto}.pool-turn strong{font-size:11px}.pool-turn span{font-size:9px}.pool-shot-row{grid-template-columns:27px 1fr 27px;gap:4px}#poolHelp{display:none}#poolRules{top:54px;max-height:calc(100dvh - 66px)}}
 @media(max-width:360px){.pool-header{height:51px}.pool-header strong{font-size:18px}.pool-header small{font-size:6px}#poolPanel button{padding:6px 7px}.pool-scores{top:59px;height:52px}.pool-player span{font-size:7px}.pool-ballrow i{width:12px;height:12px;font-size:6px}.pool-ballrow{gap:3px}#poolStage{top:120px;bottom:153px}.pool-footer{height:133px;grid-template-rows:39px 45px 12px;grid-template-columns:1fr 130px;padding:8px 10px;gap:4px 10px}.pool-turn strong{font-size:11px}.pool-turn span{font-size:9px}.pool-shot-row{grid-template-columns:26px 1fr 26px}#poolHelp{font-size:7px}}
 
+#casinoDoor,#casinoUse{background:#61415feF;border-color:#d2af83;color:#fff1ce}#rayBuy{background:#315b45eF;border-color:#b1e88c;color:#e3ffbd}#casinoDoor small,#casinoUse small,#rayBuy small{font-size:8px;display:block}#casinoExit{position:absolute;left:12px;top:75px;pointer-events:auto;background:#231f31ed;border:1px solid #c1a57599;border-radius:4px;color:#edd49c;font-size:10px;font-weight:850;padding:9px 12px}#casinoWait{position:absolute;left:50%;top:118px;transform:translateX(-50%);width:max-content;max-width:75vw;padding:11px 15px;border:1px solid #b49b6b;border-radius:5px;background:#1b2436ee;color:#e9d8b4;text-align:center;font-size:11px}#casinoWait strong{display:block;margin-bottom:5px}#casinoWait button{pointer-events:auto;border:0;background:transparent;color:#d3b780;text-decoration:underline;font-size:10px;padding:7px 5px 0}#ui.incasino #fire,#ui.incasino #weaponHud,#ui.incasino .perkbar,#ui.incasino #sodaPerks,#ui.incasino #openBox,#ui.incasino #openPunch,#ui.incasino #sodaButton,#ui.incasino #enter,#ui.incasino #poolButton{display:none!important}#ui.casinogame>:not(#sessionEnded){visibility:hidden!important}#casinoPanel{position:fixed;inset:0;z-index:23;pointer-events:none;color:#f3e6cc;font-family:Inter,system-ui,sans-serif}#casinoPanel button{pointer-events:auto;touch-action:none;border:1px solid #bba78366;border-radius:5px;background:#1a2a38;color:#ead9b6;min-height:39px;font-size:11px;font-weight:850;padding:7px 11px}#casinoPanel button:disabled{opacity:.4}#casinoPanel button:focus-visible{outline:2px solid #b5dd99;outline-offset:2px}.casino-game-header{position:absolute;inset:0 0 auto;height:64px;display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 16px;background:#111b2aeb;border-bottom:1px solid #b79c694d}.casino-game-header>div:last-child{display:flex;align-items:center;gap:12px}.casino-game-header small{display:block;font-size:8px;letter-spacing:.2em;color:#c7ad87}.casino-game-header strong{display:block;font:900 22px Georgia,serif;letter-spacing:.05em}.casino-game-header b{color:#efd59c;font-size:12px}.casino-game-footer{position:absolute;bottom:12px;left:16px;right:16px;display:grid;grid-template-columns:1fr minmax(165px,230px);gap:8px 18px;padding:12px 15px;border:1px solid #a18c6966;border-radius:7px;background:#111d2cef;min-height:118px}.casino-game-footer>strong{font-size:12px;letter-spacing:.05em;color:#ead09b;grid-column:1/-1}.casino-game-footer>span{grid-column:1/-1;font-size:10px;color:#b8c8bd}.casino-wagers{display:flex;align-items:center;gap:6px;flex-wrap:wrap}.casino-wagers>span{font-size:9px;letter-spacing:.06em;color:#b8b9a5}.casino-wagers small{font-size:8px;color:#a9b6ac}.casino-wagers button{min-width:34px;padding:6px!important}.casino-wagers button.selected{border-color:#d5c18c!important;background:#79634e!important;color:#fff4cf!important}#casinoPlay{background:#d5b875!important;color:#1b2932!important;border-color:#f3d895!important;letter-spacing:.06em}.casino-game-footer>small{grid-column:1/-1;font-size:8px;color:#94aaa1;text-align:center}.casino-horse-picks{position:absolute;left:50%;top:100px;bottom:180px;transform:translateX(-50%);width:min(720px,calc(100vw - 32px));display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:center}.casino-bet-heading{grid-column:1/-1;text-align:center;margin-bottom:8px}.casino-bet-heading strong{display:block;font:900 22px Georgia;color:#e8cea2}.casino-bet-heading span{display:block;font-size:10px;color:#a8bfb6;margin-top:6px}.casino-horse-picks button{display:flex;align-items:center;gap:12px;padding:15px!important;background:#1c2b3de8!important;text-align:left;min-height:70px!important}.casino-horse-picks button.selected{border:2px solid #e1c486!important;background:#374b49f2!important}.casino-horse-picks i{font-style:normal;display:grid;place-items:center;flex:0 0 auto;width:33px;height:33px;border-radius:50%;color:#172b35;font:900 15px Georgia}.casino-horse-picks b{font-size:12px;letter-spacing:.03em}#casinoPanel.raceview .casino-game-footer{min-height:77px}#casinoPanel.raceview #casinoGameHint{display:none}
+@media(max-width:540px){.casino-game-header{padding:9px 12px;gap:8px}.casino-game-header strong{font-size:17px}.casino-game-header>div:last-child{gap:8px}.casino-game-header b{font-size:10px}.casino-game-footer{left:12px;right:12px;bottom:12px;padding:11px 12px;gap:7px 10px;grid-template-columns:1fr 132px}.casino-game-footer>strong{font-size:11px}.casino-game-footer>span{font-size:9px}.casino-wagers{gap:4px}.casino-wagers>span{display:none}.casino-wagers button{min-width:29px!important;font-size:10px!important}#casinoPanel button{font-size:10px;padding:7px 9px}.casino-horse-picks{gap:8px}.casino-horse-picks button{gap:8px;padding:13px 10px!important;min-height:78px!important}.casino-horse-picks b{font-size:9px;line-height:1.4}.casino-horse-picks i{width:27px;height:27px;font-size:13px}.casino-bet-heading strong{font-size:20px}.casino-bet-heading span{font-size:9px}}
+@media(max-height:500px){.casino-game-header{height:56px;padding-top:5px;padding-bottom:5px}.casino-game-header small{display:none}.casino-game-header strong{font-size:19px}.casino-game-footer{bottom:8px;min-height:74px;padding:8px 12px;grid-template-columns:1fr 240px 165px;gap:5px 12px}.casino-game-footer>strong{grid-column:1}.casino-game-footer>span{grid-column:1;grid-row:2}.casino-wagers{grid-column:2;grid-row:1/3;flex-wrap:nowrap}#casinoPlay{grid-column:3;grid-row:1/3}#casinoGameHint{display:none}.casino-horse-picks{top:65px;bottom:94px;grid-template-columns:repeat(3,1fr);gap:6px 10px}.casino-bet-heading{margin:0}.casino-bet-heading strong{font-size:16px}.casino-bet-heading span{font-size:8px;margin-top:3px}.casino-horse-picks button{padding:8px 11px!important;min-height:42px!important}.casino-horse-picks b{font-size:10px}.casino-horse-picks i{width:26px;height:26px;font-size:12px}#casinoPanel.raceview .casino-game-footer{min-height:68px}.casino-game-footer>strong{font-size:10px}.casino-game-footer>span{font-size:9px}}
+#casinoPanel.raceview .casino-game-footer>strong,#casinoPanel.raceview .casino-game-footer>span{grid-column:1/-1}
+@media(max-height:500px) and (max-width:540px){.casino-game-footer{grid-template-columns:1fr 130px;gap:4px 8px}.casino-game-footer>strong{grid-column:1/-1}.casino-game-footer>span{grid-column:1/-1;grid-row:auto}.casino-wagers{grid-column:1;grid-row:auto}#casinoPlay{grid-column:2;grid-row:auto}.casino-wagers button{min-width:25px!important}.casino-horse-picks b{font-size:8px}.casino-horse-picks button{padding:6px!important;gap:5px}.casino-horse-picks i{width:23px;height:23px;font-size:11px}}
+
 </style>
 </head>
 <body>
@@ -81,7 +87,7 @@
  <div class="lobby-shell">
   <header class="lobby-header">
    <div class="signal-brand"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 30 9v16l-13 7L4 25V9Z"/><path d="M17 8v8l7 4m-7-4-7 4M17 16v10"/><circle cx="17" cy="17" r="4"/></svg><span>AFTERFALL<span class="signal-division">SURVIVAL PROTOCOL</span></span></div>
-   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V8.6</span></div>
+   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V8.7</span></div>
   </header>
   <main class="lobby-main">
    <section class="outbreak-cover" aria-labelledby="gameTitle">
@@ -114,7 +120,7 @@
   <path d="M155 88v77l72-34V54Z" fill="url(#dl-windows)" transform="matrix(1 0 0 1 0 0)"/><path d="m249 132 78 34V88l-78 35Z" fill="url(#dl-darkwindows)"/>
   <path d="m256 181 81-38 110 49-81 39Z" fill="#303d37"/><path d="M256 181V67l81-38v114Z" fill="#3e4f46"/><path d="m337 29 110 49v114l-110-49Z" fill="#283b35"/>
   <path d="m256 67 81-38 110 49-81 39Z" fill="#627162"/><path d="m268 66 68-31 92 42-64 31Z" fill="#3a4c43"/>
-  <path d="m265 78 62-29v86l-62 29Z" fill="url(#dl-darkwindows)"/><path d="m348 151 89 39V89l-89 40Z" fill="url(#dl-windows)"/>
+  <path d="m265 78 62-29v87l-62 29Z" fill="url(#dl-darkwindows)"/><path d="m348 151 89 39V89l-89 40Z" fill="url(#dl-windows)"/>
   <path d="m73 199 70-32 84 37-71 34Z" fill="#24342e"/><path d="M73 199V139l70-32v60Z" fill="#35473f"/><path d="m143 107 84 38v59l-84-37Z" fill="#213831"/><path d="m73 139 70-32 84 38-71 33Z" fill="#526054"/>
   <path d="m82 147 49-23v37l-49 23Z" fill="url(#dl-darkwindows)"/>
   <path d="m522 184 68-33 77 35v40l-77-35-68 33Z" fill="#3d4035"/>
@@ -181,7 +187,7 @@
     <button class="mainbtn secondary hidden" id="resumeRoom" type="button">VOLVER A LA PARTIDA</button>
     <div id="error" class="error" role="status" aria-live="polite"></div>
     <div class="entry-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 4-4 3 4-2 3c2 3 3 4 6 5l3-2 3 3-4 4C12 21 3 12 5 8Z"/></svg><p><strong>EL TELÉFONO ESTÁ SONANDO.</strong><span>Explora mientras llega P2. Cuando ambos se acerquen a pie al teléfono, comenzarán las hordas.</span></p></div>
-    <details class="field-guide"><summary>MANUAL DE SUPERVIVENCIA<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección del disparo. Los botones de interacción aparecen al acercarte.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · F: caja · R: Pack-a-Punch · Q: soda o lápida · G: monito · Enter: chat.</p><p><b>SUMINISTROS</b>Maletines personales. Caja: 4 · Sodas: 6 · Mejoras I / II: 6 / 10. Tres chalecos por ronda, en calles aleatorias. Los maletines aparecen al empezar las hordas.</p><p><b>CRUZAR EL PERÍMETRO</b>Tras DESTRUCTOR, reúnanse vivos y a pie en la salida sur. El equipo viaja con ustedes a Zona Cero. La partida sigue mientras uno permanezca dentro. Ambos necesitan la versión 8.6.</p></div></details>
+    <details class="field-guide"><summary>MANUAL DE SUPERVIVENCIA<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m5 8 5 5 5-5"/></svg></summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección del disparo. Los botones de interacción aparecen al acercarte.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · F: caja · R: Pack-a-Punch · Q: soda o lápida · G: monito · Enter: chat.</p><p><b>SUMINISTROS</b>Maletines personales. Caja: 4 · Sodas: 8 · Mejoras I / II: 8 / 12. Tres chalecos por ronda, en calles aleatorias. Los maletines aparecen al empezar las hordas.</p><p><b>CRUZAR EL PERÍMETRO</b>Tras DESTRUCTOR, reúnanse vivos y a pie en la salida sur. El equipo viaja con ustedes a Zona Cero. La partida sigue mientras uno permanezca dentro. Ambos necesitan la versión 8.7.</p></div></details>
    </section>
   </main>
   <footer class="lobby-footer">
@@ -199,9 +205,10 @@
   <div id="waitMask" class="waitmask hidden"><div class="waitpanel"><div class="waittag">DEADLOCK // AFTERFALL</div><h2>ESPERANDO AL<br>SEGUNDO JUGADOR</h2><p>Recuperando la señal y sincronizando el mundo con tu compañero…</p><strong id="waitCode">------</strong><button id="waitCopy" type="button">COPIAR INVITACIÓN</button></div></div>
   <div id="offer" class="hidden"><strong id="offerText"></strong><button id="accept">Cambiar arma</button><button id="decline">Conservar la mía</button></div><div id="boxPrompt" class="hidden"></div>
   <div id="victory" class="waitmask hidden"><div class="waitpanel"><div class="waittag">DOS DISTRITOS ASEGURADOS</div><h2>16 HORDAS.<br>UN SOLO EQUIPO.</h2><p id="victoryStats"></p><button id="restart" type="button">JUGAR OTRA VEZ</button></div></div>
-  <div class="controls"><div class="stick" id="stick"><div id="knob" class="knob"></div></div><div class="rightcontrols"><div class="utilitycolumn"><button class="act small hidden" id="poolButton" type="button" aria-label="Jugar billar de bola 8"><span><span id="poolButtonLabel">BILLAR</span><small id="poolButtonSub">BOLA 8</small></span></button><button class="act small hidden" id="sodaButton" type="button" aria-label="Comprar soda por 6 maletines" title="Soda o lápida · Q"><span><span id="sodaAction">SODA</span><small id="sodaCost">6 MAL.</small></span></button><button class="act small hidden" id="openPunch" type="button" aria-label="Mejorar arma en Pack-a-Punch" title="Pack-a-Punch · R"><span><span id="punchAction">MEJORAR I</span><small id="punchCost">6 MAL.</small></span></button><button class="act small hidden" id="openBox" type="button" aria-label="Abrir caja por 4 maletines" title="Caja · 4 maletines · F"><span>CAJA<small>4 MAL.</small></span></button><button class="act small" id="enter">AUTO</button></div><div class="stick" id="fire" aria-label="Joystick de disparo"><div class="knob" id="aimKnob"></div></div></div></div>
+  <div class="controls"><div class="stick" id="stick"><div id="knob" class="knob"></div></div><div class="rightcontrols"><div class="utilitycolumn"><button class="act small hidden" id="casinoDoor" type="button" aria-label="Entrar al casino por 3 maletines"><span>CASINO<small>3 MAL.</small></span></button><button class="act small hidden" id="casinoUse" type="button"><span id="casinoUseLabel">JUGAR</span><small id="casinoUseSub">CASINO</small></button><button class="act small hidden" id="rayBuy" type="button" aria-label="Comprar Ray Gun por 100 maletines"><span>RAY GUN<small>100 MAL.</small></span></button><button class="act small hidden" id="poolButton" type="button" aria-label="Jugar billar de bola 8"><span><span id="poolButtonLabel">BILLAR</span><small id="poolButtonSub">BOLA 8</small></span></button><button class="act small hidden" id="sodaButton" type="button" aria-label="Comprar soda por 8 maletines" title="Soda o lápida · Q"><span><span id="sodaAction">SODA</span><small id="sodaCost">8 MAL.</small></span></button><button class="act small hidden" id="openPunch" type="button" aria-label="Mejorar arma en Pack-a-Punch" title="Pack-a-Punch · R"><span><span id="punchAction">MEJORAR I</span><small id="punchCost">8 MAL.</small></span></button><button class="act small hidden" id="openBox" type="button" aria-label="Abrir caja por 4 maletines" title="Caja · 4 maletines · F"><span>CAJA<small>4 MAL.</small></span></button><button class="act small" id="enter">AUTO</button></div><div class="stick" id="fire" aria-label="Joystick de disparo"><div class="knob" id="aimKnob"></div></div></div></div>
   <div class="perkbar"><button class="act small hidden" id="monkeyBtn" aria-label="Colocar monito">MONITO</button><button class="act small hidden" id="boomBtn" aria-label="Activar K-BOOM">K-BOOM</button></div>
   <div id="poolWaiting" class="hidden"><strong>ESPERANDO AL OTRO JUGADOR</strong><span id="poolWaitingText"></span><br><button id="poolCancel" type="button">CANCELAR ESPERA</button></div>
+  <button id="casinoExit" class="hidden" type="button">SALIR DEL CASINO ↗</button><div id="casinoWait" class="hidden"><strong>ESPERANDO AL OTRO JUGADOR</strong>Ambos deben acercarse a la TV.<br><button id="casinoWaitCancel" type="button">CANCELAR</button></div>
   <div id="weaponHud"><strong id="weaponName">PISTOLA</strong><small id="ammo">MUNICIÓN: 55</small></div>
 </div>
 <div id="poolPanel" class="hidden" role="region" aria-label="Billar de bola 8 para dos jugadores">
@@ -212,12 +219,20 @@
  <footer class="pool-footer"><div class="pool-turn"><strong id="poolTurn">TURNO DE P1</strong><span id="poolMessage">Toca la mesa para apuntar.</span></div><div class="pool-power"><label for="poolPower">POTENCIA <output id="poolPowerValue">90%</output></label><input id="poolPower" type="range" min="5" max="100" step="1" value="90" aria-label="Potencia del tiro"></div><div class="pool-shot-row"><button id="poolAimLeft" type="button" aria-label="Ajustar puntería a la izquierda">↶</button><button id="poolShoot" type="button">TIRAR</button><button id="poolAimRight" type="button" aria-label="Ajustar puntería a la derecha">↷</button></div><span id="poolHelp">Toca para apuntar · ajusta la potencia · tira</span></footer>
 </div>
 
+<section id="casinoPanel" class="hidden" aria-label="Juegos del casino">
+ <header class="casino-game-header"><div><small>VIOLET VAULT</small><strong id="casinoGameTitle">LUCKY 1</strong></div><div><b id="casinoBalance">00 MAL.</b><button id="casinoBack" type="button">SALA ↗</button></div></header>
+ <div id="casinoHorsePicks" class="casino-horse-picks hidden"><div class="casino-bet-heading"><strong>ELIGE TU CABALLO</strong><span>6 corredores · premio 5× · incluye la apuesta</span></div>
+ <button id="casinoHorse0" type="button" data-horse="0"><i style="background:#e36c65">1</i><b>FURIA ROJA</b></button><button id="casinoHorse1" type="button" data-horse="1"><i style="background:#6db3e4">2</i><b>RAYO AZUL</b></button><button id="casinoHorse2" type="button" data-horse="2"><i style="background:#6dba8e">3</i><b>ESMERALDA</b></button><button id="casinoHorse3" type="button" data-horse="3"><i style="background:#e6c269">4</i><b>SOL DORADO</b></button><button id="casinoHorse4" type="button" data-horse="4"><i style="background:#b397dd">5</i><b>SOMBRA VIOLETA</b></button><button id="casinoHorse5" type="button" data-horse="5"><i style="background:#e4e4ce">6</i><b>NIEVE</b></button>
+ </div>
+ <footer class="casino-game-footer"><strong id="casinoGameMessage">ELIGE TU APUESTA</strong><span id="casinoTicket"></span><div id="casinoWagers" class="casino-wagers"><span>APUESTA</span><button id="casinoBet1" type="button" data-stake="1">1</button><button id="casinoBet2" type="button" data-stake="2">2</button><button id="casinoBet5" type="button" data-stake="5">5</button><button id="casinoBet10" type="button" data-stake="10">10</button><small>MAL.</small></div><button id="casinoPlay" type="button">GIRAR · 2 MAL.</button><small id="casinoGameHint">Los premios incluyen la apuesta. Cada tirada es independiente.</small></footer>
+</section>
+
 <script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.5/dist/peerjs.min.js"></script>
 <script>
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=8.6,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=8.7,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 const CAR_MAX_SPEED=480,CAR_ACCELERATION=780,CAR_BRAKING=800;
 const TOTAL_WAVES=16,BOX_COST=4,boxSpot={x:CITY_W/2,y:H/2};
 const phoneSpot={kind:'phone',x:440,y:350,height:104,angle:Math.PI/4,bounds:{x:421,y:336,w:38,h:28}};
@@ -226,11 +241,11 @@ const HEAVY_AIM_DELAY=.22,PUNCH_SECONDS=4,PUNCH_RANGE=112,AMMO_DROP_CHANCE=.22,A
 const COAST_ROAD_END=32,COAST_RAIL_HEIGHT=29;
 const upgradeTiers=[
  {name:'SIN MODIFICACIÓN',mark:'',cost:0,damage:1,color:null,pitch:1},
- {name:'MODIFICACIÓN I',mark:'I',cost:6,damage:2,color:'#59f4dc',pitch:1},
- {name:'MODIFICACIÓN II',mark:'II',cost:10,damage:3.5,color:'#db85ff',pitch:1.42}
+ {name:'MODIFICACIÓN I',mark:'I',cost:8,damage:2,color:'#59f4dc',pitch:1},
+ {name:'MODIFICACIÓN II',mark:'II',cost:12,damage:3.5,color:'#db85ff',pitch:1.42}
 ];
 const weaponUpgrade=p=>cap(Number(p?.upgrade)||0,0,2);
-const SODA_COST=6,SODA_RANGE=94;
+const SODA_COST=8,SODA_RANGE=94;
 const sodaKinds={
  vitality:{name:'Vida doble',color:'#d15a4a',short:'VIDA',effect:'VIDA MÁXIMA 200'},
  double:{name:'Doble disparo',color:'#d59b3c',short:'DOBLE',effect:'2 PROYECTILES POR DISPARO'},
@@ -244,6 +259,7 @@ const punchOwns=index=>state.punch.phase!=='idle'&&state.punch.owner===index;
 function weaponLabel(p){return p.weapon?weapons[p.weapon].name+' · '+upgradeTiers[weaponUpgrade(p)].name:'SIN ARMA';}
 const waveCounts=[4,7,10,14,18,18,18,18],eliteCounts=[0,0,0,0,5,9,13,18];
 const weapons={
+ raygun:{name:'RAY GUN',ammo:24,refill:6,rate:.48,speed:720,life:1.2,damage:10000,shots:1,spread:0,splash:110,color:'#8aff78'},
  pistol:{name:'PISTOLA',ammo:55,refill:35,rate:.24,speed:850,life:.78,damage:1,shots:1,spread:.04,color:'#e0c077'},
  smg:{name:'SUBFUSIL',ammo:150,refill:65,rate:.085,speed:920,life:.72,damage:1,shots:1,spread:.10,color:'#d1ddda'},
  shotgun:{name:'ESCOPETA',ammo:36,refill:14,rate:.66,speed:740,life:.48,damage:1.2,shots:7,spread:.12,color:'#eca465'},
@@ -271,13 +287,13 @@ function makeBuildings(){
   for(const [x,y,bw,bh] of parcels){
    const kind=(id*7+i*3+j)%8;
    const floors=kind===0||kind===4?3+(id+j)%2:5+(id*3+i+j)%5;
-   buildings.push({id:id++,x,y,w:bw,h:bh,floors,height:floors*24,palette:(i*5+j+id)%5,kind});
+   buildings.push({id:id++,x,y,w:bw,h:bh,floors,height:i===0&&j===4?76:floors*24,palette:(i*5+j+id)%5,kind,casino:i===0&&j===4});
   }
  }
 }makeBuildings();
 const cap=(v,a,b)=>Math.max(a,Math.min(b,v)),distance=(a,b)=>Math.hypot(a.x-b.x,a.y-b.y),rads=(x,y)=>Math.atan2(y,x);
 const hash=(a,b)=>((Math.sin(a*127.1+b*311.7)*43758.5453)%1+1)%1;
-const makePlayer=(x,y,i)=>({x,y,face:0,moveFace:0,aimFace:null,moving:false,walk:0,car:null,role:null,health:100,armor:0,perks:freshPerks(),life:0,drinkKind:null,drinkUntil:0,kboom:false,monkeys:0,weapon:'pistol',upgrade:0,ammo:55,wallet:0,count:0,kills:0,shotAt:-10,triggerAt:-1,triggerWeapon:null,hitAt:-10,stepAt:-10,stepIndex:i,downUntil:0,idx:i,present:true});
+const makePlayer=(x,y,i)=>({x,y,face:0,moveFace:0,aimFace:null,moving:false,walk:0,car:null,role:null,health:100,armor:0,perks:freshPerks(),life:0,drinkKind:null,drinkUntil:0,kboom:false,monkeys:0,casino:null,areaSerial:0,weapon:'pistol',upgrade:0,ammo:55,wallet:0,count:0,kills:0,shotAt:-10,triggerAt:-1,triggerWeapon:null,hitAt:-10,stepAt:-10,stepIndex:i,downUntil:0,idx:i,present:true});
 const scenery=[],coverSeeds=[];
 const coverTypes={bench:{w:48,d:16,height:33,hp:7},mailbox:{w:20,d:20,height:37,hp:9},bin:{w:24,d:24,height:31,hp:6}};
 let navigationReady=false;
@@ -437,7 +453,7 @@ function initialize(){
  state.cars=carSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],angle:a[2],color:a[3],speed:0,driver:null,passenger:null,crashAt:-10,skidAt:-10}));
  state.bags=bagSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],taken:true}));
  state.guns=gunSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],kind:a[2],taken:false}));
- state.pool=freshPool();state.enemies=[];state.bullets=[];state.fx=[];state.slimePools=[];state.ammoDrops=[];state.score=0;state.collected=0;state.done=false;state.time=0;state.wave=0;state.nextWaveAt=0;
+ state.casino=freshCasino();state.pool=freshPool();state.enemies=[];state.bullets=[];state.fx=[];state.slimePools=[];state.ammoDrops=[];state.score=0;state.collected=0;state.done=false;state.time=0;state.wave=0;state.nextWaveAt=0;
  state.box={phase:'idle',until:0,owner:-1,result:null,serial:0};
  state.punch=freshPunch();state.sodas=sodaStations.map(()=>freshSoda());state.graves=[];
  soundEvents=[];soundCooldowns.clear();refreshCoverNavigation();
@@ -446,7 +462,7 @@ let me=0,isHost=false,room='',peer=null,conn=null,connected=false,lastTime=perfo
 let keys={},onlineReady=false,lastGuestAt=0,viewBlend=null,carBlend=null;
 const input={x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false},guestInput={x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false},joystick={x:0,y:0};
 const PHONE_RADIUS=94,PHONE_SECONDS=2.65,BURN_SECONDS=1.8,BLOOD_SECONDS=20,BLOOD_LIMIT=48;
-function phoneCount(){return state.players.reduce((n,p)=>n+(p.present!==false&&p.car===null&&p.downUntil<=state.time&&distance(p,phoneSpot)<=PHONE_RADIUS?1:0),0);}
+function phoneCount(){return state.players.reduce((n,p)=>n+(p.present!==false&&!p.casino&&p.car===null&&p.downUntil<=state.time&&distance(p,phoneSpot)<=PHONE_RADIUS?1:0),0);}
 function updatePhone(){
  if(state.phase!=='phone')return;
  const call=state.phone;
@@ -457,7 +473,7 @@ function updatePhone(){
 }
 function randomVests(){
  // All three pickups are on dry asphalt, never on a lawn or sidewalk.
- const anchor=state.players.find(p=>p.present!==false&&p.downUntil<=state.time)||{x:spawnPoints[0][0],y:spawnPoints[0][1]},reachable=navFieldFor(anchor),previous=state.vests||[],pool=[];
+ const anchor=state.players.find(p=>p.present!==false&&!p.casino&&p.downUntil<=state.time)||{x:spawnPoints[0][0],y:spawnPoints[0][1]},reachable=navFieldFor(anchor),previous=state.vests||[],pool=[];
  for(let cell=0;cell<navPassable.length;cell++){
   if(!navPassable[cell]||reachable[cell]<0)continue;
   const p={x:(cell%navCols+.5)*navSize,y:(Math.floor(cell/navCols)+.5)*navSize};
@@ -607,6 +623,39 @@ const Sound=(()=>{
   build('tomb-recover',.9,t=>{const f=[392,523,659,1046][Math.min(3,Math.floor(t/.2))];return (Math.sin(TAU*f*t)*.18+Math.sin(TAU*f*2*t)*.04)*Math.exp(-(t%.2)*11)*Math.min(1,(.9-t)*10);});
   noiseSeed=savedSeed;
  }
+ function buildCasinoSounds(){
+  const savedSeed=noiseSeed;
+  build('raygun',.44,(t,n,lo)=>{const phase=TAU*(235*t+1190*(1-Math.exp(-t*12))/12);return (Math.sin(phase)*.51+Math.sin(phase*2.01)*.09+Math.sin(phase*.5)*.08)*Math.exp(-t*7)*Math.min(1,t*170)+lo*.035*Math.exp(-t*18);});
+  build('raygun-laser',.4,(t,n,lo)=>{const phase=TAU*(350*t+1550*(1-Math.exp(-t*15))/15);return (Math.sin(phase)*.5+Math.sin(phase*2)*.12)*Math.exp(-t*8)*Math.min(1,t*200);});
+  build('raygun-blast',.52,(t,n,lo)=>(lo*.6+Math.sin(TAU*(80*t-35*t*t))*.3)*Math.exp(-t*9)+Math.sin(TAU*(910*t-500*t*t))*.12*Math.exp(-t*18));
+  build('raygun-buy',.92,t=>{const notes=[392,523,659,1046],f=notes[Math.min(3,Math.floor(t/.2))];return (Math.sin(TAU*f*t)*.22+Math.sin(TAU*f*2*t)*.04)*Math.exp(-(t%.2)*10)*Math.min(1,(.92-t)*9);});
+  build('casino-door',.48,(t,n,lo)=>Math.sin(TAU*(430*t+140*t*t))*.1*Math.sin(Math.PI*t/.48)+lo*.17*Math.exp(-t*12));
+  build('casino-coin',.2,(t,n)=>Math.sin(TAU*2380*t)*.18*Math.exp(-t*23)+Math.sin(TAU*3530*t)*.08*Math.exp(-t*31));
+  build('casino-spin',.7,(t,n,lo)=>{const beat=t%.07;return (n*.13+Math.sin(TAU*178*t)*.1)*Math.exp(-beat*55)*Math.min(1,(.7-t)*8);});
+  build('casino-reel',.16,(t,n,lo)=>(Math.sin(TAU*280*t)*.18+lo*.36)*Math.exp(-t*34)+n*.05*Math.exp(-t*65));
+  build('casino-smallwin',.56,t=>{const f=t<.18?659:880;return Math.sin(TAU*f*t)*.17*Math.exp(-(t%.18)*12)*Math.min(1,(.56-t)*9);});
+  build('casino-win',1.5,t=>{const local=t%.19,f=[523,659,784,1046,1175,1318,1568][Math.min(6,Math.floor(t/.19))];return (Math.sin(TAU*f*t)*.19+Math.sin(TAU*f*2*t)*.025)*Math.exp(-local*9)*Math.min(1,(1.5-t)*7);});
+  build('casino-lose',.4,t=>Math.sin(TAU*(220*t-75*t*t))*.07*Math.sin(Math.PI*t/.4));
+  build('casino-race-call',1.2,t=>{const f=[392,523,659,784][Math.min(3,Math.floor(t/.26))];return (Math.sin(TAU*f*t)*.18+Math.sin(TAU*f*2*t)*.04)*Math.exp(-(t%.26)*8)*Math.min(1,(1.2-t)*6);});
+  build('casino-countdown',2.9,t=>Math.sin(TAU*680*t)*.12*Math.exp(-(t%1)*20));
+  build('casino-race-start',.7,(t,n,lo)=>(Math.sin(TAU*392*t)*.2+Math.sin(TAU*523*t)*.11+lo*.03)*Math.sin(Math.PI*t/.7));
+  build('casino-race-finish',1.3,t=>{const f=[523,659,784,1046][Math.min(3,Math.floor(t/.25))];return Math.sin(TAU*f*t)*.15*Math.exp(-(t%.25)*7)*Math.min(1,(1.3-t)*6);});
+  build('casino-music',8,(t,n,lo)=>{
+   const beat=t%.5,chord=[130.81,155.56,196,233.08][Math.floor(t/2)%4],bass=Math.sin(TAU*chord*.5*t)*.105*Math.exp(-beat*6),note=[523.25,622.25,783.99,698.46,622.25,523.25,466.16,392][Math.floor(t*2)%8];
+   return bass+(Math.sin(TAU*note*t)*.055+Math.sin(TAU*note*2*t)*.012)*Math.exp(-beat*10)+n*.014*Math.exp(-(t%.25)*55)+Math.sin(TAU*chord*t)*.028;
+  });
+  build('casino-race-loop',3,(t,n,lo)=>{let hooves=0;for(let k=0;k<3;k++){const pulse=(t+k*.073)%.31;hooves+=(lo*.18+Math.sin(TAU*(95*pulse-120*pulse*pulse))*.13)*Math.exp(-pulse*36);}return hooves+lo*.08+n*.018;});
+  for(const name of ['casino-music','casino-race-loop']){const buffer=buffers.get(name),d=buffer.getChannelData(0),length=Math.floor(SR*.1);for(let n=0;n<length;n++){const u=n/length,i=d.length-length+n;d[i]=d[i]*(1-u)+d[n]*u;}}
+  noiseSeed=savedSeed;
+ }
+ let casinoVoice=null;
+ function stopCasinoAudio(){if(!casinoVoice)return;try{casinoVoice.source.stop();}catch(err){}casinoVoice.source.disconnect();casinoVoice.gain.disconnect();casinoVoice=null;}
+ function updateCasinoAudio(){
+  if(!ready||muted||document.hidden||ac.state!=='running'){stopCasinoAudio();return;}
+  const race=state.players[me].casino?.activity==='horse'&&state.casino.horse.phase==='racing',kind=race?'casino-race-loop':'casino-music';
+  if(casinoVoice?.kind!==kind){stopCasinoAudio();const source=ac.createBufferSource(),gain=ac.createGain();source.buffer=buffers.get(kind);source.loop=true;gain.gain.value=race?.54:.42;source.connect(gain);gain.connect(master);source.start();casinoVoice={source,gain,kind};}
+ }
+
  function buildPoolSounds(){
   const savedSeed=noiseSeed;
   build('pool-cue',.15,(t,n,lo)=>(Math.sin(TAU*310*t)*.32+lo*.22+n*.07)*Math.exp(-t*43));
@@ -740,7 +789,7 @@ const Sound=(()=>{
   build('engine',1,(t,n,lo)=>{
    const p=t*42,cycle=p-Math.floor(p);return Math.sin(TAU*p)*.27+Math.sin(TAU*84*t)*.13+Math.sin(TAU*126*t)*.07+Math.exp(-cycle*11)*.22+lo*.2;
   });
-  buildLaserWeapons();buildSodaEffects();buildWarEffects();buildAtmosphereExtras();buildRuinDetailSounds();buildPoolSounds();
+  buildLaserWeapons();buildSodaEffects();buildWarEffects();buildAtmosphereExtras();buildRuinDetailSounds();buildPoolSounds();buildCasinoSounds();
  }
  function stopEngines(){for(const voice of engines.values()){try{voice.source.stop();}catch(err){}voice.source.disconnect();voice.gain.disconnect();if(voice.pan)voice.pan.disconnect();voice.filter.disconnect();}engines.clear();}
  function stopEffects(){for(const source of active){try{source.stop();}catch(err){}}active.clear();}
@@ -764,10 +813,10 @@ const Sound=(()=>{
   const offset=projectPoint({x:x-p.x,y:y-p.y});
   return {gain:Math.max(0,1-d/1000)**1.5,pan:cap(offset.x/520,-.8,.8)};
  }
- const volume={'pool-cue':.52,'pool-ball':.45,'pool-cushion':.33,'pool-pocket':.56,'pool-win':.62,'zombie-spit-charge':.62,'zombie-spit':.73,'slime-impact':.55,'ruins-pa':.44,'ruins-metal':.28,'ruins-jukebox':.32,'wave-bell':.85,'phone-ring':.68,'phone-pickup':.5,'phone-voice':.8,'phone-hangup':.6,'night-dread-howl':.58,'zombie-dog-bark-0':.6,'zombie-dog-bark-1':.6,'zombie-groan-0':.45,'zombie-groan-1':.43,'zombie-groan-2':.48,'zombie-drag':.27,'zombie-hit':.55,'zombie-dog-growl':.45,'zombie-dog-bite':.6,'zombie-dog-howl':.46,'zombie-dog-death':.48,'zombie-boss-roar':.75,'zombie-boss-groan':.62,'zombie-boss-step':.58,'zombie-boss-hit':.72,'zombie-boss-death':.75,'lava-burn':.3,'district-clear':.7,'district-enter':.68,'soda-coin':.48,'soda-vend':.45,'soda-bottle':.58,'soda-drink':.5,'soda-perk-vitality':.62,'soda-perk-double':.62,'soda-perk-tomb':.62,'tomb-create':.55,'tomb-recover':.66,'punch-start':.65,'punch-work':.48,'punch-ready':.8,'punch-take':.65,'night-horn':.32,'night-siren':.30,'night-ambulance':.28,'night-dog':.34,'night-bell':.18,'robot-death':.62,step:.23,impact:.27,'enemy-shot':.56,'enemy-heavy':.65,death:.68,'death-heavy':.76,hurt:.43,down:.70,bag:.65,ammo:.48,skid:.26,'box-open':.58,'box-win':.70,'box-empty':.6,wave:.55,clear:.6,respawn:.45,victory:.7};
+ const volume={'raygun':.73,'raygun-blast':.7,'raygun-buy':.65,'casino-door':.45,'casino-coin':.48,'casino-spin':.45,'casino-reel':.44,'casino-smallwin':.52,'casino-win':.66,'casino-lose':.4,'casino-race-call':.57,'casino-countdown':.55,'casino-race-start':.64,'casino-race-finish':.64,'pool-cue':.52,'pool-ball':.45,'pool-cushion':.33,'pool-pocket':.56,'pool-win':.62,'zombie-spit-charge':.62,'zombie-spit':.73,'slime-impact':.55,'ruins-pa':.44,'ruins-metal':.28,'ruins-jukebox':.32,'wave-bell':.85,'phone-ring':.68,'phone-pickup':.5,'phone-voice':.8,'phone-hangup':.6,'night-dread-howl':.58,'zombie-dog-bark-0':.6,'zombie-dog-bark-1':.6,'zombie-groan-0':.45,'zombie-groan-1':.43,'zombie-groan-2':.48,'zombie-drag':.27,'zombie-hit':.55,'zombie-dog-growl':.45,'zombie-dog-bite':.6,'zombie-dog-howl':.46,'zombie-dog-death':.48,'zombie-boss-roar':.75,'zombie-boss-groan':.62,'zombie-boss-step':.58,'zombie-boss-hit':.72,'zombie-boss-death':.75,'lava-burn':.3,'district-clear':.7,'district-enter':.68,'soda-coin':.48,'soda-vend':.45,'soda-bottle':.58,'soda-drink':.5,'soda-perk-vitality':.62,'soda-perk-double':.62,'soda-perk-tomb':.62,'tomb-create':.55,'tomb-recover':.66,'punch-start':.65,'punch-work':.48,'punch-ready':.8,'punch-take':.65,'night-horn':.32,'night-siren':.30,'night-ambulance':.28,'night-dog':.34,'night-bell':.18,'robot-death':.62,step:.23,impact:.27,'enemy-shot':.56,'enemy-heavy':.65,death:.68,'death-heavy':.76,hurt:.43,down:.70,bag:.65,ammo:.48,skid:.26,'box-open':.58,'box-win':.70,'box-empty':.6,wave:.55,clear:.6,respawn:.45,victory:.7};
  function play(kind,x=null,y=null){
   if(!ready||muted||document.hidden||ac.state!=='running'||voices>=32)return;
-  const modified=/^(pistol|smg|shotgun|lmg|bazooka)-mod([12])$/.exec(kind),baseKind=modified?modified[1]:kind,tier=modified?upgradeTiers[Number(modified[2])]:upgradeTiers[0];
+  const modified=/^(pistol|smg|shotgun|lmg|bazooka|raygun)-mod([12])$/.exec(kind),baseKind=modified?modified[1]:kind,tier=modified?upgradeTiers[Number(modified[2])]:upgradeTiers[0];
   const buffer=buffers.get(modified?baseKind+'-laser':baseKind);if(!buffer)return;const place=spatial(x,y);if(place.gain<.025)return;
   const source=ac.createBufferSource(),gain=ac.createGain(),pan=typeof ac.createStereoPanner==='function'?ac.createStereoPanner():null,filter=kind.startsWith('night-')||kind.startsWith('ruins-')||kind==='phone-voice'?ac.createBiquadFilter():null;
   if(filter){const radio=kind==='phone-voice'||kind==='ruins-pa';filter.type=radio?'bandpass':'lowpass';filter.frequency.value=radio?830:1250;filter.Q.value=radio?.65:.5;}
@@ -776,6 +825,7 @@ const Sound=(()=>{
   source.effectKind=kind;voices++;active.add(source);source.onended=()=>{voices=Math.max(0,voices-1);active.delete(source);source.disconnect();gain.disconnect();if(pan)pan.disconnect();if(filter)filter.disconnect();};source.start();
  }
  function update(now){
+  if(state.players[me].casino){if(engines.size)stopEngines();stopLava();stopAmbience();updateCasinoAudio();return;}stopCasinoAudio();
   if(poolActive()){if(engines.size)stopEngines();stopLava();return;}
   if(!connected||state.done||muted||document.hidden){if(engines.size)stopEngines();stopAmbience();return;}
   if(!ready||ac.state!=='running'||now-lastEngineUpdate<60)return;lastEngineUpdate=now;updateAmbience();updateLavaAudio();
@@ -796,16 +846,16 @@ const Sound=(()=>{
    }
   }
  }
- function visibility(){if(document.hidden){stopEngines();stopEffects();stopAmbience();}else if(ac)unlock();applyVolume();}
+ function visibility(){if(document.hidden){stopCasinoAudio();stopEngines();stopEffects();stopAmbience();}else if(ac)unlock();applyVolume();}
  document.addEventListener('pointerdown',unlock,{capture:true,passive:true});document.addEventListener('keydown',unlock,{capture:true,passive:true});document.addEventListener('visibilitychange',visibility);
- return {play,update,unlock,stopEngines,stopEffects,stopKind,status:()=>({ready,muted,state:ac?ac.state:'locked',voices,engines:engines.size,ambience:!!ambience,lava:!!lavaVoice})};
+ return {play,update,unlock,stopEngines,stopEffects,stopKind,status:()=>({ready,muted,state:ac?ac.state:'locked',voices,engines:engines.size,ambience:!!ambience,lava:!!lavaVoice,casino:!!casinoVoice})};
 })();
 function worldSound(kind,x=null,y=null){
  // Pool impacts and footsteps; all firing/death events remain distinct.
  const gap=kind==='impact'?.055:kind==='hurt'?.12:0,last=soundCooldowns.get(kind)??-10;
  if(gap&&state.time-last<gap)return;soundCooldowns.set(kind,state.time);
  const event={id:++soundSequence,kind,x:x===null?null:Math.round(x),y:y===null?null:Math.round(y),at:state.time};
- soundEvents.push(event);if(soundEvents.length>48)soundEvents.shift();Sound.play(kind,x,y);
+ soundEvents.push(event);if(soundEvents.length>48)soundEvents.shift();if(!state.players[me].casino)Sound.play(kind,x,y);
 }
 
 // Broad phase collision: only check buildings in the actor's current grid cell.
@@ -864,6 +914,7 @@ function attachCar(index){
 }
 function emitBullet(x,y,angle,speed,life,damage,owner,enemy=false,splash=0,z=21,origin=null){
  speed*=.92;const upgrade=enemy?0:weaponUpgrade(origin),bullet={x,y,z,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life,damage,owner,enemy,splash,upgrade,color:upgradeTiers[upgrade].color};
+ if(origin?.weapon==='raygun'&&!enemy){bullet.ray=true;bullet.color=upgrade===2?'#c5ff74':upgrade?'#a7ff89':'#79f77d';}
  if(origin){bullet.startX=origin.x;bullet.startY=origin.y;}state.bullets.push(bullet);
 }
 function segmentBox(ax,ay,bx,by,b,pad=0){
@@ -895,9 +946,9 @@ function shoot(p,index){
  const pairs=p.perks.double?2:1;
  for(let pair=0;pair<pairs;pair++)for(let j=0;j<cfg.shots;j++){const side=pairs===2?(pair===0?-1:1):0,delta=(j-(cfg.shots-1)/2)*cfg.spread+(Math.random()-.5)*.045+side*.008;emitBullet(muzzle.x-Math.sin(angle)*side*1.5,muzzle.y+Math.cos(angle)*side*1.5,angle+delta,cfg.speed,cfg.life,cfg.damage*tier.damage,index,false,cfg.splash||0,muzzle.z,p);}
 }
-function closestPlayer(e){let p=null,dist=Infinity;for(const actor of state.players){if(actor.present===false||actor.downUntil>state.time)continue;const d=distance(actor,e);if(d<dist){dist=d;p=actor;}}return {p,dist};}
+function closestPlayer(e){let p=null,dist=Infinity;for(const actor of state.players){if(actor.present===false||actor.casino||actor.downUntil>state.time)continue;const d=distance(actor,e);if(d<dist){dist=d;p=actor;}}return {p,dist};}
 function hitPlayer(p,dmg,ignoreArmor=false){
- if(p.present===false||p.downUntil>state.time)return;const armorBeforeHit=p.armor,absorbed=ignoreArmor?0:Math.min(p.armor,dmg);p.armor-=absorbed;dmg-=absorbed;if(!dmg)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;worldSound(p.health>0?'hurt':'down',p.x,p.y);
+ if(p.present===false||p.casino||p.downUntil>state.time)return;const armorBeforeHit=p.armor,absorbed=ignoreArmor?0:Math.min(p.armor,dmg);p.armor-=absorbed;dmg-=absorbed;if(!dmg)return;p.health=Math.max(0,p.health-dmg);p.hitAt=state.time;worldSound(p.health>0?'hurt':'down',p.x,p.y);
  if(p.health>0)return;
  bankGrave(p,armorBeforeHit);p.perks=freshPerks();p.life++;p.drinkUntil=0;p.drinkKind=null;
  if(p.car!==null){const c=state.cars[p.car];if(p.role==='driver'){c.driver=c.passenger;c.passenger=null;if(c.driver!==null)state.players[c.driver].role='driver';}else c.passenger=null;c.speed=0;}
@@ -908,7 +959,8 @@ function damageEnemy(e,damage,owner){if(e.down)return;e.health=Math.max(0,e.heal
  if(state.raid&&(e.swat||e.dog)&&state.enemies.every(actor=>actor.down)){state.boomDrop={x:e.x,y:e.y};notify('K-BOOM EN EL SUELO · Recógelo a pie');}
  if(!e.boss&&Math.random()<.25)state.bags.push({x:e.x,y:e.y,id:state.bags.length,drop:true,taken:false});dropAmmo(e);worldSound(e.zombie&&e.boss?'zombie-boss-death':e.dog?'zombie-dog-death':e.boss||e.drone?'robot-death':(e.level===2?'death-heavy-':'death-')+((e.id||0)%3),e.x,e.y);}}
 function explode(b){
- worldSound('explosion',b.x,b.y);
+ worldSound(b.ray?'raygun-blast':'explosion',b.x,b.y);
+ if(b.ray){const owner=state.players[b.owner],d=owner?distance(b,owner):Infinity;if(d<b.splash&&sightClear(b,owner,0))hitPlayer(owner,66*(1-d/b.splash)*(owner.car===null?1:.45));}
  state.fx.push({x:b.x,y:b.y,life:.42,maxLife:.42,radius:b.splash,color:b.color||null});
  for(const p of state.cover){const d=distance(b,p);if(p.health>0&&d<b.splash&&sightClear(b,p,0))damageCover(p,(b.enemy?b.damage*.32:b.damage)*Math.max(.4,1-d/b.splash));}
  if(b.enemy){for(const p of state.players){const d=distance(b,p);if(d<b.splash&&sightClear(b,p,0))hitPlayer(p,b.damage*(1-d/b.splash)*(p.car===null?1:.45));}return;}
@@ -1160,12 +1212,14 @@ function activateBoom(p){
 }
 function tick(dt){
  if(!isHost||!connected||state.done)return;
- if(poolActive()){tickPool(dt);return;}updatePoolWaiting();
+ if(poolActive()){tickPool(dt);return;}updatePoolWaiting();updateCasino(dt);
+ if(casinoPaused()){for(let i=0;i<2;i++)if(state.players[i].casino)processCasinoPlayer(state.players[i],i===me?input:guestInput,dt);return;}
  state.time+=dt;updateSlimePools();updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();
  state.ammoDrops=state.ammoDrops.filter(drop=>drop.expiresAt>state.time);state.blood=state.blood.filter(stain=>stain.until>state.time);
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===me?input:guestInput;
   if(p.present===false){p.moving=false;continue;}
+  if(p.casino){processCasinoPlayer(p,inp,dt);continue;}
   p.aimFace=Number.isFinite(inp.aim)?inp.aim:null;p.moving=false;
   if(p.downUntil>0&&state.time>=p.downUntil){p.downUntil=0;p.health=playerMaxHealth(p);p.x=spawnPoints[i][0];p.y=spawnPoints[i][1];p.weapon=punchOwns(i)?null:'pistol';p.upgrade=0;p.ammo=p.weapon?55:0;p.triggerAt=-1;p.triggerWeapon=null;worldSound('respawn',p.x,p.y);}
   if(p.downUntil>state.time){triggerReady(p,{shoot:false});inp.boom=inp.monkey=inp.enter=inp.box=inp.punch=inp.soda=false;continue;}
@@ -1211,7 +1265,7 @@ function tick(dt){
    if(!canWalk(x,y,3,false,false)){remove=true;break;}
    const cover=coverAt(x,y,3);
    if(cover){damageCover(cover,b.slime?2:b.enemy?b.damage/8:b.damage);remove=true;break;}
-   if(b.enemy){for(const p of state.players)if(p.present!==false&&p.downUntil<=state.time&&distance(b,p)<(p.car===null?16:27)){if(!b.splash)hitPlayer(p,b.damage*(p.car===null?1:.45));remove=true;break;}}
+   if(b.enemy){for(const p of state.players)if(p.present!==false&&!p.casino&&p.downUntil<=state.time&&distance(b,p)<(p.car===null?16:27)){if(!b.splash)hitPlayer(p,b.damage*(p.car===null?1:.45));remove=true;break;}}
    else for(const e of state.enemies)if(!e.down&&!(e.landsAt>state.time)&&distance(b,e)<(e.boss?(e.zombie?49:37):e.dog?21:e.level===2?22:17)){if(!b.splash)damageEnemy(e,b.damage,b.owner);remove=true;break;}
    if(remove)break;
   }
@@ -1223,7 +1277,7 @@ function tick(dt){
 function setWaiting(wait){$('ui').classList.toggle('waiting',wait);$('waitMask').classList.toggle('hidden',!wait);}
 function start(){$('lobby').classList.add('hidden');$('ui').classList.remove('hidden');$('waitCode').textContent=room;setWaiting(!connected);resize();}
 function snapshot(){
- return {t:'s',v:VERSION,pool:structuredPool(),movement:{client:net.remoteClient,seq:motion.ack,used:motion.used},world:net.world,secret:net.secret,term:net.term,leader:net.leader,revision:++net.revision,seq:{enemy:enemySequence,ammo:ammoDropSerial,grave:graveSequence,monkey:monkeySerial,sound:soundSequence},mapId:state.mapId,phase:state.phase,travelAt:state.travelAt,arrivalUntil:state.arrivalUntil,phone:{...state.phone},blood:state.blood.map(stain=>({...stain})),slimePools:state.slimePools.map(pool=>({...pool})),cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,sodas:state.sodas.map(job=>({...job})),graves:state.graves.map(grave=>({...grave,inventory:{...grave.inventory,perks:{...grave.inventory.perks}}})),ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({field,...toy})=>({...toy})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
+ return {t:'s',v:VERSION,casino:structuredCasino(),pool:structuredPool(),movement:{client:net.remoteClient,seq:motion.ack,used:motion.used},world:net.world,secret:net.secret,term:net.term,leader:net.leader,revision:++net.revision,seq:{enemy:enemySequence,ammo:ammoDropSerial,grave:graveSequence,monkey:monkeySerial,sound:soundSequence},mapId:state.mapId,phase:state.phase,travelAt:state.travelAt,arrivalUntil:state.arrivalUntil,phone:{...state.phone},blood:state.blood.map(stain=>({...stain})),slimePools:state.slimePools.map(pool=>({...pool})),cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,sodas:state.sodas.map(job=>({...job})),graves:state.graves.map(grave=>({...grave,inventory:{...grave.inventory,perks:{...grave.inventory.perks}}})),ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({field,...toy})=>({...toy})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
 }
 function receive(s){
  if(s.v!==VERSION||!Array.isArray(s.p)||s.p.length!==2||!Array.isArray(s.c)||!Array.isArray(s.e)||!Array.isArray(s.b)||!Array.isArray(s.g))return;
@@ -1231,7 +1285,7 @@ function receive(s){
  const now=performance.now(),previous={...visualPlayer(me,now)};
  const previousCars=state.cars.map(car=>({...visualCar(car,now)})),previousPlayers=state.players.map((p,i)=>({...visualPlayer(i,now)}));
  const reset=(s.mapId===1?1:0)!==state.mapId||s.wave<state.wave||s.time+1e-5<state.time;
- if((s.mapId===1?1:0)!==state.mapId)configureMap(s.mapId);state.phase=s.phase||'combat';state.travelAt=s.travelAt||0;state.arrivalUntil=s.arrivalUntil||0;state.phone=s.phone||freshPhone();state.blood=s.blood||[];state.slimePools=s.slimePools||[];state.pool=s.pool||freshPool();
+ if((s.mapId===1?1:0)!==state.mapId)configureMap(s.mapId);state.phase=s.phase||'combat';state.travelAt=s.travelAt||0;state.arrivalUntil=s.arrivalUntil||0;state.phone=s.phone||freshPhone();state.blood=s.blood||[];state.slimePools=s.slimePools||[];state.pool=s.pool||freshPool();state.casino=s.casino||freshCasino();
  state.players=s.p;state.sodas=s.sodas||sodaStations.map(()=>freshSoda());state.graves=s.graves||[];state.ammoDrops=s.ammoDrops||[];state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
  if(Array.isArray(s.cover)&&s.cover.length===state.cover.length)for(let i=0;i<s.cover.length;i++){
   const values=s.cover[i];if(Array.isArray(values)&&Number.isFinite(values[0])&&Number.isFinite(values[1])){state.cover[i].health=cap(values[0],0,state.cover[i].hp);state.cover[i].hitAt=values[1];}
@@ -1243,9 +1297,9 @@ function receive(s){
  motion.carCorrection=null;
  if(!reset&&local.car!==null&&local.role==='driver'&&previous.car===local.car){const before=previousCars[local.car],after=state.cars[local.car];if(before&&after&&distance(before,after)<180)motion.carCorrection={id:after.id,dx:before.x-after.x,dy:before.y-after.y,angle:Math.atan2(Math.sin(before.angle-after.angle),Math.cos(before.angle-after.angle)),at:now};}
  carBlend=reset?null:{from:previousCars,players:previousPlayers,at:now};
- if(poolActive())receivePoolState();
+ if(poolActive())receivePoolState();receiveCasinoAudio();
  if(reset){Sound.stopEffects();Sound.stopEngines();}
- if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
+ if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(!state.players[me].casino&&s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
 }
 function blendRemotePosition(p,now){
  const b=motion.remoteBlend;if(!b||b.from.idx!==p.idx||b.from.car!==p.car)return p;
@@ -1282,6 +1336,7 @@ function visualPlayer(index,now){
 const motion={pending:[],queue:[],seq:0,sent:0,received:0,ack:0,used:0,credit:0,queued:false,remoteBlend:null,carCorrection:null};
 function resetMotion(){motion.pending=[];motion.queue=[];motion.seq=motion.sent=motion.received=motion.ack=motion.used=motion.credit=0;motion.queued=false;motion.remoteBlend=motion.carCorrection=null;}
 function movePlayerMotion(p,control,dt,audible=false){
+ if(p.casino){moveCasinoPlayer(p,control,dt);return;}
  let mx=cap(control.x,-1,1),my=cap(control.y,-1,1),mag=Math.hypot(mx,my);if(mag>1){mx/=mag;my/=mag;mag=1;}
  if(p.car!==null){
   const c=state.cars[p.car];if(!c)return;
@@ -1303,7 +1358,7 @@ function queueMovement(commands){
   if(!c||!Number.isInteger(c.n)||c.n<=motion.received||!Number.isFinite(c.dt)||c.dt<=0||c.dt>.051||!Number.isFinite(c.x)||!Number.isFinite(c.y))continue;
   if((c.context??0)!==state.pool.context){motion.received=motion.ack=c.n;motion.used=c.dt;motion.queue=[];continue;}
   if(motion.queue.length>=240)break;
-  motion.received=c.n;motion.queue.push({n:c.n,dt:c.dt,x:cap(c.x,-1,1),y:cap(c.y,-1,1),life:c.life,map:c.map,car:c.car,role:c.role,context:c.context??0,used:0});
+  motion.received=c.n;motion.queue.push({n:c.n,dt:c.dt,x:cap(c.x,-1,1),y:cap(c.y,-1,1),life:c.life,map:c.map,car:c.car,role:c.role,context:c.context??0,area:c.area??0,used:0});
  }
 }
 function consumeMovement(p,dt){
@@ -1314,7 +1369,7 @@ function consumeMovement(p,dt){
  let guard=0;
  while(motion.queue.length&&motion.credit>1e-7&&guard++<32){
   const c=motion.queue[0],step=Math.min(.025,c.dt-c.used,motion.credit);
-  if((c.context??0)===state.pool.context&&c.life===p.life&&c.map===state.mapId&&c.car===p.car&&c.role===p.role)movePlayerMotion(p,c,step,true);
+  if((c.context??0)===state.pool.context&&(c.area??0)===(p.areaSerial||0)&&c.life===p.life&&c.map===state.mapId&&c.car===p.car&&c.role===p.role)movePlayerMotion(p,c,step,true);
   c.used+=step;motion.credit-=step;motion.ack=c.n;motion.used=c.used;
   if(c.used+1e-7>=c.dt){motion.queue.shift();motion.used=c.dt;}
  }
@@ -1323,20 +1378,20 @@ function consumeMovement(p,dt){
 function reconcileMovement(s){
  const ack=s.movement;if(!ack||ack.client!==net.client){motion.pending=[];return;}
  motion.pending=motion.pending.filter(c=>c.n>ack.seq||c.n===ack.seq&&c.dt>(ack.used||0)+1e-7);
- const p=state.players[me];if(poolActive()||p.present===false||p.downUntil>state.time){motion.pending=[];return;}
+ const p=state.players[me];if(poolActive()||casinoFullscreen(p)||p.present===false||p.downUntil>state.time){motion.pending=[];return;}
  p.moving=false;
  for(const c of motion.pending){
-  if((c.context??0)!==state.pool.context||c.life!==p.life||c.map!==state.mapId||c.car!==p.car||c.role!==p.role)continue;
+  if((c.context??0)!==state.pool.context||(c.area??0)!==(p.areaSerial||0)||c.life!==p.life||c.map!==state.mapId||c.car!==p.car||c.role!==p.role)continue;
   let remaining=c.dt-(c.n===ack.seq?(ack.used||0):0);
   while(remaining>1e-7){const step=Math.min(.025,remaining);movePlayerMotion(p,c,step);remaining-=step;}
  }
 }
 
 // P1/P2 are permanent identities; isHost only says who currently simulates.
-const RESUME_KEY='ciudad-duo.resume.v86',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
+const RESUME_KEY='ciudad-duo.resume.v87',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
 const net={mode:'',world:'',secret:'',client:makeSessionId(),started:false,hasState:false,ended:false,localActive:!document.hidden,remoteActive:false,remoteAway:false,leader:0,term:0,revision:0,lastRevision:-1,lastPacket:0,lastWorld:0,lastHello:0,lastHeartbeat:0,lastDial:-10000,dialAt:0,attempt:null,lastInputSeq:-1,inputSeq:0,remoteClient:'',paired:false,awaitingResume:false,resumeAt:0,bootAt:0,serverRetryAt:0,rtt:120,jitter:0,lastPing:0,pingId:0,pingAt:0};
 function makeSessionId(){if(window.crypto?.randomUUID)return window.crypto.randomUUID();return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);}
-function peerAddress(slot){return 'ciudadd-v86-'+room.toLowerCase()+'-p'+(slot+1);}
+function peerAddress(slot){return 'ciudadd-v87-'+room.toLowerCase()+'-p'+(slot+1);}
 function readResume(){try{const x=JSON.parse(window.sessionStorage?.getItem(RESUME_KEY)||localStorage.getItem(RESUME_KEY)||'null');return x&&/^[A-Z0-9]{6}$/.test(x.room)&&[0,1].includes(x.slot)&&typeof x.world==='string'&&typeof x.secret==='string'?x:null;}catch(err){return null;}}
 function saveResume(){if(!net.started||net.ended)return;const identity=room+'|'+me+'|'+net.world+'|'+net.secret;if(net.savedIdentity===identity)return;net.savedIdentity=identity;try{const saved=JSON.stringify({room,slot:me,world:net.world,secret:net.secret});window.sessionStorage?.setItem(RESUME_KEY,saved);localStorage.setItem(RESUME_KEY,saved);}catch(err){}refreshResumeButton();}
 function forgetResume(){net.savedIdentity='';try{const x=readResume();if(!x||x.world===net.world){window.sessionStorage?.removeItem(RESUME_KEY);localStorage.removeItem(RESUME_KEY);}}catch(err){}refreshResumeButton();}
@@ -1344,6 +1399,7 @@ function refreshResumeButton(){const x=readResume(),button=$('resumeRoom');butto
 function clearRemoteInput(){Object.assign(guestInput,{x:0,y:0,shoot:false,aim:null,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false});}
 function setPlayerPresent(index,present){
  const p=state.players[index];if(!p||p.present===present)return;p.present=present;p.moving=false;
+ if(!present&&isHost)casinoDeparture(index);
  if(!present&&isHost&&(poolActive()||state.pool.phase==='waiting'&&state.pool.waiter===index))closePool('BILLAR CERRADO · UN JUGADOR SALIÓ · LA RONDA CONTINÚA');
  if(!present&&p.car!==null){const car=state.cars[p.car];if(car){if(car.driver===index){car.driver=car.passenger;car.passenger=null;if(car.driver!==null){state.players[car.driver].role='driver';}}else if(car.passenger===index)car.passenger=null;car.speed=0;}p.car=null;p.role=null;}
  if(!present&&index!==me){clearRemoteInput();motion.queue=[];motion.credit=0;motion.remoteBlend=null;}
@@ -1433,17 +1489,19 @@ function handlePacket(s,c){
  }
  if(s.t==='ping'){if(Number.isInteger(s.id)&&Number.isFinite(s.at))send({t:'pong',id:s.id,at:s.at});return;}
  if(s.t==='pong'){if(s.id===net.pingId&&s.at===net.pingAt){const sample=performance.now()-s.at;if(sample>=0&&sample<10000){net.jitter=net.jitter*.8+Math.abs(sample-net.rtt)*.2;net.rtt=net.rtt*.8+sample*.2;}}return;}
+ if(s.t==='casino-ack'){casinoLocal.pending.delete(s.id);return;}
  if(s.t==='pool-ack'){poolLocal.pending.delete(s.id);return;}
  if(s.t==='chat'){acceptChat(s,1-me);return;}if(s.t==='chat-ack'){ackChat(s.id);return;}
  if(!net.started)return;
  if(s.t==='notice'){if(!isHost&&typeof s.msg==='string')showToast(s.msg);return;}
  if(s.term!==net.term||net.leader!==me)return;
+ if(s.t==='casino-action'){handleCasinoAction(1-me,s);return;}
  if(s.t==='pool-action'){handlePoolAction(1-me,s);return;}
  if(s.t==='choice'){chooseWeapon(1-me,s.serial,s.accept===true);send(snapshot());return;}
  if(s.t==='i'){
   if(s.client!==net.remoteClient||!Number.isInteger(s.seq)||s.seq<=net.lastInputSeq)return;
   net.lastInputSeq=s.seq;
-  if(poolActive()||(s.context??0)!==state.pool.context){for(const c of Array.isArray(s.moves)?s.moves:[])if(Number.isInteger(c.n)&&c.n>motion.received){motion.received=motion.ack=c.n;motion.used=cap(Number(c.dt)||0,0,.05);}motion.queue=[];clearRemoteInput();lastGuestAt=performance.now();return;}
+  if(poolActive()||(s.context??0)!==state.pool.context||(s.area??0)!==(state.players[1-me].areaSerial||0)){for(const c of Array.isArray(s.moves)?s.moves:[])if(Number.isInteger(c.n)&&c.n>motion.received){motion.received=motion.ack=c.n;motion.used=cap(Number(c.dt)||0,0,.05);}motion.queue=[];clearRemoteInput();lastGuestAt=performance.now();return;}
   queueMovement(s.moves);net.remoteActive=true;net.remoteAway=false;setPlayerPresent(1-me,true);
   guestInput.x=cap(Number(s.x)||0,-1,1);guestInput.y=cap(Number(s.y)||0,-1,1);guestInput.shoot=!!s.shoot;guestInput.aim=Number.isFinite(s.aim)?s.aim:null;
   for(const key of ['enter','boom','monkey','box','punch','soda'])guestInput[key]=guestInput[key]||!!s[key];lastGuestAt=performance.now();
@@ -1512,7 +1570,7 @@ function updateNetwork(now){
  if(net.localActive&&(!conn||!conn.open))dialPartner();
  if(net.awaitingResume&&net.localActive&&now-net.resumeAt>8000){endWorld('No queda ningún jugador manteniendo esta partida.',false);return;}
  if(!net.started&&net.mode==='join'&&now-net.bootAt>14000){showError('No se encontró la sala. Revisa el código y vuelve a intentarlo.');closeSessionTransport();$('host').disabled=$('join').disabled=false;$('resumeRoom').disabled=false;net.mode='';}
- flushChatOutbox(now);flushPoolActions(now);
+ flushChatOutbox(now);flushPoolActions(now);flushCasinoActions(now);
 }
 function networkPresence(active){
  if(!net.started||net.ended){net.localActive=active;return;}
@@ -1528,7 +1586,7 @@ function networkPresence(active){
 }
 function closeSessionTransport(){const old=peer;conn=null;peer=null;onlineReady=false;net.attempt=null;if(old)try{old.destroy();}catch(err){}}
 function endWorld(message,inform=true){
- if(net.ended)return;net.ended=true;state.pool=freshPool(state.pool.match,state.pool.context+1);poolLocal.pending.clear();poolLocal.mode=false;$('poolPanel').classList.add('hidden');$('ui').classList.remove('pooling');
+ if(net.ended)return;net.ended=true;for(const p of state.players)p.casino=null;casinoLocal.pending.clear();$('casinoPanel').classList.add('hidden');$('ui').classList.remove('casinogame','incasino');state.pool=freshPool(state.pool.match,state.pool.context+1);poolLocal.pending.clear();poolLocal.mode=false;$('poolPanel').classList.add('hidden');$('ui').classList.remove('pooling');
  if(inform&&conn?.open)try{conn.send({t:'ended',world:net.world,secret:net.secret,term:net.term,client:net.client});}catch(err){}
  connected=false;isHost=false;net.started=false;net.awaitingResume=false;resetControls();closeChat(false);clearRemoteInput();Sound.stopEffects();Sound.stopEngines();forgetResume();clearChat();
  $('sessionEndText').textContent=message;$('lobby').classList.add('hidden');$('ui').classList.remove('hidden');$('sessionEnded').classList.remove('hidden');$('waitMask').classList.add('hidden');
@@ -1539,18 +1597,18 @@ function returnToLobby(){
 }
 function sendPlayerInput(){
  const moves=motion.pending.filter(c=>c.n>motion.sent).slice(0,96);
- const packet={t:'i',world:net.world,secret:net.secret,term:net.term,client:net.client,seq:++net.inputSeq,context:state.pool.context,x:input.x,y:input.y,shoot:input.shoot,aim:input.aim,enter:input.enter,box:input.box,punch:input.punch,soda:input.soda,monkey:input.monkey,boom:input.boom,moves};
+ const packet={t:'i',world:net.world,secret:net.secret,term:net.term,client:net.client,seq:++net.inputSeq,context:state.pool.context,area:state.players[me].areaSerial||0,x:input.x,y:input.y,shoot:input.shoot,aim:input.aim,enter:input.enter,box:input.box,punch:input.punch,soda:input.soda,monkey:input.monkey,boom:input.boom,moves};
  if(send(packet)){if(moves.length)motion.sent=moves[moves.length-1].n;input.boom=input.monkey=input.enter=input.box=input.punch=input.soda=false;}
 }
 function predictLocal(dt,now){
- if(isHost||!net.started||net.awaitingResume||!net.localActive||state.done||poolActive())return;
+ if(isHost||!net.started||net.awaitingResume||!net.localActive||state.done||poolActive()||casinoFullscreen())return;
  const p=state.players[me];if(p.downUntil>state.time||p.present===false)return;
  if(motion.pending.length>=240)return;
  p.moving=false;let remaining=Math.min(.12,dt);
  while(remaining>1e-7){
   const step=Math.min(.025,remaining),last=motion.pending[motion.pending.length-1],x=cap(input.x,-1,1),y=cap(input.y,-1,1);
-  if(last&&last.n>motion.sent&&last.context===state.pool.context&&last.dt+step<=.05&&last.x===x&&last.y===y&&last.car===p.car&&last.role===p.role&&last.life===p.life&&last.map===state.mapId)last.dt+=step;
-  else motion.pending.push({n:++motion.seq,dt:step,x,y,car:p.car,role:p.role,life:p.life,map:state.mapId,context:state.pool.context});
+  if(last&&last.n>motion.sent&&last.context===state.pool.context&&last.area===(p.areaSerial||0)&&last.dt+step<=.05&&last.x===x&&last.y===y&&last.car===p.car&&last.role===p.role&&last.life===p.life&&last.map===state.mapId)last.dt+=step;
+  else motion.pending.push({n:++motion.seq,dt:step,x,y,car:p.car,role:p.role,life:p.life,map:state.mapId,context:state.pool.context,area:p.areaSerial||0});
   movePlayerMotion(p,input,step);remaining-=step;
  }
 }
@@ -1609,7 +1667,7 @@ async function copyRoom(){const url=/^https?:/.test(location.protocol)?location.
 $('waitCopy').addEventListener('click',copyRoom);$('inviteCopy').addEventListener('click',copyRoom);
 $('restart').addEventListener('click',()=>{if(!isHost||!connected)return;Sound.stopEffects();Sound.stopEngines();resetControls();Object.assign(guestInput,{x:0,y:0,shoot:false,enter:false,box:false,punch:false,soda:false,monkey:false,boom:false});initialize();resetMotion();net.term++;net.leader=me;net.revision=0;setPlayerPresent(me,true);setPlayerPresent(1-me,net.remoteActive);navFields=[null,null];viewBlend=null;clearChat();send(snapshot());showToast('EL TELÉFONO ESTÁ SONANDO · Ambos deben acudir para comenzar.');});
 function resetControls(){releaseAim();keys={};joystick.x=joystick.y=0;fireHeld=false;movingStickId=null;input.x=input.y=0;input.boom=input.monkey=input.shoot=input.enter=input.box=input.punch=input.soda=false;$('knob').style.transform='translate(0,0)';}
-window.addEventListener('keydown',e=>{if(poolActive()||chat.open||e.target?.tagName==='INPUT'||e.target?.tagName==='TEXTAREA')return;if(e.code==='Enter'&&!e.repeat&&$('lobby').classList.contains('hidden')){e.preventDefault();openChat();return;}if(e.ctrlKey||e.metaKey||e.altKey)return;if(/^(Arrow(?:Up|Down|Left|Right)|Key[WASDEFGRQ]|Space)$/.test(e.code)&&$('lobby').classList.contains('hidden')){e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;if(e.code==='KeyG'&&!e.repeat)input.monkey=true;if(e.code==='KeyF'&&!e.repeat)input.box=true;if(e.code==='KeyR'&&!e.repeat)input.punch=true;if(e.code==='KeyQ'&&!e.repeat)input.soda=true;}});
+window.addEventListener('keydown',e=>{if(poolActive()||casinoFullscreen()||chat.open||e.target?.tagName==='INPUT'||e.target?.tagName==='TEXTAREA')return;if(e.code==='Enter'&&!e.repeat&&$('lobby').classList.contains('hidden')){e.preventDefault();openChat();return;}if(e.ctrlKey||e.metaKey||e.altKey)return;if(/^(Arrow(?:Up|Down|Left|Right)|Key[WASDEFGRQ]|Space)$/.test(e.code)&&$('lobby').classList.contains('hidden')){e.preventDefault();keys[e.code]=true;if(e.code==='KeyE'&&!e.repeat)input.enter=true;if(e.code==='KeyG'&&!e.repeat)input.monkey=true;if(e.code==='KeyF'&&!e.repeat)input.box=true;if(e.code==='KeyR'&&!e.repeat)input.punch=true;if(e.code==='KeyQ'&&!e.repeat)input.soda=true;}});
 window.addEventListener('keyup',e=>{keys[e.code]=false;});window.addEventListener('blur',resetControls);document.addEventListener('visibilitychange',()=>{if(document.hidden)resetControls();lastTime=performance.now();});
 const stick=$('stick'),knob=$('knob');let stickBounds=null;
 function stickUpdate(e){const b=stickBounds||stick.getBoundingClientRect();let dx=(e.clientX-b.left-b.width/2)/(b.width*.36),dy=(e.clientY-b.top-b.height/2)/(b.height*.36),length=Math.hypot(dx,dy);if(length<.12){dx=dy=0;}else{if(length>1){dx/=length;dy/=length;}}joystick.x=dx;joystick.y=dy;knob.style.transform=`translate(${dx*b.width*.29}px,${dy*b.height*.29}px)`;}
@@ -1820,7 +1878,7 @@ function ground(){
 const CAMERA_ANGLE=-Math.PI/4,CAMERA_TILT=.72;
 const CAMERA_COS=Math.cos(CAMERA_ANGLE),CAMERA_SIN=Math.sin(CAMERA_ANGLE);
 const PLAYER_LIFT=18;
-const SCENE_LAYERS={building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,soda:1,grave:1,phone:1,exit:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
+const SCENE_LAYERS={raygun:1,building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,soda:1,grave:1,phone:1,exit:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
 function projectPoint(point,z=0){
  return {x:CAMERA_COS*point.x-CAMERA_SIN*point.y,
   y:(CAMERA_SIN*point.x+CAMERA_COS*point.y)*CAMERA_TILT-z};
@@ -2306,6 +2364,7 @@ function buildingImage(building){
  building.image=layer;return layer;
 }
 function drawBlock(building){
+ if(building.casino){drawCasinoExterior(building);return;}
  const bounds=buildingGeometry(building).bounds;
  ctx.save();ctx.globalAlpha=building.opacity??1;
  ctx.drawImage(building.ruin?ruinBuildingImage(building):buildingImage(building),bounds.x,bounds.y);if(!building.ruin)drawNightWindows(building,state.time);
@@ -2895,6 +2954,7 @@ function drawSceneItem(item,timestamp){
   case 'cover':drawCover(actor);break;
   case 'soda':drawSodaStation(actor);break;
   case 'grave':drawGrave(actor);break;
+  case 'raygun':drawRayStation(state.time);break;
   case 'phone':drawPhone();break;
   case 'exit':drawExitSpot();break;
   case 'coast':drawCoastRail(actor);break;
@@ -2924,6 +2984,7 @@ function drawSceneItem(item,timestamp){
  }
 }
 function render(timestamp,now){
+ if(state.players[me].casino){if(casinoFullscreen())renderCasinoGame(now);else renderCasinoRoom(now);return;}
  if(poolActive()){renderPool(now);return;}
  ruinActivityCount=0;const cw=viewWidth,ch=viewHeight;
  ctx.setTransform(renderDpr,0,0,renderDpr,0,0);rect(0,0,cw,ch,'#102c3c');
@@ -2935,7 +2996,7 @@ function render(timestamp,now){
  const visible=actor=>{const point=projectPoint(actor);return point.x>cx-100&&point.x<cx+width+100&&point.y>cy-120&&point.y<cy+height+350;};
  const visibleBuildings=buildings.filter(building=>{const b=buildingGeometry(building).bounds;return b.x<cx+width&&b.x+b.w>cx&&b.y<cy+height&&b.y+b.h>cy;});
  const players=state.players.map((p,i)=>visualPlayer(i,now));
- const activePlayers=players.filter((p,i)=>(i===me||connected)&&p.present!==false&&visible(p));
+ const activePlayers=players.filter((p,i)=>(i===me||connected)&&p.present!==false&&!p.casino&&visible(p));
  const scene=[];
  for(const building of visibleBuildings){
   const covered=activePlayers.some(p=>!inFrontOfBuilding(p,building)&&buildingCoversActor(building,p));
@@ -2960,14 +3021,14 @@ function render(timestamp,now){
  for(const particle of nightAirParticles(state.time))add('air',particle);
  for(const car of state.cars)add('car',visualCar(car,now));
  for(const enemy of state.enemies)if(!enemy.down)add('enemy',enemy);
- players.forEach((p,i)=>{if((i===me||connected)&&p.present!==false)add('player',p,i);});
+ players.forEach((p,i)=>{if((i===me||connected)&&p.present!==false&&!p.casino)add('player',p,i);});
  for(const bag of state.bags)if(!bag.taken)add('bag',bag);
  for(const drop of state.ammoDrops)add('ammo',drop);
  for(const gun of state.guns)if(!gun.taken)add('gun',gun);
  for(const vest of state.vests)if(!vest.taken)add('vest',vest);
  for(const toy of state.monkeys)add('monkey',toy);
  if(state.boomDrop)add('boom',state.boomDrop);
- add('box',boxSpot);add('phone',phoneSpot);if(state.phase==='evac')add('exit',exitSpot);
+ add('box',boxSpot);add('phone',phoneSpot);if(state.mapId===0)add('raygun',RAY_SPOT);if(state.phase==='evac')add('exit',exitSpot);
  for(const bullet of state.bullets)add('bullet',bullet);
  for(const effect of state.fx)add('effect',effect);
  ctx.save();ctx.scale(zoom,zoom);ctx.translate(-cx,-cy);
@@ -3003,6 +3064,7 @@ function playerBars(p){
  if(p.armor>0){rect(x-1,y+7,36,6,'#111c22');rect(x,y+8,34,4,'#243e54');rect(x,y+8,34*cap(p.armor/75,0,1),4,'#63bafa');}
 }
 const weaponShapes={
+ raygun:{reach:53,grip:5,support:26,kick:1.9},
  pistol:{reach:27,grip:11,support:14,kick:1.4},
  smg:{reach:38,grip:9,support:25,kick:1.9},
  shotgun:{reach:46,grip:10,support:29,kick:3.1},
@@ -3029,6 +3091,7 @@ function weaponMuzzle(p,angle){
  return {x:p.x+offset.x+Math.cos(angle)*reach,y:p.y+offset.y+Math.sin(angle)*reach,z};
 }
 function drawWeaponModel(kind,level=0){
+ if(kind==='raygun'){paintRayGun(level);return;}
  // Small metal highlights, real grips, stocks, magazines and separate barrel profiles.
  // Rasterized once per weapon; enemies reuse the same small textures on Android.
  const dark=level===2?'#181b2a':'#10191e',metal=level===2?'#a5b3c1':level?'#739b9d':'#66747a',edge=level===2?'#e0def2':level?'#bddbd5':'#b0bdc0',steel=level===2?'#48415f':level?'#294c51':'#35434a',wood=level===2?'#4c4664':level?'#3e5357':'#936344';
@@ -3125,12 +3188,12 @@ function weaponImage(kind,level=0){
  const key=level?kind+':'+level:kind;
  if(weaponImages.has(key))return weaponImages.get(key);
  const image=document.createElement('canvas'),saved=ctx;
- image.width=140;image.height=76;
- try{ctx=image.getContext('2d');ctx.scale(2,2);ctx.translate(16,16);drawWeaponModel(kind,level);}
+ image.width=kind==='raygun'?152:140;image.height=kind==='raygun'?112:76;
+ try{ctx=image.getContext('2d');ctx.scale(2,2);ctx.translate(kind==='raygun'?20:16,kind==='raygun'?22:16);drawWeaponModel(kind,level);}
  finally{ctx=saved;}
  weaponImages.set(key,image);return image;
 }
-function drawWeaponImage(kind,level=0){ctx.drawImage(weaponImage(kind,level),-16,-16,70,38);}
+function drawWeaponImage(kind,level=0){if(kind==='raygun')ctx.drawImage(weaponImage(kind,level),-20,-22,76,56);else ctx.drawImage(weaponImage(kind,level),-16,-16,70,38);}
 function drawHeldWeapon(p,angle,jacket,skin){
  const kind=heldWeaponKind(p),shape=weaponShapes[kind],kick=weaponKick(p),mechanical=p.boss||p.drone;
  const lift=mechanical?3:8,scale=p.aimScale??1,flip=Math.cos(angle)<0?-1:1,c=Math.cos(angle),s=Math.sin(angle);
@@ -3150,7 +3213,7 @@ function drawHeldWeapon(p,angle,jacket,skin){
  const age=state.time-p.shotAt;
  if(p.shotAt>0&&age>=0&&age<.065){
   const x=shape.reach,size=kind==='shotgun'||kind==='bazooka'?8:5;
-  poly([[x,-2],[x+size,-4],[x+size*.7,0],[x+size+3,2],[x,3]],tier.color?tier.color+'b5':'#ffbf5ab5');
+  poly([[x,-2],[x+size,-4],[x+size*.7,0],[x+size+3,2],[x,3]],p.weapon==='raygun'?'#9bff84b5':tier.color?tier.color+'b5':'#ffbf5ab5');
   poly([[x,-1],[x+size*.7,0],[x,1.5]],'#fff6cc');
   if(kind==='bazooka')poly([[-13,-4],[-22,-6],[-18,0],[-24,4],[-13,4]],'#e7ac5270');
  }
@@ -3583,6 +3646,7 @@ function partnerMarker(p,other,cw,ch,zoom,cx,cy){
  return {x:ax,y:ay,angle,label:'P'+(2-me),down:other.downUntil>state.time};
 }
 function drawPartnerDirection(p,other,cw,ch,zoom,cx,cy){
+ if(other.casino)return;
  const marker=partnerMarker(p,other,cw,ch,zoom,cx,cy);if(!marker)return;
  ctx.save();ctx.translate(marker.x,marker.y);disc(0,0,16,'#0d2539e8');
  ctx.rotate(marker.angle);poly([[12,0],[-7,-7],[-3,0],[-7,7]],marker.down?'#e6aa78':'#80d8ef');ctx.restore();
@@ -3660,11 +3724,12 @@ function updateHud(p,timestamp){
   }else{
    const station=soda.station,info=sodaKinds[station.perk],pour=state.sodas[station.sodaId],owned=p.perks[station.perk],waiting=station.perk==='tomb'&&!!ownGrave(me),busy=pour.phase!=='idle'||sodaPending(me);
    setText('sodaAction',info.short);setText('sodaCost',owned?'ACTIVO':busy?'SIRVIENDO':waiting?'TU LÁPIDA':SODA_COST+' MAL.');hud.sodaButton.disabled=owned||busy||waiting||p.wallet<SODA_COST;hud.sodaButton.style.backgroundColor=info.color;
-   hud.sodaButton.setAttribute('aria-label',info.name+' · 6 maletines');
-   setText('boxPrompt',owned?info.name.toUpperCase()+' · YA ACTIVO':waiting?'Recupera tu lápida antes de comprar otra soda':busy?'SIRVIENDO SODA…':p.wallet<SODA_COST?info.name.toUpperCase()+' · TE FALTAN '+(SODA_COST-p.wallet)+' MALETINES':info.effect+' · 6 MALETINES · Q');
+   hud.sodaButton.setAttribute('aria-label',info.name+' · '+SODA_COST+' maletines');
+   setText('boxPrompt',owned?info.name.toUpperCase()+' · YA ACTIVO':waiting?'Recupera tu lápida antes de comprar otra soda':busy?'SIRVIENDO SODA…':p.wallet<SODA_COST?info.name.toUpperCase()+' · TE FALTAN '+(SODA_COST-p.wallet)+' MALETINES':info.effect+' · '+SODA_COST+' MALETINES · Q');
   }
  }
  hud.victory.classList.toggle('hidden',!state.done);
+ updateCasinoUI();
  if(state.done){setText('victoryStats','P1: '+state.players[0].kills+' bajas · P2: '+state.players[1].kills+' bajas\n'+state.collected+' maletines recogidos\nSaldos: P1 '+state.players[0].wallet+' · P2 '+state.players[1].wallet);setText('restart',isHost?'JUGAR OTRA VEZ':'EL ANFITRIÓN PUEDE REINICIAR');hud.restart.disabled=!isHost||!connected;}
 }
 // The two districts share projection, controls and physics. Only the active
@@ -3855,7 +3920,7 @@ function beginExtraction(){
  state.phase='evac';state.boss=false;state.raid=false;state.nextWaveAt=0;state.travelAt=0;state.bullets=[];state.monkeys=[];state.enemies=[];
  worldSound('district-clear');notify('DESTRUCTOR DESTRUIDO · Ambos a la salida de la calle sur. Sigue la flecha verde.');
 }
-function exitCount(){return state.players.reduce((count,p)=>count+(p.present!==false&&p.downUntil<=state.time&&p.car===null&&distance(p,exitSpot)<=exitSpot.radius?1:0),0);}
+function exitCount(){return state.players.reduce((count,p)=>count+(p.present!==false&&!p.casino&&p.downUntil<=state.time&&p.car===null&&distance(p,exitSpot)<=exitSpot.radius?1:0),0);}
 function enterRuins(){
  if(!isHost||!connected||state.mapId!==0||state.phase!=='evac'||exitCount()!==2)return false;
  // Paid weapons and sodas finish travelling with their owner.
@@ -3937,7 +4002,7 @@ function updateSlimePools(){
  state.slimePools=state.slimePools.filter(pool=>pool.until>state.time);
  for(const pool of state.slimePools){
   if(state.time<pool.hurtAt)continue;pool.hurtAt=state.time+.65;
-  for(const p of state.players)if(p.present!==false&&p.downUntil<=state.time&&distance(p,pool)<pool.radius&&sightClear(pool,p,0))hitPlayer(p,7*(p.car===null?1:.4),true);
+  for(const p of state.players)if(p.present!==false&&!p.casino&&p.downUntil<=state.time&&distance(p,pool)<pool.radius&&sightClear(pool,p,0))hitPlayer(p,7*(p.car===null?1:.4),true);
  }
 }
 function slimeImage(){
@@ -4368,7 +4433,7 @@ const POOL_COLORS=['#eee8d5','#d7ad33','#3875b2','#b34135','#785aa3','#dc7739','
 const poolLocal={serial:0,pending:new Map(),lastRetry:0,aim:0,power:.7,called:-1,lastAim:-1000,aimSeq:0,match:-1,turnSerial:-1,mode:false,lastAudio:0,pointer:null,view:null,receivedAt:0,layout:null,rules:false};
 function poolActive(p=state.pool){return !!p&&['aim','rolling','over'].includes(p.phase);}
 function poolTable(){return state.mapId===1?scenery.find(p=>p.kind==='billiards'):null;}
-function nearPool(index){const p=state.players[index],table=poolTable();return !!table&&connected&&p?.present!==false&&p?.downUntil<=state.time&&p?.car===null&&distance(p,table)<=POOL_RANGE;}
+function nearPool(index){const p=state.players[index],table=poolTable();return !!table&&!p?.casino&&connected&&p?.present!==false&&p?.downUntil<=state.time&&p?.car===null&&distance(p,table)<=POOL_RANGE;}
 function poolGroup(n){return n>=1&&n<=7?'solids':n>=9&&n<=15?'stripes':null;}
 function poolRemaining(p,index){return p.groups[index]?p.balls.filter(b=>!b.down&&poolGroup(b.n)===p.groups[index]).length:7;}
 function clearPoolMotion(){
@@ -4632,11 +4697,311 @@ window.addEventListener('keydown',e=>{
 });
 
 function structuredPool(){const p=state.pool;return {...p,groups:p.groups.slice(),balls:p.balls.map(b=>({...b})),shot:p.shot?{...p.shot,potted:p.shot.potted.slice(),rails:p.shot.rails.slice()}:null,audio:p.audio.map(e=>({...e})),seen:p.seen.slice()};}
+function freshCasino(){return {time:0,serial:0,seen:[],audio:[],audioSerial:0,slots:[0,1].map(id=>({id,viewer:-1,owner:-1,phase:'idle',serial:0,stake:0,reels:[0,1,2],win:0,until:0,started:0,reel:0})),horse:freshHorse()};}
+function freshHorse(serial=0){return {serial,phase:'idle',ready:[false,false],bets:[null,null],winner:-1,seed:0,started:0,until:0,finishes:[],paid:false};}
+const CASINO_FEE=3,CASINO_DOOR={x:240,y:1870},RAY_COST=100,RAY_SPOT={x:3450,y:240},CASINO_W=1200,CASINO_H=840;
+const SLOT_SPOTS=[{x:230,y:270},{x:440,y:270}],HORSE_SPOT={x:920,y:290};
+const SLOT_SYMBOLS=[{name:'CEREZAS',weight:30,mult:4,color:'#df6c7c'},{name:'LIMÓN',weight:24,mult:5,color:'#e4d576'},{name:'CAMPANA',weight:18,mult:8,color:'#e7ba64'},{name:'SIETE',weight:12,mult:16,color:'#f2746e'},{name:'BAR',weight:10,mult:12,color:'#83d6c4'},{name:'DIAMANTE',weight:6,mult:30,color:'#b59ae8'}];
+const RACE_HORSES=[{name:'FURIA ROJA',color:'#e36c65',coat:'#926348'},{name:'RAYO AZUL',color:'#6db3e4',coat:'#565550'},{name:'ESMERALDA',color:'#6dba8e',coat:'#b69c78'},{name:'SOL DORADO',color:'#e6c269',coat:'#a87b4c'},{name:'SOMBRA VIOLETA',color:'#b397dd',coat:'#484848'},{name:'NIEVE',color:'#e4e4ce',coat:'#b8b6a4'}];
+const casinoLocal={serial:0,pending:new Map(),area:-1,activity:'',selectedHorse:0,stake:2,lastAudio:0,mode:'',scoreKey:'',lastSoundAt:0};
+const CASINO_COLLIDERS=[{x:120,y:110,w:360,h:68},...SLOT_SPOTS.map(s=>({x:s.x-40,y:s.y-40,w:80,h:64})),{x:770,y:110,w:310,h:65},{x:775,y:450,w:280,h:42},{x:90,y:510,w:235,h:54},{x:900,y:640,w:175,h:54},{x:500,y:455,w:135,h:98}];
+function casinoFullscreen(p=state.players[me]){return !!p?.casino&&(p.casino.activity?.startsWith('slot')||p.casino.activity==='horse');}
+function casinoPaused(){return state.players.some(p=>p.present!==false&&p.casino)&&!state.players.some(p=>p.present!==false&&!p.casino);}
+function casinoCanWalk(x,y,r=13){return x>70+r&&x<CASINO_W-70-r&&y>70+r&&y<CASINO_H-55-r&&!CASINO_COLLIDERS.some(b=>{const dx=x-cap(x,b.x,b.x+b.w),dy=y-cap(y,b.y,b.y+b.h);return dx*dx+dy*dy<r*r;});}
+function moveCasinoPlayer(p,control,dt){
+ if(casinoFullscreen(p))return;let dx=control.x,dy=control.y,mag=Math.hypot(dx,dy);if(mag<.12)return;dx/=Math.max(1,mag);dy/=Math.max(1,mag);const c=p.casino,x=c.x,y=c.y;
+ if(casinoCanWalk(c.x+dx*175*dt,c.y))c.x+=dx*175*dt;if(casinoCanWalk(c.x,c.y+dy*175*dt))c.y+=dy*175*dt;
+ p.moving=Math.hypot(c.x-x,c.y-y)>.01;if(p.moving){p.face=p.moveFace=Math.atan2(dy,dx);p.walk+=dt*11;}
+}
+function invalidateCasinoInput(index){
+ const p=state.players[index];p.areaSerial=(p.areaSerial||0)+1;p.moving=false;
+ if(index===me){resetControls();motion.pending=[];viewBlend=null;}else{clearRemoteInput();motion.queue=[];motion.ack=motion.received;motion.used=.05;motion.credit=0;}
+}
+function casinoSound(kind,target=-1){
+ const c=state.casino,event={id:++c.audioSerial,kind,target,at:c.time};c.audio.push(event);if(c.audio.length>24)c.audio.shift();
+ if(state.players[me].casino&&(target<0||target===me)){Sound.play(kind);casinoLocal.lastAudio=event.id;}
+}
+function receiveCasinoAudio(){
+ if(state.casino.audioSerial<casinoLocal.lastAudio)casinoLocal.lastAudio=0;
+ for(const e of state.casino.audio)if(e.id>casinoLocal.lastAudio){if(state.casino.time-e.at<.8&&state.players[me].casino&&(e.target<0||e.target===me))Sound.play(e.kind);casinoLocal.lastAudio=e.id;}
+}
+function casinoNear(index,spot,range=115){const p=state.players[index];return !!p?.casino&&p.present!==false&&Math.hypot(p.casino.x-spot.x,p.casino.y-spot.y)<range;}
+function casinoCredit(index,amount){if(amount>0){state.players[index].wallet+=amount;syncWalletTotal();}}
+function releaseCasinoActivity(index){
+ const p=state.players[index],h=state.casino.horse;
+ for(const slot of state.casino.slots)if(slot.viewer===index)slot.viewer=-1;
+ if(h.phase==='waiting'||h.phase==='betting'){
+  if(h.ready[index]){
+   for(let i=0;i<2;i++){if(h.bets[i])casinoCredit(i,h.bets[i].stake);if(state.players[i].casino?.activity?.startsWith('horse')){state.players[i].casino.activity=null;invalidateCasinoInput(i);}}
+   state.casino.horse=freshHorse(h.serial);notify('CARRERA CANCELADA · APUESTAS DEVUELTAS');
+  }
+ }
+ if(p.casino)p.casino.activity=null;
+}
+function casinoOpen(index){
+ const p=state.players[index];if(p.casino||state.mapId!==0||state.done||p.present===false||p.downUntil>state.time||p.car!==null||distance(p,CASINO_DOOR)>92||p.wallet<CASINO_FEE||poolActive())return false;
+ p.wallet-=CASINO_FEE;syncWalletTotal();p.casino={x:570+index*65,y:705,activity:null};invalidateCasinoInput(index);casinoSound('casino-door',index);return true;
+}
+function casinoLeave(index){const p=state.players[index];if(!p.casino)return false;releaseCasinoActivity(index);p.casino=null;invalidateCasinoInput(index);return true;}
+function casinoDeparture(index){if(!state.casino)return;releaseCasinoActivity(index);}
+function drawSlotSymbol(){let roll=Math.random()*100;for(let i=0;i<SLOT_SYMBOLS.length;i++){roll-=SLOT_SYMBOLS[i].weight;if(roll<0)return i;}return SLOT_SYMBOLS.length-1;}
+function slotPrize(reels,stake){if(reels[0]===reels[1]&&reels[1]===reels[2])return stake*SLOT_SYMBOLS[reels[0]].mult;if(new Set(reels).size===2)return stake;return 0;}
+function casinoStartSlots(index,id){
+ const p=state.players[index],slot=state.casino.slots[id];if(!slot||!casinoNear(index,SLOT_SPOTS[id])||p.casino.activity||slot.viewer>=0&&slot.viewer!==index||slot.phase==='spinning')return false;
+ slot.viewer=index;p.casino.activity='slot'+id;invalidateCasinoInput(index);return true;
+}
+function spinSlots(index,id,stake,serial){
+ const p=state.players[index],slot=state.casino.slots[id];if(!slot||p.casino?.activity!=='slot'+id||slot.viewer!==index||slot.serial!==serial||slot.phase==='spinning'||![1,2,5,10].includes(stake)||p.wallet<stake)return false;
+ p.wallet-=stake;syncWalletTotal();slot.owner=index;slot.phase='spinning';slot.serial++;slot.stake=stake;slot.reels=[drawSlotSymbol(),drawSlotSymbol(),drawSlotSymbol()];slot.win=slotPrize(slot.reels,stake);slot.started=state.casino.time;slot.until=slot.started+3.2;slot.reel=0;casinoSound('casino-spin',index);return true;
+}
+function casinoHorseReady(index){
+ const c=state.casino,h=c.horse,p=state.players[index];if(!casinoNear(index,HORSE_SPOT,145)||p.casino.activity||['countdown','racing'].includes(h.phase))return false;
+ if(h.phase==='idle'||h.phase==='result'){
+  for(let i=0;i<2;i++)if(state.players[i].casino?.activity==='horse'){state.players[i].casino.activity=null;invalidateCasinoInput(i);}c.horse=freshHorse(h.serial+1);c.horse.phase='waiting';
+ }
+ c.horse.ready[index]=true;p.casino.activity='horse-wait';invalidateCasinoInput(index);
+ if(c.horse.ready.every(Boolean)&&state.players.every((p,i)=>p.present!==false&&casinoNear(i,HORSE_SPOT,145))){c.horse.phase='betting';for(let i=0;i<2;i++){state.players[i].casino.activity='horse';invalidateCasinoInput(i);}casinoSound('casino-race-call');}
+ return true;
+}
+function horseBet(index,horse,stake,serial){
+ const p=state.players[index],h=state.casino.horse;if(h.phase!=='betting'||h.serial!==serial||p.casino?.activity!=='horse'||h.bets[index]||!Number.isInteger(horse)||horse<0||horse>=6||![2,5,10].includes(stake)||p.wallet<stake)return false;
+ p.wallet-=stake;syncWalletTotal();h.bets[index]={horse,stake};casinoSound('casino-coin',index);
+ if(h.bets.every(Boolean)){
+  h.phase='countdown';h.started=state.casino.time+3;h.until=h.started+16.5;h.seed=Math.floor(Math.random()*1000000);h.winner=Math.floor(Math.random()*6);h.finishes=RACE_HORSES.map((_,i)=>i===h.winner?13.5:14.05+hash(i,h.seed)*2.1);casinoSound('casino-countdown');
+ }return true;
+}
+function updateCasino(dt){
+ const c=state.casino;c.time+=dt;
+ for(const slot of c.slots)if(slot.phase==='spinning'){
+  if(slot.reel<3&&c.time-slot.started>[1.2,2,2.85][slot.reel]){slot.reel++;casinoSound('casino-reel',slot.owner);}
+  if(c.time>=slot.until){slot.phase='result';casinoCredit(slot.owner,slot.win);casinoSound(slot.win>slot.stake?'casino-win':slot.win?'casino-smallwin':'casino-lose',slot.owner);}
+ }
+ const h=c.horse;
+ if(h.phase==='waiting'&&h.ready.some((ready,i)=>ready&&(!casinoNear(i,HORSE_SPOT,165)||state.players[i].present===false)))for(let i=0;i<2;i++)if(h.ready[i]){releaseCasinoActivity(i);break;}
+ if(h.phase==='countdown'&&c.time>=h.started){h.phase='racing';casinoSound('casino-race-start');}
+ if(h.phase==='racing'&&c.time>=h.until){
+  h.phase='result';if(!h.paid){h.paid=true;for(let i=0;i<2;i++)if(h.bets[i]?.horse===h.winner){casinoCredit(i,h.bets[i].stake*5);casinoSound('casino-win',i);}casinoSound('casino-race-finish');}
+ }
+}
+function processCasinoPlayer(p,inp,dt){
+ p.moving=false;p.aimFace=null;inp.shoot=inp.enter=inp.box=inp.punch=inp.soda=inp.monkey=inp.boom=false;
+ if(p.present===false)return;if(p.idx!==me&&net.started&&motion.queued)consumeMovement(p,dt);else moveCasinoPlayer(p,inp,dt);
+}
+function structuredCasino(){const c=state.casino;return {...c,slots:c.slots.map(s=>({...s,reels:s.reels.slice()})),horse:{...c.horse,ready:c.horse.ready.slice(),bets:c.horse.bets.map(b=>b?{...b}:null),finishes:c.horse.finishes.slice()},audio:c.audio.map(e=>({...e})),seen:c.seen.slice()};}
+function buyRayGun(index){
+ const p=state.players[index];if(state.mapId!==0||p.casino||p.present===false||p.car!==null||p.downUntil>state.time||distance(p,RAY_SPOT)>88||p.wallet<RAY_COST||p.weapon==='raygun'||punchOwns(index)||state.box.owner===index&&state.box.phase!=='idle')return false;
+ p.wallet-=RAY_COST;syncWalletTotal();p.weapon='raygun';p.upgrade=0;p.ammo=weapons.raygun.ammo;p.shotAt=-10;p.triggerAt=-1;p.triggerWeapon=null;worldSound('raygun-buy',p.x,p.y);notify('RAY GUN EQUIPADA · CUIDADO CON LA EXPLOSIÓN CERCANA',index);return true;
+}
+function requestCasino(kind,data={}){
+ if(!connected||!net.started||net.ended||!net.localActive)return;const p=state.players[me],packet={t:'casino-action',id:net.client+':casino-'+(++casinoLocal.serial),kind,area:p.areaSerial||0,...data};
+ if(isHost){handleCasinoAction(me,packet);return;}
+ if(casinoLocal.pending.size&&!['exit','back'].includes(kind))return;if(['exit','back'].includes(kind))casinoLocal.pending.clear();casinoLocal.pending.set(packet.id,{packet,next:0,until:performance.now()+12000});flushCasinoActions();
+}
+function flushCasinoActions(now=performance.now()){
+ if(isHost||net.ended){casinoLocal.pending.clear();return;}for(const [id,item]of casinoLocal.pending){if(now>item.until){casinoLocal.pending.delete(id);continue;}if(now>=item.next){item.next=now+700;send(item.packet);}}
+}
+function handleCasinoAction(index,s){
+ if(!isHost||!connected||net.ended||typeof s?.kind!=='string')return false;const c=state.casino,p=state.players[index],remote=index!==me,ack=()=>{if(remote)send({t:'casino-ack',id:s.id});};
+ if(remote&&(typeof s.id!=='string'||!s.id.startsWith(net.remoteClient+':casino-')||s.id.length>160))return false;
+ if(c.seen.includes(s.id)){ack();return false;}c.seen.push(s.id);if(c.seen.length>48)c.seen.shift();let ok=false;
+ if((s.area||0)===(p.areaSerial||0)&&p.present!==false&&p.downUntil<=state.time){
+  if(s.kind==='enter')ok=casinoOpen(index);else if(s.kind==='exit')ok=casinoLeave(index);else if(s.kind==='raygun')ok=buyRayGun(index);
+  else if(p.casino){
+   if(s.kind==='slot')ok=casinoStartSlots(index,s.slot);
+   else if(s.kind==='spin')ok=spinSlots(index,s.slot,s.stake,s.serial);
+   else if(s.kind==='horse')ok=casinoHorseReady(index);
+   else if(s.kind==='bet')ok=horseBet(index,s.horse,s.stake,s.serial);
+   else if(s.kind==='back'){releaseCasinoActivity(index);invalidateCasinoInput(index);ok=true;}
+  }
+ }
+ if(ok)send(snapshot());ack();return ok;
+}
+
+function paintRayGun(level=0){
+ const red=level===2?'#a44e63':level?'#a85e5b':'#8f3f3a',edge=level?'#d5bf82':'#b18468',green=level===2?'#b5ff72':level?'#87ff90':'#64e879';
+ // Ribbed pistol grip, curved power lead, red reactor and blue chamber.
+ poly([[0,0],[13,3],[10,23],[2,26],[-5,22],[-2,11]],'#201f21');poly([[2,3],[10,5],[7,21],[1,23],[-2,20]],'#713f38');
+ for(let y=6;y<22;y+=3)line(1,y,9-y*.1,y-1,'#b07c62',1.2);
+ ctx.beginPath();ctx.moveTo(4,24);ctx.quadraticCurveTo(22,27,24,6);ctx.strokeStyle='#382e30';ctx.lineWidth=2.5;ctx.stroke();ctx.strokeStyle='#af8075';ctx.lineWidth=1.1;ctx.stroke();
+ ellipse(1,-4,12,11,'#332c2b');ellipse(0,-5,10,9,red);ellipse(-1,-6,7.5,6.5,'#3a4939');ellipse(-2,-8,5.5,3.7,green);ellipse(-1,-3,7.5,6,red);
+ for(let n=0;n<7;n++){const a=n*TAU/7;line(Math.cos(a)*10-1,Math.sin(a)*10-5,Math.cos(a)*14-1,Math.sin(a)*14-5,'#484641',1.8);}
+ poly([[3,-14],[16,-13],[22,-9],[22,3],[9,6],[3,3]],red);line(5,-12,17,-11,edge,1);rect(8,-9,10,1.2,'#4e3931');rect(9,-4,9,1.1,'#4e3931');
+ rect(18,-10,16,11,'#416f91');rect(19,-9,14,4,'#8dc9d4');for(const x of [20,25,30,34]){rect(x,-11,1.8,14,'#3d3932');line(x,-11,x,-9,edge,1);}
+ poly([[33,-13],[39,-11],[40,-3],[35,4],[31,2],[33,-3]],red);line(34,-13,39,-11,edge,.9);
+ line(39,-5,45,-5,'#3c3d36',3);poly([[43,-8],[49,-10],[51,-7],[51,-2],[45,0],[43,-2]],red);ellipse(50,-5,2,4,'#3d3d33');ellipse(51,-5,1,2.2,green);
+ line(39,-14,39,1,'#b5a885',1);disc(39,-14,1.3,'#857d5c');line(51,-5,54,-5,'#b6a887',.8);disc(54,-5,1,'#b45955');
+ if(level){line(10,-10,17,-9,green,.8);disc(13,-1,1.5,green);if(level===2){rect(21,5,11,3,'#3f4943');line(22,6,31,6,green,1.3);}}
+}
+function drawRayStation(time){
+ const g=projectPoint(RAY_SPOT),q=projectPoint(RAY_SPOT,61+Math.sin(time*1.8)*4);
+ ellipse(g.x,g.y,29,10,'#73f68c24');ellipse(g.x,g.y,17,6,'#a9ff9d38');line(g.x,g.y-3,q.x,q.y+18,'#7eff9c33',2);
+ ctx.save();ctx.translate(q.x,q.y);ctx.rotate(-.13+Math.sin(time*.7)*.035);ctx.scale(1.5,1.5);drawWeaponImage('raygun');ctx.restore();
+ ctx.save();ctx.textAlign='center';ctx.font='900 10px system-ui';ctx.fillStyle='#b8ef9e';ctx.fillText('RAY GUN',g.x,g.y+24);ctx.font='700 8px system-ui';ctx.fillStyle='#d7c693';ctx.fillText('100 MALETINES',g.x,g.y+36);ctx.restore();
+}
+function drawCasinoExterior(b){
+ const p={x:b.x,y:b.y,angle:0};ctx.save();ctx.globalAlpha=b.opacity??1;
+ modelBox(p,0,0,b.w,b.h,0,67,'#514453','#242d38','#393448');modelBox(p,-5,-5,b.w+10,b.h+10,67,9,'#a68d58','#4e4a3c','#81724e');
+ for(let y=20;y<b.h-10;y+=38){modelFace(p,[[b.w+.2,y,18],[b.w+.2,y+23,18],[b.w+.2,y+23,50],[b.w+.2,y,50]],'#192c36');modelLine(p,[b.w+.5,y,52],[b.w+.5,y+23,52],'#b991d1',2);}
+ const sign={...p,x:b.x+b.w/2,y:b.y+b.h/2};modelBox(sign,-74,-13,148,26,76,27,'#444447','#24262d','#4b3547');
+ const s=projectPoint(sign,94);ctx.textAlign='center';ctx.font='900 20px Georgia';ctx.strokeStyle='#293139';ctx.lineWidth=4;ctx.strokeText('CASINO',s.x,s.y);ctx.fillStyle='#f0c789';ctx.fillText('CASINO',s.x,s.y);ctx.font='800 6px system-ui';ctx.fillStyle='#d3b9e0';ctx.fillText('VIOLET VAULT',s.x,s.y+12);
+ const door={x:CASINO_DOOR.x-17,y:CASINO_DOOR.y-15,angle:Math.PI/4};modelBox(door,-21,-12,42,24,0,4,'#9d8b63','#5c5e51','#8f8159');modelBox(door,-17,-9,34,18,4,43,'#454a46','#262d35','#4b3b4d');
+ const d=projectPoint(door,42);roundedPanel(d.x-29,d.y-13,58,16,3,'#181d2fee');ctx.font='800 8px system-ui';ctx.fillStyle='#f3d793';ctx.fillText('ENTRADA',d.x,d.y-2);
+ ctx.restore();
+}
+function casinoFloorImage(){
+ const key='casino:floor';if(stationAssets.has(key))return stationAssets.get(key);const im=document.createElement('canvas');im.width=960;im.height=672;const old=ctx;ctx=im.getContext('2d');
+ try{ctx.scale(.8,.8);rect(60,60,1080,740,'#283137');for(let y=60;y<800;y+=48)for(let x=60;x<1140;x+=48)rect(x+1,y+1,46,46,(Math.floor(x/48)+Math.floor(y/48))%2?'#414444':'#343a3d');
+ rect(500,170,205,620,'#652e43');rect(512,180,181,600,'#7e3c4e');for(const x of [507,697])line(x,178,x,790,'#bda16a',3);rect(120,210,420,210,'#293e45');rect(750,215,340,210,'#283d43');
+ for(const [x,y,r]of [[610,365,100],[610,600,74]]){ctx.beginPath();ctx.arc(x,y,r,0,TAU);ctx.strokeStyle='#b9956266';ctx.lineWidth=2;ctx.stroke();for(let n=0;n<8;n++){const a=n*TAU/8;poly([[x+Math.cos(a)*r,y+Math.sin(a)*r],[x+Math.cos(a+.13)*r*.75,y+Math.sin(a+.13)*r*.75],[x+Math.cos(a-.13)*r*.75,y+Math.sin(a-.13)*r*.75]],'#b9956244');}}
+ ctx.save();ctx.textAlign='center';ctx.font='900 42px Georgia';ctx.fillStyle='#cfb88355';ctx.fillText('VIOLET VAULT',610,730);ctx.font='800 10px system-ui';ctx.fillText('THE CITY NEVER SLEEPS',610,752);ctx.restore();
+ }finally{ctx=old;}stationAssets.set(key,im);return im;
+}
+const casinoProps=[
+ {kind:'bar',x:300,y:144,w:360,d:68,h:48},{kind:'slot',x:230,y:270,w:75,d:62,h:115,variant:0},{kind:'slot',x:440,y:270,w:75,d:62,h:115,variant:1},
+ {kind:'tv',x:925,y:135,w:310,d:42,h:152},{kind:'sofa',x:915,y:470,w:280,d:42,h:44},{kind:'sofa',x:208,y:537,w:235,d:54,h:44},{kind:'sofa',x:987,y:667,w:175,d:54,h:44},
+ {kind:'poker',x:568,y:504,w:135,d:98,h:37},{kind:'plant',x:103,y:390,w:34,d:34,h:87},{kind:'plant',x:1095,y:390,w:34,d:34,h:87},
+ {kind:'exit',x:610,y:790,w:120,d:14,h:90},{kind:'chandelier',x:610,y:215,w:100,d:75,h:160}];
+function paintCasinoProp(p){
+ const w=p.w,d=p.d;
+ if(p.kind==='slot'){
+  modelBox(p,-w/2,-d/2,w,d,0,9,'#be9e62','#5d4a44','#947154');modelBox(p,-w*.43,-d*.4,w*.86,d*.8,9,94,'#424657','#1c2835','#393248');modelBox(p,-w*.48,-d*.43,w*.96,d*.86,103,12,'#d5ad6f','#68564c','#aa8b64');
+  const q=modelPoint(p,0,d*.43,80);roundedPanel(q.x-27,q.y-31,54,58,5,'#10242b');rect(q.x-24,q.y-21,48,38,'#e2d3a8');for(let n=0;n<3;n++){rect(q.x-22+n*16,q.y-19,14,34,'#e9e1c7');ctx.save();ctx.translate(q.x-15+n*16,q.y-2);drawCasinoSymbol((n+p.variant*2)%6,11);ctx.restore();}
+  ctx.textAlign='center';ctx.font='900 7px system-ui';ctx.fillStyle='#dfbb7e';ctx.fillText('LUCKY '+(p.variant+1),q.x,q.y-24);rect(q.x-14,q.y+30,28,7,'#171e28');disc(q.x+22,q.y+28,4,'#d77876');
+  modelLine(p,[w*.48,0,60],[w*.65,0,87],'#adad8f',2);const a=modelPoint(p,w*.65,0,87);disc(a.x,a.y,4,'#d77276');
+ }else if(p.kind==='tv'){
+  modelBox(p,-w/2,-d/2,w,d,0,60,'#695773','#242e3e','#44384e');modelBox(p,-w*.53,-d*.3,w*1.06,d*.6,60,86,'#9b925f','#333842','#6a5f55');
+  const q=modelPoint(p,0,d*.31,112);roundedPanel(q.x-w*.44,q.y-37,w*.88,78,6,'#081a27');rect(q.x-w*.41,q.y-32,w*.82,65,'#253e39');ctx.textAlign='center';ctx.font='900 17px Georgia';ctx.fillStyle='#e7d1a0';ctx.fillText('NIGHTFALL DOWNS',q.x,q.y-8);ctx.font='800 9px system-ui';ctx.fillStyle='#b8d5bd';ctx.fillText('CARRERAS EN DIRECTO · PREMIO 5×',q.x,q.y+14);
+  for(let n=0;n<6;n++)disc(q.x-45+n*18,q.y+28,4,RACE_HORSES[n].color);
+ }else if(p.kind==='bar'){
+  modelBox(p,-w/2,-d/2,w,d,0,40,'#53424f','#2b2c36','#57464d');modelBox(p,-w/2-4,-d/2-4,w+8,d+8,40,8,'#a69a77','#635d50','#8c8264');
+  for(let n=0;n<10;n++){const x=-w*.4+n*w*.085;modelBox(p,x,-d*.2,7,7,48,13+(n%3)*4,['#619b7d','#b99e69','#927baf'][n%3],'#435457','#6a6f62');}const q=modelPoint(p,0,0,65);ctx.textAlign='center';ctx.font='900 12px Georgia';ctx.fillStyle='#e8c68e';ctx.fillText('THE VAULT BAR',q.x,q.y-15);
+ }else if(p.kind==='sofa'){
+  modelBox(p,-w/2,-d/2,w,d,0,18,'#4f3a50','#262c38','#423447');modelBox(p,-w/2,-d/2,w,10,18,26,'#846077','#423547','#705268');for(const x of [-w/2,w/2-13])modelBox(p,x,-d/2,13,d,18,17,'#735569','#3e3444','#594151');
+  for(let n=0;n<Math.floor(w/50);n++)modelBox(p,-w/2+18+n*50,-d/2+14,45,d-18,18,7,'#815c72','#403346','#68465f');
+ }else if(p.kind==='poker'){
+  modelBox(p,-6,-6,12,12,0,31,'#b6a270','#5b5d51','#90815d');modelEllipse(p,0,0,36,w/2,d/2,'#9a8156');modelEllipse(p,0,0,38,w/2-6,d/2-6,'#27624e');
+  for(let n=0;n<5;n++){modelBox(p,-35+n*12,-8,9,14,38,1,'#e6d8b3','#e6d8b3','#e6d8b3');const q=modelPoint(p,29-n*3,14,40);disc(q.x,q.y,3,n%2?'#d4b265':'#d87077');}
+ }else if(p.kind==='plant'){
+  modelBox(p,-15,-15,30,30,0,30,'#b7a16b','#4b4b45','#8c7956');for(let n=0;n<7;n++){const a=n*TAU/7,q=modelPoint(p,Math.cos(a)*18,Math.sin(a)*18,45+hash(n,87)*32);modelLine(p,[0,0,20],[Math.cos(a)*18,Math.sin(a)*18,50],'#637961',2);ellipse(q.x,q.y,12,7,n%2?'#628976':'#476c62');}
+ }else if(p.kind==='exit'){
+  for(const x of [-w/2,w/2-8])modelBox(p,x,-d/2,8,d,0,90,'#b9a06c','#524d4a','#9b805e');modelBox(p,-w/2,-d/2,w,d,82,10,'#b9a06c','#524d4a','#9b805e');const q=modelPoint(p,0,0,86);roundedPanel(q.x-34,q.y-8,68,19,3,'#22483f');ctx.textAlign='center';ctx.font='900 10px system-ui';ctx.fillStyle='#d7e5be';ctx.fillText('SALIDA',q.x,q.y+5);
+ }else if(p.kind==='chandelier'){
+  for(let n=0;n<8;n++){const a=n*TAU/8,x=Math.cos(a)*45,y=Math.sin(a)*32;modelLine(p,[0,0,160],[x,y,132],'#be9a62',2);const q=modelPoint(p,x,y,132);ellipse(q.x,q.y,6,3,'#f0d797');disc(q.x,q.y+3,2,'#fff0b9');}const q=modelPoint(p,0,0,160);disc(q.x,q.y,6,'#b99a6b');
+ }
+}
+function casinoPropImage(p){
+ const key='casino:prop:'+p.kind+':'+(p.variant||0);if(stationAssets.has(key))return stationAssets.get(key);
+ const bounds={x:-(p.w+p.d)*.43-25,y:-p.h-(p.w+p.d)*.29-30,w:(p.w+p.d)*.86+50,h:p.h+(p.w+p.d)*.58+60},im=document.createElement('canvas'),old=ctx;im.width=Math.ceil(bounds.w);im.height=Math.ceil(bounds.h);ctx=im.getContext('2d');
+ try{ctx.translate(-bounds.x,-bounds.y);paintCasinoProp({...p,x:0,y:0,angle:0});}finally{ctx=old;}const asset={image:im,bounds};stationAssets.set(key,asset);return asset;
+}
+function renderCasinoRoom(now){
+ const player=state.players[me],at={...player,x:player.casino.x,y:player.casino.y},pos=projectPoint(at),zoom=mobile?(viewWidth<viewHeight?.7:.78):.88,cx=pos.x-viewWidth/(2*zoom),cy=pos.y-viewHeight/(2*zoom);
+ ctx.setTransform(renderDpr,0,0,renderDpr,0,0);rect(0,0,viewWidth,viewHeight,'#020507');ctx.save();ctx.scale(zoom,zoom);ctx.translate(-cx,-cy);
+ ctx.save();ctx.transform(CAMERA_COS,CAMERA_SIN*CAMERA_TILT,-CAMERA_SIN,CAMERA_COS*CAMERA_TILT,0,0);ctx.drawImage(casinoFloorImage(),0,0,CASINO_W,CASINO_H);ctx.restore();
+ modelBox({x:0,y:0,angle:0},60,45,1080,15,0,90,'#b1a078','#292635','#423345');modelBox({x:0,y:0,angle:0},45,60,15,740,0,72,'#b1a078','#242733','#3d3347');
+ const scene=casinoProps.map(p=>({kind:'prop',p,depth:projectPoint(p).y}));for(const p of state.players)if(p.present!==false&&p.casino)scene.push({kind:'player',p:{...p,x:p.casino.x,y:p.casino.y,car:null,weapon:null},depth:projectPoint(p.casino).y});
+ scene.sort((a,b)=>a.depth-b.depth);
+ for(const item of scene){if(item.kind==='prop'){const q=projectPoint(item.p),a=casinoPropImage(item.p);ctx.drawImage(a.image,q.x+a.bounds.x,q.y+a.bounds.y);}else{humanDraw(actorSprite(item.p),0,item.p.idx);const q=projectPoint(item.p);ctx.save();ctx.textAlign='center';ctx.font='800 10px system-ui';ctx.fillStyle='#ecd8af';ctx.fillText('P'+(item.p.idx+1),q.x,q.y-58);ctx.restore();}}
+ ctx.restore();updateHud(player,now/1000);
+}
+function drawCasinoSymbol(n,size){
+ const s=size/30;ctx.save();ctx.scale(s,s);const col=SLOT_SYMBOLS[n].color;
+ if(n===0){line(-7,1,4,-19,'#88a768',3);line(10,3,4,-19,'#88a768',3);ellipse(8,-18,9,4,'#75a87e');disc(-9,7,10,'#b94159');disc(10,10,10,'#d55c70');ellipse(-12,3,3,2,'#f9b3b3');ellipse(7,6,3,2,'#f9b3b3');}
+ else if(n===1){ctx.rotate(-.3);ellipse(0,0,21,14,'#ddc75a');ellipse(-3,-3,16,10,'#f0dc7f');line(-18,0,18,0,'#b69f3b',1.2);}
+ else if(n===2){poly([[-17,13],[-12,7],[-11,-7],[-7,-15],[0,-19],[7,-15],[11,-7],[12,7],[17,13]],'#dab567');line(-17,13,17,13,'#f9dda2',3);disc(0,18,4,'#9a7642');ellipse(-4,-5,3,10,'#fff0b066');}
+ else if(n===3){ctx.font='900 57px Georgia';ctx.textAlign='center';ctx.fillStyle='#b83e51';ctx.fillText('7',0,20);ctx.strokeStyle='#f6d4a1';ctx.lineWidth=1.4;ctx.strokeText('7',0,20);}
+ else if(n===4){roundedPanel(-26,-15,52,30,4,'#1b4d4b');ctx.textAlign='center';ctx.font='900 20px Georgia';ctx.fillStyle='#e9dfbc';ctx.fillText('BAR',0,7);line(-21,-10,21,-10,'#85b9a4',1);line(-21,11,21,11,'#85b9a4',1);}
+ else{poly([[-23,-6],[-12,-20],[12,-20],[23,-6],[0,23]],'#a18bd2');poly([[-23,-6],[0,-6],[-12,-20]],'#e2ccf4');poly([[0,-6],[12,-20],[23,-6]],'#cdb5ed');poly([[0,-6],[0,23],[-23,-6]],'#816bba');line(-23,-6,23,-6,'#f4e8ff',1);line(-12,-20,0,23,'#d7bcf0',1);line(12,-20,0,23,'#b9a0e1',1);}
+ ctx.restore();
+}
+function renderCasinoSlots(now,id){
+ const slot=state.casino.slots[id],w=viewWidth,h=viewHeight,cw=Math.min(w-32,720),center=w/2,top=h<500?76:Math.max(110,h*.18),height=Math.min(h<500?156:250,h*.34),reelW=cw/3;
+ ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createLinearGradient(0,0,w,h);bg.addColorStop(0,'#2f1e3c');bg.addColorStop(.5,'#091b28');bg.addColorStop(1,'#3f253b');rect(0,0,w,h,bg);
+ roundedPanel(center-cw/2-7,top-15,cw+14,height+30,13,'#c5a568');roundedPanel(center-cw/2-2,top-10,cw+4,height+20,9,'#453846');
+ for(let reel=0;reel<3;reel++){
+  const x=center-cw/2+reel*reelW+6,rr=height*.32;roundedPanel(x,top,reelW-12,height,7,'#eee4ca');ctx.save();ctx.beginPath();ctx.rect(x+3,top+3,reelW-18,height-6);ctx.clip();
+  const running=slot.phase==='spinning'&&state.casino.time-slot.started<[1.2,2,2.85][reel];
+  if(running){const scroll=(state.casino.time-slot.started)*(12+reel*3),offset=(scroll%1)*height;for(let n=-1;n<2;n++){const symbol=(Math.floor(scroll)+n+60)%6;ctx.save();ctx.translate(x+(reelW-12)/2,top+height/2+n*height+offset);drawCasinoSymbol(symbol,Math.min(rr,reelW*.34));ctx.restore();}}
+  else{ctx.save();ctx.translate(x+(reelW-12)/2,top+height/2);drawCasinoSymbol(slot.reels[reel],Math.min(rr,reelW*.34));ctx.restore();}
+  const shade=ctx.createLinearGradient(0,top,0,top+height);shade.addColorStop(0,'#55474455');shade.addColorStop(.2,'#ffffff00');shade.addColorStop(.8,'#ffffff00');shade.addColorStop(1,'#55474455');rect(x,top,reelW-12,height,shade);ctx.restore();
+ }
+ const payY=top+height+48;ctx.save();ctx.textAlign='center';ctx.font='800 '+(w<430?11:14)+'px system-ui';ctx.fillStyle='#e9d4a2';ctx.fillText(slot.phase==='spinning'?'BUSCANDO TU SUERTE…':slot.phase==='result'?(slot.win?'PREMIO: '+slot.win+' MALETINES':'ESTA VEZ NO HUBO PREMIO'):'LUCKY '+(id+1)+' · ELIGE TU APUESTA',center,payY);
+ const iconSize=w<430?12:18,spacing=Math.min(85,(w-25)/6),start=center-spacing*2.5;for(let n=0;n<6;n++){ctx.save();ctx.translate(start+n*spacing,payY+36);drawCasinoSymbol(n,iconSize);ctx.restore();ctx.font='800 10px system-ui';ctx.fillStyle='#b5c8ba';ctx.fillText(SLOT_SYMBOLS[n].mult+'×',start+n*spacing,payY+63);}
+ ctx.font='700 9px system-ui';ctx.fillStyle='#9caeaa';ctx.fillText('3 IGUALES: MULTIPLICADOR · 2 IGUALES: DEVUELVE LA APUESTA',center,payY+84);ctx.restore();
+ if(slot.phase==='result'&&slot.win>slot.stake)for(let n=0;n<(mobile?14:24);n++){const age=(state.casino.time-slot.until)*.7+hash(n,875),y=(age%1)*h;rect(hash(n,876)*w,y,3,6,n%2?'#d9bb7e':'#ad95ca');}
+}
+function horseProgress(h,i,time){const t=Math.max(0,time-h.started),u=cap(t/(h.finishes[i]||15),0,1);return cap(u+Math.sin(t*1.4+i*1.7+h.seed)*.035*u*(1-u)*4,0,1);}
+function drawRaceHorse(index,frame){
+ const key='casino:horse:'+index+':'+frame;if(stationAssets.has(key))return stationAssets.get(key);const im=document.createElement('canvas');im.width=150;im.height=100;const old=ctx;ctx=im.getContext('2d');
+ try{ctx.translate(72,58);const horse=RACE_HORSES[index],swing=Math.sin(frame*TAU/8),opp=Math.cos(frame*TAU/8);line(-31,-3,-50,-8+opp*5,'#373433',6);ellipse(-49,-8+opp*5,8,3,'#383634');
+  for(const [x,phase]of [[-23,swing],[-14,-swing],[17,opp],[27,-opp]]){const knee={x:x+phase*13,y:14+Math.abs(phase)*2},foot={x:x-phase*16,y:31-Math.abs(phase)*7};line(x,-1,knee.x,knee.y,horse.coat,5);line(knee.x,knee.y,foot.x,foot.y,horse.coat,3.2);line(foot.x-2,foot.y,foot.x+4,foot.y,'#262e2e',3);}
+  ellipse(-2,-6,34,15,horse.coat);ellipse(-10,-11,23,8,'#e1c69725');poly([[19,-12],[29,-33],[42,-35],[41,-14],[31,0]],horse.coat);line(26,-28,25,-13,'#2d3331',4);ellipse(45,-29,14,7,horse.coat);poly([[32,-35],[31,-43],[37,-38],[40,-35]],horse.coat);disc(46,-31,1.1,'#121f23');line(48,-27,58,-27,'#584b3c',1);line(47,-28,12,-13,'#c7b28d',1);
+  roundedPanel(-9,-18,29,17,2,horse.color);ctx.textAlign='center';ctx.font='900 10px system-ui';ctx.fillStyle='#152b30';ctx.fillText(String(index+1),6,-5);
+  line(7,-23,-1,-38,'#e1d1b3',7);line(-1,-38,17,-34,horse.color,9);line(17,-34,27,-26,'#d5bf9b',3);line(2,-22,13,-12,'#252f37',5);line(13,-12,20,-11,'#1b2930',4);disc(19,-43,6,'#d8bf9f');ellipse(19,-47,8,5,horse.color);line(21,-43,26,-44,'#333b3d',2);
+ }finally{ctx=old;}stationAssets.set(key,im);return im;
+}
+function renderCasinoRace(now){
+ const c=state.casino,h=c.horse,w=viewWidth,hh=viewHeight,top=hh<500?72:104,bottom=hh<500?80:180,trackH=Math.max(150,hh-top-bottom),lane=trackH/6,start=35,end=w-50;
+ ctx.setTransform(renderDpr,0,0,renderDpr,0,0);rect(0,0,w,hh,'#101b28');rect(0,top-32,w,32,'#314a40');for(let n=0;n<80;n++){const x=hash(n,881)*w,y=top-31+hash(n,882)*26;disc(x,y,1.7,n%3?'#b8aa85':'#7f9b91');}
+ for(let i=0;i<6;i++){
+  const y=top+i*lane;rect(0,y,w,lane-1,i%2?'#8c7456':'#9c8463');line(0,y+lane-1,w,y+lane-1,'#e0cda470',1);rect(0,y,5,lane,RACE_HORSES[i].color);
+  const progress=['racing','result'].includes(h.phase)?horseProgress(h,i,c.time):0,x=start+progress*(end-start),frame=Math.floor(c.time*10+i)%8,size=Math.min(lane*1.7,130);
+  ctx.drawImage(drawRaceHorse(i,frame),x-size*.5,y+lane*.5-size*.33,size,size*2/3);
+  ctx.save();ctx.font='800 '+(w<440?8:10)+'px system-ui';ctx.fillStyle='#f4e5c4';ctx.fillText((i+1)+' '+RACE_HORSES[i].name,10,y+11);ctx.restore();
+ }
+ for(let row=0;row<12;row++)for(let col=0;col<2;col++)rect(end+14+col*5,top+row*trackH/12,5,trackH/12,(row+col)%2?'#111d27':'#f4dfba');
+ if(h.phase==='countdown'){const n=Math.max(1,Math.ceil(h.started-c.time));ctx.save();ctx.textAlign='center';ctx.font='900 80px Georgia';ctx.strokeStyle='#081b28';ctx.lineWidth=7;ctx.strokeText(String(n),w/2,top+trackH/2+23);ctx.fillStyle='#f2d297';ctx.fillText(String(n),w/2,top+trackH/2+23);ctx.restore();}
+ if(h.phase==='result'){roundedPanel(w/2-Math.min(170,w*.44),top+trackH/2-37,Math.min(340,w*.88),74,6,'#101f2dee');ctx.save();ctx.textAlign='center';ctx.font='900 '+(w<440?17:23)+'px Georgia';ctx.fillStyle='#ead39d';ctx.fillText('GANA '+RACE_HORSES[h.winner].name,w/2,top+trackH/2-4);ctx.font='800 11px system-ui';ctx.fillStyle='#bfd8be';ctx.fillText('PREMIOS ABONADOS · APUESTA GANADORA ×5',w/2,top+trackH/2+19);ctx.restore();}
+}
+
+function updateCasinoUI(){
+ const p=state.players[me],inside=!!p.casino,activity=p.casino?.activity||'',full=!!casinoFullscreen(p);
+ if(casinoLocal.area!==(p.areaSerial||0)||casinoLocal.activity!==activity){casinoLocal.area=p.areaSerial||0;casinoLocal.activity=activity;resetControls();motion.pending=[];closeChat();}
+ $('ui').classList.toggle('incasino',inside);$('ui').classList.toggle('casinogame',full);$('casinoPanel').classList.toggle('hidden',!full);$('casinoExit').classList.toggle('hidden',!inside||full);$('casinoWait').classList.toggle('hidden',activity!=='horse-wait');
+ const nearDoor=!inside&&state.mapId===0&&p.present!==false&&p.car===null&&p.downUntil<=state.time&&!state.done&&distance(p,CASINO_DOOR)<92;
+ $('casinoDoor').classList.toggle('hidden',!nearDoor);$('casinoDoor').disabled=p.wallet<CASINO_FEE||casinoLocal.pending.size>0;
+ const rayNear=!inside&&state.mapId===0&&p.car===null&&p.downUntil<=state.time&&!state.done&&distance(p,RAY_SPOT)<88;
+ $('rayBuy').classList.toggle('hidden',!rayNear);$('rayBuy').disabled=p.wallet<RAY_COST||p.weapon==='raygun'||punchOwns(me)||casinoLocal.pending.size>0;
+ let target=null;if(inside&&!activity){for(let i=0;i<2;i++)if(casinoNear(me,SLOT_SPOTS[i]))target={kind:'slot',slot:i};if(casinoNear(me,HORSE_SPOT,145))target={kind:'horse'};}
+ $('casinoUse').classList.toggle('hidden',!target);$('casinoUse').disabled=casinoLocal.pending.size>0;$('casinoUseLabel').textContent=target?.kind==='horse'?'CARRERAS':'TRAGAPERRAS';$('casinoUseSub').textContent=target?.kind==='horse'?'2 JUGADORES':'APOSTAR';casinoLocal.target=target;
+ if(inside){setText('score',String(p.wallet).padStart(2,'0'));setText('waveHud',casinoPaused()?'CASINO · HORDA '+state.wave+' EN PAUSA':'CASINO · HORDA '+state.wave+' SIGUE FUERA');}
+ if(!full)return;
+ $('casinoBalance').textContent=p.wallet+' MAL.';
+ const slotMode=activity.startsWith('slot'),slotId=slotMode?Number(activity.slice(4)):-1,slot=slotMode?state.casino.slots[slotId]:null,h=state.casino.horse;
+ const betting=!slotMode&&h.phase==='betting';$('casinoPanel').classList.toggle('raceview',!slotMode&&!betting);$('casinoHorsePicks').classList.toggle('hidden',!betting);
+ $('casinoGameTitle').textContent=slotMode?'LUCKY '+(slotId+1):'NIGHTFALL DOWNS';$('casinoWagers').classList.toggle('hidden',!slotMode&&!betting);$('casinoBet1').classList.toggle('hidden',!slotMode);$('casinoPlay').classList.toggle('hidden',!slotMode&&!betting);
+ if(!slotMode&&casinoLocal.stake===1)casinoLocal.stake=2;
+ const locked=betting&&!!h.bets[me],busy=slotMode&&slot.phase==='spinning'||locked||!!casinoLocal.pending.size;
+ for(const button of casinoStakeButtons){const stake=Number(button.getAttribute('data-stake'));button.classList.toggle('selected',casinoLocal.stake===stake);button.disabled=busy||p.wallet<stake;}
+ for(const button of casinoHorseButtons){button.classList.toggle('selected',casinoLocal.selectedHorse===Number(button.getAttribute('data-horse')));button.disabled=locked||!!casinoLocal.pending.size;}
+ $('casinoPlay').disabled=busy||p.wallet<casinoLocal.stake;
+ $('casinoPlay').textContent=slotMode?(slot.phase==='spinning'?'GIRANDO…':'GIRAR · '+casinoLocal.stake+' MAL.'):locked?'BOLETO LISTO':'CONFIRMAR · '+casinoLocal.stake+' MAL.';
+ if(slotMode){
+  $('casinoGameMessage').textContent=slot.phase==='spinning'?'TIRADA EN CURSO':slot.phase==='result'?(slot.win?'PREMIO ABONADO: '+slot.win+' MAL.':'SIN PREMIO · PUEDES VOLVER A INTENTAR'):'ELIGE TU APUESTA';
+  $('casinoTicket').textContent=slot.phase==='spinning'?'Tu apuesta: '+slot.stake+' · la tirada terminará aunque vuelvas a la sala.':slot.phase==='result'?'Apostaste '+slot.stake+' · '+(slot.win>slot.stake?'ganancia neta +'+(slot.win-slot.stake):slot.win?'apuesta devuelta':'perdiste '+slot.stake):'2 iguales: devuelve la apuesta · 3 iguales: premio de la tabla.';
+ }else{
+  const ticket=h.bets[me],other=h.bets[1-me];$('casinoGameMessage').textContent=betting?(locked?'BOLETO CONFIRMADO · ESPERANDO A P'+(2-me):'APUESTA A UN CABALLO'):h.phase==='countdown'?'LA CARRERA ESTÁ POR COMENZAR':h.phase==='racing'?'EN DIRECTO · NO SE PUEDEN CAMBIAR APUESTAS':'RESULTADO FINAL';
+  $('casinoTicket').textContent=ticket?'P'+(me+1)+': '+RACE_HORSES[ticket.horse].name+' · '+ticket.stake+' MAL.'+(other?' | P'+(2-me)+': '+RACE_HORSES[other.horse].name+' · '+other.stake:''):'Premio si ganas: '+casinoLocal.stake*5+' maletines. Ambos confirman antes de correr.';
+ }
+}
+function renderCasinoGame(now){
+ if(state.players[me].casino.activity.startsWith('slot'))renderCasinoSlots(now,Number(state.players[me].casino.activity.slice(4)));else if(state.casino.horse.phase==='betting'){
+  ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createLinearGradient(0,0,viewWidth,viewHeight);bg.addColorStop(0,'#172739');bg.addColorStop(1,'#1d3a3b');rect(0,0,viewWidth,viewHeight,bg);
+ }else renderCasinoRace(now);updateCasinoUI();
+}
+const casinoStakeButtons=[1,2,5,10].map(n=>{const b=$('casinoBet'+n);b.setAttribute('data-stake',String(n));return b;}),casinoHorseButtons=[0,1,2,3,4,5].map(n=>{const b=$('casinoHorse'+n);b.setAttribute('data-horse',String(n));return b;});
+for(const button of casinoStakeButtons)button.addEventListener('click',()=>{casinoLocal.stake=Number(button.getAttribute('data-stake'));});
+for(const button of casinoHorseButtons)button.addEventListener('click',()=>{casinoLocal.selectedHorse=Number(button.getAttribute('data-horse'));});
+$('casinoDoor').addEventListener('click',()=>requestCasino('enter'));$('casinoExit').addEventListener('click',()=>requestCasino('exit'));$('rayBuy').addEventListener('click',()=>requestCasino('raygun'));
+$('casinoUse').addEventListener('click',()=>{const target=casinoLocal.target;if(target)requestCasino(target.kind,target.kind==='slot'?{slot:target.slot}:{});});
+$('casinoBack').addEventListener('click',()=>requestCasino('back'));$('casinoWaitCancel').addEventListener('click',()=>requestCasino('back'));
+$('casinoPlay').addEventListener('click',()=>{if($('casinoPlay').disabled)return;const activity=state.players[me].casino?.activity;if(activity?.startsWith('slot')){const id=Number(activity.slice(4));requestCasino('spin',{slot:id,stake:casinoLocal.stake,serial:state.casino.slots[id].serial});}else if(activity==='horse')requestCasino('bet',{horse:casinoLocal.selectedHorse,stake:casinoLocal.stake,serial:state.casino.horse.serial});});
+
 function animate(now){
  const elapsed=Math.max(0,(now-lastTime)/1000),dt=Math.min(.045,elapsed);lastTime=now;
  const kx=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0),ky=(keys.KeyS||keys.ArrowDown?1:0)-(keys.KeyW||keys.ArrowUp?1:0);
  const stickActive=movingStickId!==null,direction=movementFromScreen(stickActive?joystick.x:kx,stickActive?joystick.y:ky);
- input.x=chat.open||poolActive()?0:direction.x;input.y=chat.open||poolActive()?0:direction.y;input.shoot=!chat.open&&!poolActive()&&(fireHeld||!!keys.Space);
+ input.x=chat.open||poolActive()||casinoFullscreen()?0:direction.x;input.y=chat.open||poolActive()||casinoFullscreen()?0:direction.y;input.shoot=!state.players[me].casino&&!chat.open&&!poolActive()&&(fireHeld||!!keys.Space);
  updateNetwork(now);
  if(isHost){
   if(connected&&net.localActive&&!net.awaitingResume){if(now-lastGuestAt>cap(600+net.rtt+net.jitter*2,600,1600)){guestInput.x=guestInput.y=0;guestInput.shoot=false;}let remaining=Math.min(.12,elapsed);while(remaining>1e-7){const step=Math.min(.03,remaining);tick(step);remaining-=step;}}
