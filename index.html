@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
 <meta name="theme-color" content="#080e14">
 <meta name="description" content="Deadlock: Afterfall. Ciudad cooperativa en 2.5D para dos jugadores: explora las calles, conduce y visita el casino.">
-<title>DEADLOCK: AFTERFALL — Co-op City · v9.5</title>
+<title>DEADLOCK: AFTERFALL — Co-op City · v9.6</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%23101918'/%3E%3Cpath d='M20 4 33 12v16l-13 8-13-8V12Z M20 11v9l8 4m-8-4-8 4m8-4v10' fill='none' stroke='%23c3b971' stroke-width='2'/%3E%3C/svg%3E">
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
@@ -104,6 +104,23 @@
 @media(max-height:500px){#racePlayers{top:62px;gap:6px}.race-player{padding:5px 8px}.race-player strong{font-size:9px;margin-top:2px}.race-player small{font-size:6px}#casinoPanel:has(#racePlayers:not(.hidden)) .casino-horse-picks{top:116px;bottom:102px}.casino-horse-picks button{min-height:37px!important}.casino-bet-heading strong{font-size:14px}}
 @media(max-width:360px){.race-player{padding:7px}.race-player strong{font-size:8px}.race-player small{font-size:6px}}
 
+#slotPayout96{position:absolute;left:12px;right:12px;bottom:150px;padding:10px 12px;border:1px solid #c3a16588;border-radius:8px;background:#101c2aee;color:#e7dcc2;pointer-events:none}
+.slot-result96{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:9px}.slot-result96 small{display:block;font-size:8px;letter-spacing:.1em;color:#c3b18b}.slot-result96 strong{display:block;font:900 30px Georgia;color:#f5d883;line-height:1.1;margin-top:2px}.slot-result96>span{max-width:51%;font-size:10px;line-height:1.4;color:#b6cbbb;text-align:right}.slot-result96.win96 strong{color:#bdf0a1}.slot-result96.loss96 strong{color:#e7ab91}
+.slot-prizes96{display:grid;grid-template-columns:repeat(6,1fr);gap:6px}.slot-prizes96>div{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:2px;border:1px solid #b4a77d33;border-radius:4px;padding:4px;background:#26303ac9;min-width:0}.slot-prizes96 img{width:24px;height:25px;object-fit:contain;justify-self:center}.slot-prizes96 span{font-size:10px;font-weight:850;color:#ccb985}.slot-prizes96 strong{grid-column:1/-1;text-align:center;font-size:13px;color:#f2e4bc}#slotPayout96>p{font-size:8px;text-align:center;margin:8px 0 0;color:#a7bab3}
+#horseSelection96{position:absolute;top:143px;left:12px;right:12px;height:clamp(145px,24vh,190px);display:grid;grid-template-columns:58% 42%;border:1px solid #a1b5a166;border-radius:7px;overflow:hidden;background:#182c34;pointer-events:none}#horsePortrait96{width:100%;height:100%;min-height:0;object-fit:contain;object-position:center}.horse-detail96{padding:10px 10px 9px;display:flex;flex-direction:column;justify-content:space-between;gap:6px;border-left:1px solid #afbb9d33}.horse-detail96 small{display:block;font-size:7px;letter-spacing:.05em;color:#a9b8ae}.horse-detail96 strong{display:block;font-size:11px;line-height:1.3;color:#e9d6a7;margin-top:4px}.horse-odds96 b{font:900 24px Georgia;color:#c5e2b7}.horse-odds96 span{display:block;font-size:8px;color:#a9c1b1}.horse-prize96{font-size:9px;color:#c3c9b4}.horse-prize96 b{font-size:17px;color:#e5c789;margin-left:3px}.horse-prize96 small{font-size:6px;margin-top:3px}
+#casinoPanel.betview96 #casinoHorsePicks{top:calc(153px + clamp(145px,24vh,190px))!important;bottom:151px;left:12px;right:12px;transform:none;width:auto;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;align-content:start}#casinoPanel.betview96 .casino-bet-heading{margin:0 0 2px}#casinoPanel.betview96 .casino-bet-heading strong{font-size:16px}#casinoPanel.betview96 .casino-bet-heading span{font-size:8px;margin-top:3px}#casinoPanel.betview96 #casinoHorsePicks button{display:grid;grid-template-columns:18px 1fr;align-content:center;gap:3px 5px;padding:7px!important;min-height:59px!important}#casinoPanel.betview96 #casinoHorsePicks i{width:18px;height:18px;font-size:10px}#casinoPanel.betview96 #casinoHorsePicks b{font-size:8px;line-height:1.2}.horse-chance96{grid-column:1/-1;font-size:10px;color:#b9d7bc;text-align:center;font-weight:800}
+@media(min-width:540px) and (orientation:landscape){
+ #casinoPanel.slotview96 .casino-game-footer{left:51%;right:12px;bottom:9px;min-height:77px;padding:8px 10px;grid-template-columns:1fr 122px;gap:5px 8px}#casinoPanel.slotview96 .casino-game-footer>strong,#casinoPanel.slotview96 .casino-game-footer>span{display:none}#casinoPanel.slotview96 .casino-wagers{grid-column:1;grid-row:1;gap:4px;flex-wrap:nowrap}#casinoPanel.slotview96 #casinoPlay{grid-column:2;grid-row:1;min-height:44px;font-size:10px}#casinoPanel.slotview96 .casino-game-footer>small{display:none}#casinoPanel.slotview96 .casino-wagers>span{display:none}#casinoPanel.slotview96 .casino-wagers button{min-width:25px!important;padding:5px!important}
+ #slotPayout96{left:51%;right:12px;top:67px;bottom:99px;padding:9px 11px;display:flex;flex-direction:column;justify-content:space-between}.slot-result96{margin-bottom:5px}.slot-result96 strong{font-size:clamp(25px,5vh,38px)}.slot-result96 small{font-size:8px}.slot-result96>span{font-size:10px;max-width:51%}.slot-prizes96{grid-template-columns:repeat(3,1fr);gap:5px}.slot-prizes96>div{grid-template-columns:27px 1fr;gap:0 3px;padding:4px}.slot-prizes96 img{grid-row:1/3;width:27px;height:29px}.slot-prizes96 strong{grid-column:2;font-size:15px;text-align:left}.slot-prizes96 span{font-size:10px}#slotPayout96>p{font-size:8px;margin-top:5px}
+ #horseSelection96{top:117px;left:12px;right:auto;width:38%;height:calc(100vh - 218px);grid-template-columns:1fr;grid-template-rows:minmax(0,1fr) 68px}.horse-detail96{border-left:0;border-top:1px solid #afbb9d33;padding:6px 8px;display:grid;grid-template-columns:1fr auto;gap:4px}.horse-detail96 small{font-size:6px}.horse-detail96 strong{font-size:9px;margin-top:2px}.horse-odds96 b{font-size:21px}.horse-odds96 span{font-size:7px}.horse-prize96{grid-column:1/-1;font-size:8px}.horse-prize96 b{font-size:12px}.horse-prize96 small{display:inline;font-size:6px;margin-left:7px}
+ #casinoPanel.betview96 #casinoHorsePicks{top:117px!important;left:42%;right:12px;bottom:100px;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}#casinoPanel.betview96 #casinoHorsePicks button{min-height:39px!important;padding:5px 7px!important;grid-template-columns:18px 1fr auto;gap:4px}#casinoPanel.betview96 #casinoHorsePicks b{font-size:9px}#casinoPanel.betview96 .horse-chance96{grid-column:3;font-size:8px;max-width:58px}#casinoPanel.betview96 .casino-bet-heading strong{font-size:14px}#casinoPanel.betview96 .casino-bet-heading span{font-size:7px}
+}
+@media(min-width:540px) and (orientation:landscape) and (max-height:350px){#slotPayout96{top:61px;bottom:94px;padding:6px 9px}.slot-result96 strong{font-size:22px}.slot-result96>span{font-size:8px}.slot-prizes96 img{width:23px;height:23px}.slot-prizes96>div{padding:2px}.slot-prizes96 strong{font-size:13px}#slotPayout96>p{font-size:7px;margin-top:3px}#horseSelection96{top:114px;height:calc(100vh - 212px)}#casinoPanel.betview96 #casinoHorsePicks{top:114px!important;bottom:94px;gap:3px}#casinoPanel.betview96 #casinoHorsePicks button{min-height:28px!important}#casinoPanel.betview96 .casino-bet-heading{display:none}.horse-detail96{grid-template-columns:1fr auto;grid-template-rows:1fr;padding:4px 6px}.horse-prize96{display:none}#horseSelection96{grid-template-rows:minmax(0,1fr) 42px}.horse-detail96 strong{font-size:8px}.horse-odds96 b{font-size:17px}}
+
+@media(max-width:360px) and (orientation:portrait){#casinoPanel.slotview96 .casino-game-footer{grid-template-columns:1fr 110px;padding:10px;gap:6px 8px}#casinoPanel.slotview96 .casino-wagers{flex-wrap:nowrap}}
+
+.slot-result96.win96>span{color:#c6efb2;font-size:14px;font-weight:800}
+
 </style>
 </head>
 <body>
@@ -112,7 +129,7 @@
  <div class="lobby-shell">
   <header class="lobby-header">
    <div class="signal-brand"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 30 9v16l-13 7L4 25V9Z"/><path d="M17 8v8l7 4m-7-4-7 4M17 16v10"/><circle cx="17" cy="17" r="4"/></svg><span>AFTERFALL<span class="signal-division">CITY PROTOCOL</span></span></div>
-   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V9.5</span></div>
+   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V9.6</span></div>
   </header>
   <main class="lobby-main">
    <section class="outbreak-cover" aria-labelledby="gameTitle">
@@ -212,7 +229,7 @@
     <button class="mainbtn secondary hidden" id="resumeRoom" type="button">VOLVER A LA PARTIDA</button>
     <div id="error" class="error" role="status" aria-live="polite"></div>
     <div class="entry-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 4-4 3 4-2 3c2 3 3 4 6 5l3-2 3 3-4 4C12 21 3 12 5 8Z"/></svg><p><strong>LA CIUDAD ESTÁ ABIERTA.</strong><span>Explora mientras llega P2. Recorran las calles conectadas, con peatones y tráfico, y visiten el casino.</span></p></div>
-    <details class="field-guide"><summary>GUÍA DE LA CIUDAD</summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección de disparo. AUTO aparece al acercarte a un vehículo. Chat y GRITAR junto a la esquina superior.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · Enter: chat.</p><p><b>DINERO</b>Cada jugador empieza con $250. Los autos circulan por carriles; puedes acercarte para conducirlos. La entrada al casino cuesta $3; el saldo y las apuestas son personales.</p><p><b>VIOLET VAULT</b>Dos tragaperras independientes. Para las carreras, ambos deben acercarse a la TV y pulsar CARRERAS. Puedes ver qué caballo y cantidad está eligiendo tu compañero. Cada uno confirma su propia apuesta.</p><p><b>MÚSICA DE LA CIUDAD</b>♪ activa o silencia el techno cyberpunk del primer mapa, solo para ti. <a href="https://opengameart.org/content/t-t-free-cyberpunk-pack-2" target="_blank" rel="noopener noreferrer">New Factory — Alexander Ehlers (tricksntraps)</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>. Audio comprimido para el juego.</p><p>Ambos jugadores necesitan la versión 9.5.</p></div></details>
+    <details class="field-guide"><summary>GUÍA DE LA CIUDAD</summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección de disparo. AUTO aparece al acercarte a un vehículo. Chat y GRITAR junto a la esquina superior.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · Enter: chat.</p><p><b>DINERO</b>Cada jugador empieza con $250. Los autos circulan por carriles; puedes acercarte para conducirlos. La entrada al casino cuesta $3; el saldo y las apuestas son personales.</p><p><b>VIOLET VAULT</b>Dos tragaperras independientes. Para las carreras, ambos deben acercarse a la TV y pulsar CARRERAS. Puedes ver qué caballo y cantidad está eligiendo tu compañero. Cada uno confirma su propia apuesta.</p><p><b>MÚSICA DE LA CIUDAD</b>♪ activa o silencia el techno cyberpunk del primer mapa, solo para ti. <a href="https://opengameart.org/content/t-t-free-cyberpunk-pack-2" target="_blank" rel="noopener noreferrer">New Factory — Alexander Ehlers (tricksntraps)</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>. Audio comprimido para el juego.</p><p>Ambos jugadores necesitan la versión 9.6.</p></div></details>
    </section>
   </main>
   <footer class="lobby-footer">
@@ -247,8 +264,9 @@
 <section id="casinoPanel" class="hidden" aria-label="Juegos del casino">
  <header class="casino-game-header"><div><small>VIOLET VAULT</small><strong id="casinoGameTitle">LUCKY 1</strong></div><div><b id="casinoBalance">00 MAL.</b><button id="casinoBack" type="button">SALA ↗</button></div></header>
  <div id="racePlayers" class="hidden" aria-label="Apuestas de los dos jugadores"><div id="raceP0" class="race-player"><div><b>P1</b><small id="raceP0State">ELIGIENDO</small></div><strong id="raceP0Pick">ELIGIENDO…</strong></div><div id="raceP1" class="race-player"><div><b>P2</b><small id="raceP1State">ELIGIENDO</small></div><strong id="raceP1Pick">ELIGIENDO…</strong></div></div>
- <div id="casinoHorsePicks" class="casino-horse-picks hidden"><div class="casino-bet-heading"><strong>ELIGE TU CABALLO</strong><span>6 corredores · premio 5× · incluye la apuesta</span></div>
- <button id="casinoHorse0" type="button" data-horse="0"><i style="background:#e36c65">1</i><b>FURIA ROJA</b></button><button id="casinoHorse1" type="button" data-horse="1"><i style="background:#6db3e4">2</i><b>RAYO AZUL</b></button><button id="casinoHorse2" type="button" data-horse="2"><i style="background:#6dba8e">3</i><b>ESMERALDA</b></button><button id="casinoHorse3" type="button" data-horse="3"><i style="background:#e6c269">4</i><b>SOL DORADO</b></button><button id="casinoHorse4" type="button" data-horse="4"><i style="background:#b397dd">5</i><b>SOMBRA VIOLETA</b></button><button id="casinoHorse5" type="button" data-horse="5"><i style="background:#e4e4ce">6</i><b>NIEVE</b></button>
+ <section id="slotPayout96" class="hidden" aria-label="Premios de la tragaperras"><div class="slot-result96" role="status" aria-live="polite"><div><small id="slotResultLabel96">PREMIO DE LA TIRADA</small><strong id="slotResultAmount96">—</strong></div><span id="slotResultDetail96">Elige una apuesta para ver los premios.</span></div><div class="slot-prizes96"><div><img id="slotIcon960" alt="Cerezas"><span>4×</span><strong id="slotPossible960">$0</strong></div><div><img id="slotIcon961" alt="Moneda"><span>5×</span><strong id="slotPossible961">$0</strong></div><div><img id="slotIcon962" alt="Campana"><span>8×</span><strong id="slotPossible962">$0</strong></div><div><img id="slotIcon963" alt="Siete"><span>16×</span><strong id="slotPossible963">$0</strong></div><div><img id="slotIcon964" alt="BAR"><span>12×</span><strong id="slotPossible964">$0</strong></div><div><img id="slotIcon965" alt="Diamante"><span>30×</span><strong id="slotPossible965">$0</strong></div></div><p>3 iguales: premio indicado · 2 iguales: recuperas tu apuesta.</p></section><section id="horseSelection96" class="hidden" aria-label="Caballo y jinete seleccionados"><img id="horsePortrait96" alt="Caballo y jinete seleccionados"><div class="horse-detail96"><div><small>TU SELECCIÓN</small><strong id="horseName96"></strong></div><div class="horse-odds96"><b id="horseChance96">16,7 %</b><span>de ganar</span></div><div class="horse-prize96">Premio posible <b id="horsePayout96">$10</b><small>Incluye la apuesta · pago 5×</small></div></div></section>
+<div id="casinoHorsePicks" class="casino-horse-picks hidden"><div class="casino-bet-heading"><strong>ELIGE TU CABALLO</strong><span>6 corredores · misma probabilidad · premio 5×</span></div>
+ <button id="casinoHorse0" type="button" data-horse="0"><i style="background:#e36c65">1</i><b>FURIA ROJA</b><small class="horse-chance96">16,7 % de ganar</small></button><button id="casinoHorse1" type="button" data-horse="1"><i style="background:#6db3e4">2</i><b>RAYO AZUL</b><small class="horse-chance96">16,7 % de ganar</small></button><button id="casinoHorse2" type="button" data-horse="2"><i style="background:#6dba8e">3</i><b>ESMERALDA</b><small class="horse-chance96">16,7 % de ganar</small></button><button id="casinoHorse3" type="button" data-horse="3"><i style="background:#e6c269">4</i><b>SOL DORADO</b><small class="horse-chance96">16,7 % de ganar</small></button><button id="casinoHorse4" type="button" data-horse="4"><i style="background:#b397dd">5</i><b>SOMBRA VIOLETA</b><small class="horse-chance96">16,7 % de ganar</small></button><button id="casinoHorse5" type="button" data-horse="5"><i style="background:#e4e4ce">6</i><b>NIEVE</b><small class="horse-chance96">16,7 % de ganar</small></button>
  </div>
  <footer class="casino-game-footer"><strong id="casinoGameMessage">ELIGE TU APUESTA</strong><span id="casinoTicket"></span><div id="casinoWagers" class="casino-wagers"><span>APUESTA</span><button id="casinoBet1" type="button" data-stake="1">1</button><button id="casinoBet2" type="button" data-stake="2">2</button><button id="casinoBet5" type="button" data-stake="5">5</button><button id="casinoBet10" type="button" data-stake="10">10</button><small>$</small></div><button id="casinoPlay" type="button">GIRAR · 2 MAL.</button><small id="casinoGameHint">Los premios incluyen la apuesta. Cada tirada es independiente.</small></footer>
 </section>
@@ -259,7 +277,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=9.5,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=9.6,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 // Parked systems: hordes, SWAT, bosses, extraction, Zone Cero, zombies,
 // perks, mystery box, Pack-a-Punch and survival supplies remain intact below.
 const CITY_RULES=Object.freeze({freeRoam:true,startingCash:250});
@@ -478,7 +496,7 @@ const collisionGeometry=[...solidGeometry,...bodyBarriers,...coastBarriers];
 let soundSequence=0,soundEvents=[],lastRemoteSound=0;const soundCooldowns=new Map();
 const state={players:[],cars:[],bags:[],guns:[],bullets:[],enemies:[],fx:[],score:0,collected:0,done:false,time:0,wave:0,nextWaveAt:0,punch:freshPunch(),box:{phase:'idle',until:0,owner:-1,result:null,serial:0}};
 function initialize(){
- if(state.mapId===1)configureMap(0);state.mapId=0;state.phase=CITY_RULES.freeRoam?'free':'phone';state.phone=freshPhone();if(CITY_RULES.freeRoam)state.phone.phase='complete';state.blood=[];state.travelAt=0;state.arrivalUntil=0;state.zombieAudioAt=state.zombieDragAt=0;
+ if(state.mapId===1)configureMap(0);state.mapId=0;state.phase=CITY_RULES.freeRoam?'free':'phone';state.fleeingCivilians=[];state.civilianSerial=0;state.phone=freshPhone();if(CITY_RULES.freeRoam)state.phone.phase='complete';state.blood=[];state.travelAt=0;state.arrivalUntil=0;state.zombieAudioAt=state.zombieDragAt=0;
  state.cover=coverSeeds.map(p=>({...p,health:p.hp,hitAt:-10}));
  Object.assign(boxSpot,{x:CITY_W/2,y:H/2});state.boomDrop=null;state.raid=false;state.monkeys=[];state.vests=[];state.boss=false;state.players=spawnPoints.map((p,i)=>makePlayer(p[0],p[1],i));
  state.cars=carSeeds.map((a,i)=>({id:i,x:a[0],y:a[1],angle:a[2],color:a[3],speed:0,driver:null,passenger:null,crashAt:-10,skidAt:-10}));
@@ -943,7 +961,7 @@ function attachCar(index){
  }
  const near=nearbyCar(p);
  if(!near){notify('Acércate a un vehículo.',index);return;}
- near.autoDrive=false;near.speed=Math.min(near.speed,75);p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;worldSound('door',near.x,near.y);
+ if(near.autoDrive&&near.driver===null)spawnFleeingDriver96(near,index);near.autoDrive=false;near.speed=Math.min(near.speed,75);p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;worldSound('door',near.x,near.y);
 }
 function emitBullet(x,y,angle,speed,life,damage,owner,enemy=false,splash=0,z=21,origin=null){
  speed*=.92;const upgrade=enemy?0:weaponUpgrade(origin),bullet={x,y,z,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life,damage,owner,enemy,splash,upgrade,color:upgradeTiers[upgrade].color};
@@ -1256,7 +1274,7 @@ function tick(dt){
  if(!isHost||!connected||state.done)return;
  if(poolActive()){tickPool(dt);return;}updatePoolWaiting();updateCasino(dt);
  if(casinoPaused()){for(let i=0;i<2;i++)if(state.players[i].casino)processCasinoPlayer(state.players[i],i===me?input:guestInput,dt);return;}
- state.time+=dt;if(cityFreeRoam())updateCityTraffic95(dt);if(!cityFreeRoam()){updateSlimePools();updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();}
+ state.time+=dt;if(cityFreeRoam()){updateCityTraffic95(dt);updateCityPeople96(dt);}if(!cityFreeRoam()){updateSlimePools();updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();}
  state.ammoDrops=state.ammoDrops.filter(drop=>drop.expiresAt>state.time);state.blood=state.blood.filter(stain=>stain.until>state.time);
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===me?input:guestInput;
@@ -1320,15 +1338,17 @@ function tick(dt){
 function setWaiting(wait){$('ui').classList.toggle('waiting',wait);$('waitMask').classList.toggle('hidden',!wait);}
 function start(){$('lobby').classList.add('hidden');$('ui').classList.remove('hidden');$('waitCode').textContent=room;setWaiting(!connected);resize();}
 function snapshot(){
- return {t:'s',v:VERSION,casino:structuredCasino(),pool:structuredPool(),movement:{client:net.remoteClient,seq:motion.ack,used:motion.used},world:net.world,secret:net.secret,term:net.term,leader:net.leader,revision:++net.revision,seq:{enemy:enemySequence,ammo:ammoDropSerial,grave:graveSequence,monkey:monkeySerial,sound:soundSequence},mapId:state.mapId,phase:state.phase,travelAt:state.travelAt,arrivalUntil:state.arrivalUntil,phone:{...state.phone},blood:state.blood.map(stain=>({...stain})),slimePools:state.slimePools.map(pool=>({...pool})),cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,sodas:state.sodas.map(job=>({...job})),graves:state.graves.map(grave=>({...grave,inventory:{...grave.inventory,perks:{...grave.inventory.perks}}})),ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({field,...toy})=>({...toy})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
+ return {t:'s',v:VERSION,casino:structuredCasino(),pool:structuredPool(),movement:{client:net.remoteClient,seq:motion.ack,used:motion.used},world:net.world,secret:net.secret,term:net.term,leader:net.leader,revision:++net.revision,civilians:(state.fleeingCivilians||[]).map(p=>({...p})),seq:{civilian:state.civilianSerial||0,enemy:enemySequence,ammo:ammoDropSerial,grave:graveSequence,monkey:monkeySerial,sound:soundSequence},mapId:state.mapId,phase:state.phase,travelAt:state.travelAt,arrivalUntil:state.arrivalUntil,phone:{...state.phone},blood:state.blood.map(stain=>({...stain})),slimePools:state.slimePools.map(pool=>({...pool})),cover:state.cover.map(p=>[p.health,p.hitAt]),p:state.players.map(p=>({...p})),c:state.cars.map(c=>({...c})),e:state.enemies.map(({thinkAt,bearing,clear,target,...e})=>e),b:state.bags.map(b=>b.taken),g:state.guns.map(g=>g.taken),bul:state.bullets.map(b=>({...b})),fx:state.fx.map(f=>({...f})),score:state.score,collected:state.collected,done:state.done,time:state.time,wave:state.wave,nextWaveAt:state.nextWaveAt,boomDrop:state.boomDrop,raid:state.raid,sodas:state.sodas.map(job=>({...job})),graves:state.graves.map(grave=>({...grave,inventory:{...grave.inventory,perks:{...grave.inventory.perks}}})),ammoDrops:state.ammoDrops.map(drop=>({...drop})),boxLocation:{...boxSpot},box:{...state.box},punch:{...state.punch},monkeys:state.monkeys.map(({field,...toy})=>({...toy})),vests:state.vests,boss:state.boss,drops:state.bags.slice(bagSeeds.length),sfx:soundEvents.filter(e=>state.time-e.at<.45)};
 }
 function receive(s){
  if(s.v!==VERSION||!Array.isArray(s.p)||s.p.length!==2||!Array.isArray(s.c)||!Array.isArray(s.e)||!Array.isArray(s.b)||!Array.isArray(s.g))return;
  if(s.seq){enemySequence=Math.max(enemySequence,Number(s.seq.enemy)||0);ammoDropSerial=Math.max(ammoDropSerial,Number(s.seq.ammo)||0);graveSequence=Math.max(graveSequence,Number(s.seq.grave)||0);monkeySerial=Math.max(monkeySerial,Number(s.seq.monkey)||0);soundSequence=Math.max(soundSequence,Number(s.seq.sound)||0);}
  const now=performance.now(),previous={...visualPlayer(me,now)};
+ const previousCivilians=(state.fleeingCivilians||[]).map(p=>({...visualFlee96(p,now)}));
  const previousCars=state.cars.map(car=>({...visualCar(car,now)})),previousPlayers=state.players.map((p,i)=>({...visualPlayer(i,now)}));
  const reset=(s.mapId===1?1:0)!==state.mapId||s.wave<state.wave||s.time+1e-5<state.time;
  if((s.mapId===1?1:0)!==state.mapId)configureMap(s.mapId);state.phase=s.phase||'combat';state.travelAt=s.travelAt||0;state.arrivalUntil=s.arrivalUntil||0;state.phone=s.phone||freshPhone();state.blood=s.blood||[];state.slimePools=s.slimePools||[];state.pool=s.pool||freshPool();state.casino=s.casino||freshCasino();
+ state.fleeingCivilians=Array.isArray(s.civilians)?s.civilians:[];state.civilianSerial=Number(s.seq?.civilian)||0;
  state.players=s.p;state.sodas=s.sodas||sodaStations.map(()=>freshSoda());state.graves=s.graves||[];state.ammoDrops=s.ammoDrops||[];state.cars=s.c;state.enemies=s.e;state.bullets=s.bul||[];state.fx=s.fx||[];
  if(Array.isArray(s.cover)&&s.cover.length===state.cover.length)for(let i=0;i<s.cover.length;i++){
   const values=s.cover[i];if(Array.isArray(values)&&Number.isFinite(values[0])&&Number.isFinite(values[1])){state.cover[i].health=cap(values[0],0,state.cover[i].hp);state.cover[i].hitAt=values[1];}
@@ -1339,7 +1359,7 @@ function receive(s){
  viewBlend=!reset&&previous.car===local.car&&previous.life===local.life&&delta<150?{dx:previous.x-local.x,dy:previous.y-local.y,at:now}:null;
  motion.carCorrection=null;
  if(!reset&&local.car!==null&&local.role==='driver'&&previous.car===local.car){const before=previousCars[local.car],after=state.cars[local.car];if(before&&after&&distance(before,after)<180)motion.carCorrection={id:after.id,dx:before.x-after.x,dy:before.y-after.y,angle:Math.atan2(Math.sin(before.angle-after.angle),Math.cos(before.angle-after.angle)),at:now};}
- carBlend=reset?null:{from:previousCars,players:previousPlayers,at:now};
+ carBlend=reset?null:{from:previousCars,players:previousPlayers,civilians:previousCivilians,at:now};
  if(poolActive())receivePoolState();receiveCasinoAudio();
  if(reset){Sound.stopEffects();Sound.stopEngines();}
  if(Array.isArray(s.sfx))for(const event of s.sfx){if(event.id>lastRemoteSound){if(!state.players[me].casino&&s.time-event.at<.5)Sound.play(event.kind,event.x,event.y);lastRemoteSound=event.id;}}
@@ -1431,7 +1451,7 @@ function reconcileMovement(s){
 }
 
 // P1/P2 are permanent identities; isHost only says who currently simulates.
-const RESUME_KEY='ciudad-duo.resume.v95',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
+const RESUME_KEY='ciudad-duo.resume.v96',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
 const net={mode:'',world:'',secret:'',client:makeSessionId(),started:false,hasState:false,ended:false,localActive:!document.hidden,remoteActive:false,remoteAway:false,leader:0,term:0,revision:0,lastRevision:-1,lastPacket:0,lastWorld:0,lastHello:0,lastHeartbeat:0,lastDial:-10000,dialAt:0,attempt:null,lastInputSeq:-1,inputSeq:0,remoteClient:'',paired:false,awaitingResume:false,resumeAt:0,bootAt:0,serverRetryAt:0,rtt:120,jitter:0,lastPing:0,pingId:0,pingAt:0};
 function makeSessionId(){if(window.crypto?.randomUUID)return window.crypto.randomUUID();return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);}
 function peerAddress(slot){return 'ciudadd-v87-'+room.toLowerCase()+'-p'+(slot+1);}
@@ -1924,7 +1944,7 @@ function ground(){
 const CAMERA_ANGLE=-Math.PI/4,CAMERA_TILT=.72;
 const CAMERA_COS=Math.cos(CAMERA_ANGLE),CAMERA_SIN=Math.sin(CAMERA_ANGLE);
 const PLAYER_LIFT=18;
-const SCENE_LAYERS={pedestrian:3,raygun:1,building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,soda:1,grave:1,phone:1,exit:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
+const SCENE_LAYERS={cityNpc:3,basketball:4,pedestrian:3,raygun:1,building:0,scenery:1,cover:1,bag:1,ammo:1,coast:1,roadEnd:1,soda:1,grave:1,phone:1,exit:1,gun:1,vest:1,boom:1,monkey:1,box:1,car:2,enemy:3,player:3,bullet:4,effect:5,rat:2,air:1};
 function projectPoint(point,z=0){
  return {x:CAMERA_COS*point.x-CAMERA_SIN*point.y,
   y:(CAMERA_SIN*point.x+CAMERA_COS*point.y)*CAMERA_TILT-z};
@@ -3010,6 +3030,8 @@ function drawSceneItem(item,timestamp){
   case 'rat':drawNightRat(actor);break;
   case 'air':drawNightAir(actor);break;
   case 'enemy':drawActorFire(actor,false,timestamp);drawActor(actorSprite(actor),1);drawActorFire(actor,true,timestamp);break;
+  case 'cityNpc':drawCityNpc96(actor);break;
+  case 'basketball':drawBasketball96(actor);break;
   case 'pedestrian':humanDraw(actorSprite(actor),0,actor.id);break;
   case 'player':drawActorFire(actor,false,timestamp);humanDraw(actorSprite(actor),0,item.id);drawActorFire(actor,true,timestamp);break;
   case 'bag':bagDraw({...actor,...projectPoint(actor)},timestamp);break;
@@ -3072,6 +3094,8 @@ function render(timestamp,now){
  for(const car of state.cars)add('car',visualCar(car,now));
  for(const enemy of state.enemies)if(!enemy.down&&!cityFreeRoam())add('enemy',enemy);
  for(const actor of cityPedestrians())add('pedestrian',actor);
+ for(const actor of cityActivities96(now))add('cityNpc',actor);
+ const courtGame=basketballState96();if(courtGame)add('basketball',courtGame.ball);
  players.forEach((p,i)=>{if((i===me||connected)&&p.present!==false&&!p.casino)add('player',p,i);});
  for(const bag of state.bags)if(!bag.taken)add('bag',bag);
  for(const drop of state.ammoDrops)add('ammo',drop);
@@ -3490,7 +3514,7 @@ function drawRobotCharacter(p){
   ctx.save();ctx.textAlign='center';ctx.font='900 10px system-ui';rect(p.x-48,p.y+44,96,16,'#152b36e8');ctx.fillStyle='#f0c896';ctx.fillText('DESTRUCTOR',p.x,p.y+55);ctx.restore();
  }
 }
-function drawUnarmedArms(p,jacket,skin){
+function drawUnarmedArmsLegacy96(p,jacket,skin){
  const sway=p.moving?Math.sin(p.walk||0)*2:0;
  for(const side of [-1,1]){
   const shoulder={x:side*8,y:-13},elbow={x:side*11,y:-2+sway*side},hand={x:side*10,y:8-sway*side};
@@ -4853,7 +4877,7 @@ function horseBet(index,horse,stake,serial){
  const p=state.players[index],h=state.casino.horse;if(h.phase!=='betting'||h.serial!==serial||p.casino?.activity!=='horse'||h.bets[index]||!Number.isInteger(horse)||horse<0||horse>=6||![2,5,10].includes(stake)||p.wallet<stake)return false;
  p.wallet-=stake;syncWalletTotal();h.bets[index]={horse,stake};casinoSound('casino-coin',index);
  if(h.bets.every(Boolean)){
-  h.phase='countdown';h.started=state.casino.time+3;h.until=h.started+16.5;h.seed=Math.floor(Math.random()*1000000);h.winner=Math.floor(Math.random()*6);h.finishes=RACE_HORSES.map((_,i)=>i===h.winner?13.5:14.05+hash(i,h.seed)*2.1);casinoSound('casino-countdown');
+  h.phase='countdown';h.started=state.casino.time+3;h.until=h.started+16.5;h.seed=Math.floor(Math.random()*1000000);h.winner=Math.floor(Math.random()*RACE_HORSES.length);h.finishes=RACE_HORSES.map((_,i)=>i===h.winner?13.5:14.05+hash(i,h.seed)*2.1);casinoSound('casino-countdown');
  }return true;
 }
 function updateCasino(dt){
@@ -5087,7 +5111,7 @@ function updateCasinoUI(){
  $('casinoUse').classList.toggle('hidden',!target);$('casinoUse').disabled=casinoLocal.pending.size>0;$('casinoUseLabel').textContent=target?.kind==='horse'?'CARRERAS':'TRAGAPERRAS';$('casinoUseSub').textContent=target?.kind==='horse'?'2 JUGADORES':'APOSTAR';casinoLocal.target=target;
  if(inside){setText('score',cityFreeRoam()?'$'+p.wallet:String(p.wallet).padStart(2,'0'));setText('waveHud',cityFreeRoam()?'VIOLET VAULT · CASINO':casinoPaused()?'CASINO · HORDA '+state.wave+' EN PAUSA':'CASINO · HORDA '+state.wave+' SIGUE FUERA');}
  updateSharedHorseBets(full&&activity==='horse'&&state.casino.horse.phase==='betting');
- if(!full)return;
+ if(!full){updateCasinoDetails96(false);return;}
  $('casinoBalance').textContent='$'+p.wallet;
  const slotMode=activity.startsWith('slot'),slotId=slotMode?Number(activity.slice(4)):-1,slot=slotMode?state.casino.slots[slotId]:null,h=state.casino.horse;
  const betting=!slotMode&&h.phase==='betting';$('casinoPanel').classList.toggle('raceview',!slotMode&&!betting);$('casinoHorsePicks').classList.toggle('hidden',!betting);
@@ -5105,8 +5129,9 @@ function updateCasinoUI(){
   const ticket=h.bets[me],other=h.bets[1-me];$('casinoGameMessage').textContent=betting?(locked?'BOLETO CONFIRMADO · ESPERANDO A P'+(2-me):'APUESTA A UN CABALLO'):h.phase==='countdown'?'LA CARRERA ESTÁ POR COMENZAR':h.phase==='racing'?'EN DIRECTO · NO SE PUEDEN CAMBIAR APUESTAS':'RESULTADO FINAL';
   $('casinoTicket').textContent=[0,1].map(i=>{const b=h.bets[i];return 'P'+(i+1)+': '+(b?RACE_HORSES[b.horse].name+' · $'+b.stake:'sin confirmar');}).join(' | ');
  }
+ updateCasinoDetails96(true);
 }
-function renderCasinoGame(now){
+function renderCasinoGameLegacy95(now){
  if(state.players[me].casino.activity.startsWith('slot'))renderCasinoSlots(now,Number(state.players[me].casino.activity.slice(4)));else if(state.casino.horse.phase==='betting'){
   ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createLinearGradient(0,0,viewWidth,viewHeight);bg.addColorStop(0,'#172739');bg.addColorStop(1,'#1d3a3b');rect(0,0,viewWidth,viewHeight,bg);
  }else renderCasinoRace(now);updateCasinoUI();
@@ -5327,7 +5352,7 @@ function renderCasinoRoom(now){
  for(const item of scene)if(item.kind==='prop'){const q=projectPoint(item.p),a=casinoPropImage(item.p);ctx.drawImage(a.image,q.x+a.bounds.x,q.y+a.bounds.y);}else humanDraw(actorSprite(item.p),0,item.p.idx);
  ctx.restore();updateHud(player,now/1000);
 }
-function renderCasinoSlots(now,id){
+function renderCasinoSlotsLegacy95(now,id){
  const slot=state.casino.slots[id],w=viewWidth,h=viewHeight,wide=w>620&&h<520;
  ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createRadialGradient(w*.5,h*.45,10,w*.5,h*.45,Math.max(w,h)*.75);bg.addColorStop(0,'#41303b');bg.addColorStop(1,'#070f1b');rect(0,0,w,h,bg);
  const machineH=Math.max(120,Math.min(510,h-(h<500?220:285))),scale=machineH/180,cx=wide?w*.31:w/2,top=h<500?67:86;
@@ -5595,6 +5620,167 @@ function paintCharacterBody(style,view,armored){
  paintCharacterHead(style,angle);
 }
 
+const casinoImages96=new Map();
+function horseProbability96(index){return index>=0&&index<RACE_HORSES.length?1/RACE_HORSES.length:0;}
+function horseChanceLabel96(index){return (horseProbability96(index)*100).toFixed(1).replace('.',',')+' %';}
+function casinoIcon96(index){
+ const key='symbol:'+index;if(casinoImages96.has(key))return casinoImages96.get(key);
+ const im=document.createElement('canvas');im.width=56;im.height=44;const old=ctx;
+ try{ctx=im.getContext('2d');ctx.translate(28,22);drawCasinoSymbol(index,17);}finally{ctx=old;}
+ const url=im.toDataURL('image/png');casinoImages96.set(key,url);return url;
+}
+function horsePortraitImage96(index){
+ const key='portrait:'+index;if(casinoImages96.has(key))return casinoImages96.get(key);
+ const im=document.createElement('canvas');im.width=480;im.height=280;const old=ctx;
+ try{
+  ctx=im.getContext('2d');const horse=RACE_HORSES[index],coat=horse.coat,light=characterTone(coat,22),dark=characterTone(coat,-28);
+  const sky=ctx.createLinearGradient(0,0,0,280);sky.addColorStop(0,'#526b71');sky.addColorStop(.5,'#a5b0a1');sky.addColorStop(.51,'#61755c');sky.addColorStop(1,'#334f45');rect(0,0,480,280,sky);
+  for(let n=0;n<18;n++){const x=n*33-20,y=94+hash(n,96)*12;ellipse(x,y,26,22,'#344e4a');ellipse(x-6,y-5,24,18,'#47635a');}
+  for(const y of [131,151])line(0,y,480,y,'#d4c9a4',4);for(let x=15;x<480;x+=65){line(x,126,x,170,'#b7bba7',5);line(x-1,126,x-1,169,'#ebe2be',1);}
+  rect(0,197,480,83,'#897851');for(let n=0;n<90;n++){const x=hash(n,710)*480,y=202+hash(n,711)*78;line(x,y,x+7,y-1,'#b9a77a22',1);}
+  ctx.save();ctx.translate(56,17);ctx.scale(1.25,1.25);
+  ellipse(145,188,125,10,'#122a2866');
+  // Far legs, muscular body, shoulders and neck use the same coat per runner.
+  for(const [hip,knee,ankle]of [[{x:86,y:124},{x:91,y:155},{x:71,y:184}],[{x:201,y:120},{x:214,y:150},{x:220,y:183}]]){characterLimb(hip,knee,dark,11);characterLimb(knee,ankle,dark,6);poly([[ankle.x-6,ankle.y],[ankle.x+8,ankle.y],[ankle.x+9,ankle.y+5],[ankle.x-7,ankle.y+5]],'#243330');}
+  const body=ctx.createLinearGradient(70,75,190,130);body.addColorStop(0,light);body.addColorStop(.55,coat);body.addColorStop(1,dark);
+  ctx.beginPath();ctx.moveTo(74,86);ctx.bezierCurveTo(95,65,159,72,191,86);ctx.bezierCurveTo(213,95,219,120,198,133);ctx.bezierCurveTo(158,145,103,134,77,125);ctx.bezierCurveTo(55,116,56,98,74,86);ctx.fillStyle=body;ctx.fill();
+  ellipse(86,106,29,27,coat);ellipse(194,112,21,22,coat);line(98,124,170,133,dark,1.5);
+  // Tail, near legs and dark fetlocks.
+  ctx.beginPath();ctx.moveTo(63,89);ctx.bezierCurveTo(33,93,38,133,20,143);ctx.bezierCurveTo(49,134,45,111,66,106);ctx.fillStyle='#302f2b';ctx.fill();
+  for(const [hip,knee,ankle]of [[{x:83,y:123},{x:70,y:158},{x:78,y:187}],[{x:191,y:127},{x:183,y:156},{x:172,y:187}]]){characterLimb(hip,knee,coat,12);characterLimb(knee,ankle,coat,6.8);line(ankle.x,ankle.y-10,ankle.x,ankle.y,'#d0c3a1',5);poly([[ankle.x-6,ankle.y],[ankle.x+8,ankle.y],[ankle.x+10,ankle.y+5],[ankle.x-7,ankle.y+5]],'#25332e');}
+  poly([[180,89],[195,59],[209,43],[223,48],[226,70],[212,101],[206,126],[189,121]],coat);poly([[184,87],[198,60],[207,48],[210,64],[199,98]],light);
+  line(197,58,190,91,'#302e2a',7);for(let n=0;n<7;n++)line(198+n*.9,57+n*2.8,190+n*.6,71+n*3,'#44403a',1.4);
+  ctx.save();ctx.translate(223,56);ctx.rotate(.17);ellipse(0,0,22,11,coat);ellipse(17,5,10,7,dark);poly([[-17,-6],[-17,-22],[-10,-15],[-9,-8]],coat);poly([[-7,-7],[-5,-21],[1,-12],[3,-6]],light);disc(1,-3,2,'#192b2c');disc(1.5,-3.5,.6,'#d4d0ad');disc(21,6,1.8,'#3d3b31');line(12,11,23,10,'#544b3d',1);ctx.restore();
+  // Bridle, saddle cloth and a seated jockey with boots and reins.
+  line(209,52,230,66,'#332f29',2);line(218,49,221,66,'#3b352a',2);line(226,66,167,86,'#c8b88a',1.4);line(226,66,172,83,'#443b2b',.8);
+  poly([[108,86],[157,86],[166,114],[112,117]],horse.color);line(112,116,163,113,'#d9d1ab',2);ctx.textAlign='center';ctx.font='900 20px Georgia';ctx.fillStyle='#16303a';ctx.fillText(String(index+1),138,108);
+  ellipse(136,86,30,6,'#40372c');poly([[119,70],[145,64],[164,84],[142,93],[127,84]],'#ddd9c2');line(140,87,146,114,'#29343a',11);line(146,114,162,115,'#263439',9);line(146,98,153,117,'#9b8a61',1);
+  poly([[124,44],[140,40],[153,59],[173,73],[165,82],[145,70],[127,66]],horse.color);line(128,46,139,64,characterTone(horse.color,33),3);line(153,63,167,76,'#e3cfad',7);ellipse(168,77,4.2,3.5,'#514d3c');
+  ellipse(139,33,9,10,'#c9a587');ellipse(138,26,12,7,horse.color);rect(129,25,19,3,characterTone(horse.color,21));line(144,32,153,33,'#293b40',3);line(144,40,150,40,'#755e4a',1);line(141,42,145,45,'#a08665',4);
+  ctx.restore();
+  const vignette=ctx.createLinearGradient(0,0,480,0);vignette.addColorStop(0,'#0b203122');vignette.addColorStop(.7,'#0b203100');vignette.addColorStop(1,'#0b20314d');rect(0,0,480,280,vignette);
+ }finally{ctx=old;}
+ const url=im.toDataURL('image/png');casinoImages96.set(key,url);return url;
+}
+function slotViewport96(w,h){
+ const wide=w>=540&&w>h,top=h<500?62:76;
+ if(wide){const scale=h>550?Math.min((w*.49-26)/100,(h-top-18)/180):Math.min((w*.49-26)/100,(h-top-12)/120);return {wide,scale,x:w*.255-50*scale,y:h>550?top:top-20*scale,clip:{x:9,y:top,w:w*.49-12,h:h-top-12}};}
+ const height=Math.max(150,Math.min(490,h-385));return {wide,scale:height/180,x:w/2-50*height/180,y:top,clip:{x:0,y:top,w,h:Math.max(150,h-210-top)}};
+}
+function renderCasinoSlots(now,id){
+ const slot=state.casino.slots[id],w=viewWidth,h=viewHeight,layout=slotViewport96(w,h);
+ ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createRadialGradient(w*.4,h*.45,10,w*.4,h*.45,Math.max(w,h)*.75);bg.addColorStop(0,'#48313b');bg.addColorStop(1,'#0b1421');rect(0,0,w,h,bg);
+ ctx.save();ctx.beginPath();ctx.rect(layout.clip.x,layout.clip.y,layout.clip.w,layout.clip.h);ctx.clip();ctx.translate(layout.x,layout.y);ctx.scale(layout.scale,layout.scale);slotCabinetFace(id,slot.reels,slot.phase==='spinning'?{age:state.casino.time-slot.started}:null);ctx.restore();
+}
+function updateCasinoDetails96(full){
+ const activity=state.players[me].casino?.activity||'',slotMode=full&&activity.startsWith('slot'),betting=full&&activity==='horse'&&state.casino.horse.phase==='betting';
+ $('casinoPanel').classList.toggle('slotview96',slotMode);$('casinoPanel').classList.toggle('betview96',betting);$('slotPayout96').classList.toggle('hidden',!slotMode);$('horseSelection96').classList.toggle('hidden',!betting);
+ if(slotMode){
+  const slot=state.casino.slots[Number(activity.slice(4))],result=slot.phase==='result',spin=slot.phase==='spinning',netWin=slot.win-slot.stake;
+  $('slotResultLabel96').textContent=spin?'TIRADA EN CURSO':result?'PREMIO ABONADO':'APUESTA ACTUAL';$('slotResultAmount96').textContent=spin?'…':result?'$'+slot.win:'$'+casinoLocal.stake;
+  $('slotResultDetail96').textContent=spin?'Los rodillos están girando.':result?(netWin>0?'Ganancia neta +$'+netWin:slot.win?'Recuperaste tu apuesta.':'Sin premio · apostaste $'+slot.stake):'Tres símbolos iguales pagan los importes de abajo.';
+  const resultNode=$('slotResultAmount96').parentNode?.parentNode;if(resultNode){resultNode.classList.toggle('win96',result&&netWin>0);resultNode.classList.toggle('loss96',result&&!slot.win);}
+  for(let i=0;i<SLOT_SYMBOLS.length;i++){if(!casinoLocal.icons96){$('slotIcon96'+i).src=casinoIcon96(i);}$('slotPossible96'+i).textContent='$'+casinoLocal.stake*SLOT_SYMBOLS[i].mult;}casinoLocal.icons96=true;
+ }
+ if(betting){
+  const index=casinoLocal.selectedHorse,horse=RACE_HORSES[index];if(casinoLocal.portrait96!==index){$('horsePortrait96').src=horsePortraitImage96(index);$('horsePortrait96').alt=horse.name+', caballo con jinete y uniforme de su color';casinoLocal.portrait96=index;}
+  $('horseName96').textContent=horse.name;$('horseChance96').textContent=horseChanceLabel96(index);$('horsePayout96').textContent='$'+casinoLocal.stake*5;
+ }
+}
+function renderCasinoGame(now){
+ if(state.players[me].casino.activity.startsWith('slot'))renderCasinoSlots(now,Number(state.players[me].casino.activity.slice(4)));else if(state.casino.horse.phase==='betting'){
+  ctx.setTransform(renderDpr,0,0,renderDpr,0,0);const bg=ctx.createLinearGradient(0,0,viewWidth,viewHeight);bg.addColorStop(0,'#142538');bg.addColorStop(1,'#233e3e');rect(0,0,viewWidth,viewHeight,bg);
+ }else renderCasinoRace(now);updateCasinoUI();
+}
+
+let ambientSites96=null;
+function citySites96(){
+ if(!ambientSites96){const court=landmarks.find(p=>p.name.startsWith('CANCHA')),stalls=scenery.filter(p=>p.kind==='marketStall');ambientSites96={court,stalls:stalls.length?[stalls[0],stalls[3],stalls[4],stalls[7]].filter(Boolean):[]};}return ambientSites96;
+}
+function ambientTime96(){return state.time+(!isHost&&connected&&net.localActive?cap((performance.now()-net.lastWorld)/1000,0,.14):0);}
+function orientCityBenches96(){
+ const court=citySites96().court;
+ for(const bench of coverSeeds)if(bench.kind==='bench'){
+  const bx=bench.x,by=bench.y;let desired=null;
+  if(court&&bx>court.x-10&&bx<court.x+court.w+10&&Math.min(Math.abs(by-court.y),Math.abs(by-court.y-court.h))<24)desired={x:court.x+court.w/2,y:court.y+court.h/2};
+  else{let best=130;for(const street of streetNetwork){const point={x:cap(bx,Math.min(street.ax,street.bx),Math.max(street.ax,street.bx)),y:cap(by,Math.min(street.ay,street.by),Math.max(street.ay,street.by))},d=distance(bench,point);if(d<best){best=d;desired=point;}}}
+  if(desired){const dot=Math.sin(bench.angle||0)*(desired.x-bx)-Math.cos(bench.angle||0)*(desired.y-by);if(dot<0)bench.angle=(bench.angle||0)+Math.PI;}
+ }
+ for(const prop of state.cover)if(prop.kind==='bench')prop.angle=coverSeeds.find(p=>p.id===prop.id).angle;
+}
+Object.assign(characterProfiles,{
+ hoopRed96:{...characterProfiles.denim,name:'hoopRed96',jacket:'#a4514f',shirt:'#d2b7a2',pants:'#333f4b',boots:'#c6c4b0',hat:'hair',beard:false,sleeveless:true},
+ hoopBlue96:{...characterProfiles.denim,name:'hoopBlue96',jacket:'#4f78a3',shirt:'#d0bca2',pants:'#384959',boots:'#bebfae',hat:'hair',beard:false,sleeveless:true},
+ hoopWomanRed96:{...characterProfiles.womanSport,name:'hoopWomanRed96',jacket:'#a95358',shirt:'#e0c7b1',pants:'#44404b',boots:'#c2c2b5',hairStyle:'pony'},
+ hoopWomanBlue96:{...characterProfiles.womanSport,name:'hoopWomanBlue96',jacket:'#547d9c',shirt:'#d6c3ad',pants:'#3e4b57',boots:'#c4c4b8',hairStyle:'bun'}
+});
+const civilianActor96=(id,x,y,style)=>({id,x,y,face:Math.PI/2,moveFace:Math.PI/2,walk:0,moving:false,car:null,weapon:null,armor:0,civilian:true,civilianStyle:style,downUntil:0});
+function marketVendors96(time=ambientTime96()){
+ const phrases=[['¡Fruta fresca!','¡Mangos y piñas!','¡Lleve su fruta!'],['¡Verduras del día!','¡Tomates frescos!','¡Pase y mire!'],['¡Pan recién hecho!','¡Pan calentito!','¡Buenas noches!'],['¡Flores para llevar!','¡Rosas y girasoles!','¡Un ramo, vecino!']];
+ return citySites96().stalls.map((s,i)=>{const actor=civilianActor96(1000+i,s.x+(i%2?8:-8),s.y+32,['womanCoat','field','womanOffice','scout'][i]);actor.role='vendor';actor.face=Math.PI/2+Math.sin(time*.35+i)*.18;if(Math.floor(time/3.2)%4===i)actor.bubble=phrases[i][Math.floor(time/12.8)%3];return actor;});
+}
+function basketballState96(time=ambientTime96()){
+ if(!cityFreeRoam())return null;const court=citySites96().court;if(!court)return null;
+ const cx=court.x+court.w/2,cy=court.y+court.h/2,cycle=Math.floor(time/16),dir=cycle%2?-1:1,t=time%16,advance=cap(t/4,0,1),reset=cap((t-10)/6,0,1),mix=(a,b,u)=>a+(b-a)*u;
+ const initial=[[-80,-24],[60,35],[62,-26],[95,42]],ready=[[25,-20],[60,35],[62,-26],[95,42]],styles=['hoopRed96','hoopWomanRed96','hoopBlue96','hoopWomanBlue96'];
+ const players=initial.map(([sx,sy],i)=>{let x=cx+dir*mix(sx,ready[i][0],advance),y=cy+mix(sy,ready[i][1],advance);if(reset){x=mix(cx+dir*ready[i][0],cx-dir*sx,reset);y=mix(cy+ready[i][1],cy+sy,reset);}const p=civilianActor96(2000+i,x,y,styles[i]);p.basketball=true;p.role='basketball';p.face=p.moveFace=dir>0?0:Math.PI;p.moving=i===0&&t<4||reset>0;p.walk=time*8+i;p.ballPose=i===0&&(t<4||t>=10)?'dribble':i===0&&t>=4&&t<5?'pass':i===1&&t>=5.8&&t<7.8?'shoot':'idle';return p;});
+ const carrier=players[0],shooter=players[1],rim={x:cx+dir*(court.w/2-54),y:cy,z:62};let ball;
+ const dribble=p=>({x:p.x+6,y:p.y+10,z:5+Math.abs(Math.sin(time*8))*24});
+ if(t<4)ball=dribble(carrier);
+ else if(t<5){const u=t-4;ball={x:mix(carrier.x+6,shooter.x+6,u),y:mix(carrier.y+10,shooter.y+8,u),z:29+Math.sin(u*Math.PI)*12};}
+ else if(t<5.8)ball={x:shooter.x+6,y:shooter.y+7,z:32};
+ else if(t<7.8){const u=(t-5.8)/2;ball={x:mix(shooter.x+6,rim.x,u),y:mix(shooter.y+7,rim.y,u),z:mix(48,62,u)+Math.sin(u*Math.PI)*53};}
+ else if(t<8.5)ball={...rim,z:62-(t-7.8)/.7*57};
+ else if(t<10){const u=(t-8.5)/1.5;ball={x:mix(rim.x,carrier.x+6,u),y:mix(rim.y,carrier.y+10,u),z:5+Math.abs(Math.sin(u*Math.PI*2))*18};}
+ else ball=dribble(carrier);
+ ball.radius=4.5;ball.role='basketball';
+ const spectators=[[court.x+70,court.y-29],[court.x+215,court.y-29],[court.x+court.w-55,court.y+court.h+20]].map(([x,y],i)=>{const p=civilianActor96(2100+i,x,y,['biker','womanDenim','cargo'][i]);p.role='spectator';p.face=rads(cx-x,cy-y);p.cheering=t>7.8&&t<9.5;if(p.cheering&&i===1)p.bubble=cycle%2?'¡Buena canasta!':'¡Eso, equipo!';return p;});
+ return {players,spectators,ball,rim,phase:t};
+}
+function fleeTarget96(actor,thief){
+ let best=null,score=-Infinity;
+ for(const route of sidewalkRoutes95())for(const p of [route.a,route.b]){const d=distance(actor,p);if(d<65||d>540||!sightClear(actor,p,10,true,true))continue;const value=distance(p,thief)-d*.3;if(value>score){score=value;best=p;}}
+ if(!best){const angle=rads(actor.x-thief.x,actor.y-thief.y);for(const turn of [0,.6,-.6,1.2,-1.2]){const p={x:actor.x+Math.cos(angle+turn)*130,y:actor.y+Math.sin(angle+turn)*130};if(canWalk(p.x,p.y,10)&&sightClear(actor,p,10,true,true)){best=p;break;}}}
+ return best||{x:actor.x,y:actor.y};
+}
+function spawnFleeingDriver96(car,index){
+ if(!cityFreeRoam())return;state.fleeingCivilians||=[];const thief=state.players[index],side={x:-Math.sin(car.angle),y:Math.cos(car.angle)},candidates=[];
+ for(const sign of [1,-1])for(const back of [0,22,-22]){const p={x:car.x+side.x*46*sign+Math.cos(car.angle)*back,y:car.y+side.y*46*sign+Math.sin(car.angle)*back};if(canWalk(p.x,p.y,10))candidates.push(p);}
+ candidates.sort((a,b)=>(footstepSurface(b.x,b.y)==='pavement'?150:0)+distance(b,thief)-(footstepSurface(a.x,a.y)==='pavement'?150:0)-distance(a,thief));
+ const p=candidates[0]||{x:car.x,y:car.y},id=++state.civilianSerial,actor={...civilianActor96(3000+id,p.x,p.y,civilianStyles95[car.id%civilianStyles95.length]),role:'flee',scared:true,spawnAt:state.time,until:state.time+10,carId:car.id,thief:index,walk:0,stuck:0,moving:true};const target=fleeTarget96(actor,thief);actor.tx=target.x;actor.ty=target.y;actor.face=actor.moveFace=rads(target.x-p.x,target.y-p.y);state.fleeingCivilians.push(actor);if(state.fleeingCivilians.length>6)state.fleeingCivilians.shift();
+}
+function updateCityPeople96(dt){
+ state.fleeingCivilians=(state.fleeingCivilians||[]).filter(p=>p.until>state.time);
+ for(const actor of state.fleeingCivilians){
+  const target={x:actor.tx,y:actor.ty},thief=state.players[actor.thief],distanceLeft=distance(actor,target);if(distanceLeft<17||actor.stuck>.35){const p=fleeTarget96(actor,thief);actor.tx=p.x;actor.ty=p.y;actor.stuck=0;}
+  const angle=rads(actor.tx-actor.x,actor.ty-actor.y),step=Math.min(165*dt,Math.hypot(actor.tx-actor.x,actor.ty-actor.y));let moved=moveObject(actor,Math.cos(angle)*step,Math.sin(angle)*step,9);actor.face=actor.moveFace=angle;actor.moving=moved>.05;if(actor.moving){actor.walk+=dt*15;actor.stuck=0;}else actor.stuck+=dt;
+ }
+}
+function visualFlee96(actor,now=performance.now()){
+ const before=!isHost&&carBlend?.civilians?.find(p=>p.id===actor.id);if(!before||distance(before,actor)>180)return actor;const u=cap((now-carBlend.at)/90,0,1);return {...actor,x:before.x+(actor.x-before.x)*u,y:before.y+(actor.y-before.y)*u};
+}
+function cityActivities96(now=performance.now()){
+ if(!cityFreeRoam())return [];const time=ambientTime96(),game=basketballState96(time);return [...marketVendors96(time),...(game?[...game.players,...game.spectators]:[]),...(state.fleeingCivilians||[]).map(p=>visualFlee96(p,now))];
+}
+function npcBubble96(actor,text){
+ const p=projectPoint(actor,actor.role==='vendor'?82:76);ctx.save();ctx.font='800 10.5px system-ui';ctx.textAlign='center';ctx.textBaseline='middle';const width=Math.min(164,Math.max(64,ctx.measureText(text).width+20));roundedPanel(p.x-width/2,p.y-20,width,24,5,'#f3e7cb');poly([[p.x-4,p.y+4],[p.x+4,p.y+4],[p.x,p.y+10]],'#f3e7cb');ctx.fillStyle='#2e383a';ctx.fillText(text,p.x,p.y-8,width-14);ctx.restore();
+}
+function drawCityNpc96(actor){
+ ctx.save();if(actor.role==='flee')ctx.globalAlpha*=cap(actor.until-state.time,0,1);humanDraw(actorSprite(actor),0,actor.id);let bubble=actor.bubble;if(actor.role==='flee'&&state.time-actor.spawnAt<2.6)bubble=['¡Mi auto!','¡Auxilio!','¡Oye, mi carro!'][actor.carId%3];if(bubble)npcBubble96(actor,bubble);ctx.restore();
+}
+function drawBasketball96(ball){
+ const floor=projectPoint(ball),p=projectPoint(ball,ball.z);ellipse(floor.x,floor.y,5+ball.z*.025,2+ball.z*.01,'#071b2444');disc(p.x,p.y,ball.radius,'#281f17');disc(p.x-.25,p.y-.3,ball.radius-.7,'#c87e35');line(p.x-ball.radius+1,p.y,p.x+ball.radius-1,p.y,'#614521',.65);line(p.x,p.y-ball.radius+1,p.x,p.y+ball.radius-1,'#614521',.65);ctx.save();ctx.beginPath();ctx.ellipse(p.x,p.y,2,ball.radius-.8,.35,0,TAU);ctx.strokeStyle='#614521';ctx.lineWidth=.65;ctx.stroke();ctx.restore();
+}
+function drawUnarmedArms(p,jacket,skin){
+ if(p.basketball||p.cheering||p.scared){
+  const phase=p.walk||0;
+  for(const side of [-1,1]){const raised=p.ballPose==='shoot'||p.cheering,scared=p.scared,shoulder={x:side*8,y:-13},elbow=raised?{x:side*11,y:-25}:scared?{x:side*(12+Math.sin(phase)*2),y:-9+Math.sin(phase+side)*4}:{x:side*10,y:-1+Math.sin(phase)*side*2},hand=raised?{x:side*6,y:-34}:scared?{x:side*9,y:-18+Math.cos(phase+side)*4}:{x:side*11,y:6+Math.sin(phase)*side*2};characterLimb(shoulder,elbow,jacket,4.5);characterLimb(elbow,hand,skin,3.5);ellipse(hand.x,hand.y,2,2.3,skin);}
+  return;
+ }
+ drawUnarmedArmsLegacy96(p,jacket,skin);
+}
+
+orientCityBenches96();
 function animate(now){
  const elapsed=Math.max(0,(now-lastTime)/1000),dt=Math.min(.045,elapsed);lastTime=now;
  const kx=(keys.KeyD||keys.ArrowRight?1:0)-(keys.KeyA||keys.ArrowLeft?1:0),ky=(keys.KeyS||keys.ArrowDown?1:0)-(keys.KeyW||keys.ArrowUp?1:0);
