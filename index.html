@@ -4,7 +4,7 @@
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover,interactive-widget=resizes-content">
 <meta name="theme-color" content="#080e14">
 <meta name="description" content="Deadlock: Afterfall. Ciudad cooperativa en 2.5D para dos jugadores: explora las calles, conduce y visita el casino.">
-<title>DEADLOCK: AFTERFALL — Co-op City · v9.4.0</title>
+<title>DEADLOCK: AFTERFALL — Co-op City · v9.5</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' rx='4' fill='%23101918'/%3E%3Cpath d='M20 4 33 12v16l-13 8-13-8V12Z M20 11v9l8 4m-8-4-8 4m8-4v10' fill='none' stroke='%23c3b971' stroke-width='2'/%3E%3C/svg%3E">
 <style>
 :root{font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;background:#080e14;color:#f5f4ef}
@@ -112,7 +112,7 @@
  <div class="lobby-shell">
   <header class="lobby-header">
    <div class="signal-brand"><svg viewBox="0 0 34 34" aria-hidden="true"><path d="M17 2 30 9v16l-13 7L4 25V9Z"/><path d="M17 8v8l7 4m-7-4-7 4M17 16v10"/><circle cx="17" cy="17" r="4"/></svg><span>AFTERFALL<span class="signal-division">CITY PROTOCOL</span></span></div>
-   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V9.4</span></div>
+   <div class="lobby-build"><span class="status-dot"></span> CO-OP ONLINE <span class="build-number">V9.5</span></div>
   </header>
   <main class="lobby-main">
    <section class="outbreak-cover" aria-labelledby="gameTitle">
@@ -211,8 +211,8 @@
     <button class="mainbtn secondary" id="join" type="button"><span>UNIRME A LA SALA</span><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M3 10h14m-5-5 5 5-5 5"/></svg></button>
     <button class="mainbtn secondary hidden" id="resumeRoom" type="button">VOLVER A LA PARTIDA</button>
     <div id="error" class="error" role="status" aria-live="polite"></div>
-    <div class="entry-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 4-4 3 4-2 3c2 3 3 4 6 5l3-2 3 3-4 4C12 21 3 12 5 8Z"/></svg><p><strong>LA CIUDAD ESTÁ ABIERTA.</strong><span>Explora mientras llega P2. Conduzcan, paseen y entren al casino cuando quieran.</span></p></div>
-    <details class="field-guide"><summary>GUÍA DE LA CIUDAD</summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección de disparo. AUTO aparece al acercarte a un vehículo. Chat y GRITAR junto a la esquina superior.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · Enter: chat.</p><p><b>DINERO</b>Cada jugador empieza con $250. La entrada al casino cuesta $3; el saldo y las apuestas son personales.</p><p><b>VIOLET VAULT</b>Dos tragaperras independientes. Para las carreras, ambos deben acercarse a la TV y pulsar CARRERAS. Puedes ver qué caballo y cantidad está eligiendo tu compañero. Cada uno confirma su propia apuesta.</p><p><b>MÚSICA DE LA CIUDAD</b>♪ activa o silencia el techno cyberpunk del primer mapa, solo para ti. <a href="https://opengameart.org/content/t-t-free-cyberpunk-pack-2" target="_blank" rel="noopener noreferrer">New Factory — Alexander Ehlers (tricksntraps)</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>. Audio comprimido para el juego.</p><p>Ambos jugadores necesitan la versión 9.4.</p></div></details>
+    <div class="entry-note"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 8 4-4 3 4-2 3c2 3 3 4 6 5l3-2 3 3-4 4C12 21 3 12 5 8Z"/></svg><p><strong>LA CIUDAD ESTÁ ABIERTA.</strong><span>Explora mientras llega P2. Recorran las calles conectadas, con peatones y tráfico, y visiten el casino.</span></p></div>
+    <details class="field-guide"><summary>GUÍA DE LA CIUDAD</summary><div class="guide-content"><p><b>ANDROID</b>Dos joysticks: movimiento y dirección de disparo. AUTO aparece al acercarte a un vehículo. Chat y GRITAR junto a la esquina superior.</p><p><b>PC</b>WASD o flechas · Espacio: disparar · E: auto · Enter: chat.</p><p><b>DINERO</b>Cada jugador empieza con $250. Los autos circulan por carriles; puedes acercarte para conducirlos. La entrada al casino cuesta $3; el saldo y las apuestas son personales.</p><p><b>VIOLET VAULT</b>Dos tragaperras independientes. Para las carreras, ambos deben acercarse a la TV y pulsar CARRERAS. Puedes ver qué caballo y cantidad está eligiendo tu compañero. Cada uno confirma su propia apuesta.</p><p><b>MÚSICA DE LA CIUDAD</b>♪ activa o silencia el techno cyberpunk del primer mapa, solo para ti. <a href="https://opengameart.org/content/t-t-free-cyberpunk-pack-2" target="_blank" rel="noopener noreferrer">New Factory — Alexander Ehlers (tricksntraps)</a> · <a href="https://creativecommons.org/publicdomain/zero/1.0/" target="_blank" rel="noopener noreferrer">CC0</a>. Audio comprimido para el juego.</p><p>Ambos jugadores necesitan la versión 9.5.</p></div></details>
    </section>
   </main>
   <footer class="lobby-footer">
@@ -259,7 +259,7 @@
 (()=>{'use strict';
 const $=id=>document.getElementById(id),canvas=$('game');
 let ctx=canvas.getContext('2d',{alpha:false});const displayCtx=ctx;
-const VERSION=9.4,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
+const VERSION=9.5,TAU=Math.PI*2,CITY_W=2740,W=4080,H=2100,road=130,roadsX=[305,840,1370,1920,2450],roadsY=[275,730,1190,1660,2010];
 // Parked systems: hordes, SWAT, bosses, extraction, Zone Cero, zombies,
 // perks, mystery box, Pack-a-Punch and survival supplies remain intact below.
 const CITY_RULES=Object.freeze({freeRoam:true,startingCash:250});
@@ -317,7 +317,7 @@ function makeBuildings(){
   for(const [x,y,bw,bh] of parcels){
    const kind=(id*7+i*3+j)%8;
    const floors=kind===0||kind===4?3+(id+j)%2:5+(id*3+i+j)%5;
-   buildings.push({id:id++,x,y,w:bw,h:bh,floors,height:i===0&&j===4?76:floors*24,palette:(i*5+j+id)%5,kind,casino:i===0&&j===4});
+   buildings.push({id:id++,x,y,w:bw,h:bh,floors,height:i===1&&j===4?166:floors*24,palette:(i*5+j+id)%5,kind,casino:i===1&&j===4});
   }
  }
 }makeBuildings();
@@ -456,14 +456,15 @@ const sodaStations=[
  {sodaId:1,perk:'double',x:3270,y:1970},
  {sodaId:2,perk:'tomb',x:3650,y:390}
 ].map(p=>({...p,kind:'soda',variant:p.sodaId,angle:Math.PI/4,height:106,w:40,d:28,bounds:{x:p.x-25,y:p.y-25,w:50,h:50}}));
-const roadClosures=[
+const roadClosures=(CITY_RULES.freeRoam?[]:[
  ...roadsX.flatMap(x=>[{x,y:COAST_ROAD_END,angle:0},{x,y:H-COAST_ROAD_END,angle:0}]),
  ...roadsY.map(y=>({x:COAST_ROAD_END,y,angle:Math.PI/2}))
-].map((p,id)=>({...p,id,w:road,height:25,bounds:p.angle?{x:p.x-5,y:p.y-road/2,w:10,h:road}:{x:p.x-road/2,y:p.y-5,w:road,h:10}}));
+]).map((p,id)=>({...p,id,w:road,height:25,bounds:p.angle?{x:p.x-5,y:p.y-road/2,w:10,h:road}:{x:p.x-road/2,y:p.y-5,w:road,h:10}}));
 const coastSegments=[];
 for(const [x,y,length,angle] of [[0,0,W,0],[0,H,W,0],[0,0,H,Math.PI/2],[W,0,H,Math.PI/2]]){
  for(let from=0;from<length;from+=120){const w=Math.min(120,length-from),d=from+w/2;coastSegments.push({x:x+Math.cos(angle)*d,y:y+Math.sin(angle)*d,w,angle,height:COAST_RAIL_HEIGHT});}
 }
+for(const b of buildings)if(b.casino)for(const x of [25,106,b.w*.79-16])addFixedProp(b.x+x,b.y+b.h+14,12,12);
 const solidGeometry=[...buildings,...fixedProps.filter(p=>!CITY_RULES.freeRoam||!p.parked),...(CITY_RULES.freeRoam?[]:sodaStations.map(p=>p.bounds)),...roadClosures.map(p=>p.bounds),phoneSpot.bounds];
 // Chain-link fences stop bodies; sight and bullets pass through their mesh.
 const bodyBarriers=scenery.filter(p=>p.kind==='fence').map(p=>{
@@ -861,8 +862,9 @@ const Sound=(()=>{
   if(!connected||state.done||muted||document.hidden){if(engines.size)stopEngines();stopAmbience();return;}
   if(!ready||ac.state!=='running'||now-lastEngineUpdate<60)return;lastEngineUpdate=now;updateAmbience();updateLavaAudio();
   if(lastPhonePhase!==state.phone.phase){lastPhonePhase=state.phone.phase;if(lastPhonePhase!=='ringing')stopKind('phone-ring');}
+  const ambientCars=new Set(state.cars.filter(c=>c.autoDrive&&distance(c,state.players[me])<620).sort((a,b)=>distance(a,state.players[me])-distance(b,state.players[me])).slice(0,3).map(c=>c.id));
   for(const c of state.cars){
-   const place=spatial(c.x,c.y),wanted=c.driver!==null&&place.gain>.025;
+   const place=spatial(c.x,c.y),wanted=(c.driver!==null||ambientCars.has(c.id))&&place.gain>.025;
    let voice=engines.get(c.id);
    if(wanted&&!voice){
     const source=ac.createBufferSource(),gain=ac.createGain(),filter=ac.createBiquadFilter(),pan=typeof ac.createStereoPanner==='function'?ac.createStereoPanner():null;
@@ -941,7 +943,7 @@ function attachCar(index){
  }
  const near=nearbyCar(p);
  if(!near){notify('Acércate a un vehículo.',index);return;}
- p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;worldSound('door',near.x,near.y);
+ near.autoDrive=false;near.speed=Math.min(near.speed,75);p.car=near.id;p.role=near.driver===null?'driver':'passenger';if(p.role==='driver')near.driver=index;else near.passenger=index;p.x=near.x;p.y=near.y;worldSound('door',near.x,near.y);
 }
 function emitBullet(x,y,angle,speed,life,damage,owner,enemy=false,splash=0,z=21,origin=null){
  speed*=.92;const upgrade=enemy?0:weaponUpgrade(origin),bullet={x,y,z,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,life,damage,owner,enemy,splash,upgrade,color:upgradeTiers[upgrade].color};
@@ -1254,7 +1256,7 @@ function tick(dt){
  if(!isHost||!connected||state.done)return;
  if(poolActive()){tickPool(dt);return;}updatePoolWaiting();updateCasino(dt);
  if(casinoPaused()){for(let i=0;i<2;i++)if(state.players[i].casino)processCasinoPlayer(state.players[i],i===me?input:guestInput,dt);return;}
- state.time+=dt;if(!cityFreeRoam()){updateSlimePools();updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();}
+ state.time+=dt;if(cityFreeRoam())updateCityTraffic95(dt);if(!cityFreeRoam()){updateSlimePools();updateBox();updatePunch();updateSodas();updateMonkeys();deployDrones();}
  state.ammoDrops=state.ammoDrops.filter(drop=>drop.expiresAt>state.time);state.blood=state.blood.filter(stain=>stain.until>state.time);
  for(let i=0;i<2;i++){
   const p=state.players[i],inp=i===me?input:guestInput;
@@ -1429,7 +1431,7 @@ function reconcileMovement(s){
 }
 
 // P1/P2 are permanent identities; isHost only says who currently simulates.
-const RESUME_KEY='ciudad-duo.resume.v94',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
+const RESUME_KEY='ciudad-duo.resume.v95',FAILOVER_MS=3500,PREDICT_MS=0,LIVE_LEADER_GRACE_MS=8000;
 const net={mode:'',world:'',secret:'',client:makeSessionId(),started:false,hasState:false,ended:false,localActive:!document.hidden,remoteActive:false,remoteAway:false,leader:0,term:0,revision:0,lastRevision:-1,lastPacket:0,lastWorld:0,lastHello:0,lastHeartbeat:0,lastDial:-10000,dialAt:0,attempt:null,lastInputSeq:-1,inputSeq:0,remoteClient:'',paired:false,awaitingResume:false,resumeAt:0,bootAt:0,serverRetryAt:0,rtt:120,jitter:0,lastPing:0,pingId:0,pingAt:0};
 function makeSessionId(){if(window.crypto?.randomUUID)return window.crypto.randomUUID();return Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,12);}
 function peerAddress(slot){return 'ciudadd-v87-'+room.toLowerCase()+'-p'+(slot+1);}
@@ -1905,7 +1907,7 @@ function ground(){
   if((i+j)%3===0){
     for(let k=0;k<5;k++){rect(x-48+k*24,y-85,12,23,'#cbd0cb99');rect(x-48+k*24,y+62,12,23,'#cbd0cb99');}
     rect(x-road/2,y-92,road,4,'#e2e2db88');rect(x-road/2,y+88,road,4,'#e2e2db88');
-  }else if((i+j)%3===1){rect(x-57,y-72,114,5,'#d9e0d8a3');rect(x-57,y+68,114,5,'#d9e0d8a3');roadArrow(x-30,y-29,0);roadArrow(x+32,y+34,Math.PI);}
+  }else if((i+j)%3===1){rect(x-57,y-72,114,5,'#d9e0d8a3');rect(x-57,y+68,114,5,'#d9e0d8a3');if(!CITY_RULES.freeRoam||y>roadsY[0])roadArrow(x-30,y-29,0);if(!CITY_RULES.freeRoam||y<roadsY.at(-1))roadArrow(x+32,y+34,Math.PI);}
   else {for(let k=0;k<5;k++){rect(x-85,y-42+k*21,20,9,'#e4e0d08c');rect(x+65,y-42+k*21,20,9,'#e4e0d08c');}}
   // manhole and traffic signal
   disc(x+22,y-22,7,'#131d23');disc(x+22,y-22,5,'#5b656c');
@@ -1951,6 +1953,7 @@ function actorSprite(actor){
   moveFace:projectedHeading(actor.moving&&Number.isFinite(actor.moveFace)?actor.moveFace:actor.face||0).angle};
 }
 function buildingGeometry(building){
+ if(building.casino)return casinoGeometry95(building);
  if(building.geometry)return building.geometry;
  const {x,y,w,h,height}=building;
  const base=[{x,y},{x:x+w,y},{x:x+w,y:y+h},{x,y:y+h}].map(p=>projectPoint(p));
@@ -2092,8 +2095,8 @@ function paintResidentialHouse(b){
  modelBox(p,w*.76-1,h*.24-1,14,16,wall+40,3,'#e0d6bd','#a0a091','#c6bdac');
 }
 const cityStreets=[
- ...roadsX.map(x=>({ax:x,ay:COAST_ROAD_END,bx:x,by:H-COAST_ROAD_END,width:road,city:true,flatEnds:true})),
- ...roadsY.map(y=>({ax:COAST_ROAD_END,ay:y,bx:CITY_W,by:y,width:road,city:true,flatEnds:true}))
+ ...roadsX.map(x=>({ax:x,ay:CITY_RULES.freeRoam?roadsY[0]:COAST_ROAD_END,bx:x,by:CITY_RULES.freeRoam?roadsY.at(-1):H-COAST_ROAD_END,width:road,city:true,flatEnds:!CITY_RULES.freeRoam})),
+ ...roadsY.map(y=>({ax:CITY_RULES.freeRoam?roadsX[0]:COAST_ROAD_END,ay:y,bx:CITY_RULES.freeRoam&&![730,1190,1660].includes(y)?roadsX.at(-1):CITY_W,by:y,width:road,city:true,flatEnds:!CITY_RULES.freeRoam}))
 ];
 const residentialStreets=[
  ...[730,1190,1660].map(y=>({ax:CITY_W-110,ay:y,bx:residential.west,by:y,width:130,connector:true,double:y===1190})),
@@ -3046,7 +3049,7 @@ function render(timestamp,now){
  const scene=[];
  for(const building of visibleBuildings){
   const covered=activePlayers.some(p=>!inFrontOfBuilding(p,building)&&buildingCoversActor(building,p));
-  building.opacity=covered?.24:Math.min(1,(building.opacity??1)+Math.min(drawDelta,.06)*3);
+  building.opacity=building.casino?1:covered?.24:Math.min(1,(building.opacity??1)+Math.min(drawDelta,.06)*3);
   scene.push({kind:'building',actor:building,depth:buildingGeometry(building).depth});
  }
  function add(kind,actor,id){if(visible(actor))scene.push({kind,actor,id,depth:sceneDepth(actor,visibleBuildings)});}
@@ -3294,7 +3297,7 @@ const characterProfiles={
 for(const [name,profile] of Object.entries(characterProfiles)){profile.name=name;profile.gear??='#4c554c';}
 const normalCharacterStyles=['scout','hood','denim','field','biker','cargo'];
 function characterProfile(p,type=0,id=0){
- if(p.civilian)return characterProfiles[normalCharacterStyles[(p.id||0)%normalCharacterStyles.length]];
+ if(p.civilian)return characterProfiles[p.civilianStyle||civilianStyles95[(p.id||0)%civilianStyles95.length]];
  if(type===0)return characterProfiles[id===0?'p1':'p2'];
  if(p.swat)return characterProfiles[p.id%2?'swat1':'swat2'];
  if(p.level===2)return characterProfiles['heavy'+(1+(p.id||0)%3)];
@@ -3316,7 +3319,7 @@ function characterElbow(shoulder,hand,bend){
  const along=cap((12.5*12.5-13*13+d*d)/(2*d),0,12.5),height=Math.sqrt(Math.max(0,12.5*12.5-along*along));
  return {x:shoulder.x+dx/d*along-dy/d*height*bend,y:shoulder.y+dy/d*along+dx/d*height*bend};
 }
-function paintCharacterHead(style,angle){
+function paintCharacterHeadLegacy95(style,angle){
  const side=Math.cos(angle),back=Math.sin(angle)<-.25,hx=side*.85,hy=-25.7;
  const dark=characterTone(style.skin,-31),light=characterTone(style.skin,20),hair=style.hair;
  if(style.hat==='hood'){
@@ -3366,7 +3369,7 @@ function paintCharacterHead(style,angle){
  if(style.glasses&&!back){line(hx-4,hy-.8,hx+4,hy-.8,'#202e34',2);line(hx-2,hy-1.1,hx-1,hy-1.1,'#9babb0',.5);}
  if(style.headset){const ex=hx-side*5.4;ellipse(ex,hy+.4,1.9,2.5,'#273942');line(ex,hy+1,ex+side*4,hy+4,'#89978e',.7);}
 }
-function paintCharacterBody(style,view,armored){
+function paintCharacterBodyLegacy95(style,view,armored){
  const angle=view*Math.PI/4,side=Math.cos(angle),back=Math.sin(angle)<-.25;
  const shoulder=(style.heavy?11:9.5)*(.78+.22*Math.abs(Math.sin(angle))),waist=shoulder*.73;
  if(back&&(style.swat||style.heavy||armored)){
@@ -3409,7 +3412,7 @@ function paintCharacterLegs(style,direction,frame){
   return {side,hip:{x:side*3.5,y:5.8},knee:{x:side*3.7+offset*Math.cos(angle)*.45,y:13.2+offset*Math.sin(angle)*.3},ankle:{x:side*3.8+offset*Math.cos(angle),y:20.3+offset*Math.sin(angle)*.55}};
  }).sort((a,b)=>a.ankle.y-b.ankle.y);
  for(const leg of legs){
-  characterLimb(leg.hip,leg.knee,style.pants,5.1);characterLimb(leg.knee,leg.ankle,characterTone(style.pants,-8),4.3);
+  characterLimb(leg.hip,leg.knee,style.pants,style.female?4.3:5.1);characterLimb(leg.knee,leg.ankle,characterTone(style.pants,-8),style.female?3.7:4.3);
   rect(leg.hip.x+(leg.side<0?-3.2:.2),8.3,2.8,4.1,characterTone(style.pants,-16));
   if(style.heavy||style.swat){ellipse(leg.knee.x,leg.knee.y,2.6,2.4,characterTone(style.gear,-10));line(leg.knee.x-1,leg.knee.y-1,leg.knee.x+1,leg.knee.y-1,characterTone(style.gear,27),.6);}
   ellipse(leg.ankle.x+Math.cos(angle)*1.2,leg.ankle.y+1.9,3.6,2.3,'#1b262b');
@@ -4781,7 +4784,7 @@ window.addEventListener('keydown',e=>{
 function structuredPool(){const p=state.pool;return {...p,groups:p.groups.slice(),balls:p.balls.map(b=>({...b})),shot:p.shot?{...p.shot,potted:p.shot.potted.slice(),rails:p.shot.rails.slice()}:null,audio:p.audio.map(e=>({...e})),seen:p.seen.slice()};}
 function freshCasino(){return {time:0,serial:0,seen:[],audio:[],audioSerial:0,slots:[0,1].map(id=>({id,viewer:-1,owner:-1,phase:'idle',serial:0,stake:0,reels:[0,1,2],win:0,until:0,started:0,reel:0})),horse:freshHorse()};}
 function freshHorse(serial=0){return {drafts:[null,null],serial,phase:'idle',ready:[false,false],bets:[null,null],winner:-1,seed:0,started:0,until:0,finishes:[],paid:false};}
-const CASINO_FEE=3,CASINO_DOOR={x:240,y:1870},RAY_COST=100,RAY_SPOT={x:3450,y:240},CASINO_W=1200,CASINO_H=840;
+const CASINO_FEE=3,CASINO_DOOR={x:585,y:1934},RAY_COST=100,RAY_SPOT={x:3450,y:240},CASINO_W=1200,CASINO_H=840;
 const SLOT_SPOTS=[{x:240,y:305},{x:430,y:305}],HORSE_SPOT={x:940,y:365};
 const SLOT_SYMBOLS=[{name:'CEREZAS',weight:30,mult:4,color:'#df6c7c'},{name:'LIMÓN',weight:24,mult:5,color:'#e4d576'},{name:'CAMPANA',weight:18,mult:8,color:'#e7ba64'},{name:'SIETE',weight:12,mult:16,color:'#f2746e'},{name:'BAR',weight:10,mult:12,color:'#83d6c4'},{name:'DIAMANTE',weight:6,mult:30,color:'#b59ae8'}];
 const RACE_HORSES=[{name:'FURIA ROJA',color:'#e36c65',coat:'#926348'},{name:'RAYO AZUL',color:'#6db3e4',coat:'#565550'},{name:'ESMERALDA',color:'#6dba8e',coat:'#b69c78'},{name:'SOL DORADO',color:'#e6c269',coat:'#a87b4c'},{name:'SOMBRA VIOLETA',color:'#b397dd',coat:'#484848'},{name:'NIEVE',color:'#e4e4ce',coat:'#b8b6a4'}];
@@ -4924,7 +4927,7 @@ function drawRayStation(time){
 function neonTube(a,b,color,width=2){
  ctx.save();ctx.globalAlpha*=.14;line(a.x,a.y,b.x,b.y,color,width+9);ctx.globalAlpha/=.14;ctx.globalAlpha*=.32;line(a.x,a.y,b.x,b.y,color,width+4);ctx.globalAlpha/=.32;line(a.x,a.y,b.x,b.y,color,width);ctx.restore();
 }
-function drawCasinoExterior(b){
+function drawCasinoExteriorLegacy94(b){
  const p={x:b.x,y:b.y,angle:0};ctx.save();ctx.globalAlpha=b.opacity??1;
  modelBox(p,0,0,b.w,b.h,0,67,'#514453','#242d38','#393448');modelBox(p,-5,-5,b.w+10,b.h+10,67,9,'#a68d58','#4e4a3c','#81724e');
  for(let y=20;y<b.h-10;y+=38){modelFace(p,[[b.w+.2,y,18],[b.w+.2,y+23,18],[b.w+.2,y+23,50],[b.w+.2,y,50]],'#192c36');modelLine(p,[b.w+.5,y,52],[b.w+.5,y+23,52],'#b991d1',2);}
@@ -5158,20 +5161,20 @@ function cityHud(){
  setText('score','$'+state.players[me].wallet);
  setText('waveHud',state.players[me].casino?'VIOLET VAULT · CASINO':'CIUDAD · MODO LIBRE');
 }
-let cityWalkRoutes=null;
-function cityPedestrians(){
+let cityWalkRoutesLegacy94=null;
+function cityPedestriansLegacy94(){
  if(!cityFreeRoam())return [];
- if(!cityWalkRoutes){
-  cityWalkRoutes=[];
+ if(!cityWalkRoutesLegacy94){
+  cityWalkRoutesLegacy94=[];
   for(const x of roadsX)for(let j=0;j<roadsY.length-1;j++)for(const side of [-1,1]){
    const ax=x+side*(road/2+12),ay=roadsY[j]+104,by=roadsY[j+1]-104;
    if(by-ay<90)continue;let clear=true;
    for(let y=ay;y<=by;y+=18)if(!canWalk(ax,y,10)){clear=false;break;}
-   if(clear)cityWalkRoutes.push({x:ax,ay,by});
+   if(clear)cityWalkRoutesLegacy94.push({x:ax,ay,by});
   }
-  cityWalkRoutes=cityWalkRoutes.filter((_,i)=>i%2===0).slice(0,24);
+  cityWalkRoutesLegacy94=cityWalkRoutesLegacy94.filter((_,i)=>i%2===0).slice(0,24);
  }
- return cityWalkRoutes.map((r,i)=>{
+ return cityWalkRoutesLegacy94.map((r,i)=>{
   const length=r.by-r.ay,travel=(state.time*(22+i%4*3)+hash(i,94)*length*2)%(length*2),forward=travel<length;
   return {id:i,x:r.x,y:r.ay+(forward?travel:length*2-travel),face:forward?Math.PI/2:-Math.PI/2,moveFace:forward?Math.PI/2:-Math.PI/2,walk:state.time*5+i,moving:true,car:null,weapon:null,armor:0,civilian:true,downUntil:0};
  });
@@ -5335,6 +5338,261 @@ function renderCasinoSlots(now,id){
   for(let n=0;n<6;n++){ctx.save();ctx.translate(start+n*spacing,payY+25);drawCasinoSymbol(n,wide?12:11);ctx.restore();ctx.fillStyle='#c4d0c3';ctx.font='800 9px system-ui';ctx.fillText(SLOT_SYMBOLS[n].mult+'×',start+n*spacing,payY+49);}
   ctx.font='700 8px system-ui';ctx.fillStyle='#a8b6b7';ctx.fillText('3 IGUALES: PREMIO · 2 IGUALES: DEVUELVE APUESTA',payX,payY+67);
  }
+}
+
+// Closed street topology and host-owned traffic. Only primitive route indices
+// travel in the existing snapshots; clients use the existing car interpolation.
+let roadGraph95=null;const trafficPaths95=new Map();
+function cityRoadGraph95(){
+ if(roadGraph95)return roadGraph95;
+ const nodes=[],byKey=new Map(),edges=[];
+ const node=(x,y)=>{const key=x+','+y;if(!byKey.has(key)){byKey.set(key,nodes.length);nodes.push({x,y,links:[]});}return byKey.get(key);};
+ for(const street of streetNetwork){
+  const vertical=street.ax===street.bx,start=vertical?street.ay:street.ax,end=vertical?street.by:street.bx,axis=vertical?street.ax:street.ay;
+  const cuts=new Set([start,end]);
+  for(const other of streetNetwork){
+   const ov=other.ax===other.bx;
+   if(vertical===ov){if((vertical?other.ax:other.ay)!==axis)continue;for(const t of [vertical?other.ay:other.ax,vertical?other.by:other.bx])if(t>start&&t<end)cuts.add(t);}
+   else{const t=vertical?other.ay:other.ax,lo=vertical?other.ax:other.ay,hi=vertical?other.bx:other.by;if(t>=start&&t<=end&&axis>=lo&&axis<=hi)cuts.add(t);}
+  }
+  const sorted=[...cuts].sort((a,b)=>a-b);
+  for(let i=1;i<sorted.length;i++){
+   const a=node(vertical?axis:sorted[i-1],vertical?sorted[i-1]:axis),b=node(vertical?axis:sorted[i],vertical?sorted[i]:axis);
+   if(nodes[a].links.some(l=>l.to===b))continue;
+   nodes[a].links.push({to:b,width:street.width});nodes[b].links.push({to:a,width:street.width});edges.push({a,b,width:street.width});
+  }
+ }
+ roadGraph95={nodes,edges};return roadGraph95;
+}
+function trafficNext95(from,to,id,trip){
+ const graph=cityRoadGraph95(),a=graph.nodes[from],b=graph.nodes[to];let options=b.links.filter(l=>l.to!==from);
+ if(!options.length)return from;
+ const open=options.filter(l=>state.players.every(p=>p.present===false||p.casino||p.car!==null||footstepSurface(p.x,p.y)!=='asphalt'||distance(p,graph.nodes[l.to])>130));if(open.length)options=open;
+ const dx=b.x-a.x,dy=b.y-a.y,straight=options.find(l=>{const n=graph.nodes[l.to];return (n.x-b.x)*dx+(n.y-b.y)*dy>0;});
+ if(straight&&hash(id+47,trip+92)<.58)return straight.to;
+ return options[Math.floor(hash(id+93,trip+12)*options.length)].to;
+}
+function trafficPath95(from,to,next){
+ const key=from+':'+to+':'+next;if(trafficPaths95.has(key))return trafficPaths95.get(key);
+ const graph=cityRoadGraph95(),a=graph.nodes[from],b=graph.nodes[to],c=graph.nodes[next];
+ const length=Math.hypot(b.x-a.x,b.y-a.y),outLength=Math.hypot(c.x-b.x,c.y-b.y),dx=(b.x-a.x)/length,dy=(b.y-a.y)/length,ox=(c.x-b.x)/outLength,oy=(c.y-b.y)/outLength;
+ const lane=Math.min(28,a.links.find(l=>l.to===to).width*.22),outLane=Math.min(28,b.links.find(l=>l.to===next).width*.22),radius=46;
+ const start={x:a.x+dx*radius-dy*lane,y:a.y+dy*radius+dx*lane},end={x:b.x-dx*radius-dy*lane,y:b.y-dy*radius+dx*lane},exit={x:b.x+ox*radius-oy*outLane,y:b.y+oy*radius+ox*outLane};
+ const straight=dx*ox+dy*oy>.99,control=straight?{x:b.x-dy*lane,y:b.y+dx*lane}:{x:b.x-dy*lane-oy*outLane,y:b.y+dx*lane+ox*outLane};
+ const lineLength=Math.hypot(end.x-start.x,end.y-start.y),lut=[0];let old=end;
+ for(let i=1;i<=16;i++){const t=i/16,u=1-t,p={x:u*u*end.x+2*u*t*control.x+t*t*exit.x,y:u*u*end.y+2*u*t*control.y+t*t*exit.y};lut.push(lut.at(-1)+distance(p,old));old=p;}
+ const path={start,end,control,exit,dx,dy,lineLength,lut,length:lineLength+lut.at(-1)};trafficPaths95.set(key,path);return path;
+}
+function sampleTraffic95(path,progress){
+ if(progress<=path.lineLength)return {x:path.start.x+path.dx*progress,y:path.start.y+path.dy*progress,angle:rads(path.dx,path.dy)};
+ const at=cap(progress-path.lineLength,0,path.lut.at(-1));let i=1;while(i<16&&path.lut[i]<at)i++;
+ const t=(i-1+(at-path.lut[i-1])/(path.lut[i]-path.lut[i-1]||1))/16,u=1-t,{end:a,control:b,exit:c}=path;
+ return {x:u*u*a.x+2*u*t*b.x+t*t*c.x,y:u*u*a.y+2*u*t*b.y+t*t*c.y,angle:rads(2*u*(b.x-a.x)+2*t*(c.x-b.x),2*u*(b.y-a.y)+2*t*(c.y-b.y))};
+}
+function ensureCityTraffic95(){
+ if(!cityFreeRoam()||state.cars.some(c=>c.cityTraffic))return;
+ const graph=cityRoadGraph95(),extras=[[1370,1500,'#756b59'],[1920,450,'#6e4850'],[2450,1450,'#526c74'],[3400,1660,'#918975']];
+ for(const [x,y,color]of extras)state.cars.push({id:state.cars.length,x,y,angle:0,color,speed:0,driver:null,passenger:null,crashAt:-10,skidAt:-10});
+ for(const car of state.cars){
+  let best=null,score=Infinity;
+  for(const edge of graph.edges)for(const reverse of [false,true]){
+   const from=reverse?edge.b:edge.a,to=reverse?edge.a:edge.b,next=trafficNext95(from,to,car.id,0),path=trafficPath95(from,to,next);
+   const along=cap((car.x-path.start.x)*path.dx+(car.y-path.start.y)*path.dy,5,path.lineLength-5),p=sampleTraffic95(path,along),turn=Math.abs(Math.atan2(Math.sin(p.angle-car.angle),Math.cos(p.angle-car.angle))),s=distance(car,p)+turn*13;
+   if(s<score&&canWalk(p.x,p.y,24)&&!state.cars.some(c=>c!==car&&c.cityTraffic&&distance(c,p)<105)){score=s;best={from,to,next,along,p};}
+  }
+  if(!best)continue;
+  Object.assign(car,{cityTraffic:true,autoDrive:car.driver===null,roadFrom:best.from,roadTo:best.to,roadNext:best.next,roadProgress:best.along,roadTrips:0,cruiseSpeed:76+hash(car.id,95)*26,trafficWait:0,...best.p});
+ }
+}
+function trafficReservations95(){
+ const owners=new Map(),requests=[];
+ for(const c of state.cars){
+  if(!c.autoDrive||c.driver!==null){c.trafficJunction=null;continue;}
+  const path=trafficPath95(c.roadFrom,c.roadTo,c.roadNext),remaining=path.lineLength-c.roadProgress;
+  if(c.trafficJunction===c.roadTo&&!owners.has(c.roadTo))owners.set(c.roadTo,c.id);
+  else if(remaining<115)requests.push({c,remaining});
+ }
+ requests.sort((a,b)=>a.remaining-b.remaining||a.c.id-b.c.id);
+ for(const {c}of requests)if(!owners.has(c.roadTo)){c.trafficJunction=c.roadTo;owners.set(c.roadTo,c.id);}
+ return owners;
+}
+function updateCityTraffic95(dt){
+ ensureCityTraffic95();const owners=trafficReservations95();
+ for(const car of state.cars){
+  if(!car.autoDrive||car.driver!==null)continue;
+  let path=trafficPath95(car.roadFrom,car.roadTo,car.roadNext),target=car.cruiseSpeed;
+  const reserved=owners.get(car.roadTo),owns=reserved===car.id;if(reserved!==undefined&&!owns)target=Math.min(target,Math.max(0,(path.lineLength-car.roadProgress-50)*2.5));
+  const ux=Math.cos(car.angle),uy=Math.sin(car.angle);
+  for(const other of state.cars){
+   if(other===car||owns&&other.autoDrive&&other.roadTo===car.roadTo)continue;const dx=other.x-car.x,dy=other.y-car.y,ahead=dx*ux+dy*uy,lateral=Math.abs(-dx*uy+dy*ux);
+   if(ahead<=0||ahead>102||lateral>34)continue;
+   const crossing=Math.abs(Math.cos(other.angle-car.angle))<.55;
+   if(crossing&&other.autoDrive&&car.id<other.id)continue;
+   target=Math.min(target,Math.max(0,(ahead-73)*3));
+  }
+  for(const p of state.players)if(p.present!==false&&!p.casino&&p.car===null){const dx=p.x-car.x,dy=p.y-car.y,ahead=dx*ux+dy*uy;if(ahead>-12&&ahead<95&&Math.abs(-dx*uy+dy*ux)<38)target=0;}
+  car.speed=target<car.speed?Math.max(target,car.speed-230*dt):Math.min(target,car.speed+85*dt);
+  const step=car.speed*dt,goal=sampleTraffic95(path,Math.min(path.length,car.roadProgress+step));
+  if(!canWalk(goal.x,goal.y,23)){car.speed=0;car.trafficWait+=dt;continue;}
+  car.trafficWait=target<1?car.trafficWait+dt:0;car.roadProgress+=step;
+  if(car.roadProgress>=path.length){car.roadProgress-=path.length;car.trafficJunction=null;car.roadFrom=car.roadTo;car.roadTo=car.roadNext;car.roadTrips++;car.roadNext=trafficNext95(car.roadFrom,car.roadTo,car.id,car.roadTrips);path=trafficPath95(car.roadFrom,car.roadTo,car.roadNext);}
+  Object.assign(car,sampleTraffic95(path,car.roadProgress));
+ }
+}
+let cityWalkRoutes95=null;
+function sidewalkRoutes95(){
+ if(cityWalkRoutes95)return cityWalkRoutes95;
+ const candidates=[],seen=new Set();
+ for(const street of streetNetwork){
+  const vertical=street.ax===street.bx,axis=vertical?street.ax:street.ay,start=vertical?street.ay:street.ax,end=vertical?street.by:street.bx,cuts=new Set([start,end]);
+  for(const other of streetNetwork)if(vertical!==(other.ax===other.bx)){const t=vertical?other.ay:other.ax,lo=vertical?other.ax:other.ay,hi=vertical?other.bx:other.by;if(t>=start&&t<=end&&axis>=lo&&axis<=hi)cuts.add(t);}
+  const points=[...cuts].sort((a,b)=>a-b),offset=street.width/2+(street.city?11:8);
+  for(let i=1;i<points.length;i++)for(const side of [-1,1]){
+   const low=points[i-1]+100,high=points[i]-100;if(high-low<78)continue;
+   const position=t=>({x:vertical?axis+side*offset:t,y:vertical?t:axis+side*offset});let run=null;
+   const push=(a,b)=>{if(b-a<78)return;const p=position(a),q=position(b),key=[p.x,p.y,q.x,q.y].join(':');if(seen.has(key))return;seen.add(key);candidates.push({a:p,b:q,length:distance(p,q),angle:rads(q.x-p.x,q.y-p.y)});};
+   for(let t=low;t<=high+10;t+=10){const p=position(Math.min(t,high)),clear=t<=high&&canWalk(p.x,p.y,9,false)&&footstepSurface(p.x,p.y)==='pavement'&&!coverSeeds.some(c=>{const b=c.bounds;return p.x>b.x-14&&p.x<b.x+b.w+14&&p.y>b.y-14&&p.y<b.y+b.h+14;});if(clear){run??=t;}else if(run!==null){push(run,Math.min(t-10,high));run=null;}}
+  }
+ }
+ const count=Math.min(24,candidates.length);cityWalkRoutes95=Array.from({length:count},(_,i)=>candidates[Math.floor(i*candidates.length/count)]);return cityWalkRoutes95;
+}
+function cityPedestrians(){
+ if(!cityFreeRoam())return [];
+ const time=state.time+(!isHost&&connected&&net.localActive?cap((performance.now()-net.lastWorld)/1000,0,.14):0);
+ return sidewalkRoutes95().map((route,i)=>{
+  const speed=23+i%4*2,travel=route.length/speed,pause=.95,cycle=2*(travel+pause),phase=(time+hash(i,94)*cycle)%cycle;let u,face,moving=true;
+  if(phase<travel){u=phase/travel;face=route.angle;}
+  else if(phase<travel+pause){u=1;const t=(phase-travel)/pause;face=route.angle+Math.PI*t*t*(3-2*t);moving=false;}
+  else if(phase<2*travel+pause){u=1-(phase-travel-pause)/travel;face=route.angle+Math.PI;}
+  else{u=0;const t=(phase-2*travel-pause)/pause;face=route.angle+Math.PI+Math.PI*t*t*(3-2*t);moving=false;}
+  return {id:i,x:route.a.x+(route.b.x-route.a.x)*u,y:route.a.y+(route.b.y-route.a.y)*u,face,moveFace:face,walk:time*5.5+i,moving,car:null,weapon:null,armor:0,civilian:true,civilianStyle:civilianStyles95[i%civilianStyles95.length],downUntil:0};
+ });
+}
+
+// Front-facing casino in the adjacent block. Every window and door is an
+// opaque facade surface; static architecture is rasterized once for Android.
+function casinoGeometry95(b){
+ if(b.geometry)return b.geometry;
+ const p={x:b.x,y:b.y},points=[];
+ for(const x of [-5,b.w+5])for(const y of [-5,b.h+26])for(const z of [0,166])points.push(modelPoint(p,x,y,z));
+ const silhouette=projectedHull(points),xs=points.map(p=>p.x),ys=points.map(p=>p.y),x=Math.floor(Math.min(...xs))-12,y=Math.floor(Math.min(...ys))-12;
+ const base=[[0,0],[b.w,0],[b.w,b.h],[0,b.h]].map(v=>modelPoint(p,...v));
+ b.geometry={base,roof:base.map(p=>({x:p.x,y:p.y-166})),silhouette,bounds:{x,y,w:Math.ceil(Math.max(...xs)-x)+12,h:Math.ceil(Math.max(...ys)-y)+12},depth:base[3].y};return b.geometry;
+}
+function paintCasinoExterior95(b){
+ const p={x:b.x,y:b.y},w=b.w,d=b.h,main=w*.79,door=w*.5;
+ const cream='#c8bea3',gold='#b79b5e',stone='#8c8b7f',burgundy='#6f3540';
+ // Broad plinth, recessed entrance, lower side wing and heavy cream cornices.
+ modelBox(p,-4,-3,w+8,d+8,0,6,'#9c9a8b','#535e5e','#83877b');
+ modelBox(p,0,0,main,d,6,104,'#777d78','#392c36',burgundy);
+ modelBox(p,main,d*.21,w-main,d*.79,6,78,'#7f8780','#3d323b','#5b313e');
+ for(let z=15;z<107;z+=12)modelLine(p,[1,d+.5,z],[main,d+.5,z],'#bc8c7d24',.65);
+ for(let y=13;y<d-10;y+=18)modelLine(p,[-.5,y,10],[-.5,y,109],'#99675c22',.6);
+ // West wall arched windows: this is a visible wall in the fixed aerial view.
+ for(const y of [d*.28,d*.66]){
+  modelFace(p,[[-.7,y-17,27],[-.7,y+17,27],[-.7,y+17,76],[-.7,y+10,87],[-.7,y-10,87],[-.7,y-17,76]],'#b6ae96');
+  modelFace(p,[[-1,y-14,29],[-1,y+14,29],[-1,y+14,75],[-1,y+8,83],[-1,y-8,83],[-1,y-14,75]],'#20333f');
+  modelLine(p,[-1.3,y,29],[-1.3,y,81],'#aca287',1.1);modelLine(p,[-1.3,y-13,58],[-1.3,y+13,58],'#a69b7e',1);
+ }
+ // Dark, recessed double doors on the SOUTH/front wall, rather than the hidden east side.
+ modelFace(p,[[door-27,d+.7,6],[door+27,d+.7,6],[door+27,d+.7,57],[door-27,d+.7,57]],'#101b24');
+ for(const x of [door-24,door+1]){
+  modelFace(p,[[x,d+1,7],[x+23,d+1,7],[x+23,d+1,54],[x,d+1,54]],'#b39d70');
+  modelFace(p,[[x+2,d+1.2,9],[x+21,d+1.2,9],[x+21,d+1.2,52],[x+2,d+1.2,52]],'#142935');
+  modelFace(p,[[x+4,d+1.4,31],[x+19,d+1.4,31],[x+19,d+1.4,50],[x+4,d+1.4,50]],'#354d58');
+  modelLine(p,[x+5,d+1.5,47],[x+16,d+1.5,35],'#91a6ad88',1.3);
+  modelLine(p,[x+(x<door?18:5),d+1.7,23],[x+(x<door?18:5),d+1.7,32],'#e6c685',1.8);
+ }
+ for(const x of [door-30,door+27])modelBox(p,x,d,3,3,6,54,'#d0c3a4','#817c6b','#b9ac8b');
+ modelBox(p,door-30,d,60,3,59,4,cream,'#8c846d','#cab990');
+ // Warm inset lobby glazing and carved panels on the lower front wall.
+ for(const x of [37,88,main+14]){
+  const ww=x>main?w-main-28:30;
+  modelFace(p,[[x,d+.6,20],[x+ww,d+.6,20],[x+ww,d+.6,53],[x,d+.6,53]],'#b6ad91');
+  modelFace(p,[[x+3,d+1,23],[x+ww-3,d+1,23],[x+ww-3,d+1,50],[x+3,d+1,50]],'#233641');
+  modelLine(p,[x+ww/2,d+1.2,23],[x+ww/2,d+1.2,50],'#a99b78',1);
+ }
+ // Entrance portico: solid square columns, shadowed soffit and cream roof.
+ modelBox(p,17,d-1,main-24,24,62,8,'#d0c6ab','#77786e','#afa68f');
+ for(const x of [25,106,main-16]){
+  modelBox(p,x-5,d+9,10,10,6,55,'#b9ae91','#654b49','#8f6a5b');
+  modelBox(p,x-7,d+7,14,14,6,5,'#d1c6a8','#777363','#a79a7d');
+  modelBox(p,x-7,d+7,14,14,57,5,'#d5c9ad','#817967','#b2a486');
+ }
+ for(let x=31;x<main-12;x+=19){const light=modelPoint(p,x,d+20,61);disc(light.x,light.y,1.5,'#ffe0a0');}
+ neonTube(modelPoint(p,18,d+24,67),modelPoint(p,main-8,d+24,67),'#f1c979',1.1);
+ detailLettering(p,'ENTRADA',door-28,d+3,64,56,8,'#fff1c0');
+ // Layered flat roofs, raised parapets, rooftop vents and a compact HVAC unit.
+ modelBox(p,-3,-3,main+6,d+6,110,6,'#c7c2aa','#777e75','#aaa990');
+ modelBox(p,7,7,main-14,d-14,116,2,'#838d88','#596767','#727d77');
+ for(const y of [-3,d-3])modelBox(p,-3,y,main+6,6,116,8,'#ddd1b4','#858b7a','#bbb698');
+ for(const x of [-3,main-3])modelBox(p,x,-3,6,d+6,116,8,'#ddd1b4','#858b7a','#bbb698');
+ modelBox(p,main-1,d*.21-3,w-main+5,d*.79+7,84,7,'#c5bea3','#70786d','#a9a88e');
+ modelBox(p,main+8,d*.21+6,w-main-14,d*.79-13,91,2,'#89958b');
+ modelBox(p,main*.64,23,40,31,118,17,'#b5bbb0','#687b7b','#9aa59b');
+ modelEllipse(p,main*.64+20,38,136,12,10,'#354a51');modelEllipse(p,main*.64+20,38,136.3,9,7,'#61767c');
+ for(let n=0;n<5;n++)modelLine(p,[main*.64+12+n*4,31,137],[main*.64+16+n*4,44,137],'#293e45',1);
+ for(let n=0;n<3;n++)modelBox(p,30+n*12,22,7,9,118,20+n%2*8,'#b4b9ad','#677b7c','#8f9f98');
+ // Attached marquee sits in the same facade plane and follows its diagonal depth.
+ modelBox(p,door-76,d-12,152,12,111,48,'#b9a67a','#4c343c','#87404b');
+ detailPanel(p,door-71,d+.7,116,142,37,()=>{
+  roundedPanel(0,0,142,37,8,'#c29c55');roundedPanel(3,3,136,31,6,'#f0d084');roundedPanel(6,5,130,27,5,'#723245');
+  ctx.textAlign='center';ctx.textBaseline='middle';ctx.shadowColor='#f85fab';ctx.shadowBlur=5;ctx.fillStyle='#ffe4ba';ctx.font='900 21px Georgia';ctx.fillText('CASINO',71,15,120);ctx.shadowBlur=0;ctx.font='800 5.5px system-ui';ctx.fillStyle='#f3cc98';ctx.fillText('VIOLET VAULT',71,28,116);
+  for(let x=9;x<138;x+=9){disc(x,3,1.1,'#fff1b6');disc(x,34,1.1,'#fff1b6');}
+ });
+ // Side wing: illuminated cards motif rather than a second floating doorway.
+ detailPanel(p,main+8,d+1.1,55,w-main-16,22,()=>{const ww=w-main-16;rect(0,0,ww,22,'#302936');ctx.textAlign='center';ctx.textBaseline='middle';ctx.fillStyle='#dfc57b';ctx.font='900 7px Georgia';ctx.fillText('SLOTS',ww/2,7,ww-4);ctx.font='900 10px Georgia';ctx.fillStyle='#e4bcce';ctx.fillText('♠ ♦ ♣',ww/2,17,ww-4);});
+ neonTube(modelPoint(p,main+7,d+2,80),modelPoint(p,w-7,d+2,80),'#9c91e9',1.5);
+}
+function drawCasinoExterior(b){
+ const key='casino95:exterior:'+b.id;let image=stationAssets.get(key);const bounds=casinoGeometry95(b).bounds;
+ if(!image){image=document.createElement('canvas');image.width=bounds.w;image.height=bounds.h;const old=ctx;
+  try{ctx=image.getContext('2d');ctx.translate(-bounds.x,-bounds.y);paintCasinoExterior95(b);}finally{ctx=old;}stationAssets.set(key,image);
+ }
+ ctx.drawImage(image,bounds.x,bounds.y);
+}
+
+// Adult civilians share the same articulated body, head directions and walk
+// caches as the existing characters. Four women have distinct everyday clothes.
+const civilianStyles95=['scout','womanDenim','hood','womanOffice','denim','womanCoat','field','womanSport','biker','womanDenim','cargo','womanOffice'];
+Object.assign(characterProfiles,{
+ womanDenim:{female:true,jacket:'#536d80',shirt:'#d0c7b8',pants:'#354951',boots:'#b9b3a4',skin:'#bc9477',hair:'#342a29',hat:'hair',hairStyle:'bob',gear:'#5c635e'},
+ womanOffice:{female:true,jacket:'#876e68',shirt:'#cbbca7',pants:'#333d49',boots:'#3a3436',skin:'#966c51',hair:'#252a29',hat:'hair',hairStyle:'bun',gear:'#66574d'},
+ womanCoat:{female:true,jacket:'#8b7551',shirt:'#c0b8aa',pants:'#494149',boots:'#4c3c34',skin:'#d1ae8d',hair:'#604332',hat:'hair',hairStyle:'long',gear:'#68604d'},
+ womanSport:{female:true,jacket:'#6e535f',shirt:'#bbb6ae',pants:'#3c4847',boots:'#aaa9a0',skin:'#a97f61',hair:'#2e2b29',hat:'hair',hairStyle:'pony',gear:'#56595b'}
+});
+for(const name of new Set(civilianStyles95))characterProfiles[name].name=name;
+function paintCharacterHead(style,angle){
+ const female=style.female,side=Math.cos(angle),back=Math.sin(angle)<-.25,hx=side*.85,hy=-25.7;
+ if(female){
+  if(style.hairStyle==='long'){ellipse(hx,hy+2,6.4,9.2,characterTone(style.hair,-12));poly([[hx-6,hy],[hx+5,hy],[hx+7,hy+13],[hx-6,hy+12]],style.hair);}
+  else if(style.hairStyle==='bob')ellipse(hx,hy+1,6.4,7.7,characterTone(style.hair,-11));
+  else if(style.hairStyle==='pony'){ellipse(hx-side*5.8,hy-3.3,3,3.8,style.hair);poly([[hx-side*6,hy-4],[hx-side*9,hy+1],[hx-side*8,hy+10],[hx-side*5.5,hy+7]],style.hair);}
+  else if(style.hairStyle==='bun')ellipse(hx-side*4.2,hy-5,3.2,3.4,style.hair);
+ }
+ paintCharacterHeadLegacy95(style,angle);
+ if(female){
+  if(style.hairStyle==='bob'||style.hairStyle==='long')for(const s of [-1,1]){const xx=hx+s*4.8;poly([[xx,hy-3],[xx+s*1.2,hy],[xx+s*.8,hy+(style.hairStyle==='long'?10:5)],[xx-s*.7,hy+4]],style.hair);line(xx,hy-2,xx+s*.2,hy+4,characterTone(style.hair,23),.5);}
+  line(hx-3.7,hy-5.7,hx+1.5,hy-6.3,characterTone(style.hair,32),.7);
+  if(!back){line(hx-1.2,hy+3.4,hx+1.2,hy+3.4,'#895d59',.8);if(Math.sin(angle)>.25)for(const s of [-1,1])line(hx+s*1.4,hy-1.2,hx+s*3.1,hy-1.4,'#453831',.6);}
+ }
+}
+function paintCharacterBody(style,view,armored){
+ if(!style.female){paintCharacterBodyLegacy95(style,view,armored);return;}
+ const angle=view*Math.PI/4,back=Math.sin(angle)<-.25,shoulder=8.2*(.82+.18*Math.abs(Math.sin(angle))),waist=shoulder*.66;
+ rect(-1.7,-22,3.5,6,characterTone(style.skin,-20));rect(-1.2,-22,2.4,5.1,style.skin);
+ const cloth=ctx.createLinearGradient(-shoulder,-14,shoulder,6);cloth.addColorStop(0,characterTone(style.jacket,22));cloth.addColorStop(.5,style.jacket);cloth.addColorStop(1,characterTone(style.jacket,-23));
+ poly([[-shoulder-1,-13.7],[-4.3,-18.5],[4,-18.5],[shoulder+1,-13.7],[waist+1,-4],[7,5],[5.5,8],[-5.7,8],[-7,5],[-waist-1,-4]],'#1b272d');
+ poly([[-shoulder,-13.3],[-4.2,-18],[3.8,-18],[shoulder,-13.3],[waist,-4.4],[6.1,5],[-6.2,5],[-waist,-4.4]],cloth);
+ if(!back){
+  poly([[-3,-17.4],[2.8,-17.4],[2.2,-4.4],[-2.4,-4.4]],style.shirt);
+  poly([[-4.2,-18],[-1.3,-14.3],[-3.8,-8.5],[-5,-14.5]],characterTone(style.jacket,30));poly([[3.8,-18],[1,-14.4],[3.6,-8.5],[5,-14.5]],characterTone(style.jacket,-13));
+  for(const x of [-5.7,3.4]){line(x,-3.4,x+2.3,-3.6,characterTone(style.jacket,31),.6);}
+  line(-.1,-6,.1,4,characterTone(style.jacket,-28),.6);
+ }else{line(-shoulder+1,-12,shoulder-1,-12,characterTone(style.jacket,-17),.6);line(0,-13,0,3,characterTone(style.jacket,17),.5);}
+ rect(-5.9,5,11.8,1.5,'#333a39');rect(-.9,4.8,1.8,1.9,'#a89a7c');
+ if(style.hairStyle==='long')poly([[-4.2,-20],[4,-20],[4.9,-11],[2.8,-8],[-4.3,-10]],style.hair);
+ paintCharacterHead(style,angle);
 }
 
 function animate(now){
